@@ -18,6 +18,10 @@
 		65B92B3F1BE0E72700F82024 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B391BE0E69500F82024 /* MoneyTests.swift */; };
 		65B92B401BE0E72800F82024 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B391BE0E69500F82024 /* MoneyTests.swift */; };
 		65B92B411BE0E72900F82024 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B391BE0E69500F82024 /* MoneyTests.swift */; };
+		65B92B431BE0F93F00F82024 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B421BE0F93F00F82024 /* Money.swift */; };
+		65B92B441BE0F93F00F82024 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B421BE0F93F00F82024 /* Money.swift */; };
+		65B92B451BE0F93F00F82024 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B421BE0F93F00F82024 /* Money.swift */; };
+		65B92B461BE0F93F00F82024 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B421BE0F93F00F82024 /* Money.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,7 @@
 		65B92B361BE0E57800F82024 /* Money.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Money.xcconfig; path = "Supporting Files/Money.xcconfig"; sourceTree = SOURCE_ROOT; };
 		65B92B381BE0E69500F82024 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65B92B391BE0E69500F82024 /* MoneyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyTests.swift; sourceTree = "<group>"; };
+		65B92B421BE0F93F00F82024 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +147,7 @@
 		65B92B301BE0E51E00F82024 /* Money */ = {
 			isa = PBXGroup;
 			children = (
+				65B92B421BE0F93F00F82024 /* Money.swift */,
 			);
 			path = Money;
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B92B431BE0F93F00F82024 /* Money.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B92B441BE0F93F00F82024 /* Money.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B92B451BE0F93F00F82024 /* Money.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B92B461BE0F93F00F82024 /* Money.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
