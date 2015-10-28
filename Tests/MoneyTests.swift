@@ -156,7 +156,7 @@ class MoneyMultiplicationTests: XCTestCase {
     }
 
     func test__multiplication_int_0() {
-        result = money * 0
+        result = 0 * money
         XCTAssertEqual(result, 0)
     }
 
@@ -171,7 +171,7 @@ class MoneyMultiplicationTests: XCTestCase {
     }
 
     func test__multiplication_float_0() {
-        result = money * 0.0
+        result = 0.0 * money
         XCTAssertEqual(result, 0)
     }
 

@@ -119,6 +119,14 @@ public func *<C: CurrencyType>(lhs: Money<C>, rhs: FloatLiteralType) -> Money<C>
     return Money(decimalNumber: value)
 }
 
+public func *<C: CurrencyType>(lhs: IntegerLiteralType, rhs: Money<C>) -> Money<C> {
+    return rhs * lhs
+}
+
+public func *<C: CurrencyType>(lhs: FloatLiteralType, rhs: Money<C>) -> Money<C> {
+    return rhs * lhs
+}
+
 // MARK: - Division
 
 public func /<C: CurrencyType>(lhs: Money<C>, rhs: IntegerLiteralType) -> Money<C> {
