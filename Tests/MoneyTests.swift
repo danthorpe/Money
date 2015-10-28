@@ -15,27 +15,12 @@ class MoneyInitializerTests: XCTestCase {
 
     func test__money_initialize_with__nothing() {
         money = Local()
-        XCTAssertEqual(money.value, NSDecimalNumber.zero())
+        XCTAssertEqual(money, 0)
     }
 
-    func test__money_initialize_with__float() {
-        money = 6.66
-        XCTAssertEqual(money.value, NSDecimalNumber(floatLiteral: 6.66))
-    }
-
-    func test__money_initialize_with__int_0() {
-        money = 0
-        XCTAssertEqual(money.value, NSDecimalNumber.zero())
-    }
-
-    func test__money_initialize_with__int_1() {
-        money = 1
-        XCTAssertEqual(money.value, NSDecimalNumber.one())
-    }
-
-    func test__money_initialize_with__int_other() {
-        money = 666
-        XCTAssertEqual(money.value, NSDecimalNumber(integerLiteral: 666))
+    func test__money_initialize_with__one_int() {
+        money = Local(integerLiteral: 1)
+        XCTAssertEqual(money, 1)
     }
 }
 

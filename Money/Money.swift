@@ -19,7 +19,7 @@ import Foundation
 public struct Money<C: CurrencyType> {
     public typealias Currency = C
 
-    internal let value: NSDecimalNumber
+    private let value: NSDecimalNumber
 
     public var isNegative: Bool {
         return value.isNegative
