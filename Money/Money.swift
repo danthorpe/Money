@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MoneyType {
+protocol MoneyType: SignedNumberType {
     typealias Currency: CurrencyType
 }
 
@@ -20,13 +20,13 @@ protocol MoneyType {
  To work in whatever the local currency is, use `Cash`.
 
 */
-public struct Money<C: CurrencyType>: Equatable, MoneyType {
+public struct Money<C: CurrencyType>: MoneyType {
     typealias Currency = C
 
-    internal var value: NSDecimalNumber
+    internal let value: NSDecimalNumber
 
-    public init(_ value: NSDecimalNumber = NSDecimalNumber.zero()) {
-        self.value = value
+    public init(decimalNumber: NSDecimalNumber = NSDecimalNumber.zero()) {
+        self.value = decimalNumber
     }
 }
 
@@ -36,37 +36,47 @@ public typealias Cash = Money<LocalCurrency>
 
 extension Money: FloatLiteralConvertible {
 
-    public init(floatLiteral value: Double) {
-        self.value = NSDecimalNumber(floatLiteral: value)
+    public init(floatLiteral value: FloatLiteralType) {
+        self.value = NSDecimalNumber(floatLiteral: value).decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
     }
 }
 
 extension Money: IntegerLiteralConvertible {
 
-    public init(integerLiteral value: Int) {
+    public init(integerLiteral value: IntegerLiteralType) {
         switch value {
         case 0:
             self.value = NSDecimalNumber.zero()
         case 1:
             self.value = NSDecimalNumber.one()
         default:
-            self.value = NSDecimalNumber(integerLiteral: value)
+            self.value = NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
         }
     }
 }
 
 // MARK: - Equality
 
-public func ==<C: CurrencyType>(a: Money<C>, b: Money<C>) -> Bool {
-    return a.value.isEqualToNumber(b.value)
+public func ==<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Bool {
+    return lhs.value.compare(rhs.value) == .OrderedSame
 }
 
-public func ==<C: CurrencyType>(a: Money<C>, b: NSDecimalNumber) -> Bool {
-    return a.value.isEqualToNumber(b)
+// MARK: - Comparable
+
+public func <<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Bool {
+    return lhs.value.compare(rhs.value) == .OrderedAscending
 }
 
-public func ==<C: CurrencyType>(a: NSDecimalNumber, b: Money<C>) -> Bool {
-    return a.isEqualToNumber(b.value)
+// MARK: - SignedNumberType
+
+public func -<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Money<C> {
+    return Money(decimalNumber: lhs.value.decimalNumberBySubtracting(rhs.value, withBehavior: C.decimalNumberBehavior))
 }
+
+public prefix func -<C: CurrencyType>(x: Money<C>) -> Money<C> {
+    let behavior = C.decimalNumberBehavior
+    return Money(decimalNumber: x.value.decimalNumberByMultiplyingBy(NSDecimalNumber.minusOnewithBehavior(behavior), withBehavior: behavior))
+}
+
 
 

@@ -42,7 +42,6 @@ class MoneyInitializerTests: XCTestCase {
 class MoneyEqualityTests: XCTestCase {
     var aMoney: Cash!
     var bMoney: Cash!
-    var decNumber: NSDecimalNumber!
 
     func test__money_equals_money() {
         aMoney = 6.66
@@ -55,20 +54,31 @@ class MoneyEqualityTests: XCTestCase {
         bMoney = 5.66
         XCTAssertNotEqual(aMoney, bMoney)
     }
+}
 
-    func test__money_equals_decimal() {
-        aMoney = 0
-        decNumber = NSDecimalNumber.zero()
-        XCTAssertTrue(aMoney == decNumber)
-    }
+class MoneyComparableTests: XCTestCase {
 
-    func test__money_does_not_equal_decimal() {
-        aMoney = 0
-        decNumber = NSDecimalNumber.one()
-        XCTAssertFalse(decNumber == aMoney)
+    func test__money_sorts() {
+        let monies: [Cash] = [ 0, 12, 4.50, 9.99, 99, 9.99, 2.49, 16.69]
+        let sorted = monies.sort()
+        XCTAssertEqual(sorted, [0, 2.49, 4.50, 9.99, 9.99, 12, 16.69, 99])
     }
 }
 
+class MoneySignedNumberTests: XCTestCase {
 
+    func test__money_negates() {
+        let money: Cash = 16.49
+        let modified = -money
+        XCTAssertEqual(modified, Cash(floatLiteral: -16.49))
+    }
+
+    func test__money_subtracts() {
+        let a: Cash = 16.49
+        let b: Cash = 6.49
+        let result = a - b
+        XCTAssertEqual(result, Cash(integerLiteral: 10))
+    }
+}
 
 
