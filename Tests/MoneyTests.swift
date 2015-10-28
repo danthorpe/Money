@@ -85,53 +85,41 @@ class MoneySubtractionTests: XCTestCase {
 
     let money: JPY = 12_345.67
 
-    func test__subtraction_int() {
+    func test__subtraction_int_1() {
         XCTAssertEqual(money - 10_000, 2_345.67)
     }
 
-    func test__subtraction_float() {
+    func test__subtraction_int_2() {
+        XCTAssertEqual(10_000 - money, -2_345.67)
+    }
+
+    func test__subtraction_float_1() {
         XCTAssertEqual(money - 2_345.67, 10_000)
     }
 
+    func test__subtraction_float_2() {
+        XCTAssertEqual(2_345.67 - money, -10_000)
+    }
 }
 
 class MoneyAddingTests: XCTestCase {
 
-    var a: GBP!
-    var b: GBP!
+    let money: INR = 335_577.99
 
-    func test__addition_1() {
-        a = 0
-        b = 0.5
-        XCTAssertEqual(a + b, 0.5)
+    func test_addition() {
+        let cash: INR = 446_688.00
+        XCTAssertEqual(money + cash, 782_265.99)
+        XCTAssertEqual(cash + money, 782_265.99)
     }
 
-    func test__addition_2() {
-        a = 0.99
-        b = 0.01
-        XCTAssertEqual(a + b, 1)
+    func test__addition_int_interal() {
+        XCTAssertEqual(money + 10_000, 345_577.99)
+        XCTAssertEqual(10_000 + money, 345_577.99)
     }
 
-    func test__addition_3() {
-        a = 0.999
-        b = 0.011
-        XCTAssertEqual(a + b, 1.01)
-    }
-
-    func test__addition_4() {
-        a = 20_000_000.000
-        b = 20_000_000.99
-        XCTAssertEqual(a + b, 40_000_000.99)
-    }
-
-    func test__addition_with_int_literal() {
-        a = 5
-        XCTAssertEqual(a + 15, 20)
-    }
-
-    func test__addition_with_float_literal() {
-        a = 4.99
-        XCTAssertEqual(a + 0.01, 5)
+    func test__addition_float_interal() {
+        XCTAssertEqual(money + 2_345.67, 337_923.66)
+        XCTAssertEqual(2_345.67 + money, 337_923.66)
     }
 }
 

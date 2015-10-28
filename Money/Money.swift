@@ -145,14 +145,26 @@ public func -<T: MoneyType>(lhs: T, rhs: T) -> T {
     return lhs.subtract(rhs)
 }
 
+// MARK: - Subtraction
+
 @warn_unused_result
 public func -<T: MoneyType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
     return lhs - T(integerLiteral: rhs)
 }
 
 @warn_unused_result
+public func -<T: MoneyType>(lhs: T.IntegerLiteralType, rhs: T) -> T {
+    return T(integerLiteral: lhs) - rhs
+}
+
+@warn_unused_result
 public func -<T: MoneyType>(lhs: T, rhs: T.FloatLiteralType) -> T {
     return lhs - T(floatLiteral: rhs)
+}
+
+@warn_unused_result
+public func -<T: MoneyType>(lhs: T.FloatLiteralType, rhs: T) -> T {
+    return T(floatLiteral: lhs) - rhs
 }
 
 // MARK: - Remainder
@@ -175,8 +187,18 @@ public func +<T: MoneyType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
 }
 
 @warn_unused_result
+public func +<T: MoneyType>(lhs: T.IntegerLiteralType, rhs: T) -> T {
+    return T(integerLiteral: lhs) + rhs
+}
+
+@warn_unused_result
 public func +<T: MoneyType>(lhs: T, rhs: T.FloatLiteralType) -> T {
     return lhs + T(floatLiteral: rhs)
+}
+
+@warn_unused_result
+public func +<T: MoneyType>(lhs: T.FloatLiteralType, rhs: T) -> T {
+    return T(floatLiteral: lhs) + rhs
 }
 
 // MARK: - Multiplication
