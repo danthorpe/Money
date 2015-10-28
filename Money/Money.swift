@@ -34,8 +34,6 @@ public struct Money<C: CurrencyType>: MoneyType {
     }
 }
 
-public typealias Cash = Money<LocalCurrency>
-
 // MARK: - Literal Convertibles
 
 extension Money: FloatLiteralConvertible {

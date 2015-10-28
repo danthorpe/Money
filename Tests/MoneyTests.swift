@@ -11,10 +11,10 @@ import XCTest
 
 class MoneyInitializerTests: XCTestCase {
 
-    var money: Cash!
+    var money: Local!
 
     func test__money_initialize_with__nothing() {
-        money = Cash()
+        money = Local()
         XCTAssertEqual(money.value, NSDecimalNumber.zero())
     }
 
@@ -40,8 +40,8 @@ class MoneyInitializerTests: XCTestCase {
 }
 
 class MoneyEqualityTests: XCTestCase {
-    var aMoney: Cash!
-    var bMoney: Cash!
+    var aMoney: USD!
+    var bMoney: USD!
 
     func test__money_equals_money() {
         aMoney = 6.66
@@ -59,7 +59,7 @@ class MoneyEqualityTests: XCTestCase {
 class MoneyComparableTests: XCTestCase {
 
     func test__money_sorts() {
-        let monies: [Cash] = [ 0, 12, 4.50, 9.99, 99, 9.99, 2.49, 16.69]
+        let monies: [Local] = [ 0, 12, 4.50, 9.99, 99, 9.99, 2.49, 16.69]
         let sorted = monies.sort()
         XCTAssertEqual(sorted, [0, 2.49, 4.50, 9.99, 9.99, 12, 16.69, 99])
     }
@@ -68,23 +68,23 @@ class MoneyComparableTests: XCTestCase {
 class MoneySignedNumberTests: XCTestCase {
 
     func test__money_negates() {
-        let money: Cash = 16.49
+        let money: Local = 16.49
         let modified = -money
-        XCTAssertEqual(modified, Cash(floatLiteral: -16.49))
+        XCTAssertEqual(modified, Local(floatLiteral: -16.49))
     }
 
     func test__money_subtracts() {
-        let a: Cash = 16.49
-        let b: Cash = 6.49
+        let a: Local = 16.49
+        let b: Local = 6.49
         let result = a - b
-        XCTAssertEqual(result, Cash(integerLiteral: 10))
+        XCTAssertEqual(result, Local(integerLiteral: 10))
     }
 }
 
 class MoneyAddingTests: XCTestCase {
 
-    var a: Cash!
-    var b: Cash!
+    var a: GBP!
+    var b: GBP!
 
     func test__addition_1() {
         a = 0
@@ -112,8 +112,8 @@ class MoneyAddingTests: XCTestCase {
 }
 
 class MoneyRemainderTests: XCTestCase {
-    var dividend: Cash!
-    var divisor: Cash!
+    var dividend: EUR!
+    var divisor: EUR!
 
     func test__remainer_all_positive() {
         dividend = 37.50
@@ -141,8 +141,8 @@ class MoneyRemainderTests: XCTestCase {
 }
 
 class MoneyMultiplicationTests: XCTestCase {
-    var money: Cash!
-    var result: Cash!
+    var money: CNY!
+    var result: CNY!
 
     override func setUp() {
         super.setUp()
@@ -188,8 +188,8 @@ class MoneyMultiplicationTests: XCTestCase {
 }
 
 class MoneyDivisionTests: XCTestCase {
-    var money: Cash!
-    var result: Cash!
+    var money: Local!
+    var result: Local!
 
     override func setUp() {
         super.setUp()

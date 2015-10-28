@@ -19,17 +19,13 @@ extension NSDecimalNumber {
     }
 }
 
-extension Int: BooleanType, BooleanLiteralConvertible {
+extension Int: BooleanType {
 
     public var boolValue: Bool {
         switch self {
         case 0: return false
         default: return true
         }
-    }
-
-    public init(booleanLiteral value: BooleanLiteralType) {
-        self = value ? 1 : 0
     }
 }
 
