@@ -31,3 +31,5 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+.fastlane/report.xml
+.ci/xcodebuild-data/*
