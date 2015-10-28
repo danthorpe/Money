@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol MoneyType: SignedNumberType {
-    typealias Currency: CurrencyType
-}
-
 /**
  # Money
  
@@ -20,8 +16,8 @@ protocol MoneyType: SignedNumberType {
  To work in whatever the local currency is, use `Cash`.
 
 */
-public struct Money<C: CurrencyType>: MoneyType {
-    typealias Currency = C
+public struct Money<C: CurrencyType> {
+    public typealias Currency = C
 
     internal let value: NSDecimalNumber
 
@@ -34,27 +30,32 @@ public struct Money<C: CurrencyType>: MoneyType {
     }
 }
 
-// MARK: - Literal Convertibles
+/**
+ # MoneyType
+ `MoneyType` is a protocol which defiens the various operators and
+ typealias required to support monetary calculations and operations.
 
-extension Money: FloatLiteralConvertible {
+ Some functionality can be be provided via general implementations.
+ */
+public protocol MoneyType: SignedNumberType, FloatLiteralConvertible, IntegerLiteralConvertible {
+    typealias Currency: CurrencyType
 
-    public init(floatLiteral value: FloatLiteralType) {
-        self.value = NSDecimalNumber(floatLiteral: value).decimalNumberByRoundingAccordingToBehavior(Currency.decimalNumberBehavior)
-    }
-}
+    var negative: Self { get }
 
-extension Money: IntegerLiteralConvertible {
+    @warn_unused_result
+    func subtract(_: Self) -> Self
 
-    public init(integerLiteral value: IntegerLiteralType) {
-        switch value {
-        case 0:
-            self.value = NSDecimalNumber.zero()
-        case 1:
-            self.value = NSDecimalNumber.one()
-        default:
-            self.value = NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(Currency.decimalNumberBehavior)
-        }
-    }
+    @warn_unused_result
+    func add(_: Self) -> Self
+
+    @warn_unused_result
+    func remainder(_: Self) -> Self
+
+    @warn_unused_result
+    func multiplyBy(_: NSDecimalNumber) -> Self
+
+    @warn_unused_result
+    func divideBy(_: NSDecimalNumber) -> Self
 }
 
 // MARK: - Equality
@@ -69,73 +70,146 @@ public func <<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Bool {
     return lhs.value.compare(rhs.value) == .OrderedAscending
 }
 
-// MARK: - SignedNumberType
+// MARK: - MoneyType
 
-public func -<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Money<C> {
-    return Money(decimalNumber: lhs.value.decimalNumberBySubtracting(rhs.value, withBehavior: C.decimalNumberBehavior))
+extension Money: MoneyType {
+
+    public var negative: Money<C> {
+        return Money(decimalNumber: value.decimalNumberByMultiplyingBy(NSDecimalNumber.negativeOne, withBehavior: C.decimalNumberBehavior))
+    }
+
+    public init(floatLiteral value: FloatLiteralType) {
+        self.value = NSDecimalNumber(floatLiteral: value).decimalNumberByRoundingAccordingToBehavior(Currency.decimalNumberBehavior)
+    }
+
+    public init(integerLiteral value: IntegerLiteralType) {
+        switch value {
+        case 0:
+            self.value = NSDecimalNumber.zero()
+        case 1:
+            self.value = NSDecimalNumber.one()
+        default:
+            self.value = NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(Currency.decimalNumberBehavior)
+        }
+    }
+
+    @warn_unused_result
+    public func subtract(money: Money<C>) -> Money<C> {
+        return Money(decimalNumber: value.decimalNumberBySubtracting(money.value, withBehavior: C.decimalNumberBehavior))
+    }
+
+    @warn_unused_result
+    public func add(money: Money<C>) -> Money<C> {
+        return Money(decimalNumber: value.decimalNumberByAdding(money.value, withBehavior: C.decimalNumberBehavior))
+    }
+
+    @warn_unused_result
+    public func remainder(divisor: Money<C>) -> Money<C> {
+        let roundingMode: NSRoundingMode = Int(isNegative) ^ Int(divisor.isNegative) ? NSRoundingMode.RoundUp : NSRoundingMode.RoundDown
+        let behavior = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+        let quotient = value.decimalNumberByDividingBy(divisor.value, withBehavior: behavior)
+        let subtract = quotient.decimalNumberByMultiplyingBy(divisor.value, withBehavior: C.decimalNumberBehavior)
+        let result = value.decimalNumberBySubtracting(subtract, withBehavior: C.decimalNumberBehavior)
+
+        if result.isNegative {
+            return Money(decimalNumber: result.decimalNumberByMultiplyingBy(NSDecimalNumber.negativeOne, withBehavior: C.decimalNumberBehavior))
+        }
+
+        return Money(decimalNumber: result)
+    }
+
+    @warn_unused_result
+    public func multiplyBy(by: NSDecimalNumber) -> Money<C> {
+        let multiplier = by.decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
+        let result = value.decimalNumberByMultiplyingBy(multiplier, withBehavior: C.decimalNumberBehavior)
+        return Money(decimalNumber: result)
+    }
+
+    @warn_unused_result
+    public func divideBy(by: NSDecimalNumber) -> Money<C> {
+        let divisor = by.decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
+        let result = value.decimalNumberByDividingBy(divisor, withBehavior: C.decimalNumberBehavior)
+        return Money(decimalNumber: result)
+    }
 }
 
-public prefix func -<C: CurrencyType>(x: Money<C>) -> Money<C> {
-    let behavior = C.decimalNumberBehavior
-    return Money(decimalNumber: x.value.decimalNumberByMultiplyingBy(NSDecimalNumber.negativeOne, withBehavior: behavior))
+// MARK: - SignedNumberType / Subtraction
+
+@warn_unused_result
+public prefix func -<T: MoneyType>(x: T) -> T {
+    return x.negative
 }
 
-// MARK: - Addition
+@warn_unused_result
+public func -<T: MoneyType>(lhs: T, rhs: T) -> T {
+    return lhs.subtract(rhs)
+}
 
-public func +<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Money<C> {
-    return Money(decimalNumber: lhs.value.decimalNumberByAdding(rhs.value, withBehavior: C.decimalNumberBehavior))
+@warn_unused_result
+public func -<T: MoneyType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
+    return lhs - T(integerLiteral: rhs)
+}
+
+@warn_unused_result
+public func -<T: MoneyType>(lhs: T, rhs: T.FloatLiteralType) -> T {
+    return lhs - T(floatLiteral: rhs)
 }
 
 // MARK: - Remainder
 
-public func %<C: CurrencyType>(dividend: Money<C>, divisor: Money<C>) -> Money<C> {
+@warn_unused_result
+public func %<T: MoneyType>(lhs: T, rhs: T) -> T {
+    return lhs.remainder(rhs)
+}
 
-    let roundingMode: NSRoundingMode = Int(dividend.isNegative) ^ Int(divisor.isNegative) ? NSRoundingMode.RoundUp : NSRoundingMode.RoundDown
-    let behavior = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-    let quotient = dividend.value.decimalNumberByDividingBy(divisor.value, withBehavior: behavior)
-    let subtract = quotient.decimalNumberByMultiplyingBy(divisor.value, withBehavior: C.decimalNumberBehavior)
-    let value = dividend.value.decimalNumberBySubtracting(subtract, withBehavior: C.decimalNumberBehavior)
+// MARK: - Addition
 
-    if value.isNegative {
-        return Money(decimalNumber: value.decimalNumberByMultiplyingBy(NSDecimalNumber.negativeOne, withBehavior: C.decimalNumberBehavior))
-    }
+@warn_unused_result
+public func +<T: MoneyType>(lhs: T, rhs: T) -> T {
+    return lhs.add(rhs)
+}
 
-    return Money(decimalNumber: value)
+@warn_unused_result
+public func +<T: MoneyType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
+    return lhs + T(integerLiteral: rhs)
+}
+
+@warn_unused_result
+public func +<T: MoneyType>(lhs: T, rhs: T.FloatLiteralType) -> T {
+    return lhs + T(floatLiteral: rhs)
 }
 
 // MARK: - Multiplication
 
-public func *<C: CurrencyType>(lhs: Money<C>, rhs: IntegerLiteralType) -> Money<C> {
-    let factor = NSDecimalNumber(integerLiteral: rhs).decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
-    let value = lhs.value.decimalNumberByMultiplyingBy(factor, withBehavior: C.decimalNumberBehavior)
-    return Money(decimalNumber: value)
+@warn_unused_result
+public func *<T: MoneyType where T.IntegerLiteralType == Swift.IntegerLiteralType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
+    return lhs.multiplyBy(NSDecimalNumber(integerLiteral: rhs))
 }
 
-public func *<C: CurrencyType>(lhs: Money<C>, rhs: FloatLiteralType) -> Money<C> {
-    let factor = NSDecimalNumber(floatLiteral: rhs).decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
-    let value = lhs.value.decimalNumberByMultiplyingBy(factor, withBehavior: C.decimalNumberBehavior)
-    return Money(decimalNumber: value)
+@warn_unused_result
+public func *<T: MoneyType where T.FloatLiteralType == Swift.FloatLiteralType>(lhs: T, rhs: T.FloatLiteralType) -> T {
+    return lhs.multiplyBy(NSDecimalNumber(floatLiteral: rhs))
 }
 
-public func *<C: CurrencyType>(lhs: IntegerLiteralType, rhs: Money<C>) -> Money<C> {
+@warn_unused_result
+public func *<T: MoneyType where T.IntegerLiteralType == Swift.IntegerLiteralType>(lhs: T.IntegerLiteralType, rhs: T) -> T {
     return rhs * lhs
 }
 
-public func *<C: CurrencyType>(lhs: FloatLiteralType, rhs: Money<C>) -> Money<C> {
+@warn_unused_result
+public func *<T: MoneyType where T.FloatLiteralType == Swift.FloatLiteralType>(lhs: T.FloatLiteralType, rhs: T) -> T {
     return rhs * lhs
 }
 
 // MARK: - Division
 
-public func /<C: CurrencyType>(lhs: Money<C>, rhs: IntegerLiteralType) -> Money<C> {
-    let divisor = NSDecimalNumber(integerLiteral: rhs).decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
-    let value = lhs.value.decimalNumberByDividingBy(divisor, withBehavior: C.decimalNumberBehavior)
-    return Money(decimalNumber: value)
+@warn_unused_result
+public func /<T: MoneyType where T.IntegerLiteralType == Swift.IntegerLiteralType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
+    return lhs.divideBy(NSDecimalNumber(integerLiteral: rhs))
 }
 
-public func /<C: CurrencyType>(lhs: Money<C>, rhs: FloatLiteralType) -> Money<C> {
-    let divisor = NSDecimalNumber(floatLiteral: rhs).decimalNumberByRoundingAccordingToBehavior(C.decimalNumberBehavior)
-    let value = lhs.value.decimalNumberByDividingBy(divisor, withBehavior: C.decimalNumberBehavior)
-    return Money(decimalNumber: value)
+@warn_unused_result
+public func /<T: MoneyType where T.FloatLiteralType == Swift.FloatLiteralType>(lhs: T, rhs: T.FloatLiteralType) -> T {
+    return lhs.divideBy(NSDecimalNumber(floatLiteral: rhs))
 }
 

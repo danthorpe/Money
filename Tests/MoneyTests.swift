@@ -81,6 +81,20 @@ class MoneySignedNumberTests: XCTestCase {
     }
 }
 
+class MoneySubtractionTests: XCTestCase {
+
+    let money: JPY = 12_345.67
+
+    func test__subtraction_int() {
+        XCTAssertEqual(money - 10_000, 2_345.67)
+    }
+
+    func test__subtraction_float() {
+        XCTAssertEqual(money - 2_345.67, 10_000)
+    }
+
+}
+
 class MoneyAddingTests: XCTestCase {
 
     var a: GBP!
@@ -108,6 +122,16 @@ class MoneyAddingTests: XCTestCase {
         a = 20_000_000.000
         b = 20_000_000.99
         XCTAssertEqual(a + b, 40_000_000.99)
+    }
+
+    func test__addition_with_int_literal() {
+        a = 5
+        XCTAssertEqual(a + 15, 20)
+    }
+
+    func test__addition_with_float_literal() {
+        a = 4.99
+        XCTAssertEqual(a + 0.01, 5)
     }
 }
 
@@ -141,66 +165,36 @@ class MoneyRemainderTests: XCTestCase {
 }
 
 class MoneyMultiplicationTests: XCTestCase {
-    var money: CNY!
-    var result: CNY!
-
-    override func setUp() {
-        super.setUp()
-        money = 9.99
-    }
-
-    override func tearDown() {
-        money = nil
-        result = nil
-        super.tearDown()
-    }
+    let money: CNY = 9.99
 
     func test__multiplication_int_0() {
-        result = 0 * money
-        XCTAssertEqual(result, 0)
+        XCTAssertEqual(0 * money, 0)
     }
 
     func test__multiplication_int_1() {
-        result = money * 1
-        XCTAssertEqual(result, money)
+        XCTAssertEqual(money * 1, money)
     }
 
     func test__multiplication_int_2() {
-        result = money * 417
-        XCTAssertEqual(result, 4_165.83)
+        XCTAssertEqual(money * 417, 4_165.83)
     }
 
     func test__multiplication_float_0() {
-        result = 0.0 * money
-        XCTAssertEqual(result, 0)
+        XCTAssertEqual(0.0 * money, 0)
     }
 
     func test__multiplication_float_1() {
-        result = money * 1.0
-        XCTAssertEqual(result, money)
+        XCTAssertEqual(money * 1.0, money)
     }
 
     func test__multiplication_float_2() {
-        result = money * M_PI
         // Note - we use Banking style rounding mode
-        XCTAssertEqual(result, 31.37)
+        XCTAssertEqual(money * M_PI, 31.37)
     }
 }
 
 class MoneyDivisionTests: XCTestCase {
-    var money: Local!
-    var result: Local!
-
-    override func setUp() {
-        super.setUp()
-        money = 9.99
-    }
-
-    override func tearDown() {
-        money = nil
-        result = nil
-        super.tearDown()
-    }
+    let money: EUR = 9.99
 
 /*
     func test__division_int_0() {
@@ -211,33 +205,27 @@ class MoneyDivisionTests: XCTestCase {
 */
 
     func test__division_int_1() {
-        result = money / 1
-        XCTAssertEqual(result, money)
+        XCTAssertEqual(money / 1, money)
     }
 
     func test__multiplication_int_2() {
-        result = money / 4
-        XCTAssertEqual(result, 2.50)
+        XCTAssertEqual(money / 4, 2.50)
     }
 
     func test__division_float_1() {
-        result = money / 1.0
-        XCTAssertEqual(result, money)
+        XCTAssertEqual(money / 1.0, money)
     }
 
     func test__division_float_2() {
-        result = money / 4.0
-        XCTAssertEqual(result, 2.50)
+        XCTAssertEqual(money / 4.0, 2.50)
     }
 
     func test__division_float_3() {
-        result = money / 0.5
-        XCTAssertEqual(result, 19.98)
+        XCTAssertEqual(money / 0.5, 19.98)
     }
 
     func test__division_float_4() {
-        result = money / M_PI
-        XCTAssertEqual(result, 3.18)
+        XCTAssertEqual(money / M_PI, 3.18)
     }
 }
 
