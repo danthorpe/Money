@@ -1,0 +1,24 @@
+platform :ios do
+
+  desc "Runs all the tests"
+  lane :test do
+	xctest scheme: 'Money-iOS', 
+      sdk: 'iphonesimulator',
+      destination: 'platform=iOS Simulator,name=iPhone 6,OS=9.1',
+      destination_timeout: 120,
+      derivedDataPath: '.ci/xcodebuild-data'
+  end
+
+end
+
+platform :mac do
+  
+  desc "Runs all the tests"
+  lane :test do
+	xctest scheme: 'Money-OSX', 
+    sdk: 'macosx', 
+    destination: 'platform=OS X',
+    derivedDataPath: '.ci/xcodebuild-data'
+  end
+  
+end
