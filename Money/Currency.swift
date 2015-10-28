@@ -11,7 +11,7 @@ import Foundation
 public protocol CurrencyType {
     static var formatter: NSNumberFormatter { get }
     static var scale: Int { get }
-    static var decimalNumberBehavior: NSDecimalNumberBehaviors? { get }
+    static var decimalNumberBehavior: NSDecimalNumberBehaviors { get }
 }
 
 extension CurrencyType {
@@ -20,7 +20,7 @@ extension CurrencyType {
         return formatter.maximumFractionDigits
     }
 
-    public static var decimalNumberBehavior: NSDecimalNumberBehaviors? {
+    public static var decimalNumberBehavior: NSDecimalNumberBehaviors {
         return NSDecimalNumberHandler(
             roundingMode: .RoundBankers,
             scale: Int16(scale),
@@ -30,10 +30,7 @@ extension CurrencyType {
             raiseOnDivideByZero: true
         )
     }
-
 }
-
-
 
 public struct LocalCurrency: CurrencyType {
 

@@ -81,4 +81,164 @@ class MoneySignedNumberTests: XCTestCase {
     }
 }
 
+class MoneyAddingTests: XCTestCase {
+
+    var a: Cash!
+    var b: Cash!
+
+    func test__addition_1() {
+        a = 0
+        b = 0.5
+        XCTAssertEqual(a + b, 0.5)
+    }
+
+    func test__addition_2() {
+        a = 0.99
+        b = 0.01
+        XCTAssertEqual(a + b, 1)
+    }
+
+    func test__addition_3() {
+        a = 0.999
+        b = 0.011
+        XCTAssertEqual(a + b, 1.01)
+    }
+
+    func test__addition_4() {
+        a = 20_000_000.000
+        b = 20_000_000.99
+        XCTAssertEqual(a + b, 40_000_000.99)
+    }
+}
+
+class MoneyRemainderTests: XCTestCase {
+    var dividend: Cash!
+    var divisor: Cash!
+
+    func test__remainer_all_positive() {
+        dividend = 37.50
+        divisor = 5
+        XCTAssertEqual(dividend % divisor, 2.50)
+    }
+
+    func test__remainer_all_negative() {
+        dividend = -37.50
+        divisor = -5
+        XCTAssertEqual(dividend % divisor, 2.50)
+    }
+
+    func test__remainer_negative_divisor() {
+        dividend = 37.50
+        divisor = -5
+        XCTAssertEqual(dividend % divisor, 2.50)
+    }
+
+    func test__remainer_negative_dividend() {
+        dividend = -37.50
+        divisor = 5
+        XCTAssertEqual(dividend % divisor, 2.50)
+    }
+}
+
+class MoneyMultiplicationTests: XCTestCase {
+    var money: Cash!
+    var result: Cash!
+
+    override func setUp() {
+        super.setUp()
+        money = 9.99
+    }
+
+    override func tearDown() {
+        money = nil
+        result = nil
+        super.tearDown()
+    }
+
+    func test__multiplication_int_0() {
+        result = money * 0
+        XCTAssertEqual(result, 0)
+    }
+
+    func test__multiplication_int_1() {
+        result = money * 1
+        XCTAssertEqual(result, money)
+    }
+
+    func test__multiplication_int_2() {
+        result = money * 417
+        XCTAssertEqual(result, 4_165.83)
+    }
+
+    func test__multiplication_float_0() {
+        result = money * 0.0
+        XCTAssertEqual(result, 0)
+    }
+
+    func test__multiplication_float_1() {
+        result = money * 1.0
+        XCTAssertEqual(result, money)
+    }
+
+    func test__multiplication_float_2() {
+        result = money * M_PI
+        // Note - we use Banking style rounding mode
+        XCTAssertEqual(result, 31.37)
+    }
+}
+
+class MoneyDivisionTests: XCTestCase {
+    var money: Cash!
+    var result: Cash!
+
+    override func setUp() {
+        super.setUp()
+        money = 9.99
+    }
+
+    override func tearDown() {
+        money = nil
+        result = nil
+        super.tearDown()
+    }
+
+/*
+    func test__division_int_0() {
+        result = money / 0
+        // This does throw an exception - but how can I 
+        // write a test to verify that it does?
+    }
+*/
+
+    func test__division_int_1() {
+        result = money / 1
+        XCTAssertEqual(result, money)
+    }
+
+    func test__multiplication_int_2() {
+        result = money / 4
+        XCTAssertEqual(result, 2.50)
+    }
+
+    func test__division_float_1() {
+        result = money / 1.0
+        XCTAssertEqual(result, money)
+    }
+
+    func test__division_float_2() {
+        result = money / 4.0
+        XCTAssertEqual(result, 2.50)
+    }
+
+    func test__division_float_3() {
+        result = money / 0.5
+        XCTAssertEqual(result, 19.98)
+    }
+
+    func test__division_float_4() {
+        result = money / M_PI
+        XCTAssertEqual(result, 3.18)
+    }
+}
+
 

@@ -8,17 +8,28 @@
 
 import Foundation
 
-infix operator ** { associativity left precedence 160 }
-
-func ** (left: Double, right: Double) -> Double {
-    return pow(left, right)
-}
-
-
 extension NSDecimalNumber {
 
-    static func minusOnewithBehavior(behavior: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
-        return NSDecimalNumber.zero().decimalNumberBySubtracting(NSDecimalNumber.one(), withBehavior: behavior)
+    var isNegative: Bool {
+        return NSDecimalNumber.zero().compare(self) == .OrderedDescending
+    }
+
+    static var negativeOne: NSDecimalNumber {
+        return NSDecimalNumber(mantissa: 1, exponent: 0, isNegative: true)
+    }
+}
+
+extension Int: BooleanType, BooleanLiteralConvertible {
+
+    public var boolValue: Bool {
+        switch self {
+        case 0: return false
+        default: return true
+        }
+    }
+
+    public init(booleanLiteral value: BooleanLiteralType) {
+        self = value ? 1 : 0
     }
 }
 
