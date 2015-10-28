@@ -15,7 +15,7 @@ platform :mac do
   
   desc "Runs all the tests"
   lane :test do
-	xctest scheme: 'ValueCoding-OSX', 
+	xctest scheme: 'Money-OSX', 
     sdk: 'macosx', 
     destination: 'platform=OS X',
     derivedDataPath: '.ci/xcodebuild-data'
