@@ -161,7 +161,6 @@ class MoneyMultiplicationTests: XCTestCase {
     }
 
     func test__multiplication_float_2() {
-        // Note - we use Banking style rounding mode
         XCTAssertEqual(money * M_PI, 31.37)
     }
 }
