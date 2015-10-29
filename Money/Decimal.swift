@@ -124,8 +124,7 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
      Negates the receiver, equivalent to multiplying it by -1
      - returns: another instance of this type.
      */
-    @warn_unused_result
-    func negateWithBehaviors(_: NSDecimalNumberBehaviors?) -> Self
+    var negative: Self { get }
     
     /**
      Subtract a matching `DecimalNumberType` from the receiver.
@@ -285,6 +284,10 @@ public struct Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
         return value.isNegative
     }
     
+    public var negative: Decimal {
+        return Decimal(value.negateWithBehaviors(Behavior.decimalNumberBehaviors))
+    }
+    
     init(_ decimalNumber: NSDecimalNumber = NSDecimalNumber.zero()) {
         value = decimalNumber
     }
@@ -302,11 +305,6 @@ public struct Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
         default:
             self.value = NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(Behavior.decimalNumberBehaviors)
         }
-    }
-    
-    @warn_unused_result
-    public func negateWithBehaviors(behaviors: NSDecimalNumberBehaviors?) -> Decimal {
-        return Decimal(value.negateWithBehaviors(behaviors))
     }
     
     @warn_unused_result

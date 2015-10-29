@@ -19,7 +19,6 @@ public protocol MoneyType: DecimalNumberType {
     typealias Currency: CurrencyType
 }
 
-
 /**
  # Money
  Money is a value type, which is generic over the currency type.
@@ -37,6 +36,9 @@ public struct Money<C: CurrencyType>: MoneyType {
         return decimal.isNegative
     }
     
+    public var negative: Money {
+        return Money(decimal.negative)
+    }
     
     init(_ value: Decimal<C> = Decimal<C>()) {
         decimal = value
@@ -48,11 +50,6 @@ public struct Money<C: CurrencyType>: MoneyType {
     
     public init(floatLiteral value: FloatLiteralType) {
         decimal = Decimal<DecimalNumberBehavior>(floatLiteral: value)
-    }
-    
-    @warn_unused_result
-    public func negateWithBehaviors(behaviors: NSDecimalNumberBehaviors?) -> Money<C> {
-        return Money(decimal.negateWithBehaviors(behaviors))
     }
     
     @warn_unused_result
