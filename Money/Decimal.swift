@@ -29,10 +29,6 @@ public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
 */
 extension NSDecimalNumber {
     
-    public static var decimalNumberBehaviors: NSDecimalNumberBehaviors? {
-        return NSDecimalNumberHandler.defaultDecimalNumberHandler()
-    }
-    
     public var isNegative: Bool {
         return NSDecimalNumber.zero().compare(self) == .OrderedDescending
     }
