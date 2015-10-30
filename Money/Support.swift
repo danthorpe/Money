@@ -8,17 +8,6 @@
 
 import Foundation
 
-extension NSDecimalNumber {
-
-    var isNegative: Bool {
-        return NSDecimalNumber.zero().compare(self) == .OrderedDescending
-    }
-
-    static var negativeOne: NSDecimalNumber {
-        return NSDecimalNumber(mantissa: 1, exponent: 0, isNegative: true)
-    }
-}
-
 extension Int: BooleanType {
 
     public var boolValue: Bool {

@@ -22,6 +22,16 @@ class MoneyInitializerTests: XCTestCase {
         money = Local(integerLiteral: 1)
         XCTAssertEqual(money, 1)
     }
+    
+    func test__money_is_negative() {
+        money = -10
+        XCTAssertTrue(money.isNegative)
+    }
+    
+    func test__money_can_be_negated() {
+        money = 10
+        XCTAssertEqual(money.negative, -10)
+    }
 }
 
 class MoneyEqualityTests: XCTestCase {
@@ -161,7 +171,6 @@ class MoneyMultiplicationTests: XCTestCase {
     }
 
     func test__multiplication_float_2() {
-        // Note - we use Banking style rounding mode
         XCTAssertEqual(money * M_PI, 31.37)
     }
 }

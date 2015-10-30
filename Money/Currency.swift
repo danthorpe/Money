@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol CurrencyType {
+public protocol CurrencyType: DecimalNumberBehaviorType {
     static var sharedInstance: Self { get }
 
     var locale: NSLocale { get }
@@ -25,7 +25,7 @@ extension CurrencyType {
         return formatter.maximumFractionDigits
     }
 
-    public static var decimalNumberBehavior: NSDecimalNumberBehaviors {
+    public static var decimalNumberBehaviors: NSDecimalNumberBehaviors? {
         return NSDecimalNumberHandler(
             roundingMode: .RoundBankers,
             scale: Int16(scale),
