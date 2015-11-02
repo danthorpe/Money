@@ -26,7 +26,7 @@ public protocol MoneyType: DecimalNumberType {
  To work in whatever the local currency is, use `Local`.
 
 */
-public struct Money<C: CurrencyType>: MoneyType {
+public struct _Money<C: CurrencyType>: MoneyType {
     public typealias DecimalNumberBehavior = C
     public typealias Currency = C
 
@@ -36,8 +36,8 @@ public struct Money<C: CurrencyType>: MoneyType {
         return decimal.isNegative
     }
     
-    public var negative: Money {
-        return Money(decimal.negative)
+    public var negative: _Money {
+        return _Money(decimal.negative)
     }
     
     init(_ value: Decimal<C> = Decimal<C>()) {
@@ -53,40 +53,44 @@ public struct Money<C: CurrencyType>: MoneyType {
     }
     
     @warn_unused_result
-    public func subtract(other: Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Money<C> {
-        return Money(decimal.subtract(other.decimal, withBehaviors: behaviors))
+    public func subtract(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+        return _Money(decimal.subtract(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func add(other: Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Money<C> {
-        return Money(decimal.add(other.decimal, withBehaviors: behaviors))
+    public func add(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+        return _Money(decimal.add(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func remainder(other: Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Money<C> {
-        return Money(decimal.remainder(other.decimal, withBehaviors: behaviors))
+    public func remainder(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+        return _Money(decimal.remainder(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func multiplyBy(other: Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Money<C> {
-        return Money(decimal.multiplyBy(other.decimal, withBehaviors: behaviors))
+    public func multiplyBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+        return _Money(decimal.multiplyBy(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func divideBy(other: Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Money<C> {
-        return Money(decimal.divideBy(other.decimal, withBehaviors: behaviors))
+    public func divideBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+        return _Money(decimal.divideBy(other.decimal, withBehaviors: behaviors))
     }
 }
 
 // MARK: - Equality
 
-public func ==<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Bool {
+public func ==<C: CurrencyType>(lhs: _Money<C>, rhs: _Money<C>) -> Bool {
     return lhs.decimal == rhs.decimal
 }
 
 // MARK: - Comparable
 
-public func <<C: CurrencyType>(lhs: Money<C>, rhs: Money<C>) -> Bool {
+public func <<C: CurrencyType>(lhs: _Money<C>, rhs: _Money<C>) -> Bool {
     return lhs.decimal < rhs.decimal
 }
+
+// MARK: - Consumption Types
+
+public typealias Money = _Money<Currency.Local>
 
