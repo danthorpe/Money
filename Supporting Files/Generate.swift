@@ -10,25 +10,40 @@
 
 import Foundation
 
-func createExtensionFor(typename: String, content: String) -> String {
-    return "extension \(typename) {\n\(content)\n}"
+typealias Writer = (String) -> Void
+typealias Generator = (Writer) -> Void
+
+func createExtensionFor(typename: String, writer: Writer, content: Generator) {
+    writer("extension \(typename) {\n")
+    content(writer)
+    writer("\n}")
 }
 
-func createCurrencyCodeTypes(codes: [String]) -> String {
-    var output = ""
-    for code in codes {
-        output += "\n"
-        output += "        public final class \(code): BaseCurrency, CurrencyType {\n"
-        output += "            public static var sharedInstance = \(code)(code: \"\(code)\")\n"
-        output += "        }"
+func createCurrencyCodeTypes(writer: Writer) {
+    for code in NSLocale.ISOCurrencyCodes() {
+        writer("\n")
+        writer("    public final class \(code): BaseCurrency, CurrencyType {\n")
+        writer("        public static var sharedInstance = \(code)(code: \"\(code)\")\n")
+        writer("    }")
+        writer("\n")
     }
-    return output
 }
 
-func generate(output: String) {
-    let codes = NSLocale.ISOCurrencyCodes()
-    let output = createExtensionFor("Currency", content: createCurrencyCodeTypes(codes))
-    print("\(output)")
+func generate(outputPath: String) {
+
+    guard let outputStream = NSOutputStream(toFileAtPath: outputPath, append: false) else {
+        fatalError("Unable to create output stream at path: \(outputPath)")
+    }
+    let writer: Writer = { str in
+        guard let data = str.dataUsingEncoding(NSUTF8StringEncoding) else {
+            fatalError("Unable to encode string: \(str)")
+        }
+        outputStream.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
+    }
+
+    outputStream.open()
+    createExtensionFor("Currency", writer: writer, content: createCurrencyCodeTypes)
+    outputStream.close()
 }
 
 // MARK: - Main()
@@ -38,5 +53,6 @@ if Process.arguments.count == 1 {
     exit(1)
 }
 
-let output = Process.arguments[1]
-generate(output)
+let outputPath = Process.arguments[1]
+print("Will output to path: \(outputPath)")
+generate(outputPath)
