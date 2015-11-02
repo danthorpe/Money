@@ -21,6 +21,14 @@ extension CurrencyType {
         return sharedInstance.formatter
     }
 
+    public static var code: String {
+        return sharedInstance.formatter.currencyCode
+    }
+
+    public static var symbol: String {
+        return sharedInstance.formatter.currencySymbol
+    }
+
     public static var scale: Int {
         return formatter.maximumFractionDigits
     }
@@ -69,4 +77,5 @@ extension Currency {
         public static var sharedInstance = Local(locale: NSLocale.currentLocale())
     }    
 }
+
 

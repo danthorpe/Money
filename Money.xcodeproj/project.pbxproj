@@ -52,6 +52,9 @@
 		65BE2E7A1BE2352B0042F93D /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE2E781BE2352B0042F93D /* Decimal.swift */; };
 		65BE2E7B1BE2352B0042F93D /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE2E781BE2352B0042F93D /* Decimal.swift */; };
 		65BE2E7C1BE2352B0042F93D /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE2E781BE2352B0042F93D /* Decimal.swift */; };
+		65D305411BE7D35A0032D99F /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305401BE7D35A0032D99F /* CurrencyTests.swift */; };
+		65D305421BE7D35A0032D99F /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305401BE7D35A0032D99F /* CurrencyTests.swift */; };
+		65D305431BE7D35A0032D99F /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305401BE7D35A0032D99F /* CurrencyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,7 @@
 		65B92B391BE0E69500F82024 /* MoneyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyTests.swift; sourceTree = "<group>"; };
 		65B92B421BE0F93F00F82024 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		65BE2E781BE2352B0042F93D /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
+		65D305401BE7D35A0032D99F /* CurrencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +240,7 @@
 			children = (
 				65B92B381BE0E69500F82024 /* Info.plist */,
 				65B92B391BE0E69500F82024 /* MoneyTests.swift */,
+				65D305401BE7D35A0032D99F /* CurrencyTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -556,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D305411BE7D35A0032D99F /* CurrencyTests.swift in Sources */,
 				65B92B3F1BE0E72700F82024 /* MoneyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D305421BE7D35A0032D99F /* CurrencyTests.swift in Sources */,
 				65B92B401BE0E72800F82024 /* MoneyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D305431BE7D35A0032D99F /* CurrencyTests.swift in Sources */,
 				65B92B411BE0E72900F82024 /* MoneyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1374,6 +1382,7 @@
 				65A876DB1BE65FAF00E26F22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65B92ACB1BE0E46C00F82024 /* Build configuration list for PBXProject "Money" */ = {
 			isa = XCConfigurationList;

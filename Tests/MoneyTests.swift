@@ -211,4 +211,36 @@ class MoneyDivisionTests: XCTestCase {
     }
 }
 
+class MoneyDescriptionTests: XCTestCase {
 
+    let gbp: GBP = 100
+    let usd: USD = 99
+    let cad: CAD = 102.01
+    let aud: AUD = 99.999
+    let eur: EUR = 249.499
+    let jpy: JPY = 319.500002
+
+    func test__gbp_description() {
+        XCTAssertEqual(gbp.description, "£ 100.00")
+    }
+
+    func test__usd_description() {
+        XCTAssertEqual(usd.description, "US$ 99.00")
+    }
+
+    func test__cad_description() {
+        XCTAssertEqual(cad.description, "CA$ 102.01")
+    }
+
+    func test__aud_description() {
+        XCTAssertEqual(aud.description, "A$ 100.00")
+    }
+
+    func test__eur_description() {
+        XCTAssertEqual(eur.description, "€ 249.50")
+    }
+
+    func test__jpy_description() {
+        XCTAssertEqual(jpy.description, "JP¥ 320")
+    }
+}

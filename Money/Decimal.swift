@@ -338,4 +338,23 @@ public func <<B: DecimalNumberBehaviorType>(lhs: Decimal<B>, rhs: Decimal<B>) ->
 }
 
 
+extension NSNumberFormatter {
+
+    func stringFromDecimal<B: DecimalNumberBehaviorType>(decimal: Decimal<B>) -> String? {
+        return stringFromNumber(decimal.value)
+    }
+
+    func formattedStringWithStyle<B: DecimalNumberBehaviorType>(style: NSNumberFormatterStyle) -> Decimal<B> -> String {
+        let currentStyle = numberStyle
+        numberStyle = style
+        let result: Decimal<B> -> String = { decimal in
+            return self.stringFromDecimal(decimal)!
+        }
+        numberStyle = currentStyle
+        return result
+    }
+}
+
+
+
 

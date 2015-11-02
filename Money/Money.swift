@@ -94,3 +94,15 @@ public func <<C: CurrencyType>(lhs: _Money<C>, rhs: _Money<C>) -> Bool {
 
 public typealias Money = _Money<Currency.Local>
 
+// MARK: - CustomStringConvertible
+
+extension _Money: CustomStringConvertible {
+
+    public var description: String {
+        return formatted(.CurrencyStyle)
+    }
+
+    public func formatted(style: NSNumberFormatterStyle) -> String {
+        return C.formatter.formattedStringWithStyle(style)(decimal)
+    }
+}
