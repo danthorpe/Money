@@ -41,11 +41,16 @@ extension CurrencyType {
  # Currency
  A namespace for currency related types.
 */
-public struct Currency { }
+public struct Currency {
 
-extension Currency {
-
-    public class BaseCurrency {
+    /**
+     # Currency.Base
+     `Currency.Base` is a class which composes a number formatter
+     and a locale. It doesn't conform to `CurrencyType` but it can
+     be used as a base class for currency types which only require
+     a shared instance.
+     */
+    public class Base {
 
         public let formatter: NSNumberFormatter
         public let locale: NSLocale
@@ -56,7 +61,7 @@ extension Currency {
                 fmtr.numberStyle = .CurrencyStyle
                 fmtr.locale = locale
                 return fmtr
-                }()
+            }()
             self.locale = locale
         }
 
@@ -65,8 +70,15 @@ extension Currency {
         }
     }
 
-    public final class Local: BaseCurrency, CurrencyType {
+    /**
+     # Currency.Local
+     `Currency.Local` is a `BaseCurrency` subclass which represents
+     the device's current currency, using `NSLocale.currencyLocale()`.
+     */
+    public final class Local: Currency.Base, CurrencyType {
         public static var sharedInstance = Local(locale: NSLocale.currentLocale())
-    }    
+    }
 }
+
+
 
