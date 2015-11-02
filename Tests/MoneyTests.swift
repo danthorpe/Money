@@ -11,15 +11,15 @@ import XCTest
 
 class MoneyInitializerTests: XCTestCase {
 
-    var money: Local!
+    var money: Money!
 
     func test__money_initialize_with__nothing() {
-        money = Local()
+        money = Money()
         XCTAssertEqual(money, 0)
     }
 
     func test__money_initialize_with__one_int() {
-        money = Local(integerLiteral: 1)
+        money = Money(integerLiteral: 1)
         XCTAssertEqual(money, 1)
     }
     
@@ -54,7 +54,7 @@ class MoneyEqualityTests: XCTestCase {
 class MoneyComparableTests: XCTestCase {
 
     func test__money_sorts() {
-        let monies: [Local] = [ 0, 12, 4.50, 9.99, 99, 9.99, 2.49, 16.69]
+        let monies: [Money] = [ 0, 12, 4.50, 9.99, 99, 9.99, 2.49, 16.69]
         let sorted = monies.sort()
         XCTAssertEqual(sorted, [0, 2.49, 4.50, 9.99, 9.99, 12, 16.69, 99])
     }
@@ -63,16 +63,16 @@ class MoneyComparableTests: XCTestCase {
 class MoneySignedNumberTests: XCTestCase {
 
     func test__money_negates() {
-        let money: Local = 16.49
+        let money: Money = 16.49
         let modified = -money
-        XCTAssertEqual(modified, Local(floatLiteral: -16.49))
+        XCTAssertEqual(modified, Money(floatLiteral: -16.49))
     }
 
     func test__money_subtracts() {
-        let a: Local = 16.49
-        let b: Local = 6.49
+        let a: Money = 16.49
+        let b: Money = 6.49
         let result = a - b
-        XCTAssertEqual(result, Local(integerLiteral: 10))
+        XCTAssertEqual(result, Money(integerLiteral: 10))
     }
 }
 
