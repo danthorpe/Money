@@ -98,10 +98,24 @@ public typealias Money = _Money<Currency.Local>
 
 extension _Money: CustomStringConvertible {
 
+    /**
+     Returns the result of the `formatted` function using
+     NSNumberFormatterStyle.CurrencyStyle.
+    */
     public var description: String {
         return formatted(.CurrencyStyle)
     }
 
+    /**
+     ### Localized Formatted String
+     This function will format the Money type into a string suitable
+     for the current localization. It accepts an parameter for the 
+     style `NSNumberFormatterStyle`. Note that iOS 9 and OS X 10.11
+     added new styles which are relevant for currency.
+     
+     These are `.CurrencyISOCodeStyle`, `.CurrencyPluralStyle`, and 
+     `.CurrencyAccountingStyle`.
+    */
     public func formatted(style: NSNumberFormatterStyle) -> String {
         return C.formatter.formattedStringWithStyle(style)(decimal)
     }

@@ -222,25 +222,32 @@ class MoneyDescriptionTests: XCTestCase {
 
     func test__gbp_description() {
         XCTAssertEqual(gbp.description, "£ 100.00")
+        XCTAssertEqual(GBP.Currency.sharedInstance.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__usd_description() {
         XCTAssertEqual(usd.description, "US$ 99.00")
+        XCTAssertEqual(USD.Currency.sharedInstance.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__cad_description() {
         XCTAssertEqual(cad.description, "CA$ 102.01")
+        XCTAssertEqual(CAD.Currency.sharedInstance.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__aud_description() {
         XCTAssertEqual(aud.description, "A$ 100.00")
+        XCTAssertEqual(AUD.Currency.sharedInstance.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__eur_description() {
         XCTAssertEqual(eur.description, "€ 249.50")
+        XCTAssertEqual(EUR.Currency.sharedInstance.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__jpy_description() {
+        XCTAssertEqual(Currency.JPY.scale, 0)
         XCTAssertEqual(jpy.description, "JP¥ 320")
+        XCTAssertEqual(JPY.Currency.sharedInstance.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 }
