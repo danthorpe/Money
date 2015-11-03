@@ -44,7 +44,6 @@ protocol FXExchangeType {
 protocol FXProviderType: FXExchangeType {
     typealias Quote: FXQuoteType
 
-
     /// The name of the provider.
     var name: String { get }
 
@@ -64,6 +63,22 @@ internal extension MoneyType where DecimalStorageType == BankersDecimal.DecimalS
         return multiplyBy(Other(storage: rate.storage), withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors)
     }
 }
+
+// MARK: - MoneyType
+
+extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
+
+    func exchange<Result: FXResultType, Provider: FXProviderType where Result.Money.DecimalStorageType == DecimalStorageType>(provider: Provider, completion: Result -> Void) -> Provider.RequestType {
+        return provider.exchange(self, completion: completion)
+    }
+
+    func exchange<To: MoneyType, Provider: FXProviderType where To.DecimalStorageType == DecimalStorageType>(provider: Provider, completion: To -> Void) -> Provider.RequestType {
+        return provider.exchange(self) { (result: FXResult<To>) in
+            completion(result.money)
+        }
+    }
+}
+
 
 // MARK: - FX Types
 
