@@ -39,7 +39,7 @@
 		65B92B351BE0E51E00F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3A1BE0E69500F82024 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B92B381BE0E69500F82024 /* Info.plist */; };
 		65B92B3C1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65B92B3D1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; };
+		65B92B3D1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3E1BE0E70600F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3F1BE0E72700F82024 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B391BE0E69500F82024 /* MoneyTests.swift */; };
 		65B92B401BE0E72800F82024 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B391BE0E69500F82024 /* MoneyTests.swift */; };
