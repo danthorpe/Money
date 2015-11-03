@@ -1,3 +1,7 @@
+before_all do |lane|
+  carthage(platform: "all")
+end
+
 platform :ios do
 
   desc "Runs all the tests"

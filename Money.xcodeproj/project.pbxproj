@@ -39,7 +39,7 @@
 		65B92B351BE0E51E00F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3A1BE0E69500F82024 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B92B381BE0E69500F82024 /* Info.plist */; };
 		65B92B3C1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65B92B3D1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; };
+		65B92B3D1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3E1BE0E70600F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3F1BE0E72700F82024 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B391BE0E69500F82024 /* MoneyTests.swift */; };
 		65B92B401BE0E72800F82024 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B92B391BE0E69500F82024 /* MoneyTests.swift */; };
@@ -58,6 +58,10 @@
 		65D305521BE8E8210032D99F /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305511BE8E8210032D99F /* DecimalTests.swift */; };
 		65D305531BE8E8210032D99F /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305511BE8E8210032D99F /* DecimalTests.swift */; };
 		65D305541BE8E8210032D99F /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305511BE8E8210032D99F /* DecimalTests.swift */; };
+		65D3055A1BE94F860032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D305591BE94F860032D99F /* Result.framework */; };
+		65D3055B1BE94FA70032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D305571BE94E850032D99F /* Result.framework */; };
+		65D3055D1BE94FD40032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3055C1BE94FD40032D99F /* Result.framework */; };
+		65D305601BE955020032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3055F1BE955020032D99F /* Result.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +137,10 @@
 		65BE2E781BE2352B0042F93D /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 		65D305401BE7D35A0032D99F /* CurrencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTests.swift; sourceTree = "<group>"; };
 		65D305511BE8E8210032D99F /* DecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalTests.swift; sourceTree = "<group>"; };
+		65D305571BE94E850032D99F /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		65D305591BE94F860032D99F /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
+		65D3055C1BE94FD40032D99F /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		65D3055F1BE955020032D99F /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D305601BE955020032D99F /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D3055A1BE94F860032D99F /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D3055B1BE94FA70032D99F /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D3055D1BE94FD40032D99F /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,9 +207,10 @@
 			isa = PBXGroup;
 			children = (
 				65B92B301BE0E51E00F82024 /* Money */,
-				65B92B311BE0E51E00F82024 /* Supporting Files */,
 				65B92B371BE0E69500F82024 /* Tests */,
+				65B92B311BE0E51E00F82024 /* Supporting Files */,
 				65B92AD41BE0E4A700F82024 /* Products */,
+				65D3055E1BE94FE10032D99F /* Dependencies */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,6 +261,17 @@
 				65B92B391BE0E69500F82024 /* MoneyTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		65D3055E1BE94FE10032D99F /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				65D3055F1BE955020032D99F /* Result.framework */,
+				65D3055C1BE94FD40032D99F /* Result.framework */,
+				65D305591BE94F860032D99F /* Result.framework */,
+				65D305571BE94E850032D99F /* Result.framework */,
+			);
+			name = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +338,7 @@
 				65B92AD91BE0E4A700F82024 /* Sources */,
 				65B92ADA1BE0E4A700F82024 /* Frameworks */,
 				65B92ADB1BE0E4A700F82024 /* Resources */,
+				65D305641BE955AE0032D99F /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -370,6 +395,7 @@
 				65B92B021BE0E4D800F82024 /* Sources */,
 				65B92B031BE0E4D800F82024 /* Frameworks */,
 				65B92B041BE0E4D800F82024 /* Resources */,
+				65D305651BE956060032D99F /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -407,6 +433,7 @@
 				65B92B1E1BE0E4E700F82024 /* Sources */,
 				65B92B1F1BE0E4E700F82024 /* Frameworks */,
 				65B92B201BE0E4E700F82024 /* Resources */,
+				65D305661BE956230032D99F /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -546,6 +573,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"Will generate currency types using: $SCRIPT_INPUT_FILE_0\"\n\"$SCRIPT_INPUT_FILE_0\" \"$SCRIPT_OUTPUT_FILE_0\"\necho \"Generate complete\"\n\n\n\n\n";
+		};
+		65D305641BE955AE0032D99F /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		65D305651BE956060032D99F /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Result.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		65D305661BE956230032D99F /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Result.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -723,6 +795,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -779,6 +852,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -822,6 +896,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -870,6 +948,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -917,6 +999,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -973,6 +1059,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1021,6 +1111,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1076,6 +1170,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1118,6 +1216,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1165,6 +1267,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1213,6 +1319,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1270,6 +1380,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1313,6 +1427,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1362,6 +1480,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
