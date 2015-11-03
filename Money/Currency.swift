@@ -17,10 +17,22 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
 
 extension CurrencyType {
 
+    /// Returns a formatter from the shared instance
     public static var formatter: NSNumberFormatter {
         return sharedInstance.formatter
     }
 
+    /// The currency code
+    public static var code: String {
+        return sharedInstance.formatter.currencyCode
+    }
+
+    /// The currency symbol
+    public static var symbol: String {
+        return sharedInstance.formatter.currencySymbol
+    }
+
+    /// The currency scale
     public static var scale: Int {
         return formatter.maximumFractionDigits
     }
