@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Result
+
+// MARK: - Protocol: Quote Type
 
 protocol FXQuoteType {
     var ticker: String { get }
@@ -14,23 +17,13 @@ protocol FXQuoteType {
     var date: NSDate { get }
 }
 
-protocol FXResultType {
+// MARK: - Protocol: Transaction Type
+
+protocol FXTransactionType {
     typealias Money: MoneyType
     var money: Money { get }
 
     init(money: Money)
-}
-
-protocol FXExchangeType {
-    typealias RequestType
-
-    /**
-     Exchange money into other money.
-
-     - parameter completion: A completion block which receives
-     the output.
-     */
-    func exchange<M: MoneyType, Result: FXResultType where M.DecimalStorageType == BankersDecimal.DecimalStorageType, M.DecimalStorageType == Result.Money.DecimalStorageType>(money: M, completion: Result -> Void) -> RequestType
 }
 
 /**
@@ -41,40 +34,34 @@ protocol FXExchangeType {
  In addition to FX exchanges, a provide will have its 
  own characteristics, such as a name and fee structure.
 */
-protocol FXProviderType: FXExchangeType {
-    typealias Quote: FXQuoteType
+protocol FXProviderType {
+
+    typealias RequestType
+    typealias QuoteType: FXQuoteType
 
     /// The name of the provider.
-    var name: String { get }
+    static var name: String { get }
 
-    func quote(ticker: String, completion: Quote -> Void) -> RequestType
-}
+    static var URLSession: NSURLSession { get }
 
-extension FXProviderType {
+    static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest
 
-    func exchange<M: MoneyType, Result: FXResultType where M.DecimalStorageType == BankersDecimal.DecimalStorageType, M.DecimalStorageType == Result.Money.DecimalStorageType>(money: M, completion: Result -> Void) -> RequestType {
-        return quote("\(M.Currency.code)\(Result.Money.Currency.code)") { completion(Result(money: money.convertWithRate($0.rate))) }
-    }
-}
-
-internal extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
-
-    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == DecimalStorageType>(rate: BankersDecimal) -> Other {
-        return multiplyBy(Other(storage: rate.storage), withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors)
-    }
+    static func exchangeRateFromResponseData(data: NSData) -> Result<QuoteType, FX.Error>
 }
 
 // MARK: - MoneyType
 
 extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
 
-    func exchange<Result: FXResultType, Provider: FXProviderType where Result.Money.DecimalStorageType == DecimalStorageType>(provider: Provider, completion: Result -> Void) -> Provider.RequestType {
-        return provider.exchange(self, completion: completion)
+    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == DecimalStorageType>(rate: BankersDecimal) -> Other {
+        return multiplyBy(Other(storage: rate.storage), withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors)
     }
 
-    func exchange<To: MoneyType, Provider: FXProviderType where To.DecimalStorageType == DecimalStorageType>(provider: Provider, completion: To -> Void) -> Provider.RequestType {
-        return provider.exchange(self) { (result: FXResult<To>) in
-            completion(result.money)
+    func exchange<T: FXTransactionType, Provider: FXProviderType where T.Money.DecimalStorageType == DecimalStorageType, Provider.RequestType == NSURLSessionDataTask>(completion: Result<T, FX.Error> -> Void) -> Provider.RequestType {
+        let client = FXServiceProviderNetworkClient(session: Provider.URLSession)
+        let request = Provider.requestForBaseCurrencyCode(Currency.code, symbol: T.Money.Currency.code)
+        return client.get(request, adaptor: Provider.exchangeRateFromResponseData) { result in
+            return result.map { T(money: self.convertWithRate($0.rate)) }
         }
     }
 }
@@ -88,7 +75,7 @@ struct FXQuote: FXQuoteType {
     let date: NSDate
 }
 
-struct FXResult<M: MoneyType>: FXResultType {
+struct FXTransaction<M: MoneyType>: FXTransactionType {
     let money: M
 
     init(money: M) {
@@ -98,40 +85,81 @@ struct FXResult<M: MoneyType>: FXResultType {
 
 // MARK: - FX Providers
 
-struct Providers { }
+struct FX {
 
-// MARK: - Yahoo
-
-extension Providers {
-
-    struct Yahoo: FXProviderType {
-        typealias RequestType = NSURLSessionDataTask
-
-        let name = "Yahoo"
-
-        func quote(ticker: String, completion: FXQuote -> Void) -> NSURLSessionDataTask {
-            guard let url = NSURL(string: "http://download.finance.yahoo.com/d/quotes.csv?s=\(ticker)=X&f=nl1d1t1") else {
-                fatalError("Unable to construct URL for Yahoo Finance API")
-            }
-
-            let request = NSURLRequest(URL: url)
-            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-            let task = session.dataTaskWithRequest(request) { data, response, error in
-                // Result is a string like this:
-                // "GBP/EUR",1.3994,"11/2/2015","4:51pm"
-
-                // To start with, split by comma
-                if let data = data, str = String(data: data, encoding: NSUTF8StringEncoding) {
-                    let components = str.componentsSeparatedByString(",")
-                    if components.endIndex >= 1, let rate = Double(components[1]) {
-                        completion(FXQuote(ticker: ticker, rate: BankersDecimal(floatLiteral: rate), date: NSDate()))
-                    }
-                }
-            }
-            return task
-        }
+    enum Error: ErrorType {
+        case ReceivedNetworkError(ErrorType?)
+        case InvalidResponseDataFromProvider(String)
+        case FXTickerNotFoundInResponse(String)
+        case FXRateNotFoundInResponse(String)
+        case FXDateNotFoundInResponse(String)
     }
 }
 
+// MARK: - FX Network Client
+
+internal class FXServiceProviderNetworkClient<Session: NSURLSession> {
+    let session: NSURLSession
+
+    init(session: NSURLSession = NSURLSession.sharedSession()) {
+        self.session = session
+    }
+
+    func get<Quote: FXQuoteType>(request: NSURLRequest, adaptor: NSData -> Result<Quote, FX.Error>, completion: Result<Quote, FX.Error> -> Void) -> NSURLSessionDataTask {
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            guard let data = data else {
+                completion(Result(error: .ReceivedNetworkError(error)))
+                return
+            }
+            completion(adaptor(data))
+        }
+        task.resume()
+        return task
+    }
+}
+
+
+// MARK: - FX Service Providers
+
+extension FX {
+
+    // MARK: - Yahoo
+
+    struct Yahoo: FXProviderType {
+
+        typealias RequestType = NSURLSessionDataTask
+        typealias QuoteType = FXQuote
+
+        static var URLSession: NSURLSession {
+            return NSURLSession.sharedSession()
+        }
+
+        static let name = "Yahoo"
+
+        static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
+            return NSURLRequest(URL: NSURL(string: "http://download.finance.yahoo.com/d/quotes.csv?s=\(base)\(symbol)=X&f=nl1d1t1")!)
+        }
+
+        static func exchangeRateFromResponseData(data: NSData) -> Result<QuoteType, FX.Error> {
+            guard let str = String(data: data, encoding: NSUTF8StringEncoding) else {
+                return Result(error: FX.Error.InvalidResponseDataFromProvider(name))
+            }
+
+            let components = str.componentsSeparatedByString(",")
+
+            if components.endIndex == 0 {
+                return Result(error: FX.Error.FXTickerNotFoundInResponse(str))
+            }
+
+            let ticker = components[0].stringByReplacingOccurrencesOfString("/", withString: "")
+
+            guard components.endIndex >= 1, let rate = Double(components[1]) else {
+                return Result(error: FX.Error.FXRateNotFoundInResponse(str))
+            }
+
+            return Result(value: FXQuote(ticker: ticker, rate: BankersDecimal(floatLiteral: rate), date: NSDate()))
+        }
+    }
+}
 
 
