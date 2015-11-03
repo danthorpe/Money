@@ -377,7 +377,7 @@ public struct DecimalNumberBehavior {
     }
 
     public struct Plain: DecimalNumberBehaviorType {
-        public static let decimalNumberBehaviors: NSDecimalNumberBehaviors? = NSDecimalNumberHandler.defaultDecimalNumberHandler()
+        public static let decimalNumberBehaviors = DecimalNumberBehavior.behaviorWithRoundingMode(.RoundPlain)
     }
 
     public struct RoundDown: DecimalNumberBehaviorType {
