@@ -55,6 +55,9 @@
 		65D305411BE7D35A0032D99F /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305401BE7D35A0032D99F /* CurrencyTests.swift */; };
 		65D305421BE7D35A0032D99F /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305401BE7D35A0032D99F /* CurrencyTests.swift */; };
 		65D305431BE7D35A0032D99F /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305401BE7D35A0032D99F /* CurrencyTests.swift */; };
+		65D305521BE8E8210032D99F /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305511BE8E8210032D99F /* DecimalTests.swift */; };
+		65D305531BE8E8210032D99F /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305511BE8E8210032D99F /* DecimalTests.swift */; };
+		65D305541BE8E8210032D99F /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D305511BE8E8210032D99F /* DecimalTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,7 @@
 		65B92B421BE0F93F00F82024 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		65BE2E781BE2352B0042F93D /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 		65D305401BE7D35A0032D99F /* CurrencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTests.swift; sourceTree = "<group>"; };
+		65D305511BE8E8210032D99F /* DecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,8 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				65B92B381BE0E69500F82024 /* Info.plist */,
-				65B92B391BE0E69500F82024 /* MoneyTests.swift */,
 				65D305401BE7D35A0032D99F /* CurrencyTests.swift */,
+				65D305511BE8E8210032D99F /* DecimalTests.swift */,
+				65B92B391BE0E69500F82024 /* MoneyTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 			files = (
 				65D305411BE7D35A0032D99F /* CurrencyTests.swift in Sources */,
 				65B92B3F1BE0E72700F82024 /* MoneyTests.swift in Sources */,
+				65D305521BE8E8210032D99F /* DecimalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +602,7 @@
 			files = (
 				65D305421BE7D35A0032D99F /* CurrencyTests.swift in Sources */,
 				65B92B401BE0E72800F82024 /* MoneyTests.swift in Sources */,
+				65D305531BE8E8210032D99F /* DecimalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +624,7 @@
 			files = (
 				65D305431BE7D35A0032D99F /* CurrencyTests.swift in Sources */,
 				65B92B411BE0E72900F82024 /* MoneyTests.swift in Sources */,
+				65D305541BE8E8210032D99F /* DecimalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
