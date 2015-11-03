@@ -27,7 +27,7 @@ public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
  because it is a framework class which cannot be made final, and the protocol
  has functions which return Self.
 */
-extension NSDecimalNumber {
+extension NSDecimalNumber: Comparable {
     
     public var isNegative: Bool {
         return NSDecimalNumber.zero().compare(self) == .OrderedDescending
