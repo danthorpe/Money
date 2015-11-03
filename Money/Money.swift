@@ -30,7 +30,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
     public typealias DecimalNumberBehavior = C
     public typealias Currency = C
 
-    private let decimal: Decimal<C>
+    private let decimal: _Decimal<C>
 
     public var isNegative: Bool {
         return decimal.isNegative
@@ -40,16 +40,16 @@ public struct _Money<C: CurrencyType>: MoneyType {
         return _Money(decimal.negative)
     }
     
-    init(_ value: Decimal<C> = Decimal<C>()) {
+    init(_ value: _Decimal<C> = _Decimal<C>()) {
         decimal = value
     }
     
     public init(integerLiteral value: IntegerLiteralType) {
-        decimal = Decimal<DecimalNumberBehavior>(integerLiteral: value)
+        decimal = _Decimal<DecimalNumberBehavior>(integerLiteral: value)
     }
     
     public init(floatLiteral value: FloatLiteralType) {
-        decimal = Decimal<DecimalNumberBehavior>(floatLiteral: value)
+        decimal = _Decimal<DecimalNumberBehavior>(floatLiteral: value)
     }
     
     @warn_unused_result
