@@ -27,7 +27,7 @@ public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
  because it is a framework class which cannot be made final, and the protocol
  has functions which return Self.
 */
-extension NSDecimalNumber {
+extension NSDecimalNumber: Comparable {
     
     public var isNegative: Bool {
         return NSDecimalNumber.zero().compare(self) == .OrderedDescending
@@ -98,18 +98,12 @@ extension NSDecimalNumber {
     }
 }
 
-public protocol DecimalNumberBehaviorType {
-    
-    /// Specify the decimal number (i.e. rounding, scale etc) for base 10 calculations
-    static var decimalNumberBehaviors: NSDecimalNumberBehaviors? { get }
-}
-
 /**
  # DecimalNumberType
  A protocol which defines the necessary interface to support decimal number
  calculations and operators.
 */
-public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, FloatLiteralConvertible {
+public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, FloatLiteralConvertible, CustomStringConvertible {
     
     typealias DecimalNumberBehavior: DecimalNumberBehaviorType
     
@@ -232,13 +226,18 @@ public func +<T: DecimalNumberType>(lhs: T.FloatLiteralType, rhs: T) -> T {
 // MARK: - Multiplication
 
 @warn_unused_result
+public func *<T: DecimalNumberType>(lhs: T, rhs: T) -> T {
+    return lhs.multiplyBy(rhs, withBehaviors: T.DecimalNumberBehavior.decimalNumberBehaviors)
+}
+
+@warn_unused_result
 public func *<T: DecimalNumberType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
-    return lhs.multiplyBy(T(integerLiteral: rhs), withBehaviors: T.DecimalNumberBehavior.decimalNumberBehaviors)
+    return lhs * T(integerLiteral: rhs)
 }
 
 @warn_unused_result
 public func *<T: DecimalNumberType>(lhs: T, rhs: T.FloatLiteralType) -> T {
-    return lhs.multiplyBy(T(floatLiteral: rhs), withBehaviors: T.DecimalNumberBehavior.decimalNumberBehaviors)
+    return lhs * T(floatLiteral: rhs)
 }
 
 @warn_unused_result
@@ -254,13 +253,18 @@ public func *<T: DecimalNumberType>(lhs: T.FloatLiteralType, rhs: T) -> T {
 // MARK: - Division
 
 @warn_unused_result
+public func /<T: DecimalNumberType>(lhs: T, rhs: T) -> T {
+    return lhs.divideBy(rhs, withBehaviors: T.DecimalNumberBehavior.decimalNumberBehaviors)
+}
+
+@warn_unused_result
 public func /<T: DecimalNumberType>(lhs: T, rhs: T.IntegerLiteralType) -> T {
-    return lhs.divideBy(T(integerLiteral: rhs), withBehaviors: T.DecimalNumberBehavior.decimalNumberBehaviors)
+    return lhs / T(integerLiteral: rhs)
 }
 
 @warn_unused_result
 public func /<T: DecimalNumberType>(lhs: T, rhs: T.FloatLiteralType) -> T {
-    return lhs.divideBy(T(floatLiteral: rhs), withBehaviors: T.DecimalNumberBehavior.decimalNumberBehaviors)
+    return lhs / T(floatLiteral: rhs)
 }
 
 /**
@@ -268,9 +272,9 @@ public func /<T: DecimalNumberType>(lhs: T, rhs: T.FloatLiteralType) -> T {
  A value type which implements `DecimalNumberType` using `NSDecimalNumber` internally.
  
  It is generic over the decimal number behavior type, which defines the rounding
- and scale rules for base 10 decimal arithmatic.
+ and scale rules for base 10 decimal arithmetic.
 */
-public struct Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
+public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
     public typealias DecimalNumberBehavior = Behavior
     
     let value: NSDecimalNumber
@@ -280,10 +284,14 @@ public struct Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
         return value.isNegative
     }
     
-    public var negative: Decimal {
-        return Decimal(value.negateWithBehaviors(Behavior.decimalNumberBehaviors))
+    public var negative: _Decimal {
+        return _Decimal(value.negateWithBehaviors(Behavior.decimalNumberBehaviors))
     }
-    
+
+    public var description: String {
+        return "\(value.description)"
+    }
+
     init(_ decimalNumber: NSDecimalNumber = NSDecimalNumber.zero()) {
         value = decimalNumber
     }
@@ -302,52 +310,51 @@ public struct Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
             self.value = NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(Behavior.decimalNumberBehaviors)
         }
     }
-    
+
     @warn_unused_result
-    public func subtract(other: Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Decimal {
-        return Decimal(value.subtract(other.value, withBehaviors: behaviors))
+    public func subtract(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+        return _Decimal(value.subtract(other.value, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func add(other: Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Decimal {
-        return Decimal(value.add(other.value, withBehaviors: behaviors))
+    public func add(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+        return _Decimal(value.add(other.value, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func remainder(other: Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Decimal {
-        return Decimal(value.remainder(other.value, withBehaviors: behaviors))
+    public func remainder(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+        return _Decimal(value.remainder(other.value, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func multiplyBy(other: Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Decimal {
-        return Decimal(value.multiplyBy(other.value, withBehaviors: behaviors))
+    public func multiplyBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+        return _Decimal(value.multiplyBy(other.value, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func divideBy(other: Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> Decimal {
-        return Decimal(value.divideBy(other.value, withBehaviors: behaviors))
+    public func divideBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+        return _Decimal(value.divideBy(other.value, withBehaviors: behaviors))
     }
 }
 
-public func ==<B: DecimalNumberBehaviorType>(lhs: Decimal<B>, rhs: Decimal<B>) -> Bool {
+public func ==<B: DecimalNumberBehaviorType>(lhs: _Decimal<B>, rhs: _Decimal<B>) -> Bool {
     return lhs.value == rhs.value
 }
 
-public func <<B: DecimalNumberBehaviorType>(lhs: Decimal<B>, rhs: Decimal<B>) -> Bool {
+public func <<B: DecimalNumberBehaviorType>(lhs: _Decimal<B>, rhs: _Decimal<B>) -> Bool {
     return lhs.value < rhs.value
 }
 
-
 extension NSNumberFormatter {
 
-    func stringFromDecimal<B: DecimalNumberBehaviorType>(decimal: Decimal<B>) -> String? {
+    func stringFromDecimal<B: DecimalNumberBehaviorType>(decimal: _Decimal<B>) -> String? {
         return stringFromNumber(decimal.value)
     }
 
-    func formattedStringWithStyle<B: DecimalNumberBehaviorType>(style: NSNumberFormatterStyle) -> Decimal<B> -> String {
+    func formattedStringWithStyle<B: DecimalNumberBehaviorType>(style: NSNumberFormatterStyle) -> _Decimal<B> -> String {
         let currentStyle = numberStyle
         numberStyle = style
-        let result: Decimal<B> -> String = { decimal in
+        let result: _Decimal<B> -> String = { decimal in
             return self.stringFromDecimal(decimal)!
         }
         numberStyle = currentStyle
@@ -355,6 +362,39 @@ extension NSNumberFormatter {
     }
 }
 
+// MARK: - Conformance
+
+public protocol DecimalNumberBehaviorType {
+
+    /// Specify the decimal number (i.e. rounding, scale etc) for base 10 calculations
+    static var decimalNumberBehaviors: NSDecimalNumberBehaviors? { get }
+}
+
+public struct DecimalNumberBehavior {
+
+    private static func behaviorWithRoundingMode(mode: NSRoundingMode) -> NSDecimalNumberBehaviors? {
+        return NSDecimalNumberHandler(roundingMode: mode, scale: 38, raiseOnExactness: false, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+    }
+
+    public struct Plain: DecimalNumberBehaviorType {
+        public static let decimalNumberBehaviors = DecimalNumberBehavior.behaviorWithRoundingMode(.RoundPlain)
+    }
+
+    public struct RoundDown: DecimalNumberBehaviorType {
+        public static let decimalNumberBehaviors = DecimalNumberBehavior.behaviorWithRoundingMode(.RoundDown)
+    }
+
+    public struct RoundUp: DecimalNumberBehaviorType {
+        public static let decimalNumberBehaviors = DecimalNumberBehavior.behaviorWithRoundingMode(.RoundUp)
+    }
+
+    public struct Bankers: DecimalNumberBehaviorType {
+        public static let decimalNumberBehaviors = DecimalNumberBehavior.behaviorWithRoundingMode(.RoundBankers)
+    }
+}
+
+/// Standard `Decimal` with plain decimal number behavior
+public typealias Decimal = _Decimal<DecimalNumberBehavior.Plain>
 
 
 
