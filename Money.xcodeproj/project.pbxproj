@@ -72,6 +72,8 @@
 		65D3055B1BE94FA70032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D305571BE94E850032D99F /* Result.framework */; };
 		65D3055D1BE94FD40032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3055C1BE94FD40032D99F /* Result.framework */; };
 		65D305601BE955020032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3055F1BE955020032D99F /* Result.framework */; };
+		65FC563E1BEA570100727556 /* Yahoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 65CF044E1BEA4E760072AC17 /* Yahoo.json */; };
+		65FC563F1BEA570A00727556 /* Yahoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 65CF044E1BEA4E760072AC17 /* Yahoo.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -562,6 +564,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FC563E1BEA570100727556 /* Yahoo.json in Resources */,
 				658863BA1BEA2B2C003482ED /* Troll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +580,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FC563F1BEA570A00727556 /* Yahoo.json in Resources */,
 				658863BB1BEA2B30003482ED /* Troll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
