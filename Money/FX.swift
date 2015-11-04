@@ -124,7 +124,7 @@ struct FX {
 
 // MARK: - FX Network Client
 
-internal class FXServiceProviderNetworkClient<Session: NSURLSession> {
+internal class FXServiceProviderNetworkClient {
     let session: NSURLSession
 
     init(session: NSURLSession = NSURLSession.sharedSession()) {

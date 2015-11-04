@@ -8,7 +8,28 @@
 
 import XCTest
 import Result
+import DVR
 @testable import Money
+
+class Sessions {
+
+    static func sessionWithCassetteName(name: String) -> Session {
+        return sharedInstance.sessionWithCassetteName(name)
+    }
+
+    static let sharedInstance = Sessions()
+
+    var sessions = Dictionary<String, Session>()
+
+    func sessionWithCassetteName(name: String) -> Session {
+        guard let session = sessions[name] else {
+            let _session = Session(cassetteName: name)
+            sessions.updateValue(_session, forKey: name)
+            return _session
+        }
+        return session
+    }
+}
 
 class TestFXProvider<Provider: FXProviderType>: FXProviderType {
 
@@ -16,7 +37,7 @@ class TestFXProvider<Provider: FXProviderType>: FXProviderType {
     typealias QuoteType = Provider.QuoteType
 
     static var URLSession: NSURLSession {
-        return NSURLSession.sharedSession()
+        return Sessions.sessionWithCassetteName(name)
     }
 
     static var name: String {
@@ -98,7 +119,7 @@ class FXYahooTests: FXProviderTests {
         let gbp: GBP = 100
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
         gbp.exchange { (result: Result<FXTransaction<FX.Test.Yahoo, EUR>, FX.Error>) in
-            XCTAssertEqual(result.value!.money, 195.56)
+            XCTAssertEqual(result.value!.money, 141.22)
             expectation.fulfill()
         }
         waitForExpectationsWithTimeout(1, handler: nil)
