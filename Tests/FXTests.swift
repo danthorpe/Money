@@ -59,6 +59,13 @@ extension FX {
     }
 }
 
+class FXErrorTests: XCTestCase {
+
+    func test__fx_error__equality() {
+        XCTAssertNotEqual(FX.Error.NoData, FX.Error.RateNotFound("whatever"))
+    }
+}
+
 class FXProviderTests: XCTestCase {
 
     func createGarbageData() -> NSData {
