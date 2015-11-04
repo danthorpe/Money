@@ -275,7 +275,7 @@
 		65B92B371BE0E69500F82024 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				65CF044E1BEA4E760072AC17 /* Yahoo.json */,
+				65FC56411BEA667300727556 /* Network Responses */,
 				658863B61BEA2B0B003482ED /* Troll.png */,
 				65B92B381BE0E69500F82024 /* Info.plist */,
 				65D305511BE8E8210032D99F /* DecimalTests.swift */,
@@ -296,6 +296,14 @@
 				65D305571BE94E850032D99F /* Result.framework */,
 			);
 			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		65FC56411BEA667300727556 /* Network Responses */ = {
+			isa = PBXGroup;
+			children = (
+				65CF044E1BEA4E760072AC17 /* Yahoo.json */,
+			);
+			name = "Network Responses";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -31,17 +31,17 @@ class Sessions {
     }
 }
 
-class TestFXProvider<Provider: FXProviderType>: FXProviderType {
+class TestableFXProvider<Provider: FXProviderType>: FXProviderType {
 
     typealias RequestType = Provider.RequestType
     typealias QuoteType = Provider.QuoteType
 
-    static var URLSession: NSURLSession {
-        return Sessions.sessionWithCassetteName(name)
-    }
-
     static var name: String {
         return Provider.name
+    }
+
+    static var URLSession: NSURLSession {
+        return Sessions.sessionWithCassetteName(name)
     }
 
     static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
@@ -53,9 +53,38 @@ class TestFXProvider<Provider: FXProviderType>: FXProviderType {
     }
 }
 
+class FaultyProvider<Provider: FXProviderType>: FXProviderType {
+
+    typealias RequestType = Provider.RequestType
+    typealias QuoteType = Provider.QuoteType
+
+    static var name: String {
+        return "\(Provider.name).faulty"
+    }
+
+    static var URLSession: NSURLSession {
+        return Provider.URLSession
+    }
+
+    static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
+        let request = Provider.requestForBaseCurrencyCode(base, symbol: symbol)
+        if let url = request.URL,
+            host = url.host,
+            modified = NSURL(string: url.absoluteString.stringByReplacingOccurrencesOfString(host, withString: "broken-host.xyz")) {
+                return NSURLRequest(URL: modified)
+        }
+        return request
+    }
+
+    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error> {
+        return Provider.quoteFromNetworkResult(result)
+    }
+}
+
 extension FX {
     struct Test {
-        typealias Yahoo = TestFXProvider<FX.Yahoo>
+        typealias Yahoo = TestableFXProvider<FX.Yahoo>
+        typealias FaultyYahoo = FaultyProvider<FX.Yahoo>
     }
 }
 
@@ -121,6 +150,24 @@ class FXYahooTests: FXProviderTests {
         XCTAssertEqual(quote.error!, FX.Error.RateNotFound(text))
     }
 
+    func test__faulty_provider() {
+        let gbp: GBP = 100
+        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
+        gbp.exchange { (result: Result<FXTransaction<FX.Test.FaultyYahoo, EUR>, FX.Error>) in
+            guard let error = result.error else {
+                XCTFail("Should have received a network error.")
+                return
+            }
+            switch error {
+            case .NetworkError(_):
+                break // This is the success path.
+            default:
+                XCTFail("Returned \(error), should be a .NetworkError")
+            }
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
 
     func test__exhange_gbp_to_eur() {
         let gbp: GBP = 100
