@@ -17,15 +17,6 @@ protocol FXQuoteType {
     var date: NSDate { get }
 }
 
-// MARK: - Protocol: Transaction Type
-
-protocol FXTransactionType {
-    typealias Money: MoneyType
-    var money: Money { get }
-
-    init(money: Money)
-}
-
 /**
  # FX Provider
  `FXProviderType` defines the interface for a FX
@@ -42,11 +33,44 @@ protocol FXProviderType {
     /// The name of the provider.
     static var name: String { get }
 
+    /// The NSURL Session to use
     static var URLSession: NSURLSession { get }
 
+    /**
+     Create a suitable NSURLRequest to convert from the
+     base currency code to the target currency code.
+     
+     Typically, these will just be contatanted together
+     to form a ticker, however, some providers may use
+     query paramters.
+     
+     - parameter base: the currency code of the base currency, a `String`
+     - parameter symbol: the currency code of the target currency, a `String`     
+     - returns: a `NSURLRequest`
+    */
     static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest
 
-    static func exchangeRateFromResponseData(data: NSData) -> Result<QuoteType, FX.Error>
+    /**
+     Parse the received NSData into the providers own QuoteType. More 
+     than likely, this will just be `FXQuote`, but providers may 
+     support fees/commission info which needs representing.
+
+     - parameter data: the `NSData` received from the service provider
+     - returns: a `Result` generic over the `QuoteType` and `FX.Error` which
+     supports general errors for mal-formed or missing information.
+    */
+    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error>
+}
+
+// MARK: - Protocol: Transaction Type
+
+protocol FXTransactionType {
+    typealias Provider: FXProviderType
+    typealias Money: MoneyType
+
+    var money: Money { get }
+
+    init(money: Money)
 }
 
 // MARK: - MoneyType
@@ -57,11 +81,11 @@ extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageTyp
         return multiplyBy(Other(storage: rate.storage), withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors)
     }
 
-    func exchange<T: FXTransactionType, Provider: FXProviderType where T.Money.DecimalStorageType == DecimalStorageType, Provider.RequestType == NSURLSessionDataTask>(completion: Result<T, FX.Error> -> Void) -> Provider.RequestType {
-        let client = FXServiceProviderNetworkClient(session: Provider.URLSession)
-        let request = Provider.requestForBaseCurrencyCode(Currency.code, symbol: T.Money.Currency.code)
-        return client.get(request, adaptor: Provider.exchangeRateFromResponseData) { result in
-            return result.map { T(money: self.convertWithRate($0.rate)) }
+    func exchange<T: FXTransactionType where T.Money.DecimalStorageType == DecimalStorageType, T.Provider.RequestType == NSURLSessionDataTask>(completion: Result<T, FX.Error> -> Void) -> T.Provider.RequestType {
+        let client = FXServiceProviderNetworkClient(session: T.Provider.URLSession)
+        let request = T.Provider.requestForBaseCurrencyCode(Currency.code, symbol: T.Money.Currency.code)
+        return client.get(request, adaptor: T.Provider.quoteFromNetworkResult) { result in
+            completion(result.map { T(money: self.convertWithRate($0.rate)) })
         }
     }
 }
@@ -75,7 +99,10 @@ struct FXQuote: FXQuoteType {
     let date: NSDate
 }
 
-struct FXTransaction<M: MoneyType>: FXTransactionType {
+struct FXTransaction<P: FXProviderType, M: MoneyType>: FXTransactionType {
+    typealias Provider = P
+    typealias Money = M
+
     let money: M
 
     init(money: M) {
@@ -87,12 +114,11 @@ struct FXTransaction<M: MoneyType>: FXTransactionType {
 
 struct FX {
 
-    enum Error: ErrorType {
-        case ReceivedNetworkError(ErrorType?)
-        case InvalidResponseDataFromProvider(String)
-        case FXTickerNotFoundInResponse(String)
-        case FXRateNotFoundInResponse(String)
-        case FXDateNotFoundInResponse(String)
+    enum Error: ErrorType, Equatable {
+        case NetworkError(NSError)
+        case NoData
+        case InvalidData(NSData)
+        case RateNotFound(String)
     }
 }
 
@@ -105,13 +131,10 @@ internal class FXServiceProviderNetworkClient<Session: NSURLSession> {
         self.session = session
     }
 
-    func get<Quote: FXQuoteType>(request: NSURLRequest, adaptor: NSData -> Result<Quote, FX.Error>, completion: Result<Quote, FX.Error> -> Void) -> NSURLSessionDataTask {
+    func get<Quote: FXQuoteType>(request: NSURLRequest, adaptor: Result<(NSData?, NSURLResponse?), NSError> -> Result<Quote, FX.Error>, completion: Result<Quote, FX.Error> -> Void) -> NSURLSessionDataTask {
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            guard let data = data else {
-                completion(Result(error: .ReceivedNetworkError(error)))
-                return
-            }
-            completion(adaptor(data))
+            let result = error.map { Result(error: $0) } ?? Result(value: (data, response))
+            completion(adaptor(result))
         }
         task.resume()
         return task
@@ -140,26 +163,56 @@ extension FX {
             return NSURLRequest(URL: NSURL(string: "http://download.finance.yahoo.com/d/quotes.csv?s=\(base)\(symbol)=X&f=nl1d1t1")!)
         }
 
-        static func exchangeRateFromResponseData(data: NSData) -> Result<QuoteType, FX.Error> {
-            guard let str = String(data: data, encoding: NSUTF8StringEncoding) else {
-                return Result(error: FX.Error.InvalidResponseDataFromProvider(name))
-            }
+        static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error> {
+            return result.analysis(
 
-            let components = str.componentsSeparatedByString(",")
+                ifSuccess: { data, response in
 
-            if components.endIndex == 0 {
-                return Result(error: FX.Error.FXTickerNotFoundInResponse(str))
-            }
+                    guard let data = data else {
+                        return Result(error: FX.Error.NoData)
+                    }
 
-            let ticker = components[0].stringByReplacingOccurrencesOfString("/", withString: "")
+                    guard let str = String(data: data, encoding: NSUTF8StringEncoding) else {
+                        return Result(error: FX.Error.InvalidData(data))
+                    }
 
-            guard components.endIndex >= 1, let rate = Double(components[1]) else {
-                return Result(error: FX.Error.FXRateNotFoundInResponse(str))
-            }
+                    let components = str.componentsSeparatedByString(",")
 
-            return Result(value: FXQuote(ticker: ticker, rate: BankersDecimal(floatLiteral: rate), date: NSDate()))
+                    if components.count < 4 {
+                        return Result(error: FX.Error.InvalidData(data))
+                    }
+
+                    let ticker = components[0].stringByReplacingOccurrencesOfString("/", withString: "")
+
+                    guard let rate = Double(components[1]) else {
+                        return Result(error: FX.Error.RateNotFound(str))
+                    }
+                    
+                    return Result(value: FXQuote(ticker: ticker, rate: BankersDecimal(floatLiteral: rate), date: NSDate()))
+
+                },
+
+                ifFailure: { error in
+                    return Result(error: FX.Error.NetworkError(error))
+                }
+            )
         }
     }
 }
 
+
+func ==(lhs: FX.Error, rhs: FX.Error) -> Bool {
+    switch (lhs, rhs) {
+    case let (.NetworkError(aError), .NetworkError(bError)):
+        return aError.isEqual(bError)
+    case (.NoData, .NoData):
+        return true
+    case let (.InvalidData(aData), .InvalidData(bData)):
+        return aData.isEqualToData(bData)
+    case let (.RateNotFound(aStr), .RateNotFound(bStr)):
+        return aStr == bStr
+    default:
+        return false
+    }
+}
 

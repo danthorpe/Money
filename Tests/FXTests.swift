@@ -7,131 +7,100 @@
 //
 
 import XCTest
+import Result
 @testable import Money
 
-class FakeFXProvider {
-    var didGetName = false
-    let quotes: [String: BankersDecimal] = [
-        "GBPEUR": 1.4069,
-        "GBPUSD": 1.5409,
-        "GBPJPY": 186.7150,
-        "EURUSD": 1.0947,
-        "EURJPY": 132.6150,
-        "EURGBP": 0.7103,
-        "USDJPY": 121.1545,
-        "USDGBP": 0.6490,
-        "USDEUR": 0.9135,
-        "JPYGBP": 0.0054,
-        "JPYEUR": 0.0075,
-        "JPYUSD": 0.0083
-    ]
+class TestFXProvider<Provider: FXProviderType>: FXProviderType {
 
-    var didGetQuoteForTicker: String? = .None
-}
+    typealias RequestType = Provider.RequestType
+    typealias QuoteType = Provider.QuoteType
 
-extension FakeFXProvider: FXProviderType {
-    typealias RequestType = Void
-
-    var name: String {
-        get {
-            didGetName = true
-            return "Fake FX Provider"
-        }
+    static var URLSession: NSURLSession {
+        return NSURLSession.sharedSession()
     }
 
-    func quote(ticker: String, completion: FXQuote -> Void) -> Void {
-        didGetQuoteForTicker = ticker
-        completion(FXQuote(ticker: ticker, rate: quotes[ticker]!, date: NSDate()))
+    static var name: String {
+        return Provider.name
+    }
+
+    static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
+        return Provider.requestForBaseCurrencyCode(base, symbol: symbol)
+    }
+
+    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error> {
+        return Provider.quoteFromNetworkResult(result)
     }
 }
 
+extension FX {
+    struct Test {
+        typealias Yahoo = TestFXProvider<FX.Yahoo>
+    }
+}
 
-class FXProviderTypeTests: XCTestCase {
+class FXProviderTests: XCTestCase {
 
-    var provider: FakeFXProvider!
-    var gbp: GBP!
-    var eur: EUR!
-    var usd: USD!
-    var jpy: JPY!
+    func createGarbageData() -> NSData {
+        let path = NSBundle(forClass: self.dynamicType).pathForResource("Troll", ofType: ".png")
+        let data = NSData(contentsOfFile: path!)
+        return data!
+    }
+}
 
-    override func setUp() {
-        super.setUp()
-        provider = FakeFXProvider()
-        gbp = 139
-        eur = 166.67
-        usd = 199.99
-        jpy = 34_567
+class FXYahooTests: FXProviderTests {
+
+    func test__name() {
+        XCTAssertEqual(FX.Yahoo.name, "Yahoo")
     }
 
-    override func tearDown() {
-        provider = nil
-        gbp = nil
-        usd = nil
-        eur = nil
-        jpy = nil
-        super.tearDown()
+    func test__session() {
+        XCTAssertEqual(FX.Yahoo.URLSession, NSURLSession.sharedSession())
     }
+
+    func test__quote_adaptor__with_network_error() {
+        let error = NSError(domain: NSURLErrorDomain, code: NSURLError.BadServerResponse.rawValue, userInfo: nil)
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(error: error)
+        let quote = FX.Yahoo.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FX.Error.NetworkError(error))
+    }
+
+    func test__quote_adaptor__with_no_data() {
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (.None, .None))
+        let quote = FX.Yahoo.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FX.Error.NoData)
+    }
+
+    func test__quote_adaptor__with_garbage_data() {
+        let data = createGarbageData()
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
+        let quote = FX.Yahoo.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FX.Error.InvalidData(data))
+    }
+
+    func test__quote_adaptor__with_incorrect_text_response() {
+        let text = "This isn't a correct response"
+        let data = text.dataUsingEncoding(NSUTF8StringEncoding)
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
+        let quote = FX.Yahoo.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FX.Error.InvalidData(data!))
+    }
+
+    func test__quote_adaptor__with_missing_rate() {
+        let text = "This,could be,a correct,response"
+        let data = text.dataUsingEncoding(NSUTF8StringEncoding)
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
+        let quote = FX.Yahoo.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FX.Error.RateNotFound(text))
+    }
+
 
     func test__exhange_gbp_to_eur() {
-        provider.exchange(gbp) { (result: FXResult<EUR>) in
-            XCTAssertEqual(result.money, 195.56)
+        let gbp: GBP = 100
+        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
+        gbp.exchange { (result: Result<FXTransaction<FX.Test.Yahoo, EUR>, FX.Error>) in
+            XCTAssertEqual(result.value!.money, 195.56)
+            expectation.fulfill()
         }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "GBPEUR")
-    }
-
-    func test__exhange_gbp_to_usd() {
-        provider.exchange(gbp) { (result: FXResult<USD>) in
-            XCTAssertEqual(result.money, 214.19)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "GBPUSD")
-    }
-
-    func test__exhange_gbp_to_jpy() {
-        provider.exchange(gbp) { (result: FXResult<JPY>) in
-            XCTAssertEqual(result.money, 25_953)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "GBPJPY")
-    }
-
-    func test__exhange_eur_to_usd() {
-        eur.exchange(provider) { (result: FXResult<USD>) in
-            XCTAssertEqual(result.money, 182.45)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "EURUSD")
-    }
-
-    func test__exhange_eur_to_jpy() {
-        eur.exchange(provider) { (result: FXResult<JPY>) in
-            XCTAssertEqual(result.money, 22_103)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "EURJPY")
-    }
-
-    func test__exhange_eur_to_gbp() {
-        eur.exchange(provider) { (result: FXResult<GBP>) in
-            XCTAssertEqual(result.money, 118.39)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "EURGBP")
-    }
-
-    func test__exhange_usd_to_jpy() {
-        usd.exchange(provider) { (result: JPY) in
-            XCTAssertEqual(result, 24_230)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "USDJPY")
-    }
-
-    func test__exhange_usd_to_gbp() {
-        usd.exchange(provider) { (result: GBP) in
-            XCTAssertEqual(result, 129.79)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "USDGBP")
-    }
-
-    func test__exhange_usd_to_eur() {
-        usd.exchange(provider) { (result: EUR) in
-            XCTAssertEqual(result, 182.69)
-        }
-        XCTAssertEqual(provider.didGetQuoteForTicker!, "USDEUR")
+        waitForExpectationsWithTimeout(1, handler: nil)
     }
 }
