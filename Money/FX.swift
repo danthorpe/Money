@@ -11,7 +11,7 @@ import Result
 
 // MARK: - Protocol: Quote Type
 
-protocol FXQuoteType {
+public protocol FXQuoteType {
     var ticker: String { get }
     var rate: BankersDecimal { get }
     var date: NSDate { get }
@@ -25,7 +25,7 @@ protocol FXQuoteType {
  In addition to FX exchanges, a provide will have its 
  own characteristics, such as a name and fee structure.
 */
-protocol FXProviderType {
+public protocol FXProviderType {
 
     typealias RequestType
     typealias QuoteType: FXQuoteType
@@ -64,7 +64,7 @@ protocol FXProviderType {
 
 // MARK: - Protocol: Transaction Type
 
-protocol FXTransactionType {
+public protocol FXTransactionType {
     typealias Provider: FXProviderType
     typealias Money: MoneyType
 
@@ -93,28 +93,28 @@ extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageTyp
 
 // MARK: - FX Types
 
-struct FXQuote: FXQuoteType {
-    let ticker: String
-    let rate: BankersDecimal
-    let date: NSDate
+public struct FXQuote: FXQuoteType {
+    public let ticker: String
+    public let rate: BankersDecimal
+    public let date: NSDate
 }
 
-struct FXTransaction<P: FXProviderType, M: MoneyType>: FXTransactionType {
-    typealias Provider = P
-    typealias Money = M
+public struct FXTransaction<P: FXProviderType, M: MoneyType>: FXTransactionType {
+    public typealias Provider = P
+    public typealias Money = M
 
-    let money: M
+    public let money: M
 
-    init(money: M) {
+    public init(money: M) {
         self.money = money
     }
 }
 
 // MARK: - FX Providers
 
-struct FX {
+public struct FX {
 
-    enum Error: ErrorType, Equatable {
+    public enum Error: ErrorType, Equatable {
         case NetworkError(NSError)
         case NoData
         case InvalidData(NSData)
@@ -148,22 +148,22 @@ extension FX {
 
     // MARK: - Yahoo
 
-    struct Yahoo: FXProviderType {
+    public struct Yahoo: FXProviderType {
 
-        typealias RequestType = NSURLSessionDataTask
-        typealias QuoteType = FXQuote
+        public typealias RequestType = NSURLSessionDataTask
+        public typealias QuoteType = FXQuote
 
-        static var URLSession: NSURLSession {
+        public static var URLSession: NSURLSession {
             return NSURLSession.sharedSession()
         }
 
-        static let name = "Yahoo"
+        public static let name = "Yahoo"
 
-        static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
+        public static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
             return NSURLRequest(URL: NSURL(string: "http://download.finance.yahoo.com/d/quotes.csv?s=\(base)\(symbol)=X&f=nl1d1t1")!)
         }
 
-        static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error> {
+        public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error> {
             return result.analysis(
 
                 ifSuccess: { data, response in
@@ -200,8 +200,7 @@ extension FX {
     }
 }
 
-
-func ==(lhs: FX.Error, rhs: FX.Error) -> Bool {
+public func ==(lhs: FX.Error, rhs: FX.Error) -> Bool {
     switch (lhs, rhs) {
     case let (.NetworkError(aError), .NetworkError(bError)):
         return aError.isEqual(bError)
