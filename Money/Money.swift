@@ -134,3 +134,14 @@ extension _Money: CustomStringConvertible {
         return C.formatter.formattedStringWithStyle(style)(decimal)
     }
 }
+
+
+// MARK: - MoneyType Extension
+
+extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
+
+    public func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
+        return multiplyBy(Other(storage: rate.storage), withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors)
+    }
+}
+

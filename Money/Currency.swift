@@ -8,6 +8,12 @@
 
 import Foundation
 
+/**
+ # CurrencyType
+ The interface used to represent a single currency. Note
+ that it is always used as a generic constraint on other
+ types.
+*/
 public protocol CurrencyType: DecimalNumberBehaviorType {
     static var sharedInstance: Self { get }
 

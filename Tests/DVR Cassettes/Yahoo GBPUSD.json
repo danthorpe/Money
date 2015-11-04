@@ -1,18 +1,18 @@
 {
   "interactions" : [
     {
-      "recorded_at" : 1446646853.911305,
+      "recorded_at" : 1446670436.47289,
       "response" : {
-        "body" : "IkdCUC9FVVIiLDEuNDEyMiwiMTEvNC8yMDE1IiwiMjoyMHBtIgo=",
+        "body" : "IkdCUC9VU0QiLDEuNTM4OSwiMTEvNC8yMDE1IiwiODo1M3BtIgo=",
         "status" : 200,
-        "url" : "http:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPEUR=X&f=nl1d1t1",
+        "url" : "http:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPUSD=X&f=nl1d1t1",
         "headers" : {
           "Server" : "ATS",
           "Content-Type" : "application\/octet-stream",
-          "Via" : "http\/1.1 r02.ycpi.ams.yahoo.net (ApacheTrafficServer [cMsSf ])",
-          "Age" : "0",
+          "Via" : "http\/1.1 r05.ycpi.ams.yahoo.net (ApacheTrafficServer [cMsSf ])",
+          "Age" : "1",
           "P3P" : "policyref=\"https:\/\/policies.yahoo.com\/w3c\/p3p.xml\", CP=\"CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV\"",
-          "Date" : "Wed, 04 Nov 2015 14:20:53 GMT",
+          "Date" : "Wed, 04 Nov 2015 20:53:56 GMT",
           "Content-Length" : "38",
           "Cache-Control" : "private, no-cache, no-store",
           "Connection" : "keep-alive"
@@ -20,9 +20,9 @@
       },
       "request" : {
         "method" : "GET",
-        "url" : "http:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPEUR=X&f=nl1d1t1"
+        "url" : "http:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPUSD=X&f=nl1d1t1"
       }
     }
   ],
-  "name" : "Yahoo"
+  "name" : "Yahoo GBPUSD"
 }
