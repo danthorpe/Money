@@ -1,0 +1,28 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1446646853.911305,
+      "response" : {
+        "body" : "IkdCUC9FVVIiLDEuNDEyMiwiMTEvNC8yMDE1IiwiMjoyMHBtIgo=",
+        "status" : 200,
+        "url" : "http:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPEUR=X&f=nl1d1t1",
+        "headers" : {
+          "Server" : "ATS",
+          "Content-Type" : "application\/octet-stream",
+          "Via" : "http\/1.1 r02.ycpi.ams.yahoo.net (ApacheTrafficServer [cMsSf ])",
+          "Age" : "0",
+          "P3P" : "policyref=\"https:\/\/policies.yahoo.com\/w3c\/p3p.xml\", CP=\"CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV\"",
+          "Date" : "Wed, 04 Nov 2015 14:20:53 GMT",
+          "Content-Length" : "38",
+          "Cache-Control" : "private, no-cache, no-store",
+          "Connection" : "keep-alive"
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "http:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPEUR=X&f=nl1d1t1"
+      }
+    }
+  ],
+  "name" : "Yahoo"
+}

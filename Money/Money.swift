@@ -17,6 +17,11 @@ import Foundation
  */
 public protocol MoneyType: DecimalNumberType {
     typealias Currency: CurrencyType
+
+    /// Access the underlying decimal
+    var decimal: _Decimal<Currency> { get }
+
+    init(_: _Decimal<Currency>)
 }
 
 /**
@@ -27,10 +32,15 @@ public protocol MoneyType: DecimalNumberType {
 
 */
 public struct _Money<C: CurrencyType>: MoneyType {
+    
     public typealias DecimalNumberBehavior = C
     public typealias Currency = C
 
-    private let decimal: _Decimal<C>
+    public let decimal: _Decimal<C>
+
+    public var storage: NSDecimalNumber {
+        return decimal.storage
+    }
 
     public var isNegative: Bool {
         return decimal.isNegative
@@ -40,10 +50,14 @@ public struct _Money<C: CurrencyType>: MoneyType {
         return _Money(decimal.negative)
     }
     
-    init(_ value: _Decimal<C> = _Decimal<C>()) {
+    public init(_ value: _Decimal<C> = _Decimal<C>()) {
         decimal = value
     }
-    
+
+    public init(storage: NSDecimalNumber) {
+        decimal = _Decimal<DecimalNumberBehavior>(storage: storage)
+    }
+
     public init(integerLiteral value: IntegerLiteralType) {
         decimal = _Decimal<DecimalNumberBehavior>(integerLiteral: value)
     }
