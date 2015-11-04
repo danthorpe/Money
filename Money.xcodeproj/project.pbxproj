@@ -24,6 +24,19 @@
 		6564093D1BEAA83000F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
 		6564093E1BEAA83500F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
 		6564093F1BEAA83A00F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
+		656409411BEAABCA00F82B4D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409401BEAABCA00F82B4D /* FXYahooTests.swift */; };
+		656409421BEAABCA00F82B4D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409401BEAABCA00F82B4D /* FXYahooTests.swift */; };
+		656409431BEAABCA00F82B4D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409401BEAABCA00F82B4D /* FXYahooTests.swift */; };
+		656409451BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409441BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift */; };
+		656409461BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409441BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift */; };
+		656409471BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409441BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift */; };
+		656409491BEAB89400F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */ = {isa = PBXBuildFile; fileRef = 656409481BEAB88700F82B4D /* OpenExchangeRates.org USDEUR.json */; };
+		6564094A1BEAB89B00F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */ = {isa = PBXBuildFile; fileRef = 656409481BEAB88700F82B4D /* OpenExchangeRates.org USDEUR.json */; };
+		6564094B1BEAB8A100F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */ = {isa = PBXBuildFile; fileRef = 656409481BEAB88700F82B4D /* OpenExchangeRates.org USDEUR.json */; };
+		6564094D1BEABA6100F82B4D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6564094C1BEABA6100F82B4D /* SwiftyJSON.framework */; };
+		6564094F1BEABA6E00F82B4D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6564094E1BEABA6E00F82B4D /* SwiftyJSON.framework */; };
+		656409511BEABA7A00F82B4D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656409501BEABA7A00F82B4D /* SwiftyJSON.framework */; };
+		656409531BEABA8400F82B4D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656409521BEABA8400F82B4D /* SwiftyJSON.framework */; };
 		657C0B0E1BE10D2700CDB873 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C0B0D1BE10D2700CDB873 /* Currency.swift */; };
 		657C0B0F1BE10D2700CDB873 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C0B0D1BE10D2700CDB873 /* Currency.swift */; };
 		657C0B101BE10D2700CDB873 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C0B0D1BE10D2700CDB873 /* Currency.swift */; };
@@ -130,6 +143,13 @@
 
 /* Begin PBXFileReference section */
 		6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Yahoo GBPUSD.json"; path = "DVR Cassettes/Yahoo GBPUSD.json"; sourceTree = "<group>"; };
+		656409401BEAABCA00F82B4D /* FXYahooTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXYahooTests.swift; sourceTree = "<group>"; };
+		656409441BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXOpenExchangeRatesTests.swift; sourceTree = "<group>"; };
+		656409481BEAB88700F82B4D /* OpenExchangeRates.org USDEUR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "OpenExchangeRates.org USDEUR.json"; path = "DVR Cassettes/OpenExchangeRates.org USDEUR.json"; sourceTree = "<group>"; };
+		6564094C1BEABA6100F82B4D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		6564094E1BEABA6E00F82B4D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		656409501BEABA7A00F82B4D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/tvOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		656409521BEABA8400F82B4D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
 		657C0B0D1BE10D2700CDB873 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		657C0B121BE1211900CDB873 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		657C0B1B1BE164B700CDB873 /* Autogenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autogenerated.swift; sourceTree = "<group>"; };
@@ -166,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65D305601BE955020032D99F /* Result.framework in Frameworks */,
+				6564094D1BEABA6100F82B4D /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65D3055A1BE94F860032D99F /* Result.framework in Frameworks */,
+				6564094F1BEABA6E00F82B4D /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65D3055B1BE94FA70032D99F /* Result.framework in Frameworks */,
+				656409511BEABA7A00F82B4D /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65D3055D1BE94FD40032D99F /* Result.framework in Frameworks */,
+				656409531BEABA8400F82B4D /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,12 +299,14 @@
 		65B92B371BE0E69500F82024 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				65FC56411BEA667300727556 /* Network Responses */,
-				658863B61BEA2B0B003482ED /* Troll.png */,
 				65B92B381BE0E69500F82024 /* Info.plist */,
+				658863B61BEA2B0B003482ED /* Troll.png */,
 				65D305511BE8E8210032D99F /* DecimalTests.swift */,
-				65B92B391BE0E69500F82024 /* MoneyTests.swift */,
+				656409441BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift */,
 				65A876F31BE7D1A100E26F22 /* FXTests.swift */,
+				656409401BEAABCA00F82B4D /* FXYahooTests.swift */,
+				65B92B391BE0E69500F82024 /* MoneyTests.swift */,
+				65FC56411BEA667300727556 /* Network Responses */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -294,6 +320,10 @@
 				65D3055C1BE94FD40032D99F /* Result.framework */,
 				65D305591BE94F860032D99F /* Result.framework */,
 				65D305571BE94E850032D99F /* Result.framework */,
+				656409521BEABA8400F82B4D /* SwiftyJSON.framework */,
+				656409501BEABA7A00F82B4D /* SwiftyJSON.framework */,
+				6564094E1BEABA6E00F82B4D /* SwiftyJSON.framework */,
+				6564094C1BEABA6100F82B4D /* SwiftyJSON.framework */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -301,6 +331,7 @@
 		65FC56411BEA667300727556 /* Network Responses */ = {
 			isa = PBXGroup;
 			children = (
+				656409481BEAB88700F82B4D /* OpenExchangeRates.org USDEUR.json */,
 				6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */,
 			);
 			name = "Network Responses";
@@ -549,6 +580,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				656409491BEAB89400F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */,
 				6564093D1BEAA83000F82B4D /* Yahoo GBPUSD.json in Resources */,
 				658863B91BEA2B26003482ED /* Troll.png in Resources */,
 			);
@@ -572,6 +604,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6564094A1BEAB89B00F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */,
 				6564093E1BEAA83500F82B4D /* Yahoo GBPUSD.json in Resources */,
 				658863BA1BEA2B2C003482ED /* Troll.png in Resources */,
 			);
@@ -588,6 +621,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6564094B1BEAB8A100F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */,
 				6564093F1BEAA83A00F82B4D /* Yahoo GBPUSD.json in Resources */,
 				658863BB1BEA2B30003482ED /* Troll.png in Resources */,
 			);
@@ -620,6 +654,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DVR.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -635,6 +670,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/tvOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/SwiftyJSON.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -651,6 +687,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/Mac/Result.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/DVR.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/SwiftyJSON.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -681,7 +718,9 @@
 			files = (
 				65B92B3F1BE0E72700F82024 /* MoneyTests.swift in Sources */,
 				65D305521BE8E8210032D99F /* DecimalTests.swift in Sources */,
+				656409411BEAABCA00F82B4D /* FXYahooTests.swift in Sources */,
 				65A876F41BE7D1A100E26F22 /* FXTests.swift in Sources */,
+				656409451BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,7 +756,9 @@
 			files = (
 				65B92B401BE0E72800F82024 /* MoneyTests.swift in Sources */,
 				65D305531BE8E8210032D99F /* DecimalTests.swift in Sources */,
+				656409421BEAABCA00F82B4D /* FXYahooTests.swift in Sources */,
 				65A876F51BE7D1A100E26F22 /* FXTests.swift in Sources */,
+				656409461BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,7 +781,9 @@
 			files = (
 				65B92B411BE0E72900F82024 /* MoneyTests.swift in Sources */,
 				65D305541BE8E8210032D99F /* DecimalTests.swift in Sources */,
+				656409431BEAABCA00F82B4D /* FXYahooTests.swift in Sources */,
 				65A876F61BE7D1A100E26F22 /* FXTests.swift in Sources */,
+				656409471BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

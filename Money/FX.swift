@@ -8,6 +8,7 @@
 
 import Foundation
 import Result
+import SwiftyJSON
 
 /**
  # MoneyPairType
@@ -258,8 +259,118 @@ public class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, 
     }
 }
 
-
 // MARK: - Open Exchange Rates FX Service Provider
+
+/**
+ # Open Exchange Rates
+ Open Exchange Rates (OER) is a popular FX provider, 
+ which does have a "forever free" service, which will 
+ only return rates for all supported currencies with 
+ USD as the base currency.
+
+ Paid for access allows specification of the base & 
+ counter currency.
+
+ All access requires an "app_id", even the forever 
+ free one.
+
+ This protocol defines a type which can return the 
+ app_id. Therefore, consumers should define their
+ own type which conforms, and then using whatever
+ mechanism you want, return your OER app_id. I 
+ recommend using something like [CocoaPod Keys](https://github.com/orta/cocoapods-keys)
+
+ Lets say, you create this...
+
+
+        struct MyOpenExchangeRatesAppID: OpenExchangeRatesAppID {
+            static let app_id = "blarblarblarblar"
+        }
+
+ Now, create subclasses of `_OpenExchangeRates` or 
+ `_ForeverFreeOpenExchangeRates` depending on your access level.
+
+ e.g. If you have a forever free app_id:
+
+
+        class OpenExchangeRates<Counter: MoneyType>: _ForeverFreeOpenExchangeRates<Counter, MyOpenExchangeRatesAppID> { }
+
+ usage would then be like this:
+
+
+        let usd: USD = 100
+        OpenExchangeRates<GBP>.fx(usd) { result in
+            // etc, result will include the GBP exchanged for US$ 100
+        }
+
+ If you have paid for access to OpenExchangeRates then instead
+ create the following subclass:
+
+
+        class OpenExchangeRates<Counter: MoneyType>: _OpenExchangeRates<Counter, MyOpenExchangeRatesAppID> { }
+
+ - see: [https://openexchangerates.org](https://openexchangerates.org)
+ - see: [CocoaPod Keys](https://github.com/orta/cocoapods-keys)
+
+*/
+public protocol OpenExchangeRatesAppID {
+    static var app_id: String { get }
+}
+
+public class _OpenExchangeRates<Base: MoneyType, Counter: MoneyType, ID: OpenExchangeRatesAppID>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
+
+    public static func name() -> String {
+        return "OpenExchangeRates.org \(Base.Currency.code)\(Counter.Currency.code)"
+    }
+
+    public static func request() -> NSURLRequest {
+        var url = NSURL(string: "https://openexchangerates.org/api/latest.json?app_id=\(ID.app_id)")!
+
+        switch BaseMoney.Currency.code {
+        case Currency.USD.code:
+            break
+        default:
+            url = url.URLByAppendingPathComponent("&base=\(BaseMoney.Currency.code)")
+        }
+
+        return NSURLRequest(URL: url)
+    }
+
+    public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
+        return result.analysis(
+
+            ifSuccess: { data, response in
+
+                guard let data = data else {
+                    return Result(error: .NoData)
+                }
+
+                let json = JSON(data: data)
+
+                if json.isEmpty {
+                    return Result(error: .InvalidData(data))
+                }
+
+                guard let rate = json[["rates", CounterMoney.Currency.code]].double else {
+                    return Result(error: .RateNotFound(name()))
+                }
+
+                return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
+            },
+
+            ifFailure: { error in
+                return Result(error: .NetworkError(error))
+            }
+        )
+    }
+}
+
+public class _ForeverFreeOpenExchangeRates<Counter: MoneyType, ID: OpenExchangeRatesAppID>: _OpenExchangeRates<USD, Counter, ID> { }
+
+
+
+
+
 
 
 

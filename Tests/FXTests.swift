@@ -8,6 +8,7 @@
 
 import XCTest
 import Result
+import SwiftyJSON
 import DVR
 @testable import Money
 
@@ -59,7 +60,7 @@ class FaultyFXRemoteProvider<Provider: FXRemoteProviderType>: FXRemoteProviderTy
     typealias BaseMoney = Provider.BaseMoney
 
     static func name() -> String {
-        return "\(Provider.name()).faulty"
+        return Provider.name()
     }
 
     static func session() -> NSURLSession {
@@ -91,99 +92,19 @@ class FXErrorTests: XCTestCase {
 class FXProviderTests: XCTestCase {
 
     func createGarbageData() -> NSData {
-        let path = NSBundle(forClass: self.dynamicType).pathForResource("Troll", ofType: ".png")
+        let path = NSBundle(forClass: self.dynamicType).pathForResource("Troll", ofType: "png")
         let data = NSData(contentsOfFile: path!)
         return data!
     }
-}
 
-class FXYahooTests: FXProviderTests {
-
-    typealias Provider = Yahoo<GBP, USD>
-    typealias TestableProvider = TestableFXRemoteProvider<Provider>
-    typealias FaultyProvider = FaultyFXRemoteProvider<Yahoo<GBP, USD>>
-
-    func test__name() {
-        XCTAssertEqual(Provider.name(), "Yahoo GBPUSD")
-    }
-
-    func test__session() {
-        XCTAssertEqual(Provider.session(), NSURLSession.sharedSession())
-    }
-
-    func test__quote_adaptor__with_network_error() {
-        let error = NSError(domain: NSURLErrorDomain, code: NSURLError.BadServerResponse.rawValue, userInfo: nil)
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(error: error)
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.NetworkError(error))
-    }
-
-    func test__quote_adaptor__with_no_data() {
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (.None, .None))
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.NoData)
-    }
-
-    func test__quote_adaptor__with_garbage_data() {
-        let data = createGarbageData()
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.InvalidData(data))
-    }
-
-    func test__quote_adaptor__with_incorrect_text_response() {
-        let text = "This isn't a correct response"
-        let data = text.dataUsingEncoding(NSUTF8StringEncoding)
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.InvalidData(data!))
-    }
-
-    func test__quote_adaptor__with_missing_rate() {
-        let text = "This,could be,a correct,response"
-        let data = text.dataUsingEncoding(NSUTF8StringEncoding)
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.RateNotFound(text))
-    }
-
-    func test__faulty_provider() {
-        let gbp: GBP = 100
-        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
-
-        FaultyProvider.fx(gbp) { result in
-            guard let error = result.error else {
-                XCTFail("Should have received a network error.")
-                return
-            }
-            switch error {
-            case .NetworkError(_):
-                break // This is the success path.
-            default:
-                XCTFail("Returned \(error), should be a .NetworkError")
-            }
-            expectation.fulfill()
+    func dvrJSONFromCassette(name: String) -> JSON? {
+        guard let path = NSBundle(forClass: self.dynamicType).pathForResource(name, ofType: "json"),
+            data = NSData(contentsOfFile: path) else {
+                return .None
         }
-
-        waitForExpectationsWithTimeout(1, handler: nil)
-    }
-
-    func test__exhange_gbp_to_eur() {
-        let gbp: GBP = 100
-        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
-
-        TestableProvider.fx(gbp) { result in
-            if let usd = result.value?.counter {
-                XCTAssertEqual(usd, 153.89)
-            }
-            else {
-                XCTFail("Did not receive any USDs.")
-            }
-            expectation.fulfill()
-        }
-
-        waitForExpectationsWithTimeout(1, handler: nil)
+        let json = JSON(data: data)
+        let body = json[["interactions",0,"response","body"]]
+        return body
     }
 }
-
 
