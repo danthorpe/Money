@@ -31,43 +31,43 @@ class Sessions {
     }
 }
 
-class TestableFXProvider<Provider: FXProviderType>: FXProviderType {
+class TestableFXRemoteProvider<Provider: FXRemoteProviderType>: FXRemoteProviderType {
 
-    typealias RequestType = Provider.RequestType
-    typealias QuoteType = Provider.QuoteType
+    typealias CounterMoney = Provider.CounterMoney
+    typealias BaseMoney = Provider.BaseMoney
 
-    static var name: String {
-        return Provider.name
+    static func name() -> String {
+        return Provider.name()
     }
 
-    static var URLSession: NSURLSession {
-        return Sessions.sessionWithCassetteName(name)
+    static func session() -> NSURLSession {
+        return Sessions.sessionWithCassetteName(name())
     }
 
-    static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
-        return Provider.requestForBaseCurrencyCode(base, symbol: symbol)
+    static func request() -> NSURLRequest {
+        return Provider.request()
     }
 
-    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error> {
+    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
         return Provider.quoteFromNetworkResult(result)
     }
 }
 
-class FaultyProvider<Provider: FXProviderType>: FXProviderType {
+class FaultyFXRemoteProvider<Provider: FXRemoteProviderType>: FXRemoteProviderType {
 
-    typealias RequestType = Provider.RequestType
-    typealias QuoteType = Provider.QuoteType
+    typealias CounterMoney = Provider.CounterMoney
+    typealias BaseMoney = Provider.BaseMoney
 
-    static var name: String {
-        return "\(Provider.name).faulty"
+    static func name() -> String {
+        return "\(Provider.name()).faulty"
     }
 
-    static var URLSession: NSURLSession {
-        return Provider.URLSession
+    static func session() -> NSURLSession {
+        return Provider.session()
     }
 
-    static func requestForBaseCurrencyCode(base: String, symbol: String) -> NSURLRequest {
-        let request = Provider.requestForBaseCurrencyCode(base, symbol: symbol)
+    static func request() -> NSURLRequest {
+        let request = Provider.request()
         if let url = request.URL,
             host = url.host,
             modified = NSURL(string: url.absoluteString.stringByReplacingOccurrencesOfString(host, withString: "broken-host.xyz")) {
@@ -76,22 +76,15 @@ class FaultyProvider<Provider: FXProviderType>: FXProviderType {
         return request
     }
 
-    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<QuoteType, FX.Error> {
+    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
         return Provider.quoteFromNetworkResult(result)
-    }
-}
-
-extension FX {
-    struct Test {
-        typealias Yahoo = TestableFXProvider<FX.Yahoo>
-        typealias FaultyYahoo = FaultyProvider<FX.Yahoo>
     }
 }
 
 class FXErrorTests: XCTestCase {
 
     func test__fx_error__equality() {
-        XCTAssertNotEqual(FX.Error.NoData, FX.Error.RateNotFound("whatever"))
+        XCTAssertNotEqual(FXError.NoData, FXError.RateNotFound("whatever"))
     }
 }
 
@@ -106,54 +99,59 @@ class FXProviderTests: XCTestCase {
 
 class FXYahooTests: FXProviderTests {
 
+    typealias Provider = Yahoo<GBP, USD>
+    typealias TestableProvider = TestableFXRemoteProvider<Provider>
+    typealias FaultyProvider = FaultyFXRemoteProvider<Yahoo<GBP, USD>>
+
     func test__name() {
-        XCTAssertEqual(FX.Yahoo.name, "Yahoo")
+        XCTAssertEqual(Provider.name(), "Yahoo GBPUSD")
     }
 
     func test__session() {
-        XCTAssertEqual(FX.Yahoo.URLSession, NSURLSession.sharedSession())
+        XCTAssertEqual(Provider.session(), NSURLSession.sharedSession())
     }
 
     func test__quote_adaptor__with_network_error() {
         let error = NSError(domain: NSURLErrorDomain, code: NSURLError.BadServerResponse.rawValue, userInfo: nil)
         let network: Result<(NSData?, NSURLResponse?), NSError> = Result(error: error)
-        let quote = FX.Yahoo.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FX.Error.NetworkError(error))
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.NetworkError(error))
     }
 
     func test__quote_adaptor__with_no_data() {
         let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (.None, .None))
-        let quote = FX.Yahoo.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FX.Error.NoData)
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.NoData)
     }
 
     func test__quote_adaptor__with_garbage_data() {
         let data = createGarbageData()
         let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = FX.Yahoo.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FX.Error.InvalidData(data))
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.InvalidData(data))
     }
 
     func test__quote_adaptor__with_incorrect_text_response() {
         let text = "This isn't a correct response"
         let data = text.dataUsingEncoding(NSUTF8StringEncoding)
         let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = FX.Yahoo.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FX.Error.InvalidData(data!))
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.InvalidData(data!))
     }
 
     func test__quote_adaptor__with_missing_rate() {
         let text = "This,could be,a correct,response"
         let data = text.dataUsingEncoding(NSUTF8StringEncoding)
         let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = FX.Yahoo.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FX.Error.RateNotFound(text))
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.RateNotFound(text))
     }
 
     func test__faulty_provider() {
         let gbp: GBP = 100
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
-        gbp.exchange { (result: Result<FXTransaction<FX.Test.FaultyYahoo, EUR>, FX.Error>) in
+
+        FaultyProvider.fx(gbp) { result in
             guard let error = result.error else {
                 XCTFail("Should have received a network error.")
                 return
@@ -166,16 +164,26 @@ class FXYahooTests: FXProviderTests {
             }
             expectation.fulfill()
         }
+
         waitForExpectationsWithTimeout(1, handler: nil)
     }
 
     func test__exhange_gbp_to_eur() {
         let gbp: GBP = 100
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
-        gbp.exchange { (result: Result<FXTransaction<FX.Test.Yahoo, EUR>, FX.Error>) in
-            XCTAssertEqual(result.value!.money, 141.22)
+
+        TestableProvider.fx(gbp) { result in
+            if let usd = result.value?.counter {
+                XCTAssertEqual(usd, 153.89)
+            }
+            else {
+                XCTFail("Did not receive any USDs.")
+            }
             expectation.fulfill()
         }
+
         waitForExpectationsWithTimeout(1, handler: nil)
     }
 }
+
+
