@@ -165,6 +165,13 @@ And of course if you have an IAP for purchasing in-app currency, then I’m sure
 
 Take a look at the example project, Custom Money, for a an example of a custom local FX provider to exchange your 🐝s.
 
+## Installation
+Money builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is also available via CocoaPods
+
+```ruby
+pod ‘Money’
+```
+
 ## Architectural style
 Swift is designed to have a strong focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 
 
@@ -207,4 +214,11 @@ The `_Money` type composes a `_Decimal` where its behavior is provided via its g
 Both `_Decimal` and `_Money` conform to [`ValueCoding`](https://github.com/danthorpe/ValueCoding) which means they can be encoded and stored inside archives.
 
 
- 
+## Author
+Daniel Thorpe [@danthorpe](https://twitter.com/danthorpe). 
+
+Feel free to get in contact if you have questions, queries, or need help.
+
+## License
+
+Money is available under the MIT license. See the LICENSE file for more info.
