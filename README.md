@@ -22,15 +22,16 @@ print("I'll give \(money) to charity.”)
 
 will print out
 
-> I'll give $100.00 to charity // United States region
-> I'll give £100.00 to charity // United Kingdom region
-> I'll give CN¥100.00 to charity // China region
+> I'll give $100.00 to charity 
+when the region is set to United States
+> I'll give £100.00 to charity
+when the region is set to United Kingdom
+> I'll give CN¥100.00 to charity
+when the region is set to China
 
 You get the idea.
 
-## Creating Money values
-
-`_Money` is `IntegerLiteralConvertible` and  `FloatLiteralConvertible`. Which means values can be initialized using literal `Int`s and `Double`s as shown in these code snippets.
+`Money` is `IntegerLiteralConvertible` and  `FloatLiteralConvertible`. Which means values can be initialized using literal `Int`s and `Double`s as shown in these code snippets.
 
 ## Specific Currency
 
@@ -47,18 +48,33 @@ print(“You have \(pounds / 2) and \(euros + 30)”)
 
 > You have £ 50.00 and € 179.50
 
-Because the currencies are type, it means that they cannot be combined together as though they were `NSDecimalNumber`s.
+Because the currencies are typed, it means that they cannot be combined together.
 
 ```swift
 let money = pounds + euros
 ```
 > // Binary operator '+' cannot be applied to operands of type 'GBP' (aka '_Money<Currency.GBP>') and 'EUR' (aka '_Money<Currency.EUR>')
 
-Of course, the `Money` type supports the usual suspects of decimal arithmetic operations, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations. This functionality is possible thanks to the underlying support for decimal arithmetic.
+Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations. This functionality is possible thanks to the underlying support for decimal arithmetic.
 
-## DecimalNumberType
+## Foreign Currency Exchange (FX)
+To represent foreign exchange transaction, i.e. converting `USD` to `EUR`, there is support for arbitrary FX service providers. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org).
 
-Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNumber` and `NSDecimal`. `NSDecimal` is much faster, but is trickier to work with, and doesn’t have support for limiting the scale of the numbers (which is pretty important when working with currencies).
+The following code represent a currency exchange, using Yahoo’s currency converter.
+
+```swift
+Yahoo<USD,EUR>.fx(100) { euros in
+    print("You got \(euros)")
+}
+```
+
+> You got .Success(€ 92.00)
+
+The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either the `FXProviderType.CounterMoney` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
+
+### Implementation Details
+
+Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNumber` and `NSDecimal`. `NSDecimal` is faster, but is trickier to work with, and doesn’t have support for limiting the scale of the numbers (which is pretty important when working with currencies).
 
 `DecimalNumberType` is a protocol which refines refines `SignedNumberType` and defines some functions (`add`, `subtract` etc to support the arithmetic). It is also generic over two types, the underlying storage, and the behaviors.
 
