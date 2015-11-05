@@ -35,7 +35,7 @@ func createFrontMatter(line: Writer) {
 func createCurrencyTypes(line: Writer) {
     for code in NSLocale.ISOCurrencyCodes() {
         line("")
-        line("    public final class \(code): Currency.Base, CurrencyType {")
+        line("    public final class \(code): Currency.Base, _CurrencyType {")
         line("        public static var sharedInstance = \(code)(code: \"\(code)\")")
         line("    }")
     }
