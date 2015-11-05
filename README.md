@@ -222,3 +222,7 @@ Feel free to get in contact if you have questions, queries, or need help.
 ## License
 
 Money is available under the MIT license. See the LICENSE file for more info.
+
+## Disclaimer
+
+Usage of this framework prevents the author, Daniel Thorpe, from being held liable for any losses incurred by the user through their use of the framework.
