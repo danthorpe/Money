@@ -126,7 +126,7 @@ class FXFreeOpenExchangeRatesTests: FXProviderTests {
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
         TestableProvider.fx(usd) { result in
-            if let usd = result.value?.counter {
+            if let usd = result.value {
                 XCTAssertEqual(usd, 92.09)
             }
             else {
