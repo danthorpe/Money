@@ -2,8 +2,10 @@ PODS:
   - Money (1.0.0):
     - Result (= 0.6.0-beta.6)
     - SwiftyJSON
+    - ValueCoding
   - Result (0.6.0-beta.6)
   - SwiftyJSON (2.3.1)
+  - ValueCoding (1.1.0)
 
 DEPENDENCIES:
   - Money (from `../../`)
@@ -13,8 +15,9 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Money: 10f8f029e9b2ffbb3a5a212c2ff5a64af3ac9261
+  Money: fdc3b1c89c626afe7ae0290742cd95d24bf6bb4b
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  ValueCoding: 54486fde2d7b1c2f1eb46de260b95340abed5bde
 
 COCOAPODS: 0.39.0

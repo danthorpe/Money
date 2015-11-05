@@ -87,9 +87,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Custom Money/Money.framework"
   install_framework "Pods-Custom Money/Result.framework"
   install_framework "Pods-Custom Money/SwiftyJSON.framework"
+  install_framework "Pods-Custom Money/ValueCoding.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Custom Money/Money.framework"
   install_framework "Pods-Custom Money/Result.framework"
   install_framework "Pods-Custom Money/SwiftyJSON.framework"
+  install_framework "Pods-Custom Money/ValueCoding.framework"
 fi
