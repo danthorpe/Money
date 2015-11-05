@@ -10,3 +10,47 @@
 # Money
 
 Money is a Swift framework for iOS, watchOS, tvOS and OS X. It provides types and functionality to represent, calculate and convert money in the 298 [ISO currencies](https://en.wikipedia.org/wiki/ISO_4217). 
+
+## Usage
+
+The Money framework defines the type, `Money` which represents money in the device’s current locale. The following code:
+
+```swift
+let money: Money = 100
+print("I'll give \(money) to charity.”)
+```
+
+will print out
+
+    I'll give $100.00 to charity // United States region
+    I'll give £100.00 to charity // United Kingdom region
+    I'll give CN¥100.00 to charity // China region
+
+You get the idea.
+
+## Specific Currency
+
+Under the hood, `Money` is a `typealias` for `_Money<Currency.Local>` where `Currency.Local` is a specific `CurrencyType` which represents the currency for the current local. This means that it strongly typed to the local currency.
+
+In a similar way, there are 298 foreign currency types supported.
+
+```swift
+let pounds: GBP = 99.99
+let euros: EUR = 149.50
+
+print(“You have \(pounds / 2) and \(euros + 30)”)
+```
+
+    You have £ 50.00 and € 179.50
+
+Because the currencies are type, it means that they cannot be combined together as though they were `NSDecimalNumber`s.
+
+```swift
+let money = pounds + euros
+```
+    // Binary operator '+' cannot be applied to operands of type 'GBP' (aka '_Money<Currency.GBP>') and 'EUR' (aka '_Money<Currency.EUR>')
+
+### Doing sums, etc
+
+The `Money` type supports the usual suspects of decimal arithmetic operations, so you can add, subtract, multiply, divide etc.
+ 
