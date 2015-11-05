@@ -1,0 +1,27 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1446743589.787131,
+      "response" : {
+        "body" : "IkdCUC9VU0QiLDEuNTIzNwo=",
+        "status" : 200,
+        "url" : "https:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPUSD=X&f=nl1",
+        "headers" : {
+          "Server" : "ATS",
+          "Content-Type" : "application\/octet-stream",
+          "Via" : "http\/1.1 r11.ycpi.loa.yahoo.net (ApacheTrafficServer [cMsSf ])",
+          "Age" : "0",
+          "p3p" : "policyref=\"https:\/\/policies.yahoo.com\/w3c\/p3p.xml\", CP=\"CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV\"",
+          "Date" : "Thu, 05 Nov 2015 17:13:09 GMT",
+          "Content-Length" : "17",
+          "Cache-Control" : "private, no-cache, no-store"
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/download.finance.yahoo.com\/d\/quotes.csv?s=GBPUSD=X&f=nl1"
+      }
+    }
+  ],
+  "name" : "Yahoo GBPUSD"
+}
