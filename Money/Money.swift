@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ValueCoding
 
 /**
  # MoneyType
@@ -145,3 +146,26 @@ extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageTyp
     }
 }
 
+// MARK: - Value Coding
+
+extension _Money: ValueCoding {
+    public typealias Coder = _MoneyCoder<C>
+}
+
+public final class _MoneyCoder<C: CurrencyType>: NSObject, NSCoding, CodingType {
+
+    public let value: _Money<C>
+
+    public required init(_ v: _Money<C>) {
+        value = v
+    }
+
+    public init?(coder aDecoder: NSCoder) {
+        let decimal = _Decimal<C>.decode(aDecoder.decodeObjectForKey("decimal"))
+        value = _Money<C>(decimal!)
+    }
+
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(value.decimal.encoded, forKey: "decimal")
+    }
+}

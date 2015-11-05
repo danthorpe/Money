@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		6557F4C71BEB7F32003CD2BF /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F4C61BEB7F32003CD2BF /* ValueCoding.framework */; };
+		6557F4C91BEB7F3D003CD2BF /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F4C81BEB7F3D003CD2BF /* ValueCoding.framework */; };
+		6557F4CB1BEB7F46003CD2BF /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F4CA1BEB7F46003CD2BF /* ValueCoding.framework */; };
+		6557F4CD1BEB7F51003CD2BF /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F4CC1BEB7F51003CD2BF /* ValueCoding.framework */; };
 		6564093D1BEAA83000F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
 		6564093E1BEAA83500F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
 		6564093F1BEAA83A00F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
@@ -142,6 +146,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6557F4C61BEB7F32003CD2BF /* ValueCoding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueCoding.framework; path = Carthage/Build/iOS/ValueCoding.framework; sourceTree = "<group>"; };
+		6557F4C81BEB7F3D003CD2BF /* ValueCoding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueCoding.framework; path = Carthage/Build/watchOS/ValueCoding.framework; sourceTree = "<group>"; };
+		6557F4CA1BEB7F46003CD2BF /* ValueCoding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueCoding.framework; path = Carthage/Build/tvOS/ValueCoding.framework; sourceTree = "<group>"; };
+		6557F4CC1BEB7F51003CD2BF /* ValueCoding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueCoding.framework; path = Carthage/Build/Mac/ValueCoding.framework; sourceTree = "<group>"; };
 		6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Yahoo GBPUSD.json"; path = "DVR Cassettes/Yahoo GBPUSD.json"; sourceTree = "<group>"; };
 		656409401BEAABCA00F82B4D /* FXYahooTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXYahooTests.swift; sourceTree = "<group>"; };
 		656409441BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXOpenExchangeRatesTests.swift; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 			files = (
 				65D305601BE955020032D99F /* Result.framework in Frameworks */,
 				6564094D1BEABA6100F82B4D /* SwiftyJSON.framework in Frameworks */,
+				6557F4C71BEB7F32003CD2BF /* ValueCoding.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +214,7 @@
 			files = (
 				65D3055A1BE94F860032D99F /* Result.framework in Frameworks */,
 				6564094F1BEABA6E00F82B4D /* SwiftyJSON.framework in Frameworks */,
+				6557F4C91BEB7F3D003CD2BF /* ValueCoding.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +224,7 @@
 			files = (
 				65D3055B1BE94FA70032D99F /* Result.framework in Frameworks */,
 				656409511BEABA7A00F82B4D /* SwiftyJSON.framework in Frameworks */,
+				6557F4CB1BEB7F46003CD2BF /* ValueCoding.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +242,7 @@
 			files = (
 				65D3055D1BE94FD40032D99F /* Result.framework in Frameworks */,
 				656409531BEABA8400F82B4D /* SwiftyJSON.framework in Frameworks */,
+				6557F4CD1BEB7F51003CD2BF /* ValueCoding.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +336,10 @@
 				656409501BEABA7A00F82B4D /* SwiftyJSON.framework */,
 				6564094E1BEABA6E00F82B4D /* SwiftyJSON.framework */,
 				6564094C1BEABA6100F82B4D /* SwiftyJSON.framework */,
+				6557F4CC1BEB7F51003CD2BF /* ValueCoding.framework */,
+				6557F4CA1BEB7F46003CD2BF /* ValueCoding.framework */,
+				6557F4C81BEB7F3D003CD2BF /* ValueCoding.framework */,
+				6557F4C61BEB7F32003CD2BF /* ValueCoding.framework */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -655,6 +671,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DVR.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ValueCoding.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -671,6 +688,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/tvOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/ValueCoding.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
@@ -688,6 +706,7 @@
 				"$(SRCROOT)/Carthage/Build/Mac/Result.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/DVR.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/ValueCoding.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
