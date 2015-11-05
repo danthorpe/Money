@@ -250,7 +250,7 @@ public class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, 
     }
 
     public static func request() -> NSURLRequest {
-        return NSURLRequest(URL: NSURL(string: "http://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1d1t1")!)
+        return NSURLRequest(URL: NSURL(string: "https://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1d1t1")!)
     }
 
     public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
