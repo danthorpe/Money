@@ -63,7 +63,7 @@ let money = pounds + euros
 Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations. This functionality is possible thanks to the underlying support for decimal arithmetic.
 
 ## Foreign Currency Exchange (FX)
-To represent foreign exchange transaction, i.e. converting `USD` to `EUR`, there is support for arbitrary FX service providers. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org).
+To represent foreign exchange transaction, i.e. converting `USD` to `EUR`, there is support for arbitrary FX service providers. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services.
 
 The following code represent a currency exchange, using Yahoo’s currency converter.
 
@@ -76,6 +76,47 @@ Yahoo<USD,EUR>.fx(100) { euros in
 > You got .Success(€ 92.00)
 
 The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either the `FXProviderType.CounterMoney` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
+
+### Creating custom FX service providers
+Create a custom FX service provider, is very simple. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `fx` method is provided via extensions on the protocols.
+
+For a remote FX service provider, i.e. one which will make a network request to get a rate, we can look at the `Yahoo` provider to see how it works.
+
+Firstly, we subclass `FXRemoteProvider` which is generic. The generic types are both constrained to `MoneyType`. These both represent a [*currency pair*](https://en.wikipedia.org/wiki/Currency_pair).
+
+```swift
+public class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
+    // etc
+}
+``
+
+The protocol requires that we can construct a `NSURLRequest`. We can use the `Base` and `Counter` types to extract the currency codes.
+
+```swift
+    public static func request() -> NSURLRequest {
+        return NSURLRequest(URL: NSURL(string: "https://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1")!)
+    }
+```
+
+Note that everything works on the static type, and the provider quite possibly does not need to have any storage itself.
+
+The last requirement, is that the network result can be mapped into a `Result<FXQuote,FXError>`.
+
+```swift
+    public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
+        return result.analysis(
+            ifSuccess: { data, response in
+							let rate: BankersDecimal = 1.5 // or whatever	 
+							return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
+            },
+            ifFailure: { error in
+                return Result(error: .NetworkError(error))
+            }
+        )
+    }
+```
+
+Note that the provider doesn’t actually need to perform any networking, which is performed by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
 
 ### Implementation Details
 
