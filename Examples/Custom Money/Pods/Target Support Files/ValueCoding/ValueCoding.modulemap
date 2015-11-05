@@ -1,0 +1,6 @@
+framework module ValueCoding {
+  umbrella header "ValueCoding-umbrella.h"
+
+  export *
+  module * { export * }
+}

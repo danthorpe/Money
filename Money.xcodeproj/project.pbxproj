@@ -47,9 +47,9 @@
 		6557F4ED1BEB97AC003CD2BF /* NSDecimalNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F4EC1BEB97AC003CD2BF /* NSDecimalNumberTests.swift */; };
 		6557F4EE1BEB97AC003CD2BF /* NSDecimalNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F4EC1BEB97AC003CD2BF /* NSDecimalNumberTests.swift */; };
 		6557F4EF1BEB97AC003CD2BF /* NSDecimalNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F4EC1BEB97AC003CD2BF /* NSDecimalNumberTests.swift */; };
-		6564093D1BEAA83000F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
-		6564093E1BEAA83500F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
-		6564093F1BEAA83A00F82B4D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */; };
+		6557F4F11BEBC5CD003CD2BF /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6557F4F01BEBC5C1003CD2BF /* Yahoo GBPUSD.json */; };
+		6557F4F21BEBC5D2003CD2BF /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6557F4F01BEBC5C1003CD2BF /* Yahoo GBPUSD.json */; };
+		6557F4F31BEBC5D7003CD2BF /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 6557F4F01BEBC5C1003CD2BF /* Yahoo GBPUSD.json */; };
 		656409411BEAABCA00F82B4D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409401BEAABCA00F82B4D /* FXYahooTests.swift */; };
 		656409421BEAABCA00F82B4D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409401BEAABCA00F82B4D /* FXYahooTests.swift */; };
 		656409431BEAABCA00F82B4D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656409401BEAABCA00F82B4D /* FXYahooTests.swift */; };
@@ -174,7 +174,7 @@
 		6557F4E31BEB8850003CD2BF /* NSDecimalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalExtensions.swift; sourceTree = "<group>"; };
 		6557F4E81BEB924D003CD2BF /* NSDecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalTests.swift; sourceTree = "<group>"; };
 		6557F4EC1BEB97AC003CD2BF /* NSDecimalNumberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberTests.swift; sourceTree = "<group>"; };
-		6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Yahoo GBPUSD.json"; path = "DVR Cassettes/Yahoo GBPUSD.json"; sourceTree = "<group>"; };
+		6557F4F01BEBC5C1003CD2BF /* Yahoo GBPUSD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Yahoo GBPUSD.json"; path = "DVR Cassettes/Yahoo GBPUSD.json"; sourceTree = "<group>"; };
 		656409401BEAABCA00F82B4D /* FXYahooTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXYahooTests.swift; sourceTree = "<group>"; };
 		656409441BEAB5DC00F82B4D /* FXOpenExchangeRatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXOpenExchangeRatesTests.swift; sourceTree = "<group>"; };
 		656409481BEAB88700F82B4D /* OpenExchangeRates.org USDEUR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "OpenExchangeRates.org USDEUR.json"; path = "DVR Cassettes/OpenExchangeRates.org USDEUR.json"; sourceTree = "<group>"; };
@@ -383,8 +383,8 @@
 		65FC56411BEA667300727556 /* Network Responses */ = {
 			isa = PBXGroup;
 			children = (
+				6557F4F01BEBC5C1003CD2BF /* Yahoo GBPUSD.json */,
 				656409481BEAB88700F82B4D /* OpenExchangeRates.org USDEUR.json */,
-				6564093C1BEAA82700F82B4D /* Yahoo GBPUSD.json */,
 			);
 			name = "Network Responses";
 			sourceTree = "<group>";
@@ -632,8 +632,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6557F4F11BEBC5CD003CD2BF /* Yahoo GBPUSD.json in Resources */,
 				656409491BEAB89400F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */,
-				6564093D1BEAA83000F82B4D /* Yahoo GBPUSD.json in Resources */,
 				658863B91BEA2B26003482ED /* Troll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,8 +656,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6557F4F21BEBC5D2003CD2BF /* Yahoo GBPUSD.json in Resources */,
 				6564094A1BEAB89B00F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */,
-				6564093E1BEAA83500F82B4D /* Yahoo GBPUSD.json in Resources */,
 				658863BA1BEA2B2C003482ED /* Troll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,8 +673,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6557F4F31BEBC5D7003CD2BF /* Yahoo GBPUSD.json in Resources */,
 				6564094B1BEAB8A100F82B4D /* OpenExchangeRates.org USDEUR.json in Resources */,
-				6564093F1BEAA83A00F82B4D /* Yahoo GBPUSD.json in Resources */,
 				658863BB1BEA2B30003482ED /* Troll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -83,15 +83,14 @@ class FXYahooTests: FXProviderTests {
     }
 
     func test__exhange_gbp_to_eur() {
-        let gbp: GBP = 100
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
-        TestableProvider.fx(gbp) { result in
+        TestableProvider.fx(100) { result in
             if let usd = result.value {
-                XCTAssertEqual(usd, 153.89)
+                XCTAssertEqual(usd, 152.37)
             }
             else {
-                XCTFail("Did not receive any USDs.")
+                XCTFail("Received error: \(result.error!).")
             }
             expectation.fulfill()
         }
