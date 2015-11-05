@@ -98,7 +98,7 @@ The protocol requires that we can construct a `NSURLRequest`.
 ```swift
 public static func request() -> NSURLRequest {
   return NSURLRequest(URL: NSURL(string: "https://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1")!)
-    }
+}
 ```
 
 The last requirement, is that the network result can be mapped into a `Result<FXQuote,FXError>`.
@@ -119,12 +119,51 @@ public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse
 
 Note that the provider doesn’t need to perform any networking, itself, it is all done by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
 
+# Creating custom currencies
 
+If your app has its own currency e.g. ⭐️s or 💎s or even 🐝s, you might want to consider making a type for it.
 
+Lets imagine we’re making *Hive.app* - where you compete with your friends to see who can get the biggest hive (measured in number of 🐝s).
 
+To create a custom currency, just conform to `CurrencyType`. 
 
+```swift
+protocol MyCustomCurrencyType: CurrencyType { }
 
-### Implementation Details
+extension Currency {
+    final class Bee: MyCustomCurrencyType {
+
+        static let code: String = "BEES"
+        static let symbol: String = "🐝"
+        static let scale: Int  = 0
+        static let formatter: NSNumberFormatter = {
+            let fmtr = NSNumberFormatter()
+            fmtr.numberStyle = .CurrencyStyle
+            fmtr.maximumFractionDigits = Currency.Bee.scale
+            fmtr.currencySymbol = Currency.Bee.symbol
+            return fmtr
+        }()
+    }
+}
+
+typealias Bees = _Money<Currency.Bee>
+```
+
+Just make sure that your currency code doesn’t clash with a real one - make it more than three characters to be sure.
+
+Now it’s possible to work with your own app’s currency as a proper money type.
+
+```swift
+let bees: Bees = 10_000
+print(“I have \(bees)”)
+```
+> I have 🐝10,000
+
+And of course if you have an IAP for purchasing in app currency, then I’m sure a custom FX provider would be handy.
+
+Take a look at the example project, Custom Money, for a an example of a custom local FX provider to exchange your 🐝s.
+
+## Implementation Details
 
 Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNumber` and `NSDecimal`. `NSDecimal` is faster, but is trickier to work with, and doesn’t have support for limiting the scale of the numbers (which is pretty important when working with currencies).
 
@@ -134,7 +173,7 @@ Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNum
 
 `DecimalNumberBehavior` is a protocol which exposes a  [`NSDecimalNumberBehaviors`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSDecimalNumberBehaviors_Protocol/) which should be used in calculations. This includes rounding style, scale, and when to throw exceptions.
 
-### Decimal
+### Decimal (_Decimal)
 
 Which leads us to `_Decimal<Behavior: DecimalNumberBehavior>` which is a value type implementing `DecimalNumberType` with an `NSDecimalNumber` storage type.
 
@@ -149,7 +188,14 @@ public typealias BankersDecimal = _Decimal<DecimalNumberBehavior.Bankers>
 
 This means, that `Decimal` is more than likely the type to use for most things.
 
-The `_Money` type uses `_Decimal` internally, except that its `DecimalNumberBehavior` is provided via its generic `CurrencyType` which refines `DecimalNumberBehavior`.
+### Money (_Money)
+The `_Money` type composes a `_Decimal` where its behavior is provided via its generic `CurrencyType` which refines `DecimalNumberBehavior`. `_Money` also conforms to `DecimalNumberType` which means that it can also be used with the operators.
+
+### Why not NSDecimal?
+`NSDecimal` would be a better storage type for `_Decimal`, however it doesn’t have the full `NSDecimalNumberBehaviors` support that `NSDecimalNumber` enjoys. In particular, specifying the scale is problematic. If anyone has any smart ideas, please get in touch. I’ve added an equivalent extension on `NSDecimal` as for `NSDecimalNumber`.
+
+### ValueCoding
+Both `_Decimal` and `_Money` conform to [`ValueCoding`](https://github.com/danthorpe/ValueCoding) which means they can be encoded and stored inside archives.
 
 
  
