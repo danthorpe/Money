@@ -82,6 +82,24 @@ class FaultyFXRemoteProvider<Provider: FXRemoteProviderType>: FXRemoteProviderTy
     }
 }
 
+
+class FakeLocalFX<B: MoneyType, C: MoneyType where
+    B.DecimalStorageType == BankersDecimal.DecimalStorageType,
+    C.DecimalStorageType == BankersDecimal.DecimalStorageType>: FXLocalProviderType {
+
+    typealias BaseMoney = B
+    typealias CounterMoney = C
+
+    static func name() -> String {
+        return "LocalFX"
+    }
+
+    static func quote() -> FXQuote {
+        return FXQuote(rate: 1.1)
+    }
+}
+
+
 class FXErrorTests: XCTestCase {
 
     func test__fx_error__equality() {
@@ -108,3 +126,11 @@ class FXProviderTests: XCTestCase {
     }
 }
 
+class FXLocalProviderTests: XCTestCase {
+
+    func test_fx() {
+        let money: Money = 10
+        let usd: USD = FakeLocalFX<Money, USD>.fx(money)
+        XCTAssertEqual(usd, 11)
+    }
+}
