@@ -128,10 +128,10 @@ Lets imagine we’re making *Hive.app* - where you compete with your friends to 
 To create a custom currency, just conform to `CurrencyType`. 
 
 ```swift
-protocol MyCustomCurrencyType: CurrencyType { }
+protocol HiveCurrencyType: CurrencyType { }
 
 extension Currency {
-    final class Bee: MyCustomCurrencyType {
+    final class Bee: HiveCurrencyType {
 
         static let code: String = "BEES"
         static let symbol: String = "🐝"
@@ -159,7 +159,7 @@ print(“I have \(bees)”)
 ```
 > I have 🐝10,000
 
-And of course if you have an IAP for purchasing in app currency, then I’m sure a custom FX provider would be handy.
+And of course if you have an IAP for purchasing in-app currency, then I’m sure a custom FX provider would be handy.
 
 Take a look at the example project, Custom Money, for a an example of a custom local FX provider to exchange your 🐝s.
 
@@ -173,7 +173,7 @@ Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNum
 
 `DecimalNumberBehavior` is a protocol which exposes a  [`NSDecimalNumberBehaviors`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSDecimalNumberBehaviors_Protocol/) which should be used in calculations. This includes rounding style, scale, and when to throw exceptions.
 
-### Decimal (_Decimal)
+### `_Decimal<Behavior: DecimalNumberBehavior>`
 
 Which leads us to `_Decimal<Behavior: DecimalNumberBehavior>` which is a value type implementing `DecimalNumberType` with an `NSDecimalNumber` storage type.
 
@@ -188,13 +188,13 @@ public typealias BankersDecimal = _Decimal<DecimalNumberBehavior.Bankers>
 
 This means, that `Decimal` is more than likely the type to use for most things.
 
-### Money (_Money)
+### `_Money<C: CurrencyType>`
 The `_Money` type composes a `_Decimal` where its behavior is provided via its generic `CurrencyType` which refines `DecimalNumberBehavior`. `_Money` also conforms to `DecimalNumberType` which means that it can also be used with the operators.
 
-### Why not NSDecimal?
+### Why not `NSDecimal`?
 `NSDecimal` would be a better storage type for `_Decimal`, however it doesn’t have the full `NSDecimalNumberBehaviors` support that `NSDecimalNumber` enjoys. In particular, specifying the scale is problematic. If anyone has any smart ideas, please get in touch. I’ve added an equivalent extension on `NSDecimal` as for `NSDecimalNumber`.
 
-### ValueCoding
+### `ValueCoding`
 Both `_Decimal` and `_Money` conform to [`ValueCoding`](https://github.com/danthorpe/ValueCoding) which means they can be encoded and stored inside archives.
 
 
