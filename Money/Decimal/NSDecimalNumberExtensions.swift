@@ -91,9 +91,6 @@ extension NSDecimalNumber: Comparable {
         let toSubtract = quotient.multiplyBy(other, withBehaviors: behaviors)
         let result = subtract(toSubtract, withBehaviors: behaviors)
 
-        if result.isNegative {
-            return result.negateWithBehaviors(behaviors)
-        }
         return result
     }
 }

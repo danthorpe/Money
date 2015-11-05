@@ -54,27 +54,27 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
     }
 
     @warn_unused_result
-    public func subtract(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+    public func subtract(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
         return _Decimal(storage: storage.subtract(other.storage, withBehaviors: behaviors))
     }
 
     @warn_unused_result
-    public func add(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+    public func add(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
         return _Decimal(storage: storage.add(other.storage, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func remainder(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+    public func remainder(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
         return _Decimal(storage: storage.remainder(other.storage, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func multiplyBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+    public func multiplyBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
         return _Decimal(storage: storage.multiplyBy(other.storage, withBehaviors: behaviors))
     }
 
     @warn_unused_result
-    public func divideBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Decimal {
+    public func divideBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
         return _Decimal(storage: storage.divideBy(other.storage, withBehaviors: behaviors))
     }
 }

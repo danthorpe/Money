@@ -1,5 +1,5 @@
 //
-//  NSDecimalExtensionTests.swift
+//  NSDecimalTests.swift
 //  Money
 //
 //  Created by Daniel Thorpe on 05/11/2015.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Money
 
-class NSDecimalExtensionTests: XCTestCase {
+class NSDecimalTests: XCTestCase {
 
     var decimalNumberA: NSDecimalNumber!
     var decimalNumberB: NSDecimalNumber!
@@ -48,11 +48,11 @@ class NSDecimalExtensionTests: XCTestCase {
     }
 
     func test__zero_is_greater_than_negative_one() {
-        XCTAssertTrue(NSDecimal.zero() > NSDecimal.one().negateWithRoundingMode(.RoundPlain))
+        XCTAssertTrue(NSDecimal.zero() > NSDecimal.one().negateWithRoundingMode(behaviors.roundingMode()))
     }
 
     func test__negative_one_is_negative() {
-        XCTAssertTrue(NSDecimal.one().negateWithRoundingMode(.RoundPlain).isNegative)
+        XCTAssertTrue(NSDecimal.one().negateWithRoundingMode(behaviors.roundingMode()).isNegative)
     }
 
     func test__zero_is_not_negative() {
