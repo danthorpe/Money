@@ -13,6 +13,10 @@ import Foundation
  This protocol defines the minimum interface needed for a 
  CurrencyType.
  
+ The interface used to represent a single currency. Note
+ that it is always used as a generic constraint on other
+ types.
+ 
  Typically framework consumers will not need to conform to
  this protocol, unless creating their own currencies. See
  the example project "Custom Money" for an example of this.

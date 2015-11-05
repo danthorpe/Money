@@ -21,7 +21,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
-  s.dependency        = 'Result'
   s.source_files      = 'Money/*.swift' 
+  
+  s.dependency 'Result', '0.6.0-beta.6'
+  s.dependency 'SwiftyJSON'    
 end
 
