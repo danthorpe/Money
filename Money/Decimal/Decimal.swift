@@ -87,8 +87,9 @@ public func <<B: DecimalNumberBehaviorType>(lhs: _Decimal<B>, rhs: _Decimal<B>) 
     return lhs.storage < rhs.storage
 }
 
-/// Standard `Decimal` with plain decimal number behavior
+/// `Decimal` with plain decimal number behavior
 public typealias Decimal = _Decimal<DecimalNumberBehavior.Plain>
+/// `BankersDecimal` with banking decimal number behavior
 public typealias BankersDecimal = _Decimal<DecimalNumberBehavior.Bankers>
 
 // MARK: - Value Coding

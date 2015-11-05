@@ -39,7 +39,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
 
     public let decimal: _Decimal<C>
 
-    public var storage: NSDecimalNumber {
+    public var storage: _Decimal<C>.DecimalStorageType {
         return decimal.storage
     }
 
@@ -55,7 +55,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
         decimal = value
     }
 
-    public init(storage: NSDecimalNumber) {
+    public init(storage: _Decimal<C>.DecimalStorageType) {
         decimal = _Decimal<DecimalNumberBehavior>(storage: storage)
     }
 
