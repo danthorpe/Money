@@ -78,45 +78,51 @@ Yahoo<USD,EUR>.fx(100) { euros in
 The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either the `FXProviderType.CounterMoney` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
 
 ### Creating custom FX service providers
-Create a custom FX service provider, is very simple. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `fx` method is provided via extensions on the protocols.
+
+Creating a custom FX service provider, is straightforward. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `fx` method is provided via extensions on the protocols.
 
 For a remote FX service provider, i.e. one which will make a network request to get a rate, we can look at the `Yahoo` provider to see how it works.
 
-Firstly, we subclass `FXRemoteProvider` which is generic. The generic types are both constrained to `MoneyType`. These both represent a [*currency pair*](https://en.wikipedia.org/wiki/Currency_pair).
+Firstly, we subclass the generic class `FXRemoteProvider`. The generic types are both constrained to `MoneyType`. The naming conventions follow those of a [currency pair](https://en.wikipedia.org/wiki/Currency_pair).
 
 ```swift
-public class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
+public class Yahoo<B: MoneyType, C: MoneyType>: FXRemoteProvider<B, C>, FXRemoteProviderType {
     // etc
 }
-``
-
-The protocol requires that we can construct a `NSURLRequest`. We can use the `Base` and `Counter` types to extract the currency codes.
-
-```swift
-    public static func request() -> NSURLRequest {
-        return NSURLRequest(URL: NSURL(string: "https://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1")!)
-    }
 ```
 
-Note that everything works on the static type, and the provider quite possibly does not need to have any storage itself.
+`FXRemoteProvider` provides the typealiases for `BaseMoney` and `CounterMoney` which will be needed to introspect the currency codes.
+
+The protocol requires that we can construct a `NSURLRequest`.
+
+```swift
+public static func request() -> NSURLRequest {
+  return NSURLRequest(URL: NSURL(string: "https://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1")!)
+    }
+```
 
 The last requirement, is that the network result can be mapped into a `Result<FXQuote,FXError>`.
 
 ```swift
-    public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
-        return result.analysis(
-            ifSuccess: { data, response in
-							let rate: BankersDecimal = 1.5 // or whatever	 
-							return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
-            },
-            ifFailure: { error in
-                return Result(error: .NetworkError(error))
-            }
-        )
+public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
+  return result.analysis(
+    ifSuccess: { data, response in
+      let rate: BankersDecimal = 1.5 // or whatever	 
+      return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
+    },
+    ifFailure: { error in
+      return Result(error: .NetworkError(error))
     }
+  )
+}
 ```
 
-Note that the provider doesn’t actually need to perform any networking, which is performed by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
+Note that the provider doesn’t need to perform any networking, itself, it is all done by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
+
+
+
+
+
 
 ### Implementation Details
 
@@ -128,7 +134,7 @@ Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNum
 
 `DecimalNumberBehavior` is a protocol which exposes a  [`NSDecimalNumberBehaviors`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSDecimalNumberBehaviors_Protocol/) which should be used in calculations. This includes rounding style, scale, and when to throw exceptions.
 
-# Decimal
+### Decimal
 
 Which leads us to `_Decimal<Behavior: DecimalNumberBehavior>` which is a value type implementing `DecimalNumberType` with an `NSDecimalNumber` storage type.
 
