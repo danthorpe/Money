@@ -35,7 +35,9 @@ func createFrontMatter(line: Writer) {
 func createCurrencyTypes(line: Writer) {
     for code in NSLocale.ISOCurrencyCodes() {
         line("")
+        line("    /// Currency \(code)")
         line("    public final class \(code): Currency.Base, _CurrencyType {")
+        line("        /// Lazy static storage for currency.")
         line("        public static var sharedInstance = \(code)(code: \"\(code)\")")
         line("    }")
     }
@@ -43,12 +45,12 @@ func createCurrencyTypes(line: Writer) {
 
 func createMoneyTypes(line: Writer) {
     line("")
-    let aliases: [String] = NSLocale.ISOCurrencyCodes().map { code in
-        let name = createMoneyTypeForCurrency(code)
-        return "public typealias \(code) = \(name)"
-    }
 
-    aliases.forEach(line)
+    for code in NSLocale.ISOCurrencyCodes() {
+        line("/// \(code) Money")
+        let name = createMoneyTypeForCurrency(code)
+        line("public typealias \(code) = \(name)")
+    }
 }
 
 func generate(outputPath: String) {
