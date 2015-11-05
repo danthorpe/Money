@@ -18,17 +18,17 @@ import SwiftyJSON
  */
 public protocol MoneyPairType {
 
-    /// The currency which is being traded/quoted
-    typealias CounterMoney: MoneyType
-
     /// The currency which the quote is in relation to.
     typealias BaseMoney: MoneyType
+
+    /// The currency which is being traded/quoted
+    typealias CounterMoney: MoneyType
 }
 
 // MARK: - FX Types
 
 /**
- # FXQuote
+ # Quote
  The minimum interface required to perform a foreign
  currency exchange.
 */
@@ -54,36 +54,35 @@ public class FXQuote {
          let eur: EUR = 100
          let usd: USD = rate.transactionValueForBaseValue(eur)
 
-     To support your own quote system (i.e. to add commission)
-     Subclass this, and override the this function.
+     Most foreign exchange services will build their commission
+     into their rates. So to implement a provider for a serivce
+     can work just like the `Yahoo` one here.
     */
     public func transactionValueForBaseValue<B: MoneyType, C: MoneyType where B.DecimalStorageType == BankersDecimal.DecimalStorageType, C.DecimalStorageType == BankersDecimal.DecimalStorageType>(base: B) -> C {
         return base.convertWithRate(rate)
     }
 }
 
-public struct FXTransaction<Base: MoneyType, Counter: MoneyType> {
-    let base: Base
-    let counter: Counter
-
-    init(base: Base, counter: Counter) {
-        self.base = base
-        self.counter = counter
-    }
-}
-
-
 // MARK: - FX Provider Errors
 
+/**
+ # FXError
+ This is an error type used in FX methods.
+*/
 public enum FXError: ErrorType, Equatable {
+
+    /// When there is a network error
     case NetworkError(NSError)
+
+    /// If there was no data/response
     case NoData
+
+    /// If the data was corrupted or invalid
     case InvalidData(NSData)
+
+    /// If a rate could not be found
     case RateNotFound(String)
 }
-
-
-
 
 /**
  # FX Provider
@@ -102,6 +101,38 @@ public protocol FXProviderType: MoneyPairType {
 
     /// The name of the provider.
     static func name() -> String
+}
+
+// MARK: - Protocol: Local Provider
+
+/**
+ # FX Local Provider
+ `FXLocalProvider` defines an interface for a FX service
+ which stores its rates locally, and can make synchronous
+ exchanges.
+
+ A typical usage for this would be when converting between
+ your applications custom currencies, for example in a game.
+*/
+public protocol FXLocalProviderType: FXProviderType {
+
+    /**
+     Generate the quote using the `BaseMoney` and 
+     `CounterMoney` generic types.
+    
+     - returns: a `FXQuote` which contains the rate.
+    */
+    static func quote() -> FXQuote
+}
+
+extension FXLocalProviderType where BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType, CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
+
+    /**
+     This is the primary API used to determine for Foreign Exchange transactions.
+     */
+    public static func fx(base: BaseMoney) -> CounterMoney {
+        return base.convertWithRate(quote().rate)
+    }
 }
 
 // MARK: - Protocol: Remote Provider
@@ -162,12 +193,8 @@ extension FXRemoteProviderType {
 
 extension FXRemoteProviderType where BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType, CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
 
-    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> FXTransaction<BaseMoney, CounterMoney> {
-        return { quote in
-            let counter: CounterMoney = quote.transactionValueForBaseValue(base)
-            let transaction = FXTransaction(base: base, counter: counter)
-            return transaction
-        }
+    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> CounterMoney {
+        return { $0.transactionValueForBaseValue(base) }
     }
 
     /**
@@ -180,10 +207,10 @@ extension FXRemoteProviderType where BaseMoney.DecimalStorageType == BankersDeci
             guard let usd = result.value?.counter else {
                 print("Received an `FXError`")
             }
-            print("We have \(usd)") // We have $89 (or whatever)
+            print("We have \(usd)") // We have $119 (or whatever)
          }
     */
-    public static func fx(base: BaseMoney, completion: Result<FXTransaction<BaseMoney, CounterMoney>, FXError> -> Void) -> NSURLSessionDataTask {
+    public static func fx(base: BaseMoney, completion: Result<CounterMoney, FXError> -> Void) -> NSURLSessionDataTask {
         let client = FXServiceProviderNetworkClient(session: session())
         let fxFromQuote = fxFromQuoteWithBase(base)
         return client.get(request(), adaptor: quoteFromNetworkResult) { completion($0.map(fxFromQuote)) }

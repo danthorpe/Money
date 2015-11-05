@@ -87,7 +87,7 @@ class FXYahooTests: FXProviderTests {
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
         TestableProvider.fx(gbp) { result in
-            if let usd = result.value?.counter {
+            if let usd = result.value {
                 XCTAssertEqual(usd, 153.89)
             }
             else {

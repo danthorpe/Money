@@ -47,8 +47,8 @@ typealias Bees = _Money<Currency.Bee>
 
 class BankRates {
 
-    static func rateForBase(base: String, counter: String) -> BankersDecimal {
-        return sharedInstance.rates[base]![counter]!
+    static func quoteForBase(base: String, counter: String) -> FXQuote {
+        return FXQuote(rate: sharedInstance.rates[base]![counter]!)
     }
 
     static let sharedInstance = BankRates()
@@ -73,7 +73,7 @@ class Bank<B: MoneyType, C: MoneyType where
     B.Currency: MyCustomCurrencyType,
     C.Currency: MyCustomCurrencyType,
     B.DecimalStorageType == BankersDecimal.DecimalStorageType,
-    C.DecimalStorageType == BankersDecimal.DecimalStorageType>: FXProviderType {
+    C.DecimalStorageType == BankersDecimal.DecimalStorageType>: FXLocalProviderType {
 
     typealias BaseMoney = B
     typealias CounterMoney = C
@@ -82,9 +82,8 @@ class Bank<B: MoneyType, C: MoneyType where
         return "App Bank"
     }
 
-    static func fx(base: BaseMoney) -> CounterMoney {
-        let rate = BankRates.rateForBase(BaseMoney.Currency.code, counter: CounterMoney.Currency.code)
-        return base.convertWithRate(rate)
+    static func quote() -> FXQuote {
+        return BankRates.quoteForBase(BaseMoney.Currency.code, counter: CounterMoney.Currency.code)
     }
 }
 
