@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
   s.source_files      = 'Money/*.swift' 
   
+  s.dependency 'ValueCoding'
   s.dependency 'Result', '0.6.0-beta.6'
   s.dependency 'SwiftyJSON'    
 end

@@ -1,3 +1,4 @@
+github "danthorpe/ValueCoding"
 github "antitypical/Result" >= 0.6
 github "SwiftyJSON/SwiftyJSON"
 github "danthorpe/DVR" "DVR_27_restore_print_and_abort"

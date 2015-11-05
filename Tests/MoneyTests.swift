@@ -263,3 +263,23 @@ class MoneyDescriptionTests: XCTestCase {
         XCTAssertEqual(Currency.JPY.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 }
+
+class MoneyValueCodingTests: XCTestCase {
+
+    var money: Money!
+
+    func archiveEncodedMoney() -> NSData {
+        return NSKeyedArchiver.archivedDataWithRootObject(money.encoded)
+    }
+
+    func unarchive(archive: NSData) -> Money? {
+        return Money.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
+    }
+
+    func test__money_encodes() {
+        money = 10
+        XCTAssertEqual(unarchive(archiveEncodedMoney()), money)
+    }
+}
+
+

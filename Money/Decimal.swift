@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ValueCoding
 
 // MARK: - NSDecimalNumber
 
@@ -96,6 +97,13 @@ extension NSDecimalNumber: Comparable {
     public func divideBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByDividingBy(other, withBehavior: behaviors)
     }
+}
+
+
+public protocol DecimalNumberBehaviorType {
+
+    /// Specify the decimal number (i.e. rounding, scale etc) for base 10 calculations
+    static var decimalNumberBehaviors: NSDecimalNumberBehaviors? { get }
 }
 
 /**
@@ -426,14 +434,6 @@ extension NSNumberFormatter {
     }
 }
 
-// MARK: - Conformance
-
-public protocol DecimalNumberBehaviorType {
-
-    /// Specify the decimal number (i.e. rounding, scale etc) for base 10 calculations
-    static var decimalNumberBehaviors: NSDecimalNumberBehaviors? { get }
-}
-
 public struct DecimalNumberBehavior {
 
     private static func behaviorWithRoundingMode(mode: NSRoundingMode) -> NSDecimalNumberBehaviors? {
@@ -461,5 +461,27 @@ public struct DecimalNumberBehavior {
 public typealias Decimal = _Decimal<DecimalNumberBehavior.Plain>
 public typealias BankersDecimal = _Decimal<DecimalNumberBehavior.Bankers>
 
+// MARK: - Value Coding
 
+extension _Decimal: ValueCoding {
+    public typealias Coder = _DecimalCoder<Behavior>
+}
+
+public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject, NSCoding, CodingType {
+
+    public let value: _Decimal<Behavior>
+
+    public required init(_ v: _Decimal<Behavior>) {
+        value = v
+    }
+
+    public init?(coder aDecoder: NSCoder) {
+        let storage = aDecoder.decodeObjectForKey("storage") as! NSDecimalNumber
+        value = _Decimal<Behavior>(storage: storage)
+    }
+
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(value.storage, forKey: "storage")
+    }
+}
 

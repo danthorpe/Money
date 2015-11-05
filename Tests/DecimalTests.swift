@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ValueCoding
 @testable import Money
 
 class DecimalTests: XCTestCase {
@@ -70,3 +71,21 @@ class DecimalNumberConversionTests: DecimalTests {
         XCTAssertEqual(money / decimal, 2)
     }
 }
+
+class DecimalValueCodingTests: DecimalTests {
+
+    func archiveEncodedDecimal() -> NSData {
+        return NSKeyedArchiver.archivedDataWithRootObject(decimal.encoded)
+    }
+
+    func unarchive(archive: NSData) -> Decimal? {
+        return Decimal.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
+    }
+
+    func test__decimal_encodes() {
+        decimal = 10
+        XCTAssertEqual(unarchive(archiveEncodedDecimal()), decimal)
+    }
+}
+
+
