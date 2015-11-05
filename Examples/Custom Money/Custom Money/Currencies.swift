@@ -1,0 +1,90 @@
+//
+//  Currencies.swift
+//  Custom Money
+//
+//  Created by Daniel Thorpe on 04/11/2015.
+//  Copyright © 2015 Daniel Thorpe. All rights reserved.
+//
+
+import Foundation
+import Money
+
+protocol MyCustomCurrencyType: CurrencyType { }
+
+extension Currency {
+
+    final class Heart: MyCustomCurrencyType {
+
+        static let code: String = "HEARTS"
+        static let symbol: String = "❤️"
+        static let scale: Int  = 0
+        static let formatter: NSNumberFormatter = {
+            let fmtr = NSNumberFormatter()
+            fmtr.numberStyle = .CurrencyStyle
+            fmtr.maximumFractionDigits = Currency.Heart.scale
+            fmtr.currencySymbol = Currency.Heart.symbol
+            return fmtr
+        }()
+    }
+
+    final class Bee: MyCustomCurrencyType {
+
+        static let code: String = "BEES"
+        static let symbol: String = "🐝"
+        static let scale: Int  = 0
+        static let formatter: NSNumberFormatter = {
+            let fmtr = NSNumberFormatter()
+            fmtr.numberStyle = .CurrencyStyle
+            fmtr.maximumFractionDigits = Currency.Bee.scale
+            fmtr.currencySymbol = Currency.Bee.symbol
+            return fmtr
+        }()
+    }
+}
+
+typealias Hearts = _Money<Currency.Heart>
+typealias Bees = _Money<Currency.Bee>
+
+class BankRates {
+
+    static func rateForBase(base: String, counter: String) -> BankersDecimal {
+        return sharedInstance.rates[base]![counter]!
+    }
+
+    static let sharedInstance = BankRates()
+
+    let rates: [String: [String: BankersDecimal]]
+
+    init() {
+        rates = [
+            "BEES": [
+                "BEES": 1.1,
+                "HEARTS": 0.3
+            ],
+            "HEARTS": [
+                "BEES": 7.3859,
+                "HEARTS": 0.8
+            ]
+        ]
+    }
+}
+
+class Bank<B: MoneyType, C: MoneyType where
+    B.Currency: MyCustomCurrencyType,
+    C.Currency: MyCustomCurrencyType,
+    B.DecimalStorageType == BankersDecimal.DecimalStorageType,
+    C.DecimalStorageType == BankersDecimal.DecimalStorageType>: FXProviderType {
+
+    typealias BaseMoney = B
+    typealias CounterMoney = C
+
+    static func name() -> String {
+        return "App Bank"
+    }
+
+    static func fx(base: BaseMoney) -> CounterMoney {
+        let rate = BankRates.rateForBase(BaseMoney.Currency.code, counter: CounterMoney.Currency.code)
+        return base.convertWithRate(rate)
+    }
+}
+

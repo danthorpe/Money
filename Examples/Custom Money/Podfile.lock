@@ -1,0 +1,20 @@
+PODS:
+  - Money (1.0.0):
+    - Result (= 0.6.0-beta.6)
+    - SwiftyJSON
+  - Result (0.6.0-beta.6)
+  - SwiftyJSON (2.3.1)
+
+DEPENDENCIES:
+  - Money (from `../../`)
+
+EXTERNAL SOURCES:
+  Money:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  Money: 10f8f029e9b2ffbb3a5a212c2ff5a64af3ac9261
+  Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+
+COCOAPODS: 0.39.0
