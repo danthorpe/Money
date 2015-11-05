@@ -63,7 +63,7 @@ let money = pounds + euros
 Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations.
 
 ## Foreign Currency Exchange (FX)
-To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, there is support for FX service providers. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own.
+To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own.
 
 The following code snippet represent a currency exchange using Yahoo’s currency converter.
 
@@ -173,11 +173,11 @@ pod ‘Money’
 ```
 
 ## Architectural style
-Swift is designed to have a strong focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 
+Swift is designed to have a focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 
 
 At the highest level *currency* is modeled as a protocol, `CurrencyType`. The protocol defines a few static properties like its symbol, and currency code. Therefore *money* is represented as a decimal number with a generic currency. Additionally, we make `CurrencyType` refine the protocol which defines how the decimal number behaves.
 
-Finally, we auto-generate the code which defines all the currencies, and money types.
+Finally, we auto-generate the code which defines all the currencies and money typealiases.
 
 ## Implementation Details
 
@@ -185,11 +185,11 @@ Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNum
 
 `DecimalNumberType` is a protocol which refines refines `SignedNumberType` and defines some functions (`add`, `subtract` etc to support the arithmetic). It is also generic over two types, the underlying storage, and the behaviors.
 
-`DecimalNumberType.DecimalStorageType` is so that conforming types can utilize either `NSDecimalNumber` or `NSDecimal` as their underling storage type.
+`DecimalNumberType.DecimalStorageType` exists so that conforming types can utilize either `NSDecimalNumber` or `NSDecimal` as their underling storage type.
 
 `DecimalNumberBehavior` is a protocol which exposes a  [`NSDecimalNumberBehaviors`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSDecimalNumberBehaviors_Protocol/) which should be used in calculations. This includes rounding style, scale, and when to throw exceptions.
 
-### `_Decimal<Behavior: DecimalNumberBehavior>`
+### `_Decimal`
 
 Which leads us to `_Decimal<Behavior: DecimalNumberBehavior>` which is a value type implementing `DecimalNumberType` with an `NSDecimalNumber` storage type.
 
@@ -198,16 +198,17 @@ There are two public typealiases for convenience.
 ```swift
 /// `Decimal` with plain decimal number behavior
 public typealias Decimal = _Decimal<DecimalNumberBehavior.Plain>
+
 /// `BankersDecimal` with banking decimal number behavior
 public typealias BankersDecimal = _Decimal<DecimalNumberBehavior.Bankers>
 ```
 
 This means, that `Decimal` is more than likely the type to use for most things.
 
-### `_Money<C: CurrencyType>`
-The `_Money` type composes a `_Decimal` where its behavior is provided via its generic `CurrencyType` which refines `DecimalNumberBehavior`. `_Money` also conforms to `DecimalNumberType` which means that it can also be used with the operators.
+### `_Money`
+The `_Money<C: CurrencyType>` type composes a `_Decimal<C>`. Its behavior is provided via its generic `CurrencyType` which refines `DecimalNumberBehavior`. `_Money` also conforms to `DecimalNumberType` which means that it can also be used with the operators.
 
-### Why not `NSDecimal`?
+### Why not use `NSDecimal`?
 `NSDecimal` would be a better storage type for `_Decimal`, however it doesn’t have the full `NSDecimalNumberBehaviors` support that `NSDecimalNumber` enjoys. In particular, specifying the scale is problematic. If anyone has any smart ideas, please get in touch. I’ve added an equivalent extension on `NSDecimal` as for `NSDecimalNumber`.
 
 ### `ValueCoding`
