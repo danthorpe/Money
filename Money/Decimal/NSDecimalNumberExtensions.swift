@@ -30,13 +30,7 @@ public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
 extension NSDecimalNumber: Comparable {
 
     public var isNegative: Bool {
-        return NSDecimalNumber.zero().compare(self) == .OrderedDescending
-    }
-
-    public func negateWithBehaviors(behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
-        let negativeOne = NSDecimalNumber(mantissa: 1, exponent: 0, isNegative: true)
-        let result = decimalNumberByMultiplyingBy(negativeOne, withBehavior: behaviors)
-        return result
+        return self < NSDecimalNumber.zero()
     }
 
     @warn_unused_result
@@ -53,26 +47,6 @@ extension NSDecimalNumber: Comparable {
     @warn_unused_result
     public func add(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByAdding(other, withBehavior: behaviors)
-    }
-
-    /**
-     The remainder of dividing another `DecimalNumberType` into the receiver.
-     - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
-     */
-    @warn_unused_result
-    public func remainder(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
-        let roundingMode: NSRoundingMode = Int(isNegative) ^ Int(other.isNegative) ? .RoundUp : .RoundDown
-        let roundingBehaviors = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-        let quotient = divideBy(other, withBehaviors: roundingBehaviors)
-        let toSubtract = quotient.multiplyBy(other, withBehaviors: behaviors)
-        let result = subtract(toSubtract, withBehaviors: behaviors)
-
-        if result.isNegative {
-            return result.negateWithBehaviors(behaviors)
-        }
-        return result
     }
 
     /**
@@ -95,6 +69,32 @@ extension NSDecimalNumber: Comparable {
     @warn_unused_result
     public func divideBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByDividingBy(other, withBehavior: behaviors)
+    }
+
+    public func negateWithBehaviors(behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+        let negativeOne = NSDecimalNumber(mantissa: 1, exponent: 0, isNegative: true)
+        let result = decimalNumberByMultiplyingBy(negativeOne, withBehavior: behaviors)
+        return result
+    }
+
+    /**
+     The remainder of dividing another `DecimalNumberType` into the receiver.
+     - parameter other: another instance of this type.
+     - parameter behaviors: an optional NSDecimalNumberBehaviors?
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func remainder(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+        let roundingMode: NSRoundingMode = Int(isNegative) ^ Int(other.isNegative) ? .RoundUp : .RoundDown
+        let roundingBehaviors = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+        let quotient = divideBy(other, withBehaviors: roundingBehaviors)
+        let toSubtract = quotient.multiplyBy(other, withBehaviors: behaviors)
+        let result = subtract(toSubtract, withBehaviors: behaviors)
+
+        if result.isNegative {
+            return result.negateWithBehaviors(behaviors)
+        }
+        return result
     }
 }
 
