@@ -8,4 +8,5 @@
 [![Platform](https://img.shields.io/cocoapods/p/Money.svg?style=flat)](http://cocoadocs.org/docsets/Money)
 
 # Money
-Money is a Swift cross platform framework for iOS, watchOS, tvOS and OS X. It provides types and functionality to help represent and manipulate money and currency related information. 
+
+Money is a Swift framework for iOS, watchOS, tvOS and OS X. It provides types and functionality to represent, calculate and convert money in the 298 [ISO currencies](https://en.wikipedia.org/wiki/ISO_4217). 
