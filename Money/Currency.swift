@@ -57,6 +57,13 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
 
 public extension CurrencyType {
 
+    /**
+     Default implementation of the `NSDecimalNumberBehaviors` for
+     the currency. This uses `NSRoundingMode.RoundBankers` and the
+     scale of the currency as given by the localized formatter.
+     
+     - returns: a `NSDecimalNumberBehaviors`
+    */
     static var decimalNumberBehaviors: NSDecimalNumberBehaviors {
         return NSDecimalNumberHandler(
             roundingMode: .RoundBankers,

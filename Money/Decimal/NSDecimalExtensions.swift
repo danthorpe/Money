@@ -27,26 +27,51 @@
 
 import Foundation
 
-// MARK: - NSDecimal
+// MARK: - Equality
 
 public func ==(var lhs: NSDecimal, var rhs: NSDecimal) -> Bool {
     return NSDecimalCompare(&lhs, &rhs) == .OrderedSame
 }
 
+// MARK: - Comparable
+
 public func <(var lhs: NSDecimal, var rhs: NSDecimal) -> Bool {
     return NSDecimalCompare(&lhs, &rhs) == .OrderedAscending
 }
 
+/**
+ # NSDecimal Extension
+ This is an extension on NSDecimal to support `DecimalNumberType` and
+ `Decimal`.
+ */
 extension NSDecimal: Comparable {
 
+    /**
+     Static function to get the `NSDecimal` representation of 
+     zero.
+     
+     - returns: a `NSDecimal` of zero.
+    */
     public static func zero() -> NSDecimal {
         return NSDecimalNumber.zero().decimalValue
     }
 
+    /**
+     Static function to get the `NSDecimal` representation of
+     positive one.
+
+     - returns: a `NSDecimal` of one.
+     */
     public static func one() -> NSDecimal {
         return NSDecimalNumber.one().decimalValue
     }
 
+    /**
+     Boolean flag to indicate if the receive is a negative
+     number.
+     
+     - returns: a `Bool` if the value is below zero.
+    */
     public var isNegative: Bool {
         return self < NSDecimal.zero()
     }
@@ -55,6 +80,13 @@ extension NSDecimal: Comparable {
         self = NSDecimal.zero()
     }
 
+    /**
+     Subtract a `NSDecimal` from the receiver.
+
+     - parameter other: another `NSDecimal`.
+     - parameter roundingMode: the NSRoundingMode to use for the calculation.
+     - returns: a `NSDecimal`.
+     */
     @warn_unused_result
     public func subtract(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
@@ -63,6 +95,13 @@ extension NSDecimal: Comparable {
         return result
     }
 
+    /**
+     Add a `NSDecimal` to the receiver.
+
+     - parameter other: another `NSDecimal`.
+     - parameter roundingMode: the NSRoundingMode to use for the calculation.
+     - returns: a `NSDecimal`.
+     */
     @warn_unused_result
     public func add(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
@@ -71,6 +110,13 @@ extension NSDecimal: Comparable {
         return result
     }
 
+    /**
+     Multiply a `NSDecimal` with the receiver.
+
+     - parameter other: another `NSDecimal`.
+     - parameter roundingMode: the NSRoundingMode to use for the calculation.
+     - returns: a `NSDecimal`.
+     */
     @warn_unused_result
     public func multiplyBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
@@ -79,6 +125,13 @@ extension NSDecimal: Comparable {
         return result
     }
 
+    /**
+     Divide the receiver by a matching `NSDecimal`.
+
+     - parameter other: another `NSDecimal`.
+     - parameter roundingMode: the NSRoundingMode to use for the calculation.
+     - returns: a `NSDecimal`.
+     */
     @warn_unused_result
     public func divideBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
@@ -87,12 +140,25 @@ extension NSDecimal: Comparable {
         return result
     }
 
+    /**
+     Calculates the negative of the receiver.
+
+     - parameter roundingMode: the NSRoundingMode to use for the calculation.
+     - returns: a `NSDecimal`.
+     */
     public func negateWithRoundingMode(roundingMode: NSRoundingMode) -> NSDecimal {
         let negativeOne = NSDecimal.zero().subtract(NSDecimal.one(), withRoundingMode: roundingMode)
         let result = multiplyBy(negativeOne, withRoundingMode: roundingMode)
         return result
     }
 
+    /**
+     The remainder of dividing another `NSDecimal` into the receiver.
+
+     - parameter other: another `NSDecimal`.
+     - parameter roundingMode: the NSRoundingMode to use for the calculation.
+     - returns: a `NSDecimal`.
+     */
     @warn_unused_result
     public func remainder(_rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         let lhs = NSDecimalNumber(decimal: self)

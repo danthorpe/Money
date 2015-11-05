@@ -31,7 +31,7 @@ import SwiftyJSON
 
 /**
  # MoneyPairType
- Used to represent currency pairs. E.g. the pair
+ Used to represent currency pairs.
 
  - see: [Wikipedia](https://en.wikipedia.org/wiki/Currency_pair)
  */
@@ -205,6 +205,10 @@ public protocol FXRemoteProviderType: FXProviderType {
 
 extension FXRemoteProviderType {
 
+    /**
+     Default implementation to return the shared
+     `NSURLSession`.
+    */
     public static func session() -> NSURLSession {
         return NSURLSession.sharedSession()
     }
@@ -262,16 +266,47 @@ public class FXRemoteProvider<B: MoneyType, T: MoneyType> {
 
 // MARK: - Yahoo FX Service Provider
 
-public class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
+/**
+ # Yahoo FX
+ This type uses Yahoo's Currency Converter. E.g.
 
+ It is generic over two `MoneyType`s, and is only 
+ used as a type - there is no initializer.
+
+ ```swift
+ Yahoo<USD,JPY>.fx(100) { jpy in 
+    print("\(jpy)") // is a Result<JPY,FXError>
+ }
+ ```
+
+*/
+public final class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
+
+    /**
+     Access the name of the FX provider (e.g. "Yahoo USDEUR"
+     
+     - returns: a `String`.
+    */
     public static func name() -> String {
         return "Yahoo \(Base.Currency.code)\(Counter.Currency.code)"
     }
 
+    /**
+     Constructs the `NSURLRequest` to Yahoo's currency convertor service.
+
+     - returns: a `NSURLRequest`.
+     */
     public static func request() -> NSURLRequest {
         return NSURLRequest(URL: NSURL(string: "https://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1")!)
     }
 
+    /**
+     This function is used to map the network result into a quote.
+
+     - paramter result: the network result, represented as `Result<T,E>` where
+     the value, T, is a tuple of data and response. The error, E, is an `NSError`.
+     - returns: a `Result<FXQuote, FXError>`.
+     */
     public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
         return result.analysis(
 
@@ -353,7 +388,7 @@ public class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, 
  create the following subclass:
 
 
-        class OpenExchangeRates<Counter: MoneyType>: _OpenExchangeRates<Counter, MyOpenExchangeRatesAppID> { }
+        class OpenExchangeRates<Base: MoneyType, Counter: MoneyType>: _OpenExchangeRates<Base, Counter, MyOpenExchangeRatesAppID> { }
 
  - see: [https://openexchangerates.org](https://openexchangerates.org)
  - see: [CocoaPod Keys](https://github.com/orta/cocoapods-keys)
@@ -363,6 +398,12 @@ public protocol OpenExchangeRatesAppID {
     static var app_id: String { get }
 }
 
+/**
+ # Open Exchange Rates
+ Base class for OpenExchangeRates.org. See the docs above.
+
+ - see: `OpenExchangeRatesAppID`
+*/
 public class _OpenExchangeRates<Base: MoneyType, Counter: MoneyType, ID: OpenExchangeRatesAppID>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
 
     public static func name() -> String {
@@ -411,6 +452,12 @@ public class _OpenExchangeRates<Base: MoneyType, Counter: MoneyType, ID: OpenExc
     }
 }
 
+/**
+ # Open Exchange Rates
+ Forever Free class for OpenExchangeRates.org. See the docs above.
+
+ - see: `OpenExchangeRatesAppID`
+ */
 public class _ForeverFreeOpenExchangeRates<Counter: MoneyType, ID: OpenExchangeRatesAppID>: _OpenExchangeRates<USD, Counter, ID> { }
 
 

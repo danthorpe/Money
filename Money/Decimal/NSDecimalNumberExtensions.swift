@@ -27,11 +27,13 @@
 
 import Foundation
 
-// MARK: - NSDecimalNumber
+// MARK: - Equality
 
 public func ==(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
     return lhs.isEqualToNumber(rhs)
 }
+
+// MARK: - Comparable
 
 public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
     return lhs.compare(rhs) == .OrderedAscending
@@ -39,7 +41,7 @@ public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
 
 /**
  # NSDecimalNumber Extension
- These is an extension on NSDecimalNumber to support `DecimalNumberType` and
+ This is an extension on NSDecimalNumber to support `DecimalNumberType` and
  `Decimal`.
 
  Note that NSDecimalNumber cannot conform to `DecimalNumberType` directly
@@ -52,16 +54,24 @@ extension NSDecimalNumber: Comparable {
         return self < NSDecimalNumber.zero()
     }
 
+    /**
+     Subtract a `NSDecimalNumber` from the receiver.
+
+     - parameter other: another `NSDecimalNumber`.
+     - parameter behaviors: an optional NSDecimalNumberBehaviors?
+     - returns: a `NSDecimalNumber`.
+     */
     @warn_unused_result
     public func subtract(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberBySubtracting(other, withBehavior: behaviors)
     }
 
     /**
-     Add a matching `DecimalNumberType` to the receiver.
-     - parameter other: another instance of this type.
+     Add a `NSDecimalNumber` to the receiver.
+
+     - parameter other: another `NSDecimalNumber`.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
+     - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
     public func add(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
@@ -69,10 +79,11 @@ extension NSDecimalNumber: Comparable {
     }
 
     /**
-     Multiply a matching `DecimalNumberType` with the receiver.
-     - parameter other: another instance of this type.
+     Multiply a `NSDecimalNumber` with the receiver.
+     
+     - parameter other: another `NSDecimalNumber`.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
+     - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
     public func multiplyBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
@@ -80,16 +91,23 @@ extension NSDecimalNumber: Comparable {
     }
 
     /**
-     Divide the receiver by a matching `DecimalNumberType`.
-     - parameter other: another instance of this type.
+     Divide the receiver by a matching `NSDecimalNumber`.
+
+     - parameter other: another `NSDecimalNumber`.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
+     - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
     public func divideBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByDividingBy(other, withBehavior: behaviors)
     }
 
+    /**
+     Calculates the negative of the receiver.
+
+     - parameter behaviors: an optional NSDecimalNumberBehaviors?
+     - returns: a `NSDecimalNumber`.
+     */
     public func negateWithBehaviors(behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         let negativeOne = NSDecimalNumber(mantissa: 1, exponent: 0, isNegative: true)
         let result = decimalNumberByMultiplyingBy(negativeOne, withBehavior: behaviors)
@@ -97,10 +115,11 @@ extension NSDecimalNumber: Comparable {
     }
 
     /**
-     The remainder of dividing another `DecimalNumberType` into the receiver.
-     - parameter other: another instance of this type.
+     The remainder of dividing another `NSDecimalNumber` into the receiver.
+     
+     - parameter other: another `NSDecimalNumber`.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
+     - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
     public func remainder(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {

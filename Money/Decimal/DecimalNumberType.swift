@@ -83,6 +83,7 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
      Initialize a new `DecimalNumberType` with the underlying storage.
      This is necessary in order to convert between different decimal number
      types.
+     
      - parameter storage: the underlying decimal storage type
      e.g. NSDecimalNumber or NSDecimal
      */
@@ -90,6 +91,7 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
 
     /**
      Subtract a matching `DecimalNumberType` from the receiver.
+     
      - parameter other: another instance of this type.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
@@ -99,6 +101,7 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
 
     /**
      Add a matching `DecimalNumberType` to the receiver.
+     
      - parameter other: another instance of this type.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
@@ -107,16 +110,8 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
     func add(_: Self, withBehaviors: NSDecimalNumberBehaviors) -> Self
 
     /**
-     The remainder of dividing another `DecimalNumberType` into the receiver.
-     - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
-     */
-    @warn_unused_result
-    func remainder(_: Self, withBehaviors: NSDecimalNumberBehaviors) -> Self
-
-    /**
      Multiply a matching `DecimalNumberType` with the receiver.
+     
      - parameter other: another instance of this type.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
@@ -138,6 +133,7 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
 
     /**
      Divide the receiver by a matching `DecimalNumberType`.
+     
      - parameter other: another instance of this type.
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
@@ -145,9 +141,27 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
     @warn_unused_result
     func divideBy(_: Self, withBehaviors: NSDecimalNumberBehaviors) -> Self
 
+    /**
+     Divide the receiver by another `DecimalNumberType`.  The other
+     `DecimalNumberType` must have the same underlying `DecimalStorageType` as
+     this `DecimalNumberType`.
 
+     - parameter other: another `DecimalNumberType` value of different type.
+     - parameter behaviors: an optional NSDecimalNumberBehaviors?
+     - returns: another instance of this type.
+     */
     @warn_unused_result
     func divideBy<Other: DecimalNumberType where Other.DecimalStorageType == DecimalStorageType>(_: Other, withBehaviors: NSDecimalNumberBehaviors) -> Other
+
+    /**
+     The remainder of dividing another `DecimalNumberType` into the receiver.
+     
+     - parameter other: another instance of this type.
+     - parameter behaviors: an optional NSDecimalNumberBehaviors?
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    func remainder(_: Self, withBehaviors: NSDecimalNumberBehaviors) -> Self
 }
 
 // MARK: - Subtraction
@@ -286,6 +300,7 @@ extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
 
 extension DecimalNumberType where Self.IntegerLiteralType == Int {
 
+    /// Get the reciprocal of the receiver.
     public var reciprocal: Self {
         return Self(integerLiteral: 1).divideBy(self, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors)
     }
