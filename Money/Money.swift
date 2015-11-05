@@ -68,27 +68,27 @@ public struct _Money<C: CurrencyType>: MoneyType {
     }
     
     @warn_unused_result
-    public func subtract(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+    public func subtract(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
         return _Money(decimal.subtract(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func add(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+    public func add(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
         return _Money(decimal.add(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func remainder(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+    public func remainder(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
         return _Money(decimal.remainder(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func multiplyBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+    public func multiplyBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
         return _Money(decimal.multiplyBy(other.decimal, withBehaviors: behaviors))
     }
     
     @warn_unused_result
-    public func divideBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> _Money<C> {
+    public func divideBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
         return _Money(decimal.divideBy(other.decimal, withBehaviors: behaviors))
     }
 }

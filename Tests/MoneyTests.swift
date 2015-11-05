@@ -131,7 +131,7 @@ class MoneyRemainderTests: XCTestCase {
     func test__remainer_all_negative() {
         dividend = -37.50
         divisor = -5
-        XCTAssertEqual(dividend % divisor, 2.50)
+        XCTAssertEqual(dividend % divisor, -2.50)
     }
 
     func test__remainer_negative_divisor() {
@@ -143,7 +143,7 @@ class MoneyRemainderTests: XCTestCase {
     func test__remainer_negative_dividend() {
         dividend = -37.50
         divisor = 5
-        XCTAssertEqual(dividend % divisor, 2.50)
+        XCTAssertEqual(dividend % divisor, -2.50)
     }
 }
 

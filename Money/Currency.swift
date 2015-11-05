@@ -38,7 +38,7 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
 
 public extension CurrencyType {
 
-    static var decimalNumberBehaviors: NSDecimalNumberBehaviors? {
+    static var decimalNumberBehaviors: NSDecimalNumberBehaviors {
         return NSDecimalNumberHandler(
             roundingMode: .RoundBankers,
             scale: Int16(scale),
