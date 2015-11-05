@@ -60,12 +60,12 @@ let money = pounds + euros
 ```
 > // Binary operator '+' cannot be applied to operands of type 'GBP' (aka '_Money&lt;Currency.GBP&gt;') and 'EUR' (aka '_Money&lt;Currency.EUR&gt;')
 
-Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations. This functionality is possible thanks to the underlying support for decimal arithmetic.
+Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations.
 
 ## Foreign Currency Exchange (FX)
-To represent foreign exchange transaction, i.e. converting `USD` to `EUR`, there is support for arbitrary FX service providers. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services.
+To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, there is support for FX service providers. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own.
 
-The following code represent a currency exchange, using Yahoo’s currency converter.
+The following code snippet represent a currency exchange using Yahoo’s currency converter.
 
 ```swift
 Yahoo<USD,EUR>.fx(100) { euros in
@@ -79,7 +79,7 @@ The result, delivered asynchronously, uses [`Result`](http://github.com/antitypi
 
 ### Creating custom FX service providers
 
-Creating a custom FX service provider, is straightforward. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `fx` method is provided via extensions on the protocols.
+Creating a custom FX service provider is straightforward. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `fx` method is provided via extensions on the protocols.
 
 For a remote FX service provider, i.e. one which will make a network request to get a rate, we can look at the `Yahoo` provider to see how it works.
 
@@ -103,6 +103,8 @@ public static func request() -> NSURLRequest {
 
 The last requirement, is that the network result can be mapped into a `Result<FXQuote,FXError>`.
 
+`FXQuote` is a class (so it can be subclassed if needed), which composes the exchange rate to be used. The rate is a `BankersDecimal` (see below on the decimal implementation details).
+
 ```swift
 public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
   return result.analysis(
@@ -117,7 +119,7 @@ public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse
 }
 ```
 
-Note that the provider doesn’t need to perform any networking, itself, it is all done by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
+Note that the provider doesn’t need to perform any networking itself. It is all done by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
 
 # Creating custom currencies
 
@@ -162,6 +164,13 @@ print(“I have \(bees)”)
 And of course if you have an IAP for purchasing in-app currency, then I’m sure a custom FX provider would be handy.
 
 Take a look at the example project, Custom Money, for a an example of a custom local FX provider to exchange your 🐝s.
+
+## Architectural style
+Swift is designed to have a strong focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 
+
+At the highest level *currency* is modeled as a protocol, `CurrencyType`. The protocol defines a few static properties like its symbol, and currency code. Therefore *money* is represented as a decimal number with a generic currency. Additionally, we make `CurrencyType` refine the protocol which defines how the decimal number behaves.
+
+Finally, we auto-generate the code which defines all the currencies, and money types.
 
 ## Implementation Details
 
