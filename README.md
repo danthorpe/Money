@@ -23,10 +23,15 @@ print("I'll give \(money) to charity.”)
 will print out
 
 > I'll give $100.00 to charity 
+
 when the region is set to United States
+
 > I'll give £100.00 to charity
+
 when the region is set to United Kingdom
+
 > I'll give CN¥100.00 to charity
+
 when the region is set to China
 
 You get the idea.
