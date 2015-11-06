@@ -109,12 +109,6 @@ class FXErrorTests: XCTestCase {
 
 class FXProviderTests: XCTestCase {
 
-    func createGarbageData() -> NSData {
-        let path = NSBundle(forClass: self.dynamicType).pathForResource("Troll", ofType: "png")
-        let data = NSData(contentsOfFile: path!)
-        return data!
-    }
-
     func dvrJSONFromCassette(name: String) -> JSON? {
         guard let path = NSBundle(forClass: self.dynamicType).pathForResource(name, ofType: "json"),
             data = NSData(contentsOfFile: path) else {
@@ -132,5 +126,23 @@ class FXLocalProviderTests: XCTestCase {
         let money: Money = 10
         let usd: USD = FakeLocalFX<Money, USD>.fx(money)
         XCTAssertEqual(usd, 11)
+    }
+}
+
+class FXQuoteTests: XCTestCase {
+
+    var quote: FXQuote!
+
+    func archiveEncodedQuote() -> NSData {
+        return NSKeyedArchiver.archivedDataWithRootObject(quote)
+    }
+
+    func unarchive(archive: NSData) -> FXQuote? {
+        return NSKeyedUnarchiver.unarchiveObjectWithData(archive) as? FXQuote
+    }
+
+    func test__quote_encodes() {
+        quote = FXQuote(rate: 1.5409)
+        XCTAssertEqual(unarchive(archiveEncodedQuote())!.rate, quote.rate)
     }
 }

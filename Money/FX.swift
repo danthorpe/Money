@@ -26,6 +26,7 @@
 
 
 import Foundation
+import ValueCoding
 import Result
 import SwiftyJSON
 
@@ -51,7 +52,7 @@ public protocol MoneyPairType {
  The minimum interface required to perform a foreign
  currency exchange.
 */
-public class FXQuote {
+public class FXQuote: NSObject, NSCoding {
 
     /// The exchange rate, stored as a `BankersDecimal`.
     public let rate: BankersDecimal
@@ -61,6 +62,14 @@ public class FXQuote {
     */
     public init(rate: BankersDecimal) {
         self.rate = rate
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        rate = BankersDecimal.decode(aDecoder.decodeObjectForKey("rate"))!
+    }
+
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(rate.encoded, forKey: "rate")
     }
 
     /**
