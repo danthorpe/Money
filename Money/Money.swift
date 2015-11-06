@@ -121,8 +121,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func subtract(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
-        return _Money(decimal.subtract(other.decimal, withBehaviors: behaviors))
+    public func subtract(other: _Money) -> _Money {
+        return _Money(decimal.subtract(other.decimal))
     }
 
     /**
@@ -133,8 +133,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func add(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
-        return _Money(decimal.add(other.decimal, withBehaviors: behaviors))
+    public func add(other: _Money) -> _Money {
+        return _Money(decimal.add(other.decimal))
     }
 
     /**
@@ -146,8 +146,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      */
 
     @warn_unused_result
-    public func multiplyBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
-        return _Money(decimal.multiplyBy(other.decimal, withBehaviors: behaviors))
+    public func multiplyBy(other: _Money) -> _Money {
+        return _Money(decimal.multiplyBy(other.decimal))
     }
 
     /**
@@ -158,8 +158,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func divideBy(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
-        return _Money(decimal.divideBy(other.decimal, withBehaviors: behaviors))
+    public func divideBy(other: _Money) -> _Money {
+        return _Money(decimal.divideBy(other.decimal))
     }
 
     /**
@@ -170,8 +170,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func remainder(other: _Money<C>, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Money<C> {
-        return _Money(decimal.remainder(other.decimal, withBehaviors: behaviors))
+    public func remainder(other: _Money) -> _Money {
+        return _Money(decimal.remainder(other.decimal))
     }
 }
 
@@ -222,15 +222,16 @@ extension _Money: CustomStringConvertible {
 
 // MARK: - MoneyType Extension
 
-extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
+public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
 
     /**
      Use a `BankersDecimal` to convert the receive into another `MoneyType`. To use this
      API the underlying `DecimalStorageType`s between the receiver, the other `MoneyType` 
      must both be the same a that of `BankersDecimal` (which luckily they are).
     */
-    public func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
-        return multiplyBy(Other(storage: rate.storage), withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors)
+    @warn_unused_result
+    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
+        return multiplyBy(Other(storage: rate.storage))
     }
 }
 
