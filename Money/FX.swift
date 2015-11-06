@@ -225,27 +225,54 @@ extension FXRemoteProviderType {
 
 extension FXRemoteProviderType where BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType, CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
 
-    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> CounterMoney {
-        return { $0.transactionValueForBaseValue(base) }
+    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> (BaseMoney, FXQuote, CounterMoney) {
+        return { (base, $0, $0.transactionValueForBaseValue(base)) }
     }
 
     /**
-     # FX
+     # FX - Get Quote
      This is the primary API used to determine for Foreign Exchange transactions. Using the
      `Yahoo` FX Provider as an example, we would use it like this..
+
+        Yahoo<GBP, USD>.quote(100) { result in
+             guard let (pounds, quote, usd) = result.value else {
+                 error("Received an `FXError`")
+             }
+             print("Exchanged \(pounds) into \(usd) with a rate of \(quote.rate)")
+          }
      
-         let gbp: GBP = 100 // We have £100
-         Yahoo<GBP, USD>.fx(gbp) { result in
+      - parameter base: the `BaseMoney` which is a `MoneyType`. Because it's literal 
+     convertible, this can receive a literal if you're just playing.
+      - parameter completion: a completion block which receives a `Result<T, E>`. 
+     The error is an `FXError` value, and the result "value" is a tuple, of the
+     base money, the quote, and the counter money, or `(BaseMoney, FXQuote, CounterMoney)`.
+     - returns: an `NSURLSessionDataTask`.
+     */
+    public static func quote(base: BaseMoney, completion: Result<(BaseMoney, FXQuote, CounterMoney), FXError> -> Void) -> NSURLSessionDataTask {
+        let client = FXServiceProviderNetworkClient(session: session())
+        let fxFromQuote = fxFromQuoteWithBase(base)
+        return client.get(request(), adaptor: quoteFromNetworkResult) { completion($0.map(fxFromQuote)) }
+    }
+
+    /**
+     # FX - Get Counter Money
+     This is a convenience API used to determine for Foreign Exchange transactions. Using the
+     `Yahoo` FX Provider as an example, we would use it like this..
+
+         Yahoo<GBP, USD>.fx(100) { result in
             guard let usd = result.value?.counter else {
                 print("Received an `FXError`")
             }
             print("We have \(usd)") // We have $119 (or whatever)
          }
+     - parameter base: the `BaseMoney` which is a `MoneyType`. Because it's literal
+     convertible, this can receive a literal if you're just playing.
+     - parameter completion: a completion block which receives a `Result<T, E>`.
+     The error is an `FXError` value, and the result "value" is the `CounterMoney`.
+     - returns: an `NSURLSessionDataTask`.
     */
     public static func fx(base: BaseMoney, completion: Result<CounterMoney, FXError> -> Void) -> NSURLSessionDataTask {
-        let client = FXServiceProviderNetworkClient(session: session())
-        let fxFromQuote = fxFromQuoteWithBase(base)
-        return client.get(request(), adaptor: quoteFromNetworkResult) { completion($0.map(fxFromQuote)) }
+        return quote(base) { completion($0.map { $0.2 }) }
     }
 }
 
