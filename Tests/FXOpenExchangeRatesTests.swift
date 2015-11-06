@@ -47,8 +47,6 @@ class FXFreeOpenExchangeRatesTests: FXProviderTests {
     typealias TestableProvider = TestableFXRemoteProvider<Provider>
     typealias FaultyProvider = FaultyFXRemoteProvider<Provider>
 
-    let usd: USD = 100
-
     func test__name() {
         XCTAssertEqual(Provider.name(), "OpenExchangeRates.org USDEUR")
     }
@@ -104,7 +102,7 @@ class FXFreeOpenExchangeRatesTests: FXProviderTests {
     func test__faulty_provider() {
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
-        FaultyProvider.fx(usd) { result in
+        FaultyProvider.fx(100) { result in
             guard let error = result.error else {
                 XCTFail("Should have received a network error.")
                 return
@@ -121,11 +119,10 @@ class FXFreeOpenExchangeRatesTests: FXProviderTests {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
 
-    func test__exhange_usd_to_eur() {
-
+    func test__fx() {
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
-        TestableProvider.fx(usd) { result in
+        TestableProvider.fx(100) { result in
             if let usd = result.value {
                 XCTAssertEqual(usd, 92.09)
             }
