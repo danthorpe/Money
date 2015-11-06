@@ -62,10 +62,9 @@ class FXYahooTests: FXProviderTests {
     }
 
     func test__faulty_provider() {
-        let gbp: GBP = 100
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
-        FaultyProvider.fx(gbp) { result in
+        FaultyProvider.fx(100) { result in
             guard let error = result.error else {
                 XCTFail("Should have received a network error.")
                 return
@@ -82,7 +81,7 @@ class FXYahooTests: FXProviderTests {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
 
-    func test__exhange_gbp_to_eur() {
+    func test__fx() {
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
         TestableProvider.fx(100) { result in
