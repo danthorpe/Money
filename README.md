@@ -15,6 +15,8 @@ Money is a Swift framework for iOS, watchOS, tvOS and OS X. It provides types an
 The Money framework defines the type `Money`, which represents money in the device’s current locale. The following code:
 
 ```swift
+import Money
+
 let money: Money = 100
 print("I'll give \(money) to charity.”)
 ```
