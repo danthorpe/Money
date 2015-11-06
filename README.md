@@ -2,7 +2,6 @@
 
 [![Build status](https://badge.buildkite.com/265eb9670a2ef6b73eebf37769a8455c402509f71f09c4f51e.svg)](https://buildkite.com/blindingskies/money?branch=development)
 [![codecov.io](https://codecov.io/github/danthorpe/Money/coverage.svg?branch=development&token=gI70muNOjA)](https://codecov.io/github/danthorpe/Money?branch=development)
-[![Doc-Percent](https://img.shields.io/cocoapods/metrics/doc-percent/Money.svg)](http://cocoadocs.org/docsets/Money/1.0.0)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Money.svg)](https://img.shields.io/cocoapods/v/Money.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/Money.svg?style=flat)](http://cocoadocs.org/docsets/Money)
@@ -13,9 +12,11 @@ Money is a Swift framework for iOS, watchOS, tvOS and OS X. It provides types an
 
 ## Usage
 
-The Money framework defines the type, `Money` which represents money in the device’s current locale. The following code:
+The Money framework defines the type `Money`, which represents money in the device’s current locale. The following code:
 
 ```swift
+import Money
+
 let money: Money = 100
 print("I'll give \(money) to charity.”)
 ```
@@ -58,14 +59,28 @@ Because the currencies are typed, it means that they cannot be combined together
 ```swift
 let money = pounds + euros
 ```
-> // Binary operator '+' cannot be applied to operands of type 'GBP' (aka '_Money&lt;Currency.GBP&gt;') and 'EUR' (aka '_Money&lt;Currency.EUR&gt;')
+> Binary operator '+' cannot be applied to operands of type 'GBP' (aka '_Money&lt;Currency.GBP&gt;') and 'EUR' (aka '_Money&lt;Currency.EUR&gt;')
 
 Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations.
 
 ## Foreign Currency Exchange (FX)
-To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own.
+To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own too.
 
 The following code snippet represent a currency exchange using Yahoo’s currency converter.
+
+```swift
+Yahoo<USD,EUR>.quote(100) { result in
+    if let (dollars, quote, euros) = result.value {
+        print("Exchanged \(dollars) into \(euros) with a rate of \(quote.rate)")
+    }
+}
+```
+
+> Exchanged US$ 100.00 into € 92.15 with a rate of 0.9215
+
+The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either a tuple value `(BaseMoney, FXQuote, CounterMoney)` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
+
+There is a neat convenience function which just returns the `CounterMoney` as its `Result` value type.
 
 ```swift
 Yahoo<USD,EUR>.fx(100) { euros in
@@ -73,9 +88,8 @@ Yahoo<USD,EUR>.fx(100) { euros in
 }
 ```
 
-> You got .Success(€ 92.00)
+> You got .Success(€ 92.15)
 
-The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either the `FXProviderType.CounterMoney` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
 
 ### Creating custom FX service providers
 
@@ -121,6 +135,10 @@ public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse
 
 Note that the provider doesn’t need to perform any networking itself. It is all done by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
 
+Additionally FX APIs will be added shortly,
+1.  To calculate the reverse exchange, i.e. how many dollars would I need to get so many euros.
+2.  For the two (forward & reverse) exchanges, I’ll also add a `quote` function, which will return the `FXQuote` object. This might be useful if your app needs to persist the quote used for an exchange.
+
 # Creating custom currencies
 
 If your app has its own currency e.g. ⭐️s or 💎s or even 🐝s, you might want to consider making a type for it.
@@ -163,14 +181,16 @@ print(“I have \(bees)”)
 
 And of course if you have an IAP for purchasing in-app currency, then I’m sure a custom FX provider would be handy.
 
-Take a look at the example project, Custom Money, for a an example of a custom local FX provider to exchange your 🐝s.
+Take a look at the example project, Custom Money, for an example of a custom local FX provider to exchange your 🐝s.
 
 ## Installation
-Money builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is also available via CocoaPods
+Money builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is compatible with [Carthage](https://github.com/carthage/carthage). It is also available via CocoaPods
 
 ```ruby
 pod ‘Money’
 ```
+
+At of writing there seems to be issues with the CocoaDocs generator for pure Swift 2 projects. This means that the project doesn’t have a page/docs in CocoaPods sites. 
 
 ## Architectural style
 Swift is designed to have a focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 
@@ -183,7 +203,7 @@ Finally, we auto-generate the code which defines all the currencies and money ty
 
 Cocoa has two type which can perform decimal arithmetic, these are `NSDecimalNumber` and `NSDecimal`. `NSDecimal` is faster, but is trickier to work with, and doesn’t have support for limiting the scale of the numbers (which is pretty important when working with currencies).
 
-`DecimalNumberType` is a protocol which refines refines `SignedNumberType` and defines some functions (`add`, `subtract` etc to support the arithmetic). It is also generic over two types, the underlying storage, and the behaviors.
+`DecimalNumberType` is a protocol which refines `SignedNumberType` and defines its own functions, `add`, `subtract` etc to support the arithmetic. It is generic over two types, the underlying storage, and the behaviors.
 
 `DecimalNumberType.DecimalStorageType` exists so that conforming types can utilize either `NSDecimalNumber` or `NSDecimal` as their underling storage type.
 
@@ -219,6 +239,8 @@ Both `_Decimal` and `_Money` conform to [`ValueCoding`](https://github.com/danth
 Daniel Thorpe [@danthorpe](https://twitter.com/danthorpe). 
 
 Feel free to get in contact if you have questions, queries, or need help.
+
+I wrote an introductory blog post about money [here](http://danthorpe.me/posts/money.html).
 
 ## License
 

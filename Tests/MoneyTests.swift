@@ -9,6 +9,18 @@
 import XCTest
 @testable import Money
 
+func createGarbageData() -> NSData {
+    return MoneyTestHelper.createGarbageData()
+}
+
+class MoneyTestHelper {
+    static func createGarbageData() -> NSData {
+        let path = NSBundle(forClass: MoneyTestHelper.self).pathForResource("Troll", ofType: "png")
+        let data = NSData(contentsOfFile: path!)
+        return data!
+    }
+}
+
 class MoneyInitializerTests: XCTestCase {
 
     var money: Money!

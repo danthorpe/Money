@@ -36,6 +36,7 @@ import ValueCoding
  and scale rules for base 10 decimal arithmetic.
 */
 public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
+
     public typealias DecimalNumberBehavior = Behavior
 
     /// Access the underlying decimal storage.
@@ -100,8 +101,8 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func subtract(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
-        return _Decimal(storage: storage.subtract(other.storage, withBehaviors: behaviors))
+    public func subtract(other: _Decimal) -> _Decimal {
+        return _Decimal(storage: storage.subtract(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
     /**
@@ -112,8 +113,8 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func add(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
-        return _Decimal(storage: storage.add(other.storage, withBehaviors: behaviors))
+    public func add(other: _Decimal) -> _Decimal {
+        return _Decimal(storage: storage.add(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
     /**
@@ -124,8 +125,8 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func multiplyBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
-        return _Decimal(storage: storage.multiplyBy(other.storage, withBehaviors: behaviors))
+    public func multiplyBy(other: _Decimal) -> _Decimal {
+        return _Decimal(storage: storage.multiplyBy(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
     /**
@@ -136,8 +137,8 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func divideBy(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
-        return _Decimal(storage: storage.divideBy(other.storage, withBehaviors: behaviors))
+    public func divideBy(other: _Decimal) -> _Decimal {
+        return _Decimal(storage: storage.divideBy(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
     /**
@@ -148,8 +149,8 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func remainder(other: _Decimal, withBehaviors behaviors: NSDecimalNumberBehaviors) -> _Decimal {
-        return _Decimal(storage: storage.remainder(other.storage, withBehaviors: behaviors))
+    public func remainder(other: _Decimal) -> _Decimal {
+        return _Decimal(storage: storage.remainder(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
     }
 }
 
