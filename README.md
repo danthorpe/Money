@@ -67,14 +67,27 @@ To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use
 The following code snippet represent a currency exchange using Yahoo’s currency converter.
 
 ```swift
+Yahoo<USD,EUR>.quote(100) { result in
+    if let (dollars, quote, euros) = result.value {
+        print("Exchanged \(dollars) into \(euros) with a rate of \(quote.rate)")
+    }
+}
+```
+
+> Exchanged US$ 100.00 into € 92.15 with a rate of 0.9215
+
+The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either a tuple value `(BaseMoney, FXQuote, CounterMoney)` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
+
+There is a neat convenience function which just returns the `CounterMoney` as its `Result` value type.
+
+```swift
 Yahoo<USD,EUR>.fx(100) { euros in
     print("You got \(euros)")
 }
 ```
 
-> You got .Success(€ 92.00)
+> You got .Success(€ 92.15)
 
-The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either the `FXProviderType.CounterMoney` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
 
 ### Creating custom FX service providers
 
