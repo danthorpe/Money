@@ -238,6 +238,8 @@ Daniel Thorpe [@danthorpe](https://twitter.com/danthorpe).
 
 Feel free to get in contact if you have questions, queries, or need help.
 
+I wrote an introductory blog post about money [here](http://danthorpe.me/posts/money.html).
+
 ## License
 
 Money is available under the MIT license. See the LICENSE file for more info.
