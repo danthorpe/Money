@@ -149,8 +149,6 @@ let bitcoin: BTC = 0.1234_5678
 print(“You have \(bitcoin)”)
 ```
 > You have Ƀ0.12345678
- 
-### CEX.IO
 
 Money has support for using [CEX.IO](https://cex.io)’s [trade api](https://cex.io/api) to support quotes of Bitcoin currency exchanges. CEX only supports `USD`, `EUR,` and `RUB` [fiat currencies](https://en.wikipedia.org/wiki/Fiat_money). 
 
