@@ -140,7 +140,7 @@ class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transaction.Fi
                     rate = BankersDecimal(floatLiteral: rateLiteral)
                 }
 
-                return Result(value: FXQuote(rate: rate))
+                return Result(value: FXQuote(rate: rate, percentage: 0.2))
             },
 
             ifFailure: { error in

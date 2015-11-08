@@ -124,8 +124,7 @@ class FXLocalProviderTests: XCTestCase {
 
     func test_fx() {
         let money: Money = 10
-        let usd: USD = FakeLocalFX<Money, USD>.fx(money)
-        XCTAssertEqual(usd, 11)
+        XCTAssertEqual(FakeLocalFX<Money, USD>.fx(money).counter, 11)
     }
 }
 
@@ -134,11 +133,11 @@ class FXQuoteTests: XCTestCase {
     var quote: FXQuote!
 
     func archiveEncodedQuote() -> NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(quote)
+        return NSKeyedArchiver.archivedDataWithRootObject(quote.encoded)
     }
 
     func unarchive(archive: NSData) -> FXQuote? {
-        return NSKeyedUnarchiver.unarchiveObjectWithData(archive) as? FXQuote
+        return FXQuote.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
     }
 
     func test__quote_encodes() {

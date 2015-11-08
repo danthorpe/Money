@@ -102,7 +102,7 @@ class FXCEXBuyTests: FXProviderTests {
 
         TestableProvider.fx(100) { result in
             if let usd = result.value {
-                XCTAssertEqual(usd, 0.25521337)
+                XCTAssertEqual(usd, 0.25470294)
             }
             else {
                 XCTFail("Received error: \(result.error!).")
@@ -185,7 +185,7 @@ class FXCEXSellTests: FXProviderTests {
 
         TestableProvider.fx(100) { result in
             if let btc = result.value {
-                XCTAssertEqual(btc, 39_276.90)
+                XCTAssertEqual(btc, 39_198.35)
             }
             else {
                 XCTFail("Received error: \(result.error!).")
