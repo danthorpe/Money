@@ -82,14 +82,40 @@ extension Currency.USD: CEXTradeCurrencyType { }
 extension Currency.EUR: CEXTradeCurrencyType { }
 extension Currency.RUB: CEXTradeCurrencyType { }
 
-public final class CEX<Counter: MoneyType where Counter.Currency: CEXTradeCurrencyType>: FXRemoteProvider<BTC, Counter>, FXRemoteProviderType {
+public enum CurrencyMarketTransactionKind {
+    case Buy, Sell
+}
+
+public protocol CurrencyMarketTransactionType: MoneyPairType {
+    static var transactionKind: CurrencyMarketTransactionKind { get }
+}
+
+public protocol CryptoCurrencyMarketTransactionType: CurrencyMarketTransactionType {
+    typealias FiatCurrency: CurrencyType
+}
+
+struct _CEXBuy<Counter: MoneyType where Counter.Currency: CEXTradeCurrencyType>: CryptoCurrencyMarketTransactionType {
+    typealias BaseMoney = BTC
+    typealias CounterMoney = Counter
+    typealias FiatCurrency = Counter.Currency
+    static var transactionKind: CurrencyMarketTransactionKind { return .Buy }
+}
+
+struct _CEXSell<Base: MoneyType where Base.Currency: CEXTradeCurrencyType>: CryptoCurrencyMarketTransactionType {
+    typealias BaseMoney = Base
+    typealias CounterMoney = BTC
+    typealias FiatCurrency = Base.Currency
+    static var transactionKind: CurrencyMarketTransactionKind { return .Sell }
+}
+
+public class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transaction.FiatCurrency: CEXTradeCurrencyType>: FXRemoteProvider<Transaction.BaseMoney, Transaction.CounterMoney>, FXRemoteProviderType {
 
     public static func name() -> String {
         return "CEX.IO \(BaseMoney.Currency.code)\(CounterMoney.Currency.code)"
     }
 
     public static func request() -> NSURLRequest {
-        let url = NSURL(string: "https://cex.io/api/convert/\(Currency.BTC.code)/\(CounterMoney.Currency.code)")
+        let url = NSURL(string: "https://cex.io/api/convert/\(BTC.Currency.code)/\(Transaction.FiatCurrency.code)")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -113,11 +139,20 @@ public final class CEX<Counter: MoneyType where Counter.Currency: CEXTradeCurren
                     return Result(error: .InvalidData(data))
                 }
 
-                guard let rate = json["amnt"].double else {
+                guard let rateLiteral = json["amnt"].double else {
                     return Result(error: .RateNotFound(name()))
                 }
 
-                return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
+                let rate: BankersDecimal
+
+                switch Transaction.transactionKind {
+                case .Buy:
+                    rate = BankersDecimal(floatLiteral: rateLiteral)
+                case .Sell:
+                    rate = BankersDecimal(floatLiteral: rateLiteral).reciprocal
+                }
+
+                return Result(value: FXQuote(rate: rate))
             },
 
             ifFailure: { error in
@@ -126,4 +161,9 @@ public final class CEX<Counter: MoneyType where Counter.Currency: CEXTradeCurren
         )
     }
 }
+
+public class CEXBuy<Counter: MoneyType where Counter.Currency: CEXTradeCurrencyType>: _CEX<_CEXBuy<Counter>> { }
+public class CEXSell<Base: MoneyType where Base.Currency: CEXTradeCurrencyType>: _CEX<_CEXSell<Base>> { }
+
+
 
