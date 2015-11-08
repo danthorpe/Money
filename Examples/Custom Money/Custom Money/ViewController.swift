@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
         print("You have \(hearts) and \(bees)")
 
-        let total = Bank<Hearts,Bees>.fx(hearts) + bees
+        let total = Bank<Hearts,Bees>.fx(hearts).counter + bees
 
         print("Exchanging your \(hearts) into \(Currency.Bee.symbol) via the bank gives you \(total) in total.")
     }

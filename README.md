@@ -70,15 +70,17 @@ The following code snippet represent a currency exchange using Yahoo’s currenc
 
 ```swift
 Yahoo<USD,EUR>.quote(100) { result in
-    if let (dollars, quote, euros) = result.value {
-        print("Exchanged \(dollars) into \(euros) with a rate of \(quote.rate)")
+    if let tx = result.value {
+        print("Exchanged \(tx.base) into \(tx.counter) with a rate of \(tx.rate) and \(tx.commission) commission.")
     }
 }
 ```
 
-> Exchanged US$ 100.00 into € 92.15 with a rate of 0.9215
+> Exchanged US$ 100.00 into € 93.09 with a rate of 0.93089 and US$ 0.00 commission.
 
-The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either a tuple value `(BaseMoney, FXQuote, CounterMoney)` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
+The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either a `FXTransaction` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
+
+`FXTransaction` is a generic type which captures the base and counter monies, the rate of the exchange, and any commission the FX service provider charged in the base currency. Currently `FXQuote` only supports percentage based commission.
 
 There is a neat convenience function which just returns the `CounterMoney` as its `Result` value type.
 
@@ -88,8 +90,7 @@ Yahoo<USD,EUR>.fx(100) { euros in
 }
 ```
 
-> You got .Success(€ 92.15)
-
+> You got .Success(€ 93.09)
 
 ### Creating custom FX service providers
 
@@ -135,9 +136,52 @@ public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse
 
 Note that the provider doesn’t need to perform any networking itself. It is all done by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
 
-Additionally FX APIs will be added shortly,
-1.  To calculate the reverse exchange, i.e. how many dollars would I need to get so many euros.
-2.  For the two (forward & reverse) exchanges, I’ll also add a `quote` function, which will return the `FXQuote` object. This might be useful if your app needs to persist the quote used for an exchange.
+## Bitcoin
+
+Money has support for Bitcoin types, the popular `BTC` and the unofficial ISO 4217 currency code `XBT`.
+
+In [November 2015](http://www.coindesk.com/bitcoin-unicode-symbol-approval/), the Unicode consortium accepted U+20BF as the Bitcoin symbol. However, right now that means it is not available in Foundation. Therefore, currently the Bitcoin currency type(s) use Ƀ, which is also a popular symbol and available already within Unicode.
+
+To work with Bitcoin, use the following:
+
+```swift
+let bitcoin: BTC = 0.1234_5678
+print(“You have \(bitcoin)”)
+```
+> You have Ƀ0.12345678
+
+Money has support for using [CEX.IO](https://cex.io)’s [trade api](https://cex.io/api) to support quotes of Bitcoin currency exchanges. CEX only supports `USD`, `EUR,` and `RUB` [fiat currencies](https://en.wikipedia.org/wiki/Fiat_money). 
+
+It’s usage is a little bit different for a regular FX. To represent the purchase of Bitcoins use `CEXBuy` like this:
+
+```swift
+CEXBuy<USD>.quote(100) { result in
+    if let tx = result.value {
+        print("\(tx.base) will buy \(tx.counter) at a rate of \(tx.rate) with \(tx.commission)")
+    }
+}
+```
+> US$ 100.00 will buy Ƀ0.26219275 at a rate of 0.0026272 with US$ 0.20 commission.
+
+To represent the sale of Bitcoins use `CEXSell` like this:
+
+```swift
+CEXSell<EUR>.quote(50) { result in
+    if let tx = result.value {
+        print("\(tx.base) will sell for \(tx.counter) at a rate of \(tx.rate) with \(tx.commission) commission.")
+    }
+}
+```
+> Ƀ50.00 will sell for € 17,541.87 at a rate of 351.5405 with Ƀ0.10 commission.
+
+If trying to buy or sell using a currency not supported by CEX the compiler will prevent your code from compiling.
+
+```swift
+CEXSell<GBP>.quote(50) { result in
+    // etc
+}
+```
+> Type 'Currency.GBP' does not conform to protocol 'CEXSupportedFiatCurrencyType'
 
 # Creating custom currencies
 

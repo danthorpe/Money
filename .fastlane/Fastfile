@@ -1,5 +1,5 @@
 before_all do |lane|
-  carthage(platform: "all")
+  carthage
 end
 
 platform :ios do
