@@ -80,6 +80,8 @@ Yahoo<USD,EUR>.quote(100) { result in
 
 The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either a `FXTransaction` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
 
+`FXTransaction` is a generic type which captures the base and counter monies, the rate of the exchange, and any commission the FX service provider charged in the base currency. Currently `FXQuote` only supports percentage based commission.
+
 There is a neat convenience function which just returns the `CounterMoney` as its `Result` value type.
 
 ```swift
@@ -134,7 +136,7 @@ public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse
 
 Note that the provider doesn’t need to perform any networking itself. It is all done by the framework. This is a deliberate architectural design as it makes it much easier to unit test the adaptor code.
 
-# Bitcoin Support
+## Bitcoin
 
 Money has support for Bitcoin types, the popular `BTC` and the unofficial ISO 4217 currency code `XBT`.
 
@@ -148,11 +150,11 @@ print(“You have \(bitcoin)”)
 ```
 > You have Ƀ0.12345678
  
-## CEX.IO
+### CEX.IO
 
-Money has support for using [CEX.IO](https://cex.io)’s [trade api] to support quotes of Bitcoin currency exchanges. Note that CEX only support `USD`, `EUR,` and `RUB` fiat currencies. It’s usage is a little bit different for a regular FX.
+Money has support for using [CEX.IO](https://cex.io)’s [trade api](https://cex.io/api) to support quotes of Bitcoin currency exchanges. CEX only supports `USD`, `EUR,` and `RUB` [fiat currencies](https://en.wikipedia.org/wiki/Fiat_money). 
 
-To represent the purchase of Bitcoins use `CEXBuy` like this:
+It’s usage is a little bit different for a regular FX. To represent the purchase of Bitcoins use `CEXBuy` like this:
 
 ```swift
 CEXBuy<USD>.quote(100) { result in
@@ -174,7 +176,7 @@ CEXSell<EUR>.quote(50) { result in
 ```
 > Ƀ50.00 will sell for € 17,541.87 at a rate of 351.5405 with Ƀ0.10 commission.
 
-If trying to buy or sell using a [fiat currency](https://en.wikipedia.org/wiki/Fiat_money) not supported by CEX the compiler will prevent your code from compiling.
+If trying to buy or sell using a currency not supported by CEX the compiler will prevent your code from compiling.
 
 ```swift
 CEXSell<GBP>.quote(50) { result in
