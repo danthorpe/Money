@@ -156,4 +156,9 @@ public struct Currency {
 }
 
 
+// MARK: - Crypto Currencies
+
+public protocol CryptoCurrencyType: CurrencyType { }
+
+
 

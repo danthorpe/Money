@@ -1,0 +1,33 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1447005471.048528,
+      "response" : {
+        "body" : "{\"amnt\":392.769}",
+        "status" : 200,
+        "url" : "https:\/\/cex.io\/api\/convert\/BTC\/USD",
+        "headers" : {
+          "cf-ray" : "242329a0c16434fa-LHR",
+          "Content-Type" : "text\/json",
+          "Server" : "cloudflare-nginx",
+          "Set-Cookie" : "__cfduid=d8814e674eaa6d74dc7111b40e1725e7b1447005470; expires=Mon, 07-Nov-16 17:57:50 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3A6IA4GuKmoXs-ScYlPBKxws7x.uy4t0GEq2h32KeFJtxSJqirGgP6s44E%2FLaOe%2FhN%2F4x0; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+          "Vary" : "Accept-Encoding",
+          "Date" : "Sun, 08 Nov 2015 17:57:50 GMT",
+          "x-frame-options" : "DENY",
+          "Access-Control-Allow-Origin" : "*"
+        }
+      },
+      "request" : {
+        "method" : "POST",
+        "body" : {
+          "amnt" : 1
+        },
+        "url" : "https:\/\/cex.io\/api\/convert\/BTC\/USD",
+        "headers" : {
+          "Content-Type" : "application\/json"
+        }
+      }
+    }
+  ],
+  "name" : "CEX.IO BTCUSD"
+}

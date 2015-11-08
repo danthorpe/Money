@@ -319,7 +319,7 @@ public class FXRemoteProvider<B: MoneyType, T: MoneyType> {
 public final class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
 
     /**
-     Access the name of the FX provider (e.g. "Yahoo USDEUR"
+     Access the name of the FX provider (e.g. "Yahoo USDEUR")
      
      - returns: a `String`.
     */
