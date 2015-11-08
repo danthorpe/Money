@@ -132,14 +132,14 @@ public struct FXTransaction<Base, Counter where
     public let rate: BankersDecimal
     public let counter: CounterMoney
 
-    init(base: BaseMoney, commission: BaseMoney, rate: BankersDecimal, counter: CounterMoney) {
+    internal init(base: BaseMoney, commission: BaseMoney, rate: BankersDecimal, counter: CounterMoney) {
         self.base = base
         self.commission = commission
         self.rate = rate
         self.counter = counter
     }
 
-    init(base: BaseMoney, quote: FXQuote) {
+    public init(base: BaseMoney, quote: FXQuote) {
         self.base = base
         self.commission = quote.commission(base)
         self.rate = quote.rate
@@ -218,11 +218,13 @@ extension FXLocalProviderType where
     CounterMoney.Coder.ValueType == CounterMoney,
     CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
 
+    public typealias Transaction = FXTransaction<BaseMoney, CounterMoney>
+
     /**
      This is the primary API used to determine for Foreign Exchange transactions.
      */
-    public static func fx(base: BaseMoney) -> FXTransaction<BaseMoney, CounterMoney> {
-        return FXTransaction(base: base, quote: quote())
+    public static func fx(base: BaseMoney) -> Transaction {
+        return Transaction(base: base, quote: quote())
     }
 }
 
@@ -294,8 +296,10 @@ extension FXRemoteProviderType where
     CounterMoney.Coder.ValueType == CounterMoney,
     CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
 
-    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> FXTransaction<BaseMoney, CounterMoney> {
-        return { FXTransaction(base: base, quote: $0) }
+    public typealias Transaction = FXTransaction<BaseMoney, CounterMoney>
+
+    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> Transaction {
+        return { Transaction(base: base, quote: $0) }
     }
 
     /**
@@ -317,7 +321,7 @@ extension FXRemoteProviderType where
      base money, the quote, and the counter money, or `(BaseMoney, FXQuote, CounterMoney)`.
      - returns: an `NSURLSessionDataTask`.
      */
-    public static func quote(base: BaseMoney, completion: Result<FXTransaction<BaseMoney, CounterMoney>, FXError> -> Void) -> NSURLSessionDataTask {
+    public static func quote(base: BaseMoney, completion: Result<Transaction, FXError> -> Void) -> NSURLSessionDataTask {
         let client = FXServiceProviderNetworkClient(session: session())
         let fxFromQuote = fxFromQuoteWithBase(base)
         return client.get(request(), adaptor: quoteFromNetworkResult) { completion($0.map(fxFromQuote)) }
@@ -399,7 +403,7 @@ public final class FXQuoteCoder: NSObject, NSCoding, CodingType {
     }
 }
 
-extension FXTransaction {
+extension FXTransaction: ValueCoding {
     public typealias Coder = FXTransactionCoder<BaseMoney, CounterMoney>
 }
 

@@ -76,11 +76,21 @@ public typealias BTC = _Money<Currency.BTC>
 
 // MARK - cex.io FX
 
-public protocol CEXSupportedFiatCurrencyType: CurrencyType { }
+public protocol CEXSupportedFiatCurrencyType: CurrencyType {
+    static var cex_commissionPercentage: BankersDecimal { get }
+}
 
-extension Currency.USD: CEXSupportedFiatCurrencyType { }
-extension Currency.EUR: CEXSupportedFiatCurrencyType { }
-extension Currency.RUB: CEXSupportedFiatCurrencyType { }
+extension Currency.USD: CEXSupportedFiatCurrencyType {
+    public static let cex_commissionPercentage: BankersDecimal = 0.2
+}
+
+extension Currency.EUR: CEXSupportedFiatCurrencyType {
+    public static let cex_commissionPercentage: BankersDecimal = 0.2
+}
+
+extension Currency.RUB: CEXSupportedFiatCurrencyType {
+    public static let cex_commissionPercentage: BankersDecimal = 0
+}
 
 struct _CEXBuy<Base: MoneyType where Base.Currency: CEXSupportedFiatCurrencyType>: CryptoCurrencyMarketTransactionType {
     typealias BaseMoney = Base
@@ -96,14 +106,14 @@ struct _CEXSell<Counter: MoneyType where Counter.Currency: CEXSupportedFiatCurre
     static var transactionKind: CurrencyMarketTransactionKind { return .Sell }
 }
 
-class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transaction.FiatCurrency: CEXSupportedFiatCurrencyType>: FXRemoteProvider<Transaction.BaseMoney, Transaction.CounterMoney>, FXRemoteProviderType {
+class _CEX<T: CryptoCurrencyMarketTransactionType where T.FiatCurrency: CEXSupportedFiatCurrencyType>: FXRemoteProvider<T.BaseMoney, T.CounterMoney>, FXRemoteProviderType {
 
     static func name() -> String {
         return "CEX.IO \(BaseMoney.Currency.code)\(CounterMoney.Currency.code)"
     }
 
     static func request() -> NSURLRequest {
-        let url = NSURL(string: "https://cex.io/api/convert/\(BTC.Currency.code)/\(Transaction.FiatCurrency.code)")
+        let url = NSURL(string: "https://cex.io/api/convert/\(BTC.Currency.code)/\(T.FiatCurrency.code)")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -133,14 +143,14 @@ class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transaction.Fi
 
                 let rate: BankersDecimal
 
-                switch Transaction.transactionKind {
+                switch T.transactionKind {
                 case .Buy:
                     rate = BankersDecimal(floatLiteral: rateLiteral).reciprocal
                 case .Sell:
                     rate = BankersDecimal(floatLiteral: rateLiteral)
                 }
 
-                return Result(value: FXQuote(rate: rate, percentage: 0.2))
+                return Result(value: FXQuote(rate: rate, percentage: T.FiatCurrency.cex_commissionPercentage))
             },
 
             ifFailure: { error in

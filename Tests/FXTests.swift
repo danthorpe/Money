@@ -84,7 +84,11 @@ class FaultyFXRemoteProvider<Provider: FXRemoteProviderType>: FXRemoteProviderTy
 
 
 class FakeLocalFX<B: MoneyType, C: MoneyType where
+    B.Coder: NSCoding,
+    B.Coder.ValueType == B,
     B.DecimalStorageType == BankersDecimal.DecimalStorageType,
+    C.Coder: NSCoding,
+    C.Coder.ValueType == C,
     C.DecimalStorageType == BankersDecimal.DecimalStorageType>: FXLocalProviderType {
 
     typealias BaseMoney = B
@@ -123,8 +127,7 @@ class FXProviderTests: XCTestCase {
 class FXLocalProviderTests: XCTestCase {
 
     func test_fx() {
-        let money: Money = 10
-        XCTAssertEqual(FakeLocalFX<Money, USD>.fx(money).counter, 11)
+        XCTAssertEqual(FakeLocalFX<Money, USD>.fx(100).counter, 110)
     }
 }
 
@@ -143,5 +146,25 @@ class FXQuoteTests: XCTestCase {
     func test__quote_encodes() {
         quote = FXQuote(rate: 1.5409)
         XCTAssertEqual(unarchive(archiveEncodedQuote())!.rate, quote.rate)
+    }
+}
+
+class FXTransactionTests: XCTestCase {
+
+    typealias Transaction = FXTransaction<USD, GBP>
+
+    var transaction: Transaction!
+
+    func archiveEncodedTransaction() -> NSData {
+        return NSKeyedArchiver.archivedDataWithRootObject(transaction.encoded)
+    }
+
+    func unarchive(archive: NSData) -> Transaction? {
+        return Transaction.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
+    }
+
+    func test__transaction_encodes() {
+        transaction = Transaction(base: 100, quote: FXQuote(rate: 1.2))
+        XCTAssertEqual(unarchive(archiveEncodedTransaction())!.base, 100)
     }
 }

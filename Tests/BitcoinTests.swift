@@ -32,6 +32,21 @@ class BitcoinCurrencyTests: XCTestCase {
     }
 }
 
+class CEXTests: XCTestCase {
+
+    func test__usd_commission_percentage() {
+        XCTAssertEqual(Currency.USD.cex_commissionPercentage, 0.2)
+    }
+
+    func test__eur_commission_percentage() {
+        XCTAssertEqual(Currency.EUR.cex_commissionPercentage, 0.2)
+    }
+
+    func test__rub_commission_percentage() {
+        XCTAssertEqual(Currency.RUB.cex_commissionPercentage, 0)
+    }
+}
+
 class FXCEXBuyTests: FXProviderTests {
 
     typealias Provider = CEXBuy<USD>
