@@ -90,7 +90,6 @@ Yahoo<USD,EUR>.fx(100) { euros in
 
 > You got .Success(€ 92.15)
 
-
 ### Creating custom FX service providers
 
 Creating a custom FX service provider is straightforward. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `fx` method is provided via extensions on the protocols.
@@ -138,6 +137,57 @@ Note that the provider doesn’t need to perform any networking itself. It is al
 Additionally FX APIs will be added shortly,
 1.  To calculate the reverse exchange, i.e. how many dollars would I need to get so many euros.
 2.  For the two (forward & reverse) exchanges, I’ll also add a `quote` function, which will return the `FXQuote` object. This might be useful if your app needs to persist the quote used for an exchange.
+
+# Bitcoin Support
+
+As of version 1.2, Money has support for Bitcoin. Bitcoin has two type, the popular `BTC` and the unofficial ISO 4217 currency code `XBT`.
+
+In [November 2015](http://www.coindesk.com/bitcoin-unicode-symbol-approval/), the Unicode consortium accepted U+20BF as the Bitcoin symbol. However, right now that means it is not available in Foundation. Therefore, currently the Bitcoin currency type(s) use Ƀ, which is also a popular symbol and available already within Unicode.
+
+To work with Bitcoin, use the following:
+
+```swift
+let bitcoin: BTC = 0.1234_5678
+print(“You have \(bitcoin)”)
+```
+> You have Ƀ0.12345678
+ 
+## CEX.IO
+
+Money has support for using [CEX.IO](https://cex.io)’s [trade api] to support quotes of Bitcoin currency exchanges. Note that CEX only support `USD`, `EUR,` and `RUB` fiat currencies. It’s usage is a little bit different for a regular FX. 
+
+To represent the purchase of Bitcoins use `CEXBuy` like this:
+
+```swift
+CEXBuy<USD>.quote(100) { result in
+    if let (dollars, quote, bitcoins) = result.value {
+        print("\(dollars) will buy you \(bitcoins) at a rate of \(quote.rate)")
+    }
+}
+```
+> US$ 100.00 will buy you Ƀ0.25773196 at a rate of 0.00257731958762886597938144329896907216
+
+To represent the sale of Bitcoins use `CEXSell` like this:
+
+```swift
+CEXSell<EUR>.quote(100) { result in
+    if let (bitcoins, quote, euros) = result.value {
+        print("\(bitcoins) will sell for \(euros) with a rate of \(quote.rate)")
+    }
+}
+```
+> Ƀ100.00 will sell for € 35,748.99 with a rate of 357.4898999999999488
+
+If trying to buy or sell using a [fiat currency](https://en.wikipedia.org/wiki/Fiat_money) not supported by CEX the compiler will prevent your code from compiling.
+
+```swift
+CEXSell<GBP>.quote(50) { result in
+    if let (bitcoins, quote, euros) = result.value {
+        print("\(bitcoins) will sell for \(euros) with a rate of \(quote.rate)")
+    }
+}
+```
+> Type 'Currency.GBP' does not conform to protocol 'CEXSupportedFiatCurrencyType'
 
 # Creating custom currencies
 

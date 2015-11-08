@@ -30,6 +30,8 @@ import ValueCoding
 import Result
 import SwiftyJSON
 
+// MARK: - Currency Markets
+
 /**
  # MoneyPairType
  Used to represent currency pairs.
@@ -43,6 +45,18 @@ public protocol MoneyPairType {
 
     /// The currency which is being traded/quoted
     typealias CounterMoney: MoneyType
+}
+
+public enum CurrencyMarketTransactionKind {
+    case Buy, Sell
+}
+
+public protocol CurrencyMarketTransactionType: MoneyPairType {
+    static var transactionKind: CurrencyMarketTransactionKind { get }
+}
+
+public protocol CryptoCurrencyMarketTransactionType: CurrencyMarketTransactionType {
+    typealias FiatCurrency: CurrencyType
 }
 
 // MARK: - FX Types
@@ -224,6 +238,8 @@ extension FXRemoteProviderType {
 }
 
 extension FXRemoteProviderType where BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType, CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
+
+    public typealias QuoteCompletionType = Result<(BaseMoney, FXQuote, CounterMoney), FXError> -> Void
 
     internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> (BaseMoney, FXQuote, CounterMoney) {
         return { (base, $0, $0.transactionValueForBaseValue(base)) }

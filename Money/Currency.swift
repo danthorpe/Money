@@ -161,4 +161,3 @@ public struct Currency {
 public protocol CryptoCurrencyType: CurrencyType { }
 
 
-

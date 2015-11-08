@@ -24,7 +24,7 @@ class BitcoinCurrencyTests: XCTestCase {
     }
 
     func test__btc_currency_symbol() {
-        XCTAssertEqual(Currency.BTC.symbol, "\u{20BF}")
+        XCTAssertEqual(Currency.BTC.symbol, "Ƀ")
     }
 
     func test__btc_currency_scale() {
@@ -35,89 +35,6 @@ class BitcoinCurrencyTests: XCTestCase {
 class FXCEXBuyTests: FXProviderTests {
 
     typealias Provider = CEXBuy<USD>
-    typealias TestableProvider = TestableFXRemoteProvider<Provider>
-    typealias FaultyProvider = FaultyFXRemoteProvider<Provider>
-
-    func test__name() {
-        XCTAssertEqual(Provider.name(), "CEX.IO BTCUSD")
-    }
-
-    func test__session() {
-        XCTAssertEqual(Provider.session(), NSURLSession.sharedSession())
-    }
-
-    func test__quote_adaptor__with_network_error() {
-        let error = NSError(domain: NSURLErrorDomain, code: NSURLError.BadServerResponse.rawValue, userInfo: nil)
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(error: error)
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.NetworkError(error))
-    }
-
-    func test__quote_adaptor__with_no_data() {
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (.None, .None))
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.NoData)
-    }
-
-    func test__quote_adaptor__with_garbage_data() {
-        let data = createGarbageData()
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.InvalidData(data))
-    }
-
-    func test__quote_adaptor__with_missing_rate() {
-        let json = dvrJSONFromCassette(Provider.name())!
-        var dic = json.dictionaryValue
-        dic["amount"] = json["amnt"]
-        dic.removeValueForKey("amnt")
-        let data = try! JSON(dic).rawData()
-        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
-        let quote = Provider.quoteFromNetworkResult(network)
-        XCTAssertEqual(quote.error!, FXError.RateNotFound(Provider.name()))
-    }
-
-    func test__faulty_provider() {
-        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
-
-        FaultyProvider.fx(100) { result in
-            guard let error = result.error else {
-                XCTFail("Should have received a network error.")
-                return
-            }
-            switch error {
-            case .NetworkError(_):
-                break // This is the success path.
-            default:
-                XCTFail("Returned \(error), should be a .NetworkError")
-            }
-            expectation.fulfill()
-        }
-
-        waitForExpectationsWithTimeout(1, handler: nil)
-    }
-
-    func test__fx() {
-        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
-
-        TestableProvider.fx(100) { result in
-            if let usd = result.value {
-                XCTAssertEqual(usd, 39_276.90)
-            }
-            else {
-                XCTFail("Received error: \(result.error!).")
-            }
-            expectation.fulfill()
-        }
-
-        waitForExpectationsWithTimeout(1, handler: nil)
-    }
-
-}
-
-class FXCEXSellTests: FXProviderTests {
-
-    typealias Provider = CEXSell<USD>
     typealias TestableProvider = TestableFXRemoteProvider<Provider>
     typealias FaultyProvider = FaultyFXRemoteProvider<Provider>
 
@@ -184,8 +101,91 @@ class FXCEXSellTests: FXProviderTests {
         let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
 
         TestableProvider.fx(100) { result in
+            if let usd = result.value {
+                XCTAssertEqual(usd, 0.25521337)
+            }
+            else {
+                XCTFail("Received error: \(result.error!).")
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+
+}
+
+class FXCEXSellTests: FXProviderTests {
+
+    typealias Provider = CEXSell<USD>
+    typealias TestableProvider = TestableFXRemoteProvider<Provider>
+    typealias FaultyProvider = FaultyFXRemoteProvider<Provider>
+
+    func test__name() {
+        XCTAssertEqual(Provider.name(), "CEX.IO BTCUSD")
+    }
+
+    func test__session() {
+        XCTAssertEqual(Provider.session(), NSURLSession.sharedSession())
+    }
+
+    func test__quote_adaptor__with_network_error() {
+        let error = NSError(domain: NSURLErrorDomain, code: NSURLError.BadServerResponse.rawValue, userInfo: nil)
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(error: error)
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.NetworkError(error))
+    }
+
+    func test__quote_adaptor__with_no_data() {
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (.None, .None))
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.NoData)
+    }
+
+    func test__quote_adaptor__with_garbage_data() {
+        let data = createGarbageData()
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.InvalidData(data))
+    }
+
+    func test__quote_adaptor__with_missing_rate() {
+        let json = dvrJSONFromCassette(Provider.name())!
+        var dic = json.dictionaryValue
+        dic["amount"] = json["amnt"]
+        dic.removeValueForKey("amnt")
+        let data = try! JSON(dic).rawData()
+        let network: Result<(NSData?, NSURLResponse?), NSError> = Result(value: (data, .None))
+        let quote = Provider.quoteFromNetworkResult(network)
+        XCTAssertEqual(quote.error!, FXError.RateNotFound(Provider.name()))
+    }
+
+    func test__faulty_provider() {
+        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
+
+        FaultyProvider.fx(100) { result in
+            guard let error = result.error else {
+                XCTFail("Should have received a network error.")
+                return
+            }
+            switch error {
+            case .NetworkError(_):
+                break // This is the success path.
+            default:
+                XCTFail("Returned \(error), should be a .NetworkError")
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+
+    func test__fx() {
+        let expectation = expectationWithDescription("Test: \(__FUNCTION__)")
+
+        TestableProvider.fx(100) { result in
             if let btc = result.value {
-                XCTAssertEqual(btc, 0.25521337)
+                XCTAssertEqual(btc, 39_276.90)
             }
             else {
                 XCTFail("Received error: \(result.error!).")

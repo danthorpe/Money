@@ -44,7 +44,7 @@ extension Currency {
         public static let code = "XBT"
         /// unicode \u{20bf} was accepted as the Bitcoin currency
         /// symbol in November
-        public static let symbol = "\u{20BF}"
+        public static let symbol = "Ƀ"
         /// The smallest unit of Bitcoin is the Satoshi
         /// - see: https://en.bitcoin.it/wiki/Satoshi_(unit)
         public static let scale: Int = 8
@@ -76,45 +76,33 @@ public typealias BTC = _Money<Currency.BTC>
 
 // MARK - cex.io FX
 
-public protocol CEXTradeCurrencyType: CurrencyType { }
+public protocol CEXSupportedFiatCurrencyType: CurrencyType { }
 
-extension Currency.USD: CEXTradeCurrencyType { }
-extension Currency.EUR: CEXTradeCurrencyType { }
-extension Currency.RUB: CEXTradeCurrencyType { }
+extension Currency.USD: CEXSupportedFiatCurrencyType { }
+extension Currency.EUR: CEXSupportedFiatCurrencyType { }
+extension Currency.RUB: CEXSupportedFiatCurrencyType { }
 
-public enum CurrencyMarketTransactionKind {
-    case Buy, Sell
-}
-
-public protocol CurrencyMarketTransactionType: MoneyPairType {
-    static var transactionKind: CurrencyMarketTransactionKind { get }
-}
-
-public protocol CryptoCurrencyMarketTransactionType: CurrencyMarketTransactionType {
-    typealias FiatCurrency: CurrencyType
-}
-
-struct _CEXBuy<Counter: MoneyType where Counter.Currency: CEXTradeCurrencyType>: CryptoCurrencyMarketTransactionType {
-    typealias BaseMoney = BTC
-    typealias CounterMoney = Counter
-    typealias FiatCurrency = Counter.Currency
-    static var transactionKind: CurrencyMarketTransactionKind { return .Buy }
-}
-
-struct _CEXSell<Base: MoneyType where Base.Currency: CEXTradeCurrencyType>: CryptoCurrencyMarketTransactionType {
+struct _CEXBuy<Base: MoneyType where Base.Currency: CEXSupportedFiatCurrencyType>: CryptoCurrencyMarketTransactionType {
     typealias BaseMoney = Base
     typealias CounterMoney = BTC
     typealias FiatCurrency = Base.Currency
+    static var transactionKind: CurrencyMarketTransactionKind { return .Buy }
+}
+
+struct _CEXSell<Counter: MoneyType where Counter.Currency: CEXSupportedFiatCurrencyType>: CryptoCurrencyMarketTransactionType {
+    typealias BaseMoney = BTC
+    typealias CounterMoney = Counter
+    typealias FiatCurrency = Counter.Currency
     static var transactionKind: CurrencyMarketTransactionKind { return .Sell }
 }
 
-public class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transaction.FiatCurrency: CEXTradeCurrencyType>: FXRemoteProvider<Transaction.BaseMoney, Transaction.CounterMoney>, FXRemoteProviderType {
+class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transaction.FiatCurrency: CEXSupportedFiatCurrencyType>: FXRemoteProvider<Transaction.BaseMoney, Transaction.CounterMoney>, FXRemoteProviderType {
 
-    public static func name() -> String {
+    static func name() -> String {
         return "CEX.IO \(BaseMoney.Currency.code)\(CounterMoney.Currency.code)"
     }
 
-    public static func request() -> NSURLRequest {
+    static func request() -> NSURLRequest {
         let url = NSURL(string: "https://cex.io/api/convert/\(BTC.Currency.code)/\(Transaction.FiatCurrency.code)")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
@@ -124,7 +112,7 @@ public class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transac
         return request
     }
 
-    public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
+    static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
         return result.analysis(
 
             ifSuccess: { data, response in
@@ -147,9 +135,9 @@ public class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transac
 
                 switch Transaction.transactionKind {
                 case .Buy:
-                    rate = BankersDecimal(floatLiteral: rateLiteral)
-                case .Sell:
                     rate = BankersDecimal(floatLiteral: rateLiteral).reciprocal
+                case .Sell:
+                    rate = BankersDecimal(floatLiteral: rateLiteral)
                 }
 
                 return Result(value: FXQuote(rate: rate))
@@ -162,8 +150,10 @@ public class _CEX<Transaction: CryptoCurrencyMarketTransactionType where Transac
     }
 }
 
-public class CEXBuy<Counter: MoneyType where Counter.Currency: CEXTradeCurrencyType>: _CEX<_CEXBuy<Counter>> { }
-public class CEXSell<Base: MoneyType where Base.Currency: CEXTradeCurrencyType>: _CEX<_CEXSell<Base>> { }
+public final class CEXBuy<Base: MoneyType where Base.Currency: CEXSupportedFiatCurrencyType>: _CEX<_CEXBuy<Base>> { }
+public final class CEXSell<Counter: MoneyType where Counter.Currency: CEXSupportedFiatCurrencyType>: _CEX<_CEXSell<Counter>> { }
+
+
 
 
 
