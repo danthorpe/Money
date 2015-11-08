@@ -1,3 +1,10 @@
+# 1.2.0
+1. [[MNY-18](https://github.com/danthorpe/Money/pull/18)]: Adds Bitcoin currency types and support for % commission with FX.
+	* Creates `BTC` and `XBT` types.
+	* Refactors `FXQuote` into a struct (no longer subclass-able) but with a percentage commission property. Commission defaults to 0%.
+	* FX method `quote`, now returns `FXTransaction` as the value of the `Result`. This new value type composes the original base money, commission (in the same base money currency), the exchange rate, and the counter money. The type supports `ValueCoding`.
+	* A new FX provider, CEX.IO get support for buying and selling bitcoin using `USD`, `EUR` and `RUB`. 
+
 # 1.1.0
 1. [[MNY-16](https://github.com/danthorpe/Money/pull/16)]: Grab bag of minor issues post 1.0 release.
 	* Cleans up some minor mistakes (spelling etc). 

@@ -33,7 +33,7 @@ import ValueCoding
  `MoneyType` is a protocol which refines `DecimalNumberType`. It
  adds a generic type for the currency.
 */
-public protocol MoneyType: DecimalNumberType {
+public protocol MoneyType: DecimalNumberType, ValueCoding {
     typealias Currency: CurrencyType
 
     /// Access the underlying decimal

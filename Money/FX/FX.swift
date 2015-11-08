@@ -30,6 +30,8 @@ import ValueCoding
 import Result
 import SwiftyJSON
 
+// MARK: - Currency Markets
+
 /**
  # MoneyPairType
  Used to represent currency pairs.
@@ -45,31 +47,52 @@ public protocol MoneyPairType {
     typealias CounterMoney: MoneyType
 }
 
+public enum CurrencyMarketTransactionKind {
+    case Buy, Sell
+}
+
+public protocol CurrencyMarketTransactionType: MoneyPairType {
+    static var transactionKind: CurrencyMarketTransactionKind { get }
+}
+
+public protocol CryptoCurrencyMarketTransactionType: CurrencyMarketTransactionType {
+    typealias FiatCurrency: CurrencyType
+}
+
 // MARK: - FX Types
 
 /**
  # Quote
- The minimum interface required to perform a foreign
- currency exchange.
+ Represents an FX quote with a rate and commision
+ percentage. By default the percentage is 0.
 */
-public class FXQuote: NSObject, NSCoding {
+public struct FXQuote {
 
     /// The exchange rate, stored as a `BankersDecimal`.
     public let rate: BankersDecimal
 
+    /// The commission as a percentage, e.g. 0.2 => 0.2%
+    public let percentage: BankersDecimal
+
     /**
-     Construct with the rate
+     Construct with a rate and commission percentage (defaults to
+     zero).
+     
+     - parameter rate: a `BankersDecimal`.
+     - parameter percentage: a `BankersDecimal`.
+     - returns: a `FXQuote`
     */
-    public init(rate: BankersDecimal) {
+    public init(rate: BankersDecimal, percentage: BankersDecimal = 0) {
         self.rate = rate
+        self.percentage = percentage
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        rate = BankersDecimal.decode(aDecoder.decodeObjectForKey("rate"))!
-    }
-
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(rate.encoded, forKey: "rate")
+    /**
+     ## Calculate the commission.
+     Taken as the ammount of the base currency.
+    */
+    public func commission<B : MoneyType where B.DecimalStorageType == BankersDecimal.DecimalStorageType>(base: B) -> B {
+        return (percentage / 100) * base
     }
 
     /**
@@ -87,9 +110,43 @@ public class FXQuote: NSObject, NSCoding {
      can work just like the `Yahoo` one here.
     */
     public func transactionValueForBaseValue<B: MoneyType, C: MoneyType where B.DecimalStorageType == BankersDecimal.DecimalStorageType, C.DecimalStorageType == BankersDecimal.DecimalStorageType>(base: B) -> C {
-        return base.convertWithRate(rate)
+        return ((1 - (percentage / 100)) * base).convertWithRate(rate)
     }
 }
+
+public struct FXTransaction<Base, Counter where
+    Base: MoneyType,
+    Base.Coder: NSCoding,
+    Base.Coder.ValueType == Base,
+    Base.DecimalStorageType == BankersDecimal.DecimalStorageType,
+    Counter: MoneyType,
+    Counter.Coder: NSCoding,
+    Counter.Coder.ValueType == Counter,
+    Counter.DecimalStorageType == BankersDecimal.DecimalStorageType>: MoneyPairType {
+
+    public typealias BaseMoney = Base
+    public typealias CounterMoney = Counter
+
+    public let base: BaseMoney
+    public let commission: BaseMoney
+    public let rate: BankersDecimal
+    public let counter: CounterMoney
+
+    internal init(base: BaseMoney, commission: BaseMoney, rate: BankersDecimal, counter: CounterMoney) {
+        self.base = base
+        self.commission = commission
+        self.rate = rate
+        self.counter = counter
+    }
+
+    public init(base: BaseMoney, quote: FXQuote) {
+        self.base = base
+        self.commission = quote.commission(base)
+        self.rate = quote.rate
+        self.counter = quote.transactionValueForBaseValue(base)
+    }
+}
+
 
 // MARK: - FX Provider Errors
 
@@ -153,13 +210,21 @@ public protocol FXLocalProviderType: FXProviderType {
     static func quote() -> FXQuote
 }
 
-extension FXLocalProviderType where BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType, CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
+extension FXLocalProviderType where
+    BaseMoney.Coder: NSCoding,
+    BaseMoney.Coder.ValueType == BaseMoney,
+    BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType,
+    CounterMoney.Coder: NSCoding,
+    CounterMoney.Coder.ValueType == CounterMoney,
+    CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
+
+    public typealias Transaction = FXTransaction<BaseMoney, CounterMoney>
 
     /**
      This is the primary API used to determine for Foreign Exchange transactions.
      */
-    public static func fx(base: BaseMoney) -> CounterMoney {
-        return base.convertWithRate(quote().rate)
+    public static func fx(base: BaseMoney) -> Transaction {
+        return Transaction(base: base, quote: quote())
     }
 }
 
@@ -223,10 +288,18 @@ extension FXRemoteProviderType {
     }
 }
 
-extension FXRemoteProviderType where BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType, CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
+extension FXRemoteProviderType where
+    BaseMoney.Coder: NSCoding,
+    BaseMoney.Coder.ValueType == BaseMoney,
+    BaseMoney.DecimalStorageType == BankersDecimal.DecimalStorageType,
+    CounterMoney.Coder: NSCoding,
+    CounterMoney.Coder.ValueType == CounterMoney,
+    CounterMoney.DecimalStorageType == BankersDecimal.DecimalStorageType {
 
-    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> (BaseMoney, FXQuote, CounterMoney) {
-        return { (base, $0, $0.transactionValueForBaseValue(base)) }
+    public typealias Transaction = FXTransaction<BaseMoney, CounterMoney>
+
+    internal static func fxFromQuoteWithBase(base: BaseMoney) -> FXQuote -> Transaction {
+        return { Transaction(base: base, quote: $0) }
     }
 
     /**
@@ -248,7 +321,7 @@ extension FXRemoteProviderType where BaseMoney.DecimalStorageType == BankersDeci
      base money, the quote, and the counter money, or `(BaseMoney, FXQuote, CounterMoney)`.
      - returns: an `NSURLSessionDataTask`.
      */
-    public static func quote(base: BaseMoney, completion: Result<(BaseMoney, FXQuote, CounterMoney), FXError> -> Void) -> NSURLSessionDataTask {
+    public static func quote(base: BaseMoney, completion: Result<Transaction, FXError> -> Void) -> NSURLSessionDataTask {
         let client = FXServiceProviderNetworkClient(session: session())
         let fxFromQuote = fxFromQuoteWithBase(base)
         return client.get(request(), adaptor: quoteFromNetworkResult) { completion($0.map(fxFromQuote)) }
@@ -272,7 +345,7 @@ extension FXRemoteProviderType where BaseMoney.DecimalStorageType == BankersDeci
      - returns: an `NSURLSessionDataTask`.
     */
     public static func fx(base: BaseMoney, completion: Result<CounterMoney, FXError> -> Void) -> NSURLSessionDataTask {
-        return quote(base) { completion($0.map { $0.2 }) }
+        return quote(base) { completion($0.map { $0.counter }) }
     }
 }
 
@@ -300,207 +373,78 @@ public class FXRemoteProvider<B: MoneyType, T: MoneyType> {
     public typealias CounterMoney = T
 }
 
-// MARK: - Yahoo FX Service Provider
+// MARK: - ValueCoding
 
-/**
- # Yahoo FX
- This type uses Yahoo's Currency Converter. E.g.
+extension FXQuote: ValueCoding {
+    public typealias Coder = FXQuoteCoder
+}
 
- It is generic over two `MoneyType`s, and is only 
- used as a type - there is no initializer.
-
- ```swift
- Yahoo<USD,JPY>.fx(100) { jpy in 
-    print("\(jpy)") // is a Result<JPY,FXError>
- }
- ```
-
-*/
-public final class Yahoo<Base: MoneyType, Counter: MoneyType>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
-
-    /**
-     Access the name of the FX provider (e.g. "Yahoo USDEUR"
-     
-     - returns: a `String`.
-    */
-    public static func name() -> String {
-        return "Yahoo \(Base.Currency.code)\(Counter.Currency.code)"
+public final class FXQuoteCoder: NSObject, NSCoding, CodingType {
+    enum Keys: String {
+        case Rate = "rate"
+        case Percentage = "percentage"
     }
 
-    /**
-     Constructs the `NSURLRequest` to Yahoo's currency convertor service.
+    public let value: FXQuote
 
-     - returns: a `NSURLRequest`.
-     */
-    public static func request() -> NSURLRequest {
-        return NSURLRequest(URL: NSURL(string: "https://download.finance.yahoo.com/d/quotes.csv?s=\(BaseMoney.Currency.code)\(CounterMoney.Currency.code)=X&f=nl1")!)
+    public required init(_ v: FXQuote) {
+        value = v
     }
 
-    /**
-     This function is used to map the network result into a quote.
+    public init?(coder aDecoder: NSCoder) {
+        let rate = BankersDecimal.decode(aDecoder.decodeObjectForKey(Keys.Rate.rawValue))
+        let percentage = BankersDecimal.decode(aDecoder.decodeObjectForKey(Keys.Percentage.rawValue))
+        value = FXQuote(rate: rate!, percentage: percentage!)
+    }
 
-     - paramter result: the network result, represented as `Result<T,E>` where
-     the value, T, is a tuple of data and response. The error, E, is an `NSError`.
-     - returns: a `Result<FXQuote, FXError>`.
-     */
-    public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
-        return result.analysis(
-
-            ifSuccess: { data, response in
-
-                guard let data = data else {
-                    return Result(error: .NoData)
-                }
-
-                guard let str = String(data: data, encoding: NSUTF8StringEncoding) else {
-                    return Result(error: .InvalidData(data))
-                }
-
-                let components = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).componentsSeparatedByString(",")
-
-                if components.count < 2 {
-                    return Result(error: .InvalidData(data))
-                }
-
-                guard let rate = Double(components[1]) else {
-                    return Result(error: .RateNotFound(str))
-                }
-
-                return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
-            },
-
-            ifFailure: { error in
-                return Result(error: .NetworkError(error))
-            }
-        )
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(value.rate.encoded, forKey: Keys.Rate.rawValue)
+        aCoder.encodeObject(value.percentage.encoded, forKey: Keys.Percentage.rawValue)
     }
 }
 
-// MARK: - Open Exchange Rates FX Service Provider
-
-/**
- # Open Exchange Rates
- Open Exchange Rates (OER) is a popular FX provider, 
- which does have a "forever free" service, which will 
- only return rates for all supported currencies with 
- USD as the base currency.
-
- Paid for access allows specification of the base & 
- counter currency.
-
- All access requires an "app_id", even the forever 
- free one.
-
- This protocol defines a type which can return the 
- app_id. Therefore, consumers should define their
- own type which conforms, and then using whatever
- mechanism you want, return your OER app_id. I 
- recommend using something like [CocoaPod Keys](https://github.com/orta/cocoapods-keys)
-
- Lets say, you create this...
-
-
-        struct MyOpenExchangeRatesAppID: OpenExchangeRatesAppID {
-            static let app_id = "blarblarblarblar"
-        }
-
- Now, create subclasses of `_OpenExchangeRates` or 
- `_ForeverFreeOpenExchangeRates` depending on your access level.
-
- e.g. If you have a forever free app_id:
-
-
-        class OpenExchangeRates<Counter: MoneyType>: _ForeverFreeOpenExchangeRates<Counter, MyOpenExchangeRatesAppID> { }
-
- usage would then be like this:
-
-
-        let usd: USD = 100
-        OpenExchangeRates<GBP>.fx(usd) { result in
-            // etc, result will include the GBP exchanged for US$ 100
-        }
-
- If you have paid for access to OpenExchangeRates then instead
- create the following subclass:
-
-
-        class OpenExchangeRates<Base: MoneyType, Counter: MoneyType>: _OpenExchangeRates<Base, Counter, MyOpenExchangeRatesAppID> { }
-
- - see: [https://openexchangerates.org](https://openexchangerates.org)
- - see: [CocoaPod Keys](https://github.com/orta/cocoapods-keys)
-
-*/
-public protocol OpenExchangeRatesAppID {
-    static var app_id: String { get }
+extension FXTransaction: ValueCoding {
+    public typealias Coder = FXTransactionCoder<BaseMoney, CounterMoney>
 }
 
-/**
- # Open Exchange Rates
- Base class for OpenExchangeRates.org. See the docs above.
-
- - see: `OpenExchangeRatesAppID`
-*/
-public class _OpenExchangeRates<Base: MoneyType, Counter: MoneyType, ID: OpenExchangeRatesAppID>: FXRemoteProvider<Base, Counter>, FXRemoteProviderType {
-
-    public static func name() -> String {
-        return "OpenExchangeRates.org \(Base.Currency.code)\(Counter.Currency.code)"
-    }
-
-    public static func request() -> NSURLRequest {
-        var url = NSURL(string: "https://openexchangerates.org/api/latest.json?app_id=\(ID.app_id)")!
-
-        switch BaseMoney.Currency.code {
-        case Currency.USD.code:
-            break
-        default:
-            url = url.URLByAppendingPathComponent("&base=\(BaseMoney.Currency.code)")
-        }
-
-        return NSURLRequest(URL: url)
-    }
-
-    public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
-        return result.analysis(
-
-            ifSuccess: { data, response in
-
-                guard let data = data else {
-                    return Result(error: .NoData)
-                }
-
-                let json = JSON(data: data)
-
-                if json.isEmpty {
-                    return Result(error: .InvalidData(data))
-                }
-
-                guard let rate = json[["rates", CounterMoney.Currency.code]].double else {
-                    return Result(error: .RateNotFound(name()))
-                }
-
-                return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
-            },
-
-            ifFailure: { error in
-                return Result(error: .NetworkError(error))
-            }
-        )
-    }
+private enum FXTransactionCoderKeys: String {
+    case Base = "base"
+    case Commission = "commission"
+    case Rate = "rate"
+    case Counter = "counter"
 }
 
-/**
- # Open Exchange Rates
- Forever Free class for OpenExchangeRates.org. See the docs above.
+public final class FXTransactionCoder<Base, Counter where
+    Base: MoneyType,
+    Base.Coder: NSCoding,
+    Base.Coder.ValueType == Base,
+    Base.DecimalStorageType == BankersDecimal.DecimalStorageType,
+    Counter: MoneyType,
+    Counter.Coder: NSCoding,
+    Counter.Coder.ValueType == Counter,
+    Counter.DecimalStorageType == BankersDecimal.DecimalStorageType>: NSObject, NSCoding, CodingType {
 
- - see: `OpenExchangeRatesAppID`
- */
-public class _ForeverFreeOpenExchangeRates<Counter: MoneyType, ID: OpenExchangeRatesAppID>: _OpenExchangeRates<USD, Counter, ID> { }
+    public let value: FXTransaction<Base, Counter>
 
+    public required init(_ v: FXTransaction<Base, Counter>) {
+        value = v
+    }
 
+    public init?(coder aDecoder: NSCoder) {
+        let base: Base? = Base.decode(aDecoder.decodeObjectForKey(FXTransactionCoderKeys.Base.rawValue))
+        let rate = BankersDecimal.decode(aDecoder.decodeObjectForKey(FXTransactionCoderKeys.Rate.rawValue))
+        let commission = Base.decode(aDecoder.decodeObjectForKey(FXTransactionCoderKeys.Commission.rawValue))
+        let counter = Counter.decode(aDecoder.decodeObjectForKey(FXTransactionCoderKeys.Counter.rawValue))
+        value = FXTransaction(base: base!, commission: commission!, rate: rate!, counter: counter!)
+    }
 
-
-
-
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(value.base.encoded, forKey: FXTransactionCoderKeys.Base.rawValue)
+        aCoder.encodeObject(value.rate.encoded, forKey: FXTransactionCoderKeys.Rate.rawValue)
+        aCoder.encodeObject(value.commission.encoded, forKey: FXTransactionCoderKeys.Commission.rawValue)
+        aCoder.encodeObject(value.counter.encoded, forKey: FXTransactionCoderKeys.Counter.rawValue)
+    }
+}
 
 
 public func ==(lhs: FXError, rhs: FXError) -> Bool {

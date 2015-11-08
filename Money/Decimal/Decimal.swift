@@ -196,7 +196,6 @@ public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject,
 }
 
 
-
 // TODO: - Move these into DecimalNumberType
 
 extension NSNumberFormatter {
