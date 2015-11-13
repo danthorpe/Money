@@ -42,22 +42,6 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
     /// Access the underlying decimal storage.
     /// - returns: the `NSDecimalNumber`
     public let storage: NSDecimalNumber
-    
-    /// Flag to indicate if the decimal number is less than zero
-    public var isNegative: Bool {
-        return storage.isNegative
-    }
-
-    /// The negative of Self.
-    /// - returns: a `_Decimal<Behavior>`
-    public var negative: _Decimal {
-        return _Decimal(storage: storage.negateWithBehaviors(Behavior.decimalNumberBehaviors))
-    }
-
-    /// Text description.
-    public var description: String {
-        return "\(storage.description)"
-    }
 
     /**
      Initialize a new value using the underlying decimal storage.
@@ -67,96 +51,15 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
     public init(storage: NSDecimalNumber = NSDecimalNumber.zero()) {
         self.storage = storage
     }
-
-    /**
-     Initialize a new value using a `FloatLiteralType`
-     
-     - parameter floatLiteral: a `FloatLiteralType` for the system, probably `Double`.
-     */
-    public init(floatLiteral value: FloatLiteralType) {
-        self.init(storage: NSDecimalNumber(floatLiteral: value).decimalNumberByRoundingAccordingToBehavior(Behavior.decimalNumberBehaviors))
-    }
-
-    /**
-     Initialize a new value using a `IntegerLiteralType`
-
-     - parameter integerLiteral: a `IntegerLiteralType` for the system, probably `Int`.
-     */
-    public init(integerLiteral value: IntegerLiteralType) {
-        switch value {
-        case 0:
-            self.init(storage: NSDecimalNumber.zero())
-        case 1:
-            self.init(storage: NSDecimalNumber.one())
-        default:
-            self.init(storage: NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(Behavior.decimalNumberBehaviors))
-        }
-    }
-
-    /**
-     Subtract a matching `_Decimal` from the receiver.
-     
-     - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
-     */
-    @warn_unused_result
-    public func subtract(other: _Decimal) -> _Decimal {
-        return _Decimal(storage: storage.subtract(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
-    }
-
-    /**
-     Add a matching `_Decimal` from the receiver.
-     
-     - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
-     */
-    @warn_unused_result
-    public func add(other: _Decimal) -> _Decimal {
-        return _Decimal(storage: storage.add(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
-    }
-
-    /**
-     Multiply a matching `_Decimal` from the receiver.
-     
-     - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
-     */
-    @warn_unused_result
-    public func multiplyBy(other: _Decimal) -> _Decimal {
-        return _Decimal(storage: storage.multiplyBy(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
-    }
-
-    /**
-     Divide a matching `_Decimal` from the receiver.
-     
-     - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
-     */
-    @warn_unused_result
-    public func divideBy(other: _Decimal) -> _Decimal {
-        return _Decimal(storage: storage.divideBy(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
-    }
-
-    /**
-     The remainder of dividing another `_Decimal` into the receiver.
-     
-     - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
-     - returns: another instance of this type.
-     */
-    @warn_unused_result
-    public func remainder(other: _Decimal) -> _Decimal {
-        return _Decimal(storage: storage.remainder(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
-    }
 }
+
+// MARK: - Equality
 
 public func ==<B: DecimalNumberBehaviorType>(lhs: _Decimal<B>, rhs: _Decimal<B>) -> Bool {
     return lhs.storage == rhs.storage
 }
+
+// MARK: - Comparable
 
 public func <<B: DecimalNumberBehaviorType>(lhs: _Decimal<B>, rhs: _Decimal<B>) -> Bool {
     return lhs.storage < rhs.storage

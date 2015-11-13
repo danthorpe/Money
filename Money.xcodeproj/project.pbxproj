@@ -759,7 +759,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Will generate currency types using: $SCRIPT_INPUT_FILE_0\"\n\"$SCRIPT_INPUT_FILE_0\" \"$SCRIPT_OUTPUT_FILE_0\"\necho \"Generate complete\"\n\n\n\n\n";
+			shellScript = "\"$SCRIPT_INPUT_FILE_0\" \"$SCRIPT_OUTPUT_FILE_0\"\n\n\n\n\n";
 		};
 		65D305641BE955AE0032D99F /* Carthage Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
