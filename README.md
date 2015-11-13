@@ -23,15 +23,15 @@ print("I'll give \(money) to charity.”)
 
 will print out
 
-> I'll give $100.00 to charity 
+> I'll give $ 100.00 to charity 
 
 when the region is set to United States
 
-> I'll give £100.00 to charity
+> I'll give £ 100.00 to charity
 
 when the region is set to United Kingdom
 
-> I'll give CN¥100.00 to charity
+> I'll give CN¥ 100.00 to charity
 
 when the region is set to China
 
@@ -41,7 +41,7 @@ You get the idea.
 
 ## Specific Currency
 
-Under the hood, `Money` is a `typealias` for `_Money<Currency.Local>` where `Currency.Local` is a specific `CurrencyType` which represents the currency for the current local. This means that it is strongly typed to the local currency.
+Under the hood, `Money` is a `typealias` for `_Money<Currency.Local>` where `Currency.Local` is a specific `CurrencyType` which represents the currency for the current locale. This means that it is strongly typed to the local currency.
 
 In a similar way, there are 298 foreign currency types supported.
 
@@ -61,12 +61,12 @@ let money = pounds + euros
 ```
 > Binary operator '+' cannot be applied to operands of type 'GBP' (aka '_Money&lt;Currency.GBP&gt;') and 'EUR' (aka '_Money&lt;Currency.EUR&gt;')
 
-Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with some limitations.
+Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with the expected limitations.
 
 ## Foreign Currency Exchange (FX)
 To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own too.
 
-The following code snippet represent a currency exchange using Yahoo’s currency converter.
+The following code snippet represents a currency exchange using Yahoo’s currency converter.
 
 ```swift
 Yahoo<USD,EUR>.quote(100) { result in
@@ -80,7 +80,7 @@ Yahoo<USD,EUR>.quote(100) { result in
 
 The result, delivered asynchronously, uses [`Result`](http://github.com/antitypical/Result) to encapsulate either a `FXTransaction` or an `FXError` value. Obviously, in real code - you’d need to check for errors ;)
 
-`FXTransaction` is a generic type which captures the base and counter monies, the rate of the exchange, and any commission the FX service provider charged in the base currency. Currently `FXQuote` only supports percentage based commission.
+`FXTransaction` is a generic type which composes the base and counter monies, the rate of the exchange, and any commission the FX service provider charged in the base currency. Currently `FXQuote` only supports percentage based commission.
 
 There is a neat convenience function which just returns the `CounterMoney` as its `Result` value type.
 
@@ -94,7 +94,7 @@ Yahoo<USD,EUR>.fx(100) { euros in
 
 ### Creating custom FX service providers
 
-Creating a custom FX service provider is straightforward. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `fx` method is provided via extensions on the protocols.
+Creating a custom FX service provider is straightforward. The protocols `FXLocalProviderType` and `FXRemoteProviderType` define the minimum requirements. The `quote` and `fx` methods are provided via extensions on the protocols.
 
 For a remote FX service provider, i.e. one which will make a network request to get a rate, we can look at the `Yahoo` provider to see how it works.
 
@@ -228,13 +228,13 @@ And of course if you have an IAP for purchasing in-app currency, then I’m sure
 Take a look at the example project, Custom Money, for an example of a custom local FX provider to exchange your 🐝s.
 
 ## Installation
-Money builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is compatible with [Carthage](https://github.com/carthage/carthage). It is also available via CocoaPods
+Money builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is compatible with [Carthage](https://github.com/carthage/carthage). It is also available via CocoaPods.
 
 ```ruby
 pod ‘Money’
 ```
 
-At of writing there seems to be issues with the CocoaDocs generator for pure Swift 2 projects. This means that the project doesn’t have a page/docs in CocoaPods sites. 
+At of writing there are some issues with the CocoaDocs generator for pure Swift 2 projects. This means that the project doesn’t have a page/docs in CocoaPods sites, however they are available through Xcode. 
 
 ## Architectural style
 Swift is designed to have a focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 
@@ -276,13 +276,13 @@ The `_Money<C: CurrencyType>` type composes a `_Decimal<C>`. Its behavior is pro
 `NSDecimal` would be a better storage type for `_Decimal`, however it doesn’t have the full `NSDecimalNumberBehaviors` support that `NSDecimalNumber` enjoys. In particular, specifying the scale is problematic. If anyone has any smart ideas, please get in touch. I’ve added an equivalent extension on `NSDecimal` as for `NSDecimalNumber`.
 
 ### `ValueCoding`
-Both `_Decimal` and `_Money` conform to [`ValueCoding`](https://github.com/danthorpe/ValueCoding) which means they can be encoded and stored inside archives.
+Both `_Decimal`, `_Money` and `FXTransaction` all conform to [`ValueCoding`](https://github.com/danthorpe/ValueCoding) which means they can be encoded and stored inside archives.
 
 
 ## Author
 Daniel Thorpe [@danthorpe](https://twitter.com/danthorpe). 
 
-Feel free to get in contact if you have questions, queries, or need help.
+Feel free to get in contact if you have questions, queries, suggestions, or need help. Especially get in contact via an Issue here or on Twitter if you want to add support for another FX service provider.
 
 I wrote an introductory blog post about money [here](http://danthorpe.me/posts/money.html).
 
