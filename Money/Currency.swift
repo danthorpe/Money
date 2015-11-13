@@ -152,7 +152,7 @@ public struct Currency {
      # Currency.Local
      
      `Currency.Local` is a `BaseCurrency` subclass which represents
-     the device's current currency, using `NSLocale.currencyLocale()`.
+     the device's current currency, using `NSLocale.currentLocale()`.
      */
     public final class Local: Currency.Base, _CurrencyType {
         public static var sharedInstance = Local(locale: NSLocale.currentLocale())
