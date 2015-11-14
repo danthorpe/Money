@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "Money"
-  s.version           = "1.2.0"
+  s.version           = "1.2.1"
   s.summary           = "Swift types for working with Money."
   s.description       = <<-DESC
   

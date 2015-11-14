@@ -118,7 +118,7 @@ public static func request() -> NSURLRequest {
 
 The last requirement, is that the network result can be mapped into a `Result<FXQuote,FXError>`.
 
-`FXQuote` is a class (so it can be subclassed if needed), which composes the exchange rate to be used. The rate is a `BankersDecimal` (see below on the decimal implementation details).
+`FXQuote` is a struct, which composes the exchange rate and percentage commission to be used. Both properties are `BankersDecimal` values (see below on the decimal implementation details).
 
 ```swift
 public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError> {
