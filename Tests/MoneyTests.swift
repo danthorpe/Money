@@ -296,28 +296,16 @@ class MoneyValueCodingTests: XCTestCase {
 
 class MoneyMinorUnitTests: XCTestCase {
     
-    func test__money_with_USD_minor_amount() {
-        let money = USD(minorUnit: 3000)
-        
-        XCTAssertEqual(money, 30)
-    }
-    
     func test__money_with_USD_minor_amount_equality() {
-        let moneyFromMinorUnit = USD(minorUnit: 3000)
-        let money: USD = 30
+        let moneyFromMinorUnit = USD(minorUnit: 3250)
+        let money: USD = 32.50
         
         XCTAssertEqual(money, moneyFromMinorUnit)
     }
     
-    func test__money_with_JPY_minor_amount() {
-        let money = JPY(minorUnit: 3000)
-        
-        XCTAssertEqual(money, 3000)
-    }
-    
     func test__money_with_JPY_minor_amount_equality() {
-        let moneyFromMinorUnit = JPY(minorUnit: 3000)
-        let money: JPY = 3000
+        let moneyFromMinorUnit = JPY(minorUnit: 2170)
+        let money: JPY = 2170
         
         XCTAssertEqual(money, moneyFromMinorUnit)
     }
