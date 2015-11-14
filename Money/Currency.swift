@@ -119,7 +119,9 @@ public extension _CurrencyType {
 public struct Currency {
 
     /**
+
      # Currency.Base
+     
      `Currency.Base` is a class which composes a number formatter
      and a locale. It doesn't conform to `CurrencyType` but it can
      be used as a base class for currency types which only require
@@ -146,9 +148,11 @@ public struct Currency {
     }
 
     /**
+     
      # Currency.Local
+     
      `Currency.Local` is a `BaseCurrency` subclass which represents
-     the device's current currency, using `NSLocale.currencyLocale()`.
+     the device's current currency, using `NSLocale.currentLocale()`.
      */
     public final class Local: Currency.Base, _CurrencyType {
         public static var sharedInstance = Local(locale: NSLocale.currentLocale())

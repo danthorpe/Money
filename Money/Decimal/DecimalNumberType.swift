@@ -76,9 +76,10 @@ public struct DecimalNumberBehavior {
     }
 }
 
-
 /**
+ 
  # DecimalNumberType
+ 
  A protocol which defines the necessary interface to support decimal number
  calculations and operators.
  */
@@ -177,16 +178,132 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
     func remainder(_: Self) -> Self
 }
 
+// MARK: - Extensions
+
+/**
+ Extensions on `DecimalNumberType` where the underlying storage type
+ is `NSDecimalNumber`.
+ */
 public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
 
+    /// Flag to indicate if the decimal number is less than zero
+    public var isNegative: Bool {
+        return storage.isNegative
+    }
+
+    /// The negative of Self.
+    /// - returns: a `_Decimal<Behavior>`
+    public var negative: Self {
+        return Self(storage: storage.negateWithBehaviors(DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /// Text description.
+    public var description: String {
+        return "\(storage.description)"
+    }
+
+    /**
+     Initialize a new value using a `FloatLiteralType`
+
+     - parameter floatLiteral: a `FloatLiteralType` for the system, probably `Double`.
+     */
+    public init(floatLiteral value: Swift.FloatLiteralType) {
+        self.init(storage: NSDecimalNumber(floatLiteral: value).decimalNumberByRoundingAccordingToBehavior(DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /**
+     Initialize a new value using a `IntegerLiteralType`
+
+     - parameter integerLiteral: a `IntegerLiteralType` for the system, probably `Int`.
+     */
+    public init(integerLiteral value: Swift.IntegerLiteralType) {
+        switch value {
+        case 0:
+            self.init(storage: NSDecimalNumber.zero())
+        case 1:
+            self.init(storage: NSDecimalNumber.one())
+        default:
+            self.init(storage: NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(DecimalNumberBehavior.decimalNumberBehaviors))
+        }
+    }
+
+    /**
+     Subtract a matching `DecimalNumberType` from the receiver.
+
+     - parameter other: another instance of this type.
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func subtract(other: Self) -> Self {
+        return Self(storage: storage.subtract(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /**
+     Add a matching `DecimalNumberType` from the receiver.
+
+     - parameter other: another instance of this type.
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func add(other: Self) -> Self {
+        return Self(storage: storage.add(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /**
+     Multiply a matching `DecimalNumberType` with the receiver.
+
+     - parameter other: another instance of this type.
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func multiplyBy(other: Self) -> Self {
+        return Self(storage: storage.multiplyBy(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /**
+     Multiply a different `DecimalNumberType` which also has `NSDecimalNumber`
+     as the storage type with the receiver.
+
+     - parameter other: another `DecimalNumberType` with `NSDecimalNumber` storage.
+     - returns: another instance of this type.
+     */
     @warn_unused_result
     func multiplyBy<Other: DecimalNumberType where Other.DecimalStorageType == NSDecimalNumber>(other: Other) -> Other {
         return Other(storage: storage.multiplyBy(other.storage, withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors) )
     }
 
+    /**
+     Divide the receiver by another instance of this type.
+
+     - parameter other: another instance of this type.
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func divideBy(other: Self) -> Self {
+        return Self(storage: storage.divideBy(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /**
+     Divide the receiver by a different `DecimalNumberType` which also has `NSDecimalNumber`
+     as the storage type.
+
+     - parameter other: another `DecimalNumberType` with `NSDecimalNumber` storage.
+     - returns: another instance of this type.
+     */
     @warn_unused_result
     func divideBy<Other: DecimalNumberType where Other.DecimalStorageType == NSDecimalNumber>(other: Other) -> Other {
         return Other(storage: storage.divideBy(other.storage, withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /**
+     The remainder of dividing another instance of this type into the receiver.
+
+     - parameter other: another instance of this type.
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func remainder(other: Self) -> Self {
+        return Self(storage: storage.remainder(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
     }
 }
 
@@ -197,6 +314,7 @@ extension DecimalNumberType where Self.IntegerLiteralType == Int {
         return Self(integerLiteral: 1).divideBy(self)
     }
 }
+
 
 // MARK: - Operators
 

@@ -29,7 +29,9 @@ import Foundation
 import ValueCoding
 
 /**
+ 
  # MoneyType
+ 
  `MoneyType` is a protocol which refines `DecimalNumberType`. It
  adds a generic type for the currency.
 */
@@ -39,16 +41,19 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
     /// Access the underlying decimal
     var decimal: _Decimal<Currency> { get }
 
+    /// Initialize the money with a decimal
     init(_: _Decimal<Currency>)
 }
 
 /**
+
  # Money
+
  `_Money` is a value type, conforming to `MoneyType`, which is generic over the currency type.
  
  To work in whatever the local currency is, use `Money`. It should not
- be necessary to use `_Money` directly, instead, use a currency
- typealias, such as `USD` or `GBP`.
+ be necessary to use `_Money` directly, instead, use a typealias, 
+ such as `USD` or `GBP`.
 */
 public struct _Money<C: CurrencyType>: MoneyType {
     
@@ -96,18 +101,18 @@ public struct _Money<C: CurrencyType>: MoneyType {
     }
 
     /**
-     Initialize a new value using a `FloatLiteralType`
+     Initialize a new value using a `IntegerLiteralType`
 
-     - parameter floatLiteral: a `FloatLiteralType` for the system, probably `Double`.
+     - parameter integerLiteral: a `IntegerLiteralType` for the system, probably `Int`.
      */
     public init(integerLiteral value: IntegerLiteralType) {
         decimal = _Decimal<DecimalNumberBehavior>(integerLiteral: value)
     }
 
     /**
-     Initialize a new value using a `IntegerLiteralType`
+     Initialize a new value using a `FloatLiteralType`
 
-     - parameter integerLiteral: a `IntegerLiteralType` for the system, probably `Int`.
+     - parameter floatLiteral: a `FloatLiteralType` for the system, probably `Double`.
      */
     public init(floatLiteral value: FloatLiteralType) {
         decimal = _Decimal<DecimalNumberBehavior>(floatLiteral: value)
@@ -117,7 +122,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
      Subtract a matching `_Money<C>` from the receiver.
 
      - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
      */
     @warn_unused_result
@@ -129,7 +133,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
      Add a matching `_Money<C>` from the receiver.
 
      - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
      */
     @warn_unused_result
@@ -141,7 +144,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
      Multiply a matching `_Money<C>` from the receiver.
 
      - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
      */
 
@@ -154,7 +156,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
      Divide a matching `_Money<C>` from the receiver.
 
      - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
      */
     @warn_unused_result
@@ -166,7 +167,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
      The remainder of dividing another `_Money<C>` into the receiver.
 
      - parameter other: another instance of this type.
-     - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: another instance of this type.
      */
     @warn_unused_result
@@ -205,7 +205,9 @@ extension _Money: CustomStringConvertible {
     }
 
     /**
+     
      ### Localized Formatted String
+     
      This function will format the Money type into a string suitable
      for the current localization. It accepts an parameter for the 
      style `NSNumberFormatterStyle`. Note that iOS 9 and OS X 10.11
@@ -228,6 +230,9 @@ public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalSto
      Use a `BankersDecimal` to convert the receive into another `MoneyType`. To use this
      API the underlying `DecimalStorageType`s between the receiver, the other `MoneyType` 
      must both be the same a that of `BankersDecimal` (which luckily they are).
+     
+     - parameter rate: a `BankersDecimal` representing the rate.
+     - returns: another `MoneyType` value.
     */
     @warn_unused_result
     func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
