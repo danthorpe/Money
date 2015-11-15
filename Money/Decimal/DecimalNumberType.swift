@@ -100,10 +100,10 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
      */
     var negative: Self { get }
 
-    /// Access am integer value representation
+    /// Access an integer value representation
     var integerValue: IntegerLiteralType { get }
 
-    /// Access am float value representation
+    /// Access a float value representation
     var floatValue: FloatLiteralType { get }
 
     /**
@@ -212,12 +212,12 @@ public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
         return Self(storage: storage.negateWithBehaviors(DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
-    /// Access am integer value representation
+    /// Access an integer value representation
     public var integerValue: Int {
         return storage.integerValue
     }
 
-    /// Access am float value representation
+    /// Access a float value representation
     public var floatValue: Double {
         return storage.doubleValue
     }
