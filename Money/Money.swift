@@ -117,6 +117,20 @@ public struct _Money<C: CurrencyType>: MoneyType {
     public init(floatLiteral value: FloatLiteralType) {
         decimal = _Decimal<DecimalNumberBehavior>(floatLiteral: value)
     }
+    
+    /**
+     Initialize a new value using the minorUnit to construct the final value.
+     
+     Minor units are the smallest unit for the denomination. (ex. Cents -> USD)
+     
+     - parameter minorUnit: a `IntegerLiteralType` for the system, probably `Int`.
+     */
+    public init(minorUnit: IntegerLiteralType) {
+        let digits = pow(Double(10), Double(Currency.scale))
+        let value = Double(minorUnit) / digits
+        
+        decimal = _Decimal<DecimalNumberBehavior>(floatLiteral: value)
+    }
 
     /**
      Subtract a matching `_Money<C>` from the receiver.
