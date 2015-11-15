@@ -63,14 +63,14 @@ let money = pounds + euros
 
 Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with the expected limitations.
 
-## Currency Minor Units
+## Minor Units
 
-You can also initialize `Money` using the smallest units available to any currency
+`Money` can be initialized using the smallest units of currency:
 
 ```swift
-let dollars = USD(minorUnit: 3250)
-let yuen = JPY(minorUnit: 3000)
-let bitcoin = BTC(minorUnit: 5000)
+let dollars = USD(minorUnits: 3250)
+let yuen = JPY(minorUnits: 3000)
+let bitcoin = BTC(minorUnits: 5000)
 
 print(“You have \(dollars), \(yuen) and \(bitcoin) Satoshis”)
 ```
