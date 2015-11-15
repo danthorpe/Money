@@ -294,4 +294,33 @@ class MoneyValueCodingTests: XCTestCase {
     }
 }
 
+class MoneyMinorUnitTests: XCTestCase {
+    
+    func test__money_with_USD_minor_amount_equality() {
+        let moneyFromMinorUnit = USD(minorUnit: 3250)
+        let money: USD = 32.50
+        
+        XCTAssertEqual(money, moneyFromMinorUnit)
+    }
+    
+    func test__money_with_JPY_minor_amount_equality() {
+        let moneyFromMinorUnit = JPY(minorUnit: 2170)
+        let money: JPY = 2170
+        
+        XCTAssertEqual(money, moneyFromMinorUnit)
+    }
+    
+    func test__money_with_BTC_minor_amount() {
+        let moneyFromMinorUnit = BTC(minorUnit: 3000)
+        
+        XCTAssertEqual(moneyFromMinorUnit, 0.00003)
+    }
+    
+    func test__money_with_BTC_minor_amount_equality() {
+        let moneyFromMinorUnit = BTC(minorUnit: 3000)
+        let money: BTC = 0.00003
+        
+        XCTAssertEqual(money, moneyFromMinorUnit)
+    }
+}
 

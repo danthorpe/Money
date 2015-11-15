@@ -63,6 +63,20 @@ let money = pounds + euros
 
 Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with the expected limitations.
 
+## Currency Minor Units
+
+You can also initialize `Money` using the smallest units available to any currency
+
+```swift
+let dollars = USD(minorUnit: 3250)
+let yuen = JPY(minorUnit: 3000)
+let bitcoin = BTC(minorUnit: 5000)
+
+print(“You have \(dollars), \(yuen) and \(bitcoin) Satoshis”)
+```
+
+> You have $ 32.50, JP¥ 3,000 and 0.00005 Satoshis
+
 ## Foreign Currency Exchange (FX)
 To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own too.
 
