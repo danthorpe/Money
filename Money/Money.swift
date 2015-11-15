@@ -41,8 +41,14 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
     /// Access the underlying decimal
     var decimal: _Decimal<Currency> { get }
 
+    /// Access the underlying minor units
+    var minorUnits: IntegerLiteralType { get }
+
     /// Initialize the money with a decimal
     init(_: _Decimal<Currency>)
+
+    /// Initialize the money with a integer representing minor units
+    init(minorUnits: IntegerLiteralType)
 }
 
 /**
@@ -63,6 +69,12 @@ public struct _Money<C: CurrencyType>: MoneyType {
     /// Access the underlying decimal.
     /// - returns: the `_Decimal<C>`
     public let decimal: _Decimal<C>
+
+    /// Access the underlying minor units
+    /// - returns: the `IntegerLiteralType` minor units
+    public var minorUnits: IntegerLiteralType {
+        return decimal.multiplyByPowerOf10(Currency.scale).integerValue
+    }
 
     /// Access the underlying decimal storage.
     /// - returns: the `_Decimal<C>.DecimalStorageType`
@@ -88,6 +100,15 @@ public struct _Money<C: CurrencyType>: MoneyType {
      */
     public init(_ value: _Decimal<C> = _Decimal<C>()) {
         decimal = value
+    }
+
+    /**
+     Initialize the money with a integer representing minor units.
+
+     - parameter minorUnits: a `IntegerLiteralType`
+     */
+    public init(minorUnits: IntegerLiteralType) {
+        decimal = _Decimal<DecimalNumberBehavior>(integerLiteral: minorUnits).multiplyByPowerOf10(Currency.scale * -1)
     }
 
     /**
@@ -118,20 +139,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
         decimal = _Decimal<DecimalNumberBehavior>(floatLiteral: value)
     }
     
-    /**
-     Initialize a new value using the minorUnit to construct the final value.
-     
-     Minor units are the smallest unit for the denomination. (ex. Cents -> USD)
-     
-     - parameter minorUnit: a `IntegerLiteralType` for the system, probably `Int`.
-     */
-    public init(minorUnit: IntegerLiteralType) {
-        let digits = pow(Double(10), Double(Currency.scale))
-        let value = Double(minorUnit) / digits
-        
-        decimal = _Decimal<DecimalNumberBehavior>(floatLiteral: value)
-    }
-
     /**
      Subtract a matching `_Money<C>` from the receiver.
 

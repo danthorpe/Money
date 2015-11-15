@@ -19,6 +19,19 @@ class DecimalTests: XCTestCase {
     }
 }
 
+class DecimalAccessorTests: DecimalTests {
+
+    func test__decimal_integer_value() {
+        decimal = 10.00
+        XCTAssertEqual(decimal.integerValue, 10)
+    }
+
+    func test__decimal_float_value() {
+        decimal = 10.00
+        XCTAssertEqual(decimal.floatValue, 10.0)
+    }
+}
+
 class DecimalDescriptionTests: DecimalTests {
 
     func test__decimal_decription1() {
