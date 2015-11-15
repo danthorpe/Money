@@ -79,6 +79,17 @@ extension NSDecimalNumber: Comparable {
     }
 
     /**
+     Multiply the receive by 10^n
+
+     - parameter n: an `Int` for the 10 power index
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func multiplyByPowerOf10(index: Int, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+        return decimalNumberByMultiplyingByPowerOf10(Int16(index), withBehavior: behaviors)
+    }
+
+    /**
      Multiply a `NSDecimalNumber` with the receiver.
      
      - parameter other: another `NSDecimalNumber`.

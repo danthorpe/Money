@@ -100,6 +100,12 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
      */
     var negative: Self { get }
 
+    /// Access am integer value representation
+    var integerValue: IntegerLiteralType { get }
+
+    /// Access am float value representation
+    var floatValue: FloatLiteralType { get }
+
     /**
      Initialize a new `DecimalNumberType` with the underlying storage.
      This is necessary in order to convert between different decimal number
@@ -127,6 +133,15 @@ public protocol DecimalNumberType: SignedNumberType, IntegerLiteralConvertible, 
      */
     @warn_unused_result
     func add(_: Self) -> Self
+
+    /**
+     Multiply the receive by 10^n
+
+     - parameter n: an `Int` for the 10 power index
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    func multiplyByPowerOf10(_: Int) -> Self
 
     /**
      Multiply a matching `DecimalNumberType` with the receiver.
@@ -197,6 +212,16 @@ public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
         return Self(storage: storage.negateWithBehaviors(DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
+    /// Access am integer value representation
+    public var integerValue: Int {
+        return storage.integerValue
+    }
+
+    /// Access am float value representation
+    public var floatValue: Double {
+        return storage.doubleValue
+    }
+
     /// Text description.
     public var description: String {
         return "\(storage.description)"
@@ -247,6 +272,17 @@ public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
     @warn_unused_result
     public func add(other: Self) -> Self {
         return Self(storage: storage.add(other.storage, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /**
+     Multiply the receive by 10^n
+
+     - parameter n: an `Int` for the 10 power index
+     - returns: another instance of this type.
+     */
+    @warn_unused_result
+    public func multiplyByPowerOf10(index: Int) -> Self {
+        return Self(storage: storage.multiplyByPowerOf10(index, withBehaviors: DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
     /**
