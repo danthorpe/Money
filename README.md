@@ -84,13 +84,17 @@ On iOS (not watchOS, tvOS or OS X), there is support in Money for using `Money` 
 Create a `PaymentSummaryItem` in lieu of `PKPaymentSummaryItem` with a suitable `MoneyType`:
 
 ```swift
-let items = [
-    PaymentSummaryItem<USD>(money: 9.99, label: “Something fancy.”),
-    PaymentSummaryItem<USD>(money: 5.99, label: “Something else fancy.”)
+typealias DollarItem = PaymentSummaryItem<USD>
+
+let item = [
+    DollarItem(money: 9.99, label: “Something fancy.”),
+    DollarItem(money: 5.99, label: “Something else fancy.”)
 ]
-let request = PKPaymentRequest(items: items)
+
+let request = PKPaymentRequest(items: item)
 ```
 
+The convenience initializer receives a sequence of `PaymentSummaryItem`s, and it sets the currency code and payment summary items.
 
 ## Foreign Currency Exchange (FX)
 To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own too.
