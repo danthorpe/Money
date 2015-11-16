@@ -77,6 +77,29 @@ print(“You have \(dollars), \(yuen) and \(bitcoin) Satoshis”)
 
 > You have $ 32.50, JP¥ 3,000 and 0.00005 Satoshis
 
+##  Pay
+
+On iOS (not watchOS, tvOS or OS X), there is support in Money for using `Money` with  Pay.
+
+Create a `PaymentSummaryItem` in lieu of `PKPaymentSummaryItem` with a suitable `MoneyType`:
+
+```swift
+import PassKit
+
+typealias DollarItem = PaymentSummaryItem<USD>
+
+let items = [
+    DollarItem(label: "Something fancy.", cost: 9.99),
+    DollarItem(label: "Something less fancy.", cost: 5.99)
+]
+
+let request = PKPaymentRequest(items: items, sellerName: "Acme, Inc.")
+```
+
+The convenience initializer receives an array of `PaymentSummaryItem` values and a seller name. It sets the currency code and payment summary items. Following the  Pay guidelines, will append a total summary item using the provided seller name.
+
+`PaymentSummaryItem` conforms to `Hashable` and [`ValueCoding`](https://github.com/danthorpe/ValueCoding).
+
 ## Foreign Currency Exchange (FX)
 To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own too.
 
