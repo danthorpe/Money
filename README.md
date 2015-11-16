@@ -89,11 +89,11 @@ import PassKit
 typealias DollarItem = PaymentSummaryItem<USD>
 
 let items = [
-    DollarItem(cost: 9.99, label: "Something fancy."),
-    DollarItem(cost: 5.99, label: "Something else fancy.")
+    DollarItem(label: "Something fancy.”, cost: 9.99),
+    DollarItem(label: "Something else fancy.”, cost: 5.99)
 ]
 
-let request = PKPaymentRequest(items: items)
+let request = PKPaymentRequest(items: items, sellerName: "Acme, Inc.")
 ```
 
 The convenience initializer receives a sequence of `PaymentSummaryItem`s, and it sets the currency code and payment summary items (`PKPaymentSummaryItem`s).
