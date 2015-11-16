@@ -56,6 +56,26 @@ class PaymentSummaryItemTests: ApplePayTests {
         XCTAssertEqual(item.label, "iPad Pro, 32GB with WiFi")
         XCTAssertEqual(item.type, PaymentSummaryItemType.Pending)
     }
+
+    func test__equality() {
+        XCTAssertEqual(item, PaymentSummaryItem<GBP>(money: 679, label: "iPad Pro, 32GB with WiFi", type: .Final))
+        XCTAssertNotEqual(item, PaymentSummaryItem<GBP>(money: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
+    }
+}
+
+class PaymentSummaryItemCodingTests: ApplePayTests {
+
+    func archiveEncoded() -> NSData {
+        return NSKeyedArchiver.archivedDataWithRootObject(item.encoded)
+    }
+
+    func unarchive(archive: NSData) -> PaymentSummaryItem<GBP>? {
+        return PaymentSummaryItem<GBP>.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
+    }
+
+    func test__encode_decode() {
+        XCTAssertEqual(unarchive(archiveEncoded()), item)
+    }
 }
 
 class PKPaymentSummaryItemTypeTests: ApplePayTests {

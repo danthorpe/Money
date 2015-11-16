@@ -26,14 +26,18 @@
 
 import Foundation
 import PassKit
+import ValueCoding
 
 // MARK: - Apple Pay equivalent types
 
-public enum PaymentSummaryItemType {
-    case Final, Pending
+public enum PaymentSummaryItemType: Int {
+    case Final = 1, Pending
 }
 
-public struct PaymentSummaryItem<M: MoneyType where M.DecimalStorageType == NSDecimalNumber> {
+public struct PaymentSummaryItem<M: MoneyType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M>: Equatable, ValueCoding {
+
+    public typealias Coder = PaymentSummaryItemCoder<M>
+
     public let money: M
     public let label: String
     public let type: PaymentSummaryItemType
@@ -64,6 +68,31 @@ extension PaymentSummaryItem {
     }
 }
 
+public func ==<M: MoneyType where M.DecimalStorageType == NSDecimalNumber>(lhs: PaymentSummaryItem<M>, rhs: PaymentSummaryItem<M>) -> Bool {
+    return lhs.money == rhs.money && lhs.label == rhs.label && lhs.type == rhs.type
+}
+
+public final class PaymentSummaryItemCoder<M: MoneyType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M>: NSObject, NSCoding, CodingType {
+
+    public let value: PaymentSummaryItem<M>
+
+    public required init(_ v: PaymentSummaryItem<M>) {
+        value = v
+    }
+
+    public init?(coder aDecoder: NSCoder) {
+        let money = M.decode(aDecoder.decodeObjectForKey("money"))
+        let label = aDecoder.decodeObjectForKey("label") as? String
+        let type = PaymentSummaryItemType(rawValue: aDecoder.decodeIntegerForKey("type"))
+        value = PaymentSummaryItem(money: money!, label: label!, type: type!)
+    }
+
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(value.money.encoded, forKey: "money")
+        aCoder.encodeObject(value.label, forKey: "label")
+        aCoder.encodeInteger(value.type.rawValue, forKey: "type")
+    }
+}
 
 // MARK: - Apple Pay type extensions
 
@@ -94,7 +123,7 @@ extension PKPaymentSummaryItem {
 
 public extension PKPaymentRequest {
 
-    convenience init<M: MoneyType, Items: SequenceType where M.DecimalStorageType == NSDecimalNumber, Items.Generator.Element == PaymentSummaryItem<M>>(items: Items) {
+    convenience init<M: MoneyType, Items: SequenceType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M, Items.Generator.Element == PaymentSummaryItem<M>>(items: Items) {
         self.init()
         currencyCode = M.Currency.code
         paymentSummaryItems = items.map { PKPaymentSummaryItem(paymentSummaryItem: $0) }
