@@ -110,6 +110,7 @@ class PKPaymentRequestTests: ApplePayTests {
 
         XCTAssertEqual(request.currencyCode, GBP.Currency.code)
         XCTAssertEqual(request.paymentSummaryItems.count, 4)
+        XCTAssertEqual(request.paymentSummaryItems.last!.label, "Acme. Inc")
         XCTAssertEqual(request.paymentSummaryItems.last!.amount, items.map { $0.cost }.reduce(0, combine: +).amount)
     }
 }
