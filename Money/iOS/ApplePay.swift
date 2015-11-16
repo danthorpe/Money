@@ -34,7 +34,7 @@ public enum PaymentSummaryItemType: Int {
     case Final = 1, Pending
 }
 
-public struct PaymentSummaryItem<M: MoneyType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M>: Equatable, ValueCoding {
+public struct PaymentSummaryItem<M: MoneyType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M>: Hashable, ValueCoding {
 
     public typealias Coder = PaymentSummaryItemCoder<M>
 
@@ -44,6 +44,10 @@ public struct PaymentSummaryItem<M: MoneyType where M.DecimalStorageType == NSDe
 
     internal var amount: M.DecimalStorageType {
         return money.amount
+    }
+
+    public var hashValue: Int {
+        return money.hashValue ^ (label.hashValue ^ type.hashValue)
     }
 
     public init(money: M, label: String, type: PaymentSummaryItemType = .Final) {

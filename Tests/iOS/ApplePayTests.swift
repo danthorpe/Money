@@ -13,12 +13,12 @@ import PassKit
 class ApplePayTests: XCTestCase {
 
     var item: PaymentSummaryItem<GBP>!
-    var items: [PaymentSummaryItem<GBP>] = []
+    var items: Set<PaymentSummaryItem<GBP>> = []
 
     override func setUp() {
         super.setUp()
         item = PaymentSummaryItem(money: 679, label: "iPad Pro, 32GB with WiFi", type: .Final)
-        items.append(item)
+        items.insert(item)
     }
 }
 
@@ -104,8 +104,8 @@ class PKPaymentSummaryItemTests: ApplePayTests {
 class PKPaymentRequestTests: ApplePayTests {
 
     func test__init__with_items() {
-        items.append(PaymentSummaryItem(money: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
-        items.append(PaymentSummaryItem(money: 899, label: "iPad Pro, 128GB with WiFi + Cellular", type: .Final))
+        items.insert(PaymentSummaryItem(money: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
+        items.insert(PaymentSummaryItem(money: 899, label: "iPad Pro, 128GB with WiFi + Cellular", type: .Final))
         let request = PKPaymentRequest(items: items)
         XCTAssertEqual(request.currencyCode, GBP.Currency.code)
         XCTAssertEqual(request.paymentSummaryItems.count, 3)
