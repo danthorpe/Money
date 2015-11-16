@@ -89,14 +89,14 @@ import PassKit
 typealias DollarItem = PaymentSummaryItem<USD>
 
 let items = [
-    DollarItem(label: "Something fancy.”, cost: 9.99),
-    DollarItem(label: "Something else fancy.”, cost: 5.99)
+    DollarItem(label: "Something fancy.", cost: 9.99),
+    DollarItem(label: "Something less fancy.", cost: 5.99)
 ]
 
 let request = PKPaymentRequest(items: items, sellerName: "Acme, Inc.")
 ```
 
-The convenience initializer receives a sequence of `PaymentSummaryItem`s, and it sets the currency code and payment summary items (`PKPaymentSummaryItem`s).
+The convenience initializer receives an array of `PaymentSummaryItem` values and a seller name. It sets the currency code and payment summary items. Following the  Pay guidelines, will append a total summary item using the provided seller name.
 
 `PaymentSummaryItem` conforms to `Hashable` and [`ValueCoding`](https://github.com/danthorpe/ValueCoding).
 
