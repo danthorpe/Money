@@ -51,6 +51,31 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
     init(minorUnits: IntegerLiteralType)
 }
 
+// MARK: - MoneyType Extension
+
+public extension MoneyType where DecimalStorageType == NSDecimalNumber {
+
+    var amount: DecimalStorageType {
+        return storage
+    }
+}
+
+public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
+
+    /**
+     Use a `BankersDecimal` to convert the receive into another `MoneyType`. To use this
+     API the underlying `DecimalStorageType`s between the receiver, the other `MoneyType`
+     must both be the same a that of `BankersDecimal` (which luckily they are).
+
+     - parameter rate: a `BankersDecimal` representing the rate.
+     - returns: another `MoneyType` value.
+     */
+    @warn_unused_result
+    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
+        return multiplyBy(Other(storage: rate.storage))
+    }
+}
+
 /**
 
  # Money
@@ -239,25 +264,6 @@ extension _Money: CustomStringConvertible {
     */
     public func formatted(style: NSNumberFormatterStyle) -> String {
         return C.formatter.formattedStringWithStyle(style)(decimal)
-    }
-}
-
-
-// MARK: - MoneyType Extension
-
-public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
-
-    /**
-     Use a `BankersDecimal` to convert the receive into another `MoneyType`. To use this
-     API the underlying `DecimalStorageType`s between the receiver, the other `MoneyType` 
-     must both be the same a that of `BankersDecimal` (which luckily they are).
-     
-     - parameter rate: a `BankersDecimal` representing the rate.
-     - returns: another `MoneyType` value.
-    */
-    @warn_unused_result
-    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
-        return multiplyBy(Other(storage: rate.storage))
     }
 }
 
