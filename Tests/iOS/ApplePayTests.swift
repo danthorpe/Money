@@ -17,7 +17,7 @@ class ApplePayTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        item = PaymentSummaryItem(money: 679, label: "iPad Pro, 32GB with WiFi", type: .Final)
+        item = PaymentSummaryItem(cost: 679, label: "iPad Pro, 32GB with WiFi", type: .Final)
         items.insert(item)
     }
 }
@@ -25,7 +25,7 @@ class ApplePayTests: XCTestCase {
 class PaymentSummaryItemTests: ApplePayTests {
 
     func test__init__sets_money() {
-        XCTAssertEqual(item.money, 679)
+        XCTAssertEqual(item.cost, 679)
     }
 
     func test__init__sets_label() {
@@ -37,29 +37,29 @@ class PaymentSummaryItemTests: ApplePayTests {
     }
 
     func test__set_new_money__sets_money() {
-        item = item.setMoney(799)
-        XCTAssertEqual(item.money, 799)
+        item = item.setCost(799)
+        XCTAssertEqual(item.cost, 799)
         XCTAssertEqual(item.label, "iPad Pro, 32GB with WiFi")
         XCTAssertEqual(item.type, PaymentSummaryItemType.Final)
     }
 
     func test__set_new_label__sets_label() {
         item = item.setLabel("iPad Pro, 128GB with WiFi")
-        XCTAssertEqual(item.money, 679)
+        XCTAssertEqual(item.cost, 679)
         XCTAssertEqual(item.label, "iPad Pro, 128GB with WiFi")
         XCTAssertEqual(item.type, PaymentSummaryItemType.Final)
     }
 
     func test__set_new_type__sets_type() {
         item = item.setType(.Pending)
-        XCTAssertEqual(item.money, 679)
+        XCTAssertEqual(item.cost, 679)
         XCTAssertEqual(item.label, "iPad Pro, 32GB with WiFi")
         XCTAssertEqual(item.type, PaymentSummaryItemType.Pending)
     }
 
     func test__equality() {
-        XCTAssertEqual(item, PaymentSummaryItem<GBP>(money: 679, label: "iPad Pro, 32GB with WiFi", type: .Final))
-        XCTAssertNotEqual(item, PaymentSummaryItem<GBP>(money: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
+        XCTAssertEqual(item, PaymentSummaryItem<GBP>(cost: 679, label: "iPad Pro, 32GB with WiFi", type: .Final))
+        XCTAssertNotEqual(item, PaymentSummaryItem<GBP>(cost: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
     }
 }
 
@@ -104,8 +104,8 @@ class PKPaymentSummaryItemTests: ApplePayTests {
 class PKPaymentRequestTests: ApplePayTests {
 
     func test__init__with_items() {
-        items.insert(PaymentSummaryItem(money: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
-        items.insert(PaymentSummaryItem(money: 899, label: "iPad Pro, 128GB with WiFi + Cellular", type: .Final))
+        items.insert(PaymentSummaryItem(cost: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
+        items.insert(PaymentSummaryItem(cost: 899, label: "iPad Pro, 128GB with WiFi + Cellular", type: .Final))
         let request = PKPaymentRequest(items: items)
         XCTAssertEqual(request.currencyCode, GBP.Currency.code)
         XCTAssertEqual(request.paymentSummaryItems.count, 3)
@@ -113,6 +113,6 @@ class PKPaymentRequestTests: ApplePayTests {
             return acc.decimalNumberByAdding(item.amount)
         }
 
-        XCTAssertEqual(total, items.map { $0.money }.reduce(0, combine: +).amount)
+        XCTAssertEqual(total, items.map { $0.cost }.reduce(0, combine: +).amount)
     }
 }

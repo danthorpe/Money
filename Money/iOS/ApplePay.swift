@@ -34,24 +34,24 @@ public enum PaymentSummaryItemType: Int {
     case Final = 1, Pending
 }
 
-public struct PaymentSummaryItem<M: MoneyType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M>: Hashable, ValueCoding {
+public struct PaymentSummaryItem<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost>: Hashable, ValueCoding {
 
-    public typealias Coder = PaymentSummaryItemCoder<M>
+    public typealias Coder = PaymentSummaryItemCoder<Cost>
 
-    public let money: M
+    public let cost: Cost
     public let label: String
     public let type: PaymentSummaryItemType
 
-    internal var amount: M.DecimalStorageType {
-        return money.amount
+    internal var amount: Cost.DecimalStorageType {
+        return cost.amount
     }
 
     public var hashValue: Int {
-        return money.hashValue ^ (label.hashValue ^ type.hashValue)
+        return cost.hashValue ^ (label.hashValue ^ type.hashValue)
     }
 
-    public init(money: M, label: String, type: PaymentSummaryItemType = .Final) {
-        self.money = money
+    public init(cost: Cost, label: String, type: PaymentSummaryItemType = .Final) {
+        self.cost = cost
         self.label = label
         self.type = type
     }
@@ -59,40 +59,40 @@ public struct PaymentSummaryItem<M: MoneyType where M.DecimalStorageType == NSDe
 
 extension PaymentSummaryItem {
 
-    public func setMoney(newMoney: M) -> PaymentSummaryItem {
-        return PaymentSummaryItem(money: newMoney, label: label, type: type)
+    public func setCost(newCost: Cost) -> PaymentSummaryItem {
+        return PaymentSummaryItem(cost: newCost, label: label, type: type)
     }
 
     public func setLabel(newLabel: String) -> PaymentSummaryItem {
-        return PaymentSummaryItem(money: money, label: newLabel, type: type)
+        return PaymentSummaryItem(cost: cost, label: newLabel, type: type)
     }
 
     public func setType(newType: PaymentSummaryItemType) -> PaymentSummaryItem {
-        return PaymentSummaryItem(money: money, label: label, type: newType)
+        return PaymentSummaryItem(cost: cost, label: label, type: newType)
     }
 }
 
-public func ==<M: MoneyType where M.DecimalStorageType == NSDecimalNumber>(lhs: PaymentSummaryItem<M>, rhs: PaymentSummaryItem<M>) -> Bool {
-    return lhs.money == rhs.money && lhs.label == rhs.label && lhs.type == rhs.type
+public func ==<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber>(lhs: PaymentSummaryItem<Cost>, rhs: PaymentSummaryItem<Cost>) -> Bool {
+    return lhs.cost == rhs.cost && lhs.label == rhs.label && lhs.type == rhs.type
 }
 
-public final class PaymentSummaryItemCoder<M: MoneyType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M>: NSObject, NSCoding, CodingType {
+public final class PaymentSummaryItemCoder<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost>: NSObject, NSCoding, CodingType {
 
-    public let value: PaymentSummaryItem<M>
+    public let value: PaymentSummaryItem<Cost>
 
-    public required init(_ v: PaymentSummaryItem<M>) {
+    public required init(_ v: PaymentSummaryItem<Cost>) {
         value = v
     }
 
     public init?(coder aDecoder: NSCoder) {
-        let money = M.decode(aDecoder.decodeObjectForKey("money"))
+        let cost = Cost.decode(aDecoder.decodeObjectForKey("cost"))
         let label = aDecoder.decodeObjectForKey("label") as? String
         let type = PaymentSummaryItemType(rawValue: aDecoder.decodeIntegerForKey("type"))
-        value = PaymentSummaryItem(money: money!, label: label!, type: type!)
+        value = PaymentSummaryItem(cost: cost!, label: label!, type: type!)
     }
 
     public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(value.money.encoded, forKey: "money")
+        aCoder.encodeObject(value.cost.encoded, forKey: "cost")
         aCoder.encodeObject(value.label, forKey: "label")
         aCoder.encodeInteger(value.type.rawValue, forKey: "type")
     }
@@ -115,7 +115,7 @@ extension PKPaymentSummaryItemType {
 
 extension PKPaymentSummaryItem {
 
-    convenience init<M: MoneyType where M.DecimalStorageType == NSDecimalNumber>(paymentSummaryItem: PaymentSummaryItem<M>) {
+    convenience init<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber>(paymentSummaryItem: PaymentSummaryItem<Cost>) {
         self.init()
         amount = paymentSummaryItem.amount
         label = paymentSummaryItem.label
@@ -127,9 +127,9 @@ extension PKPaymentSummaryItem {
 
 public extension PKPaymentRequest {
 
-    convenience init<M: MoneyType, Items: SequenceType where M.DecimalStorageType == NSDecimalNumber, M.Coder: NSCoding, M.Coder.ValueType == M, Items.Generator.Element == PaymentSummaryItem<M>>(items: Items) {
+    convenience init<Cost: MoneyType, Items: SequenceType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost, Items.Generator.Element == PaymentSummaryItem<Cost>>(items: Items) {
         self.init()
-        currencyCode = M.Currency.code
+        currencyCode = Cost.Currency.code
         paymentSummaryItems = items.map { PKPaymentSummaryItem(paymentSummaryItem: $0) }
     }
 }
