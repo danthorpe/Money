@@ -17,7 +17,7 @@ class ApplePayTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        item = PaymentSummaryItem(cost: 679, label: "iPad Pro, 32GB with WiFi", type: .Final)
+        item = PaymentSummaryItem(label: "iPad Pro, 32GB with WiFi", cost: 679, type: .Final)
         items.insert(item)
     }
 }
@@ -52,14 +52,14 @@ class PaymentSummaryItemTests: ApplePayTests {
 
     func test__set_new_type__sets_type() {
         item = item.setType(.Pending)
-        XCTAssertEqual(item.cost, 679)
+        XCTAssertEqual(item.cost, 0)
         XCTAssertEqual(item.label, "iPad Pro, 32GB with WiFi")
         XCTAssertEqual(item.type, PaymentSummaryItemType.Pending)
     }
 
     func test__equality() {
-        XCTAssertEqual(item, PaymentSummaryItem<GBP>(cost: 679, label: "iPad Pro, 32GB with WiFi", type: .Final))
-        XCTAssertNotEqual(item, PaymentSummaryItem<GBP>(cost: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
+        XCTAssertEqual(item, PaymentSummaryItem<GBP>(label: "iPad Pro, 32GB with WiFi", cost: 679, type: .Final))
+        XCTAssertNotEqual(item, PaymentSummaryItem<GBP>(label: "iPad Pro, 128GB with WiFi", cost: 799, type: .Final))
     }
 }
 
@@ -104,15 +104,12 @@ class PKPaymentSummaryItemTests: ApplePayTests {
 class PKPaymentRequestTests: ApplePayTests {
 
     func test__init__with_items() {
-        items.insert(PaymentSummaryItem(cost: 799, label: "iPad Pro, 128GB with WiFi", type: .Final))
-        items.insert(PaymentSummaryItem(cost: 899, label: "iPad Pro, 128GB with WiFi + Cellular", type: .Final))
-        let request = PKPaymentRequest(items: items)
-        XCTAssertEqual(request.currencyCode, GBP.Currency.code)
-        XCTAssertEqual(request.paymentSummaryItems.count, 3)
-        let total = request.paymentSummaryItems.reduce(NSDecimalNumber.zero()) { (acc, item) in
-            return acc.decimalNumberByAdding(item.amount)
-        }
+        items.insert(PaymentSummaryItem(label: "iPad Pro, 128GB with WiFi", cost: 799, type: .Final))
+        items.insert(PaymentSummaryItem(label: "iPad Pro, 128GB with WiFi + Cellular", cost: 899, type: .Final))
+        let request = PKPaymentRequest(items: Array(items), sellerName: "Acme. Inc")
 
-        XCTAssertEqual(total, items.map { $0.cost }.reduce(0, combine: +).amount)
+        XCTAssertEqual(request.currencyCode, GBP.Currency.code)
+        XCTAssertEqual(request.paymentSummaryItems.count, 4)
+        XCTAssertEqual(request.paymentSummaryItems.last!.amount, items.map { $0.cost }.reduce(0, combine: +).amount)
     }
 }

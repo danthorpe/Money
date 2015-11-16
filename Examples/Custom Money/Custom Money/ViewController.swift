@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PassKit
 import Money
 
 class ViewController: UIViewController {
@@ -22,6 +23,18 @@ class ViewController: UIViewController {
         let total = Bank<Hearts,Bees>.fx(hearts).counter + bees
 
         print("Exchanging your \(hearts) into \(Currency.Bee.symbol) via the bank gives you \(total) in total.")
+
+        typealias DollarItem = PaymentSummaryItem<USD>
+
+        let items = [
+            DollarItem(cost: 9.99, label: "Something fancy."),
+            DollarItem(cost: 5.99, label: "Something else fancy.")
+        ]
+
+        let request = PKPaymentRequest(items: items)
+
+        print("request currency code: \(request.currencyCode)")
+        print("request payment items: \(request.paymentSummaryItems)")
     }
 }
 
