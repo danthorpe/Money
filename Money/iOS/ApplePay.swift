@@ -167,7 +167,7 @@ public final class PaymentSummaryItemCoder<Cost: MoneyType where Cost.DecimalSto
 
 // MARK: - Apple Pay type extensions
 
-@available(iOSApplicationExtension 9.0, *)
+@available(iOS 9.0, iOSApplicationExtension 9.0, *)
 internal extension PKPaymentSummaryItemType {
 
     init(paymentSummaryItemType: PaymentSummaryItemType) {
@@ -186,7 +186,7 @@ internal extension PKPaymentSummaryItem {
         self.init()
         amount = paymentSummaryItem.amount
         label = paymentSummaryItem.label
-        if #available(iOSApplicationExtension 9.0, *) {
+        if #available(iOS 9.0, iOSApplicationExtension 9.0, *) {
             type = PKPaymentSummaryItemType(paymentSummaryItemType: paymentSummaryItem.type)
         }
     }
