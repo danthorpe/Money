@@ -1,3 +1,7 @@
+# 1.3.0
+1. [[MNY-21](https://github.com/danthorpe/Money/pull/21), [MNY-22](https://github.com/danthorpe/Money/pull/22)]: Adds support for initializing `MoneyType`s with minor units. Thanks to [@jlalvarez18](https://github.com/jlalvarez18).
+2. [[MNY-23](https://github.com/danthorpe/Money/pull/23)]: Adds some convenience extensions to create  pay payment requests using an array of `PaymentSummaryItem` which is a new type generic over `MoneyType`. This is only available on iOS, and it allows consumers to use `Money` directly with  pay APIs.
+ 
 # 1.2.1
 1. [[MNY-19](https://github.com/danthorpe/Money/pull/19)]: Fixes a bunch of miscellaneous spelling mistakes in the README and code documentation.
 2. [[MNY-20](https://github.com/danthorpe/Money/pull/20)]: Fixes a mistake where DVR which is only needed for the test suit was not in a private Cartfile. Also switches to the official @venmo DVR after recent merges in their project. Thanks to @dasmer for this.
