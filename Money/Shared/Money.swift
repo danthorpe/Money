@@ -41,8 +41,39 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
     /// Access the underlying decimal
     var decimal: _Decimal<Currency> { get }
 
+    /// Access the underlying minor units
+    var minorUnits: IntegerLiteralType { get }
+
     /// Initialize the money with a decimal
     init(_: _Decimal<Currency>)
+
+    /// Initialize the money with a integer representing minor units
+    init(minorUnits: IntegerLiteralType)
+}
+
+// MARK: - MoneyType Extension
+
+public extension MoneyType where DecimalStorageType == NSDecimalNumber {
+
+    var amount: DecimalStorageType {
+        return storage
+    }
+}
+
+public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
+
+    /**
+     Use a `BankersDecimal` to convert the receive into another `MoneyType`. To use this
+     API the underlying `DecimalStorageType`s between the receiver, the other `MoneyType`
+     must both be the same a that of `BankersDecimal` (which luckily they are).
+
+     - parameter rate: a `BankersDecimal` representing the rate.
+     - returns: another `MoneyType` value.
+     */
+    @warn_unused_result
+    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
+        return multiplyBy(Other(storage: rate.storage))
+    }
 }
 
 /**
@@ -63,6 +94,12 @@ public struct _Money<C: CurrencyType>: MoneyType {
     /// Access the underlying decimal.
     /// - returns: the `_Decimal<C>`
     public let decimal: _Decimal<C>
+
+    /// Access the underlying minor units
+    /// - returns: the `IntegerLiteralType` minor units
+    public var minorUnits: IntegerLiteralType {
+        return decimal.multiplyByPowerOf10(Currency.scale).integerValue
+    }
 
     /// Access the underlying decimal storage.
     /// - returns: the `_Decimal<C>.DecimalStorageType`
@@ -88,6 +125,15 @@ public struct _Money<C: CurrencyType>: MoneyType {
      */
     public init(_ value: _Decimal<C> = _Decimal<C>()) {
         decimal = value
+    }
+
+    /**
+     Initialize the money with a integer representing minor units.
+
+     - parameter minorUnits: a `IntegerLiteralType`
+     */
+    public init(minorUnits: IntegerLiteralType) {
+        decimal = _Decimal<DecimalNumberBehavior>(integerLiteral: minorUnits).multiplyByPowerOf10(Currency.scale * -1)
     }
 
     /**
@@ -117,7 +163,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
     public init(floatLiteral value: FloatLiteralType) {
         decimal = _Decimal<DecimalNumberBehavior>(floatLiteral: value)
     }
-
+    
     /**
      Subtract a matching `_Money<C>` from the receiver.
 
@@ -218,25 +264,6 @@ extension _Money: CustomStringConvertible {
     */
     public func formatted(style: NSNumberFormatterStyle) -> String {
         return C.formatter.formattedStringWithStyle(style)(decimal)
-    }
-}
-
-
-// MARK: - MoneyType Extension
-
-public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalStorageType {
-
-    /**
-     Use a `BankersDecimal` to convert the receive into another `MoneyType`. To use this
-     API the underlying `DecimalStorageType`s between the receiver, the other `MoneyType` 
-     must both be the same a that of `BankersDecimal` (which luckily they are).
-     
-     - parameter rate: a `BankersDecimal` representing the rate.
-     - returns: another `MoneyType` value.
-    */
-    @warn_unused_result
-    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
-        return multiplyBy(Other(storage: rate.storage))
     }
 }
 

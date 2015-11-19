@@ -1,5 +1,5 @@
 PODS:
-  - Money (1.1.0):
+  - Money (1.2.1):
     - Result (= 0.6.0-beta.6)
     - SwiftyJSON
     - ValueCoding
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Money: 9b12218fa90413e429f9f623f52619bb89791722
+  Money: 7bf4b32f795e1eb867c2fcebaaf90b3249824438
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   ValueCoding: 54486fde2d7b1c2f1eb46de260b95340abed5bde

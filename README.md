@@ -1,6 +1,6 @@
 ![](header.png)
 
-[![Build status](https://badge.buildkite.com/265eb9670a2ef6b73eebf37769a8455c402509f71f09c4f51e.svg)](https://buildkite.com/blindingskies/money?branch=development)
+[![Build status](https://badge.buildkite.com/265eb9670a2ef6b73eebf37769a8455c402509f71f09c4f51e.svg?branch=development)](https://buildkite.com/blindingskies/money?branch=development)
 [![codecov.io](https://codecov.io/github/danthorpe/Money/coverage.svg?branch=development&token=gI70muNOjA)](https://codecov.io/github/danthorpe/Money?branch=development)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Money.svg)](https://img.shields.io/cocoapods/v/Money.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -62,6 +62,43 @@ let money = pounds + euros
 > Binary operator '+' cannot be applied to operands of type 'GBP' (aka '_Money&lt;Currency.GBP&gt;') and 'EUR' (aka '_Money&lt;Currency.EUR&gt;')
 
 Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with the expected limitations.
+
+## Minor Units
+
+`Money` can be initialized using the smallest units of currency:
+
+```swift
+let dollars = USD(minorUnits: 3250)
+let yuen = JPY(minorUnits: 3000)
+let bitcoin = BTC(minorUnits: 5000)
+
+print(“You have \(dollars), \(yuen) and \(bitcoin) Satoshis”)
+```
+
+> You have $ 32.50, JP¥ 3,000 and 0.00005 Satoshis
+
+##  Pay
+
+On iOS (not watchOS, tvOS or OS X), there is support in Money for using `Money` with  Pay.
+
+Create a `PaymentSummaryItem` in lieu of `PKPaymentSummaryItem` with a suitable `MoneyType`:
+
+```swift
+import PassKit
+
+typealias DollarItem = PaymentSummaryItem<USD>
+
+let items = [
+    DollarItem(label: "Something fancy.", cost: 9.99),
+    DollarItem(label: "Something less fancy.", cost: 5.99)
+]
+
+let request = PKPaymentRequest(items: items, sellerName: "Acme, Inc.")
+```
+
+The convenience initializer receives an array of `PaymentSummaryItem` values and a seller name. It sets the currency code and payment summary items. Following the  Pay guidelines, will append a total summary item using the provided seller name.
+
+`PaymentSummaryItem` conforms to `Hashable` and [`ValueCoding`](https://github.com/danthorpe/ValueCoding).
 
 ## Foreign Currency Exchange (FX)
 To represent a foreign exchange transaction, i.e. converting `USD` to `EUR`, use a FX service provider. There is built in support for [Yahoo](https://finance.yahoo.com/currency-converter/#from=USD;to=EUR;amt=1) and [OpenExchangeRates.org](https://openexchangerates.org) services. But it’s possible for consumers to create their own too.

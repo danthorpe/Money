@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "Money"
-  s.version           = "1.2.1"
+  s.version           = "1.3.0"
   s.summary           = "Swift types for working with Money."
   s.description       = <<-DESC
   
@@ -21,7 +21,16 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
-  s.source_files      = ['Money/*.swift', 'Money/Decimal/*.swift', 'Money/FX/*.swift']
+
+  s.source_files = [
+    'Money/Shared/*.swift', 
+    'Money/Shared/**/*.swift',     
+    'Money/iOS'
+  ]
+  
+  s.osx.exclude_files = [ 'Money/iOS' ]
+  s.watchos.exclude_files = [ 'Money/iOS' ]
+  s.tvos.exclude_files = [ 'Money/iOS' ]  
   
   s.dependency 'ValueCoding'
   s.dependency 'Result', '0.6.0-beta.6'
