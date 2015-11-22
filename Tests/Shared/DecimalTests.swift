@@ -74,13 +74,13 @@ class DecimalNumberConversionTests: DecimalTests {
 
     func test__multiply() {
         let result = decimal * money
-        XCTAssertEqual(result.description, "£ 200.00")
+        XCTAssertEqual(result.description, "£200.00")
         XCTAssertEqual(money * decimal, 200)
     }
 
     func test__divide() {
         let result = decimal / money
-        XCTAssertEqual(result.description, "£ 0.50")
+        XCTAssertEqual(result.description, "£0.50")
         XCTAssertEqual(money / decimal, 2)
     }
 }

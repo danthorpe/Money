@@ -88,7 +88,7 @@ public protocol ISOCurrencyType: CurrencyType {
 
     static var sharedInstance: Self { get }
 
-    var _locale: NSLocale { get }
+    var _code: String { get }
 
     var _formatter: NSNumberFormatter { get }
 }
@@ -97,7 +97,7 @@ public extension ISOCurrencyType {
 
     /// The currency code
     static var code: String {
-        return formatter.currencyCode
+        return sharedInstance._code
     }
 
     /// The currency symbol
@@ -133,21 +133,32 @@ public struct Currency {
      */
     public class Base {
 
-        public let _formatter: NSNumberFormatter
-        public let _locale: NSLocale
+        public let _code: String
 
-        init(locale: NSLocale) {
-            _formatter = {
-                let fmtr = NSNumberFormatter()
-                fmtr.numberStyle = .CurrencyStyle
-                fmtr.locale = locale
-                return fmtr
-            }()
-            _locale = locale
+        lazy var locale: NSLocale = {
+            let id = NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: self._code])
+            return NSLocale(localeIdentifier: id)
+        }()
+
+        public lazy var _formatter: NSNumberFormatter = {
+            let currencyLocale = self.locale
+            let currentLocale = NSLocale.currentLocale()
+            let fmtr = NSNumberFormatter()
+            fmtr.numberStyle = .CurrencyStyle
+            fmtr.currencyCode = self._code
+            let symbol = currencyLocale.currencySymbol
+            fmtr.currencySymbol = currentLocale.displayNameForKey(NSLocaleCurrencySymbol, value: symbol) ?? symbol
+            fmtr.currencyGroupingSeparator = currentLocale.currencyGroupingSeparator
+            fmtr.currencyDecimalSeparator = currentLocale.currencyDecimalSeparator
+            return fmtr
+        }()
+
+        init(code: String) {
+            self._code = code
         }
 
-        convenience init(code: String) {
-            self.init(locale: NSLocale(localeIdentifier: NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: code])))
+        convenience init(locale: NSLocale) {
+            self.init(code: locale.objectForKey(NSLocaleCurrencyCode) as! String)
         }
     }
 

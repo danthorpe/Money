@@ -8,6 +8,8 @@
 
 import Foundation
 
+internal let __formatter = NSNumberFormatter()
+
 public protocol LanguageType {
     var languageIdentifier: String { get }
 }
@@ -26,5 +28,20 @@ extension LocaleType where Self: LanguageType, Self: CountryType {
             return languageIdentifier
         }
         return "\(languageIdentifier)_\(countryIdentifier)"
+    }
+}
+
+internal extension NSLocale {
+
+    var currencySymbol: String {
+        return objectForKey(NSLocaleCurrencySymbol) as! String
+    }
+
+    var currencyGroupingSeparator: String {
+        return objectForKey(NSLocaleGroupingSeparator) as! String
+    }
+
+    var currencyDecimalSeparator: String {
+        return objectForKey(NSLocaleDecimalSeparator) as! String
     }
 }

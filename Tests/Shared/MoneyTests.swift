@@ -263,35 +263,35 @@ class MoneyDescriptionTests: MoneyTests {
     func test__gbp_description() {
         XCTAssertEqual(Currency.GBP.code, "GBP")
         XCTAssertEqual(Currency.GBP.symbol, "£")
-        XCTAssertEqual(gbp.description, "£ 100.00")
+        XCTAssertEqual(gbp.description, "£100.00")
         XCTAssertEqual(Currency.GBP.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__usd_description() {
         XCTAssertEqual(Currency.USD.code, "USD")
         XCTAssertEqual(Currency.USD.symbol, "US$")
-        XCTAssertEqual(usd.description, "US$ 99.00")
+        XCTAssertEqual(usd.description, "US$99.00")
         XCTAssertEqual(Currency.USD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__cad_description() {
         XCTAssertEqual(Currency.CAD.code, "CAD")
         XCTAssertEqual(Currency.CAD.symbol, "CA$")
-        XCTAssertEqual(cad.description, "CA$ 102.01")
+        XCTAssertEqual(cad.description, "CA$102.01")
         XCTAssertEqual(Currency.CAD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__aud_description() {
         XCTAssertEqual(Currency.AUD.code, "AUD")
         XCTAssertEqual(Currency.AUD.symbol, "A$")
-        XCTAssertEqual(aud.description, "A$ 100.00")
+        XCTAssertEqual(aud.description, "A$100.00")
         XCTAssertEqual(Currency.AUD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__eur_description() {
         XCTAssertEqual(Currency.EUR.code, "EUR")
         XCTAssertEqual(Currency.EUR.symbol, "€")
-        XCTAssertEqual(eur.description, "€ 249.50")
+        XCTAssertEqual(eur.description, "€249.50")
         XCTAssertEqual(Currency.EUR.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
@@ -299,7 +299,7 @@ class MoneyDescriptionTests: MoneyTests {
         XCTAssertEqual(Currency.JPY.code, "JPY")
         XCTAssertEqual(Currency.JPY.symbol, "JP¥")
         XCTAssertEqual(Currency.JPY.scale, 0)
-        XCTAssertEqual(jpy.description, "JP¥ 320")
+        XCTAssertEqual(jpy.description, "JP¥320")
         XCTAssertEqual(Currency.JPY.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 }
@@ -324,13 +324,13 @@ class MoneyFormattingTests: MoneyTests {
     }
 
     func test__formatted_for_es_ES() {
-        let formatted = gbp.formattedForLanguageId("es_ES")
-        XCTAssertEqual(formatted, "100,00 GBP")
+        let formatted = gbp.formattedForLocaleId("es_ES")
+        XCTAssertEqual(formatted, "100,00 £")
     }
 
     func test__formatted_for_Spanish_Spain() {
         let formatted = gbp.formattedForLocale(.Spanish(.Spain))
-        XCTAssertEqual(formatted, "100,00 GBP")
+        XCTAssertEqual(formatted, "100,00 £")
     }
 
     func test__formatted_for_English_UnitedKingdom() {

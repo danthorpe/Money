@@ -67,15 +67,15 @@ public extension MoneyType  {
      These are `.CurrencyISOCodeStyle`, `.CurrencyPluralStyle`, and
      `.CurrencyAccountingStyle`.
      */
-    func formattedWithStyle(style: NSNumberFormatterStyle) -> String {
+    func formattedWithStyle(style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
         return Currency.formatter.formattedStringWithStyle(style)(decimal)
     }
 }
 
-public extension MoneyType where Currency: ISOCurrencyType {
+extension MoneyType where Currency: ISOCurrencyType {
 
-    func formattedForLocale(locale: Locale, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
-        return formattedForLanguageId(locale.localeIdentifier, style: style)
+    public func formattedForLocale(locale: Locale, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
+        return formattedForLocaleId(locale.localeIdentifier, style: style)
     }
 
     /**
@@ -85,11 +85,19 @@ public extension MoneyType where Currency: ISOCurrencyType {
      This function will format the Money into a string suitable
      for the provided a locale identifier.
      */
-    func formattedForLanguageId(languageId: String, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
-        let formatter: NSNumberFormatter = Currency.formatter.copy() as! NSNumberFormatter
-        formatter.locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(languageId))
-        formatter.currencyCode = Currency.code
-        return formatter.formattedStringWithStyle(style)(decimal)
+    public func formattedForLocaleId(localeId: String, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
+        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(localeId))
+        return formattedForLocale(locale)
+    }
+
+    internal func formattedForLocale(locale: NSLocale, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
+        __formatter.locale = locale
+        __formatter.numberStyle = style
+        __formatter.currencyCode = Currency.code
+        __formatter.currencySymbol = Currency.symbol
+        __formatter.currencyGroupingSeparator = locale.currencyGroupingSeparator
+        __formatter.currencyDecimalSeparator = locale.currencyDecimalSeparator
+        return __formatter.stringFromDecimal(decimal)!
     }
 }
 
@@ -283,7 +291,7 @@ extension _Money: CustomStringConvertible {
      NSNumberFormatterStyle.CurrencyStyle.
     */
     public var description: String {
-        return formattedWithStyle(.CurrencyStyle)
+        return formattedWithStyle()
     }
 }
 
