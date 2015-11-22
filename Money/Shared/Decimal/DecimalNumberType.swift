@@ -232,21 +232,10 @@ public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
         return storage.hashValue
     }
 
-    /**
-     Initialize a new value using a `FloatLiteralType`
-
-     - parameter floatLiteral: a `FloatLiteralType` for the system, probably `Double`.
-     */
-    init(floatLiteral value: Swift.FloatLiteralType) {
-        self.init(storage: NSDecimalNumber(floatLiteral: value).decimalNumberByRoundingAccordingToBehavior(DecimalNumberBehavior.decimalNumberBehaviors))
-    }
-
-    /**
-     Initialize a new value using a `IntegerLiteralType`
-
-     - parameter integerLiteral: a `IntegerLiteralType` for the system, probably `Int`.
-     */
-    init(integerLiteral value: Swift.IntegerLiteralType) {
+    /// Initialize a new decimal with an `Int`.
+    /// - parameter value: an `Int`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: Int) {
         switch value {
         case 0:
             self.init(storage: NSDecimalNumber.zero())
@@ -255,6 +244,94 @@ public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
         default:
             self.init(storage: NSDecimalNumber(integerLiteral: value).decimalNumberByRoundingAccordingToBehavior(DecimalNumberBehavior.decimalNumberBehaviors))
         }
+    }
+
+    /// Initialize a new decimal with an `UInt8`.
+    /// - parameter value: an `UInt8`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: UInt8) {
+        self.init(Int(value))
+    }
+
+    /// Initialize a new decimal with an `Int8`.
+    /// - parameter value: an `Int8`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: Int8) {
+        self.init(Int(value))
+    }
+
+    /// Initialize a new decimal with an `UInt16`.
+    /// - parameter value: an `UInt16`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: UInt16) {
+        self.init(Int(value))
+    }
+
+    /// Initialize a new decimal with an `Int16`.
+    /// - parameter value: an `Int16`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: Int16) {
+        self.init(Int(value))
+    }
+
+    /// Initialize a new decimal with an `UInt32`.
+    /// - parameter value: an `UInt32`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: UInt32) {
+        self.init(Int(value))
+    }
+
+    /// Initialize a new decimal with an `Int32`.
+    /// - parameter value: an `Int32`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: Int32) {
+        self.init(Int(value))
+    }
+
+    /// Initialize a new decimal with an `UInt64`.
+    /// - parameter value: an `UInt64`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: UInt64) {
+        self.init(Int(value))
+    }
+
+    /// Initialize a new decimal with an `Int64`.
+    /// - parameter value: an `Int64`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: Int64) {
+        self.init(Int(value))
+    }
+
+    /**
+     Initialize a new value using a `IntegerLiteralType`
+
+     - parameter integerLiteral: a `IntegerLiteralType` for the system, probably `Int`.
+     */
+    init(integerLiteral value: Swift.IntegerLiteralType) {
+        self.init(value)
+    }
+
+    /// Initialize a new decimal with an `Double`.
+    /// - parameter value: an `Double`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: Double) {
+        self.init(storage: NSDecimalNumber(floatLiteral: value).decimalNumberByRoundingAccordingToBehavior(DecimalNumberBehavior.decimalNumberBehaviors))
+    }
+
+    /// Initialize a new decimal with a `Float`.
+    /// - parameter value: an `Float`.
+    /// - returns: an initialized `DecimalNumberType`.
+    init(_ value: Float) {
+        self.init(Double(value))
+    }
+
+    /**
+     Initialize a new value using a `FloatLiteralType`
+
+     - parameter floatLiteral: a `FloatLiteralType` for the system, probably `Double`.
+     */
+    init(floatLiteral value: Swift.FloatLiteralType) {
+        self.init(value)
     }
 
     /**
