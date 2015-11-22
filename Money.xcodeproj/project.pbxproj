@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		65579F8C1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65579F8B1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift */; };
+		65579F8D1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65579F8B1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift */; };
+		65579F8E1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65579F8B1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift */; };
 		6557F4C71BEB7F32003CD2BF /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F4C61BEB7F32003CD2BF /* ValueCoding.framework */; };
 		6557F4C91BEB7F3D003CD2BF /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F4C81BEB7F3D003CD2BF /* ValueCoding.framework */; };
 		6557F4CB1BEB7F46003CD2BF /* ValueCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F4CA1BEB7F46003CD2BF /* ValueCoding.framework */; };
@@ -187,6 +190,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65579F8B1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalNumberTypeTests.swift; sourceTree = "<group>"; };
 		6557F4C61BEB7F32003CD2BF /* ValueCoding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueCoding.framework; path = Carthage/Build/iOS/ValueCoding.framework; sourceTree = "<group>"; };
 		6557F4C81BEB7F3D003CD2BF /* ValueCoding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueCoding.framework; path = Carthage/Build/watchOS/ValueCoding.framework; sourceTree = "<group>"; };
 		6557F4CA1BEB7F46003CD2BF /* ValueCoding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueCoding.framework; path = Carthage/Build/tvOS/ValueCoding.framework; sourceTree = "<group>"; };
@@ -402,6 +406,7 @@
 			children = (
 				65DD22AD1BFA10DF0054F62D /* Troll.png */,
 				65DD22A01BFA10DF0054F62D /* BitcoinTests.swift */,
+				65579F8B1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift */,
 				65DD22A11BFA10DF0054F62D /* DecimalTests.swift */,
 				65DD22A71BFA10DF0054F62D /* FXOpenExchangeRatesTests.swift */,
 				65DD22A81BFA10DF0054F62D /* FXTests.swift */,
@@ -867,6 +872,7 @@
 				65DD22C11BFA10F30054F62D /* FXTests.swift in Sources */,
 				65DD22C51BFA10F30054F62D /* NSDecimalTests.swift in Sources */,
 				65DD22C31BFA10F30054F62D /* MoneyTests.swift in Sources */,
+				65579F8C1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */,
 				65DD22C61BFA10F60054F62D /* ApplePayTests.swift in Sources */,
 				65DD22C01BFA10F30054F62D /* FXOpenExchangeRatesTests.swift in Sources */,
 				65DD22C21BFA10F30054F62D /* FXYahooTests.swift in Sources */,
@@ -924,6 +930,7 @@
 				65DD22B81BFA10F20054F62D /* FXOpenExchangeRatesTests.swift in Sources */,
 				65DD22BA1BFA10F20054F62D /* FXYahooTests.swift in Sources */,
 				65DD22BC1BFA10F20054F62D /* NSDecimalNumberTests.swift in Sources */,
+				65579F8D1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */,
 				65DD22B71BFA10F20054F62D /* DecimalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -958,6 +965,7 @@
 				65DD22B11BFA10F10054F62D /* FXTests.swift in Sources */,
 				65DD22B21BFA10F10054F62D /* FXYahooTests.swift in Sources */,
 				65DD22B01BFA10F10054F62D /* FXOpenExchangeRatesTests.swift in Sources */,
+				65579F8E1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */,
 				65DD22AE1BFA10F10054F62D /* BitcoinTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
