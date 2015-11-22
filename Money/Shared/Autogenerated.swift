@@ -2123,3 +2123,2138 @@ public typealias ZWL = _Money<Currency.ZWL>
 public typealias ZWR = _Money<Currency.ZWR>
 /// ZWD Money
 public typealias ZWD = _Money<Currency.ZWD>
+
+
+// MARK: - Country Types
+
+public enum EnglishSpeakingCountry: CountryType {
+    case World
+    case Europe
+    case Andorra
+    case AntiguaBarbuda
+    case Anguilla
+    case Albania
+    case AmericanSamoa
+    case Austria
+    case Australia
+    case BosniaHerzegovina
+    case Barbados
+    case Belgium
+    case Bermuda
+    case Bahamas
+    case Botswana
+    case Belize
+    case Canada
+    case CocosKeelingIslands
+    case Switzerland
+    case CookIslands
+    case Cameroon
+    case ChristmasIsland
+    case Cyprus
+    case CzechRepublic
+    case Germany
+    case DiegoGarcia
+    case Denmark
+    case Dominica
+    case Estonia
+    case Eritrea
+    case Spain
+    case Finland
+    case Fiji
+    case FalklandIslands
+    case Micronesia
+    case France
+    case UnitedKingdom
+    case Grenada
+    case Guernsey
+    case Ghana
+    case Gibraltar
+    case Gambia
+    case Greece
+    case Guam
+    case Guyana
+    case HongKongSarChina
+    case Croatia
+    case Hungary
+    case Ireland
+    case Israel
+    case IsleOfMan
+    case India
+    case BritishIndianOceanTerritory
+    case Iceland
+    case Italy
+    case Jersey
+    case Jamaica
+    case Kenya
+    case Kiribati
+    case StKittsNevis
+    case CaymanIslands
+    case StLucia
+    case Liberia
+    case Lesotho
+    case Lithuania
+    case Luxembourg
+    case Latvia
+    case Montenegro
+    case Madagascar
+    case MarshallIslands
+    case MacauSarChina
+    case NorthernMarianaIslands
+    case Montserrat
+    case Malta
+    case Mauritius
+    case Malawi
+    case Malaysia
+    case Namibia
+    case NorfolkIsland
+    case Nigeria
+    case Netherlands
+    case Norway
+    case Nauru
+    case Niue
+    case NewZealand
+    case PapuaNewGuinea
+    case Philippines
+    case Pakistan
+    case Poland
+    case PitcairnIslands
+    case PuertoRico
+    case Portugal
+    case Palau
+    case Romania
+    case Russia
+    case Rwanda
+    case SolomonIslands
+    case Seychelles
+    case Sudan
+    case Sweden
+    case Singapore
+    case StHelena
+    case Slovenia
+    case Slovakia
+    case SierraLeone
+    case SouthSudan
+    case SintMaarten
+    case Swaziland
+    case TurksCaicosIslands
+    case Tokelau
+    case Tonga
+    case Turkey
+    case TrinidadTobago
+    case Tuvalu
+    case Tanzania
+    case Uganda
+    case USOutlyingIslands
+    case UnitedStates
+    case StVincentGrenadines
+    case BritishVirginIslands
+    case USVirginIslands
+    case Vanuatu
+    case Samoa
+    case SouthAfrica
+    case Zambia
+    case Zimbabwe
+
+    public var countryIdentifier: String {
+        switch self {
+        case .World:
+            return "001"
+        case .Europe:
+            return "150"
+        case .Andorra:
+            return "AD"
+        case .AntiguaBarbuda:
+            return "AG"
+        case .Anguilla:
+            return "AI"
+        case .Albania:
+            return "AL"
+        case .AmericanSamoa:
+            return "AS"
+        case .Austria:
+            return "AT"
+        case .Australia:
+            return "AU"
+        case .BosniaHerzegovina:
+            return "BA"
+        case .Barbados:
+            return "BB"
+        case .Belgium:
+            return "BE"
+        case .Bermuda:
+            return "BM"
+        case .Bahamas:
+            return "BS"
+        case .Botswana:
+            return "BW"
+        case .Belize:
+            return "BZ"
+        case .Canada:
+            return "CA"
+        case .CocosKeelingIslands:
+            return "CC"
+        case .Switzerland:
+            return "CH"
+        case .CookIslands:
+            return "CK"
+        case .Cameroon:
+            return "CM"
+        case .ChristmasIsland:
+            return "CX"
+        case .Cyprus:
+            return "CY"
+        case .CzechRepublic:
+            return "CZ"
+        case .Germany:
+            return "DE"
+        case .DiegoGarcia:
+            return "DG"
+        case .Denmark:
+            return "DK"
+        case .Dominica:
+            return "DM"
+        case .Estonia:
+            return "EE"
+        case .Eritrea:
+            return "ER"
+        case .Spain:
+            return "ES"
+        case .Finland:
+            return "FI"
+        case .Fiji:
+            return "FJ"
+        case .FalklandIslands:
+            return "FK"
+        case .Micronesia:
+            return "FM"
+        case .France:
+            return "FR"
+        case .UnitedKingdom:
+            return "GB"
+        case .Grenada:
+            return "GD"
+        case .Guernsey:
+            return "GG"
+        case .Ghana:
+            return "GH"
+        case .Gibraltar:
+            return "GI"
+        case .Gambia:
+            return "GM"
+        case .Greece:
+            return "GR"
+        case .Guam:
+            return "GU"
+        case .Guyana:
+            return "GY"
+        case .HongKongSarChina:
+            return "HK"
+        case .Croatia:
+            return "HR"
+        case .Hungary:
+            return "HU"
+        case .Ireland:
+            return "IE"
+        case .Israel:
+            return "IL"
+        case .IsleOfMan:
+            return "IM"
+        case .India:
+            return "IN"
+        case .BritishIndianOceanTerritory:
+            return "IO"
+        case .Iceland:
+            return "IS"
+        case .Italy:
+            return "IT"
+        case .Jersey:
+            return "JE"
+        case .Jamaica:
+            return "JM"
+        case .Kenya:
+            return "KE"
+        case .Kiribati:
+            return "KI"
+        case .StKittsNevis:
+            return "KN"
+        case .CaymanIslands:
+            return "KY"
+        case .StLucia:
+            return "LC"
+        case .Liberia:
+            return "LR"
+        case .Lesotho:
+            return "LS"
+        case .Lithuania:
+            return "LT"
+        case .Luxembourg:
+            return "LU"
+        case .Latvia:
+            return "LV"
+        case .Montenegro:
+            return "ME"
+        case .Madagascar:
+            return "MG"
+        case .MarshallIslands:
+            return "MH"
+        case .MacauSarChina:
+            return "MO"
+        case .NorthernMarianaIslands:
+            return "MP"
+        case .Montserrat:
+            return "MS"
+        case .Malta:
+            return "MT"
+        case .Mauritius:
+            return "MU"
+        case .Malawi:
+            return "MW"
+        case .Malaysia:
+            return "MY"
+        case .Namibia:
+            return "NA"
+        case .NorfolkIsland:
+            return "NF"
+        case .Nigeria:
+            return "NG"
+        case .Netherlands:
+            return "NL"
+        case .Norway:
+            return "NO"
+        case .Nauru:
+            return "NR"
+        case .Niue:
+            return "NU"
+        case .NewZealand:
+            return "NZ"
+        case .PapuaNewGuinea:
+            return "PG"
+        case .Philippines:
+            return "PH"
+        case .Pakistan:
+            return "PK"
+        case .Poland:
+            return "PL"
+        case .PitcairnIslands:
+            return "PN"
+        case .PuertoRico:
+            return "PR"
+        case .Portugal:
+            return "PT"
+        case .Palau:
+            return "PW"
+        case .Romania:
+            return "RO"
+        case .Russia:
+            return "RU"
+        case .Rwanda:
+            return "RW"
+        case .SolomonIslands:
+            return "SB"
+        case .Seychelles:
+            return "SC"
+        case .Sudan:
+            return "SD"
+        case .Sweden:
+            return "SE"
+        case .Singapore:
+            return "SG"
+        case .StHelena:
+            return "SH"
+        case .Slovenia:
+            return "SI"
+        case .Slovakia:
+            return "SK"
+        case .SierraLeone:
+            return "SL"
+        case .SouthSudan:
+            return "SS"
+        case .SintMaarten:
+            return "SX"
+        case .Swaziland:
+            return "SZ"
+        case .TurksCaicosIslands:
+            return "TC"
+        case .Tokelau:
+            return "TK"
+        case .Tonga:
+            return "TO"
+        case .Turkey:
+            return "TR"
+        case .TrinidadTobago:
+            return "TT"
+        case .Tuvalu:
+            return "TV"
+        case .Tanzania:
+            return "TZ"
+        case .Uganda:
+            return "UG"
+        case .USOutlyingIslands:
+            return "UM"
+        case .UnitedStates:
+            return "US"
+        case .StVincentGrenadines:
+            return "VC"
+        case .BritishVirginIslands:
+            return "VG"
+        case .USVirginIslands:
+            return "VI"
+        case .Vanuatu:
+            return "VU"
+        case .Samoa:
+            return "WS"
+        case .SouthAfrica:
+            return "ZA"
+        case .Zambia:
+            return "ZM"
+        case .Zimbabwe:
+            return "ZW"
+        }
+    }
+}
+
+public enum FrenchSpeakingCountry: CountryType {
+    case Belgium
+    case BurkinaFaso
+    case Burundi
+    case Benin
+    case StBarthélemy
+    case Canada
+    case CongoKinshasa
+    case CentralAfricanRepublic
+    case CongoBrazzaville
+    case Switzerland
+    case CôteDivoire
+    case Cameroon
+    case Djibouti
+    case Algeria
+    case France
+    case Gabon
+    case FrenchGuiana
+    case Guinea
+    case Guadeloupe
+    case EquatorialGuinea
+    case Haiti
+    case Comoros
+    case Luxembourg
+    case Morocco
+    case Monaco
+    case StMartin
+    case Madagascar
+    case Mali
+    case Martinique
+    case Mauritania
+    case Mauritius
+    case NewCaledonia
+    case Niger
+    case FrenchPolynesia
+    case StPierreMiquelon
+    case Réunion
+    case Rwanda
+    case Seychelles
+    case Senegal
+    case Syria
+    case Chad
+    case Togo
+    case Tunisia
+    case Vanuatu
+    case WallisFutuna
+    case Mayotte
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Belgium:
+            return "BE"
+        case .BurkinaFaso:
+            return "BF"
+        case .Burundi:
+            return "BI"
+        case .Benin:
+            return "BJ"
+        case .StBarthélemy:
+            return "BL"
+        case .Canada:
+            return "CA"
+        case .CongoKinshasa:
+            return "CD"
+        case .CentralAfricanRepublic:
+            return "CF"
+        case .CongoBrazzaville:
+            return "CG"
+        case .Switzerland:
+            return "CH"
+        case .CôteDivoire:
+            return "CI"
+        case .Cameroon:
+            return "CM"
+        case .Djibouti:
+            return "DJ"
+        case .Algeria:
+            return "DZ"
+        case .France:
+            return "FR"
+        case .Gabon:
+            return "GA"
+        case .FrenchGuiana:
+            return "GF"
+        case .Guinea:
+            return "GN"
+        case .Guadeloupe:
+            return "GP"
+        case .EquatorialGuinea:
+            return "GQ"
+        case .Haiti:
+            return "HT"
+        case .Comoros:
+            return "KM"
+        case .Luxembourg:
+            return "LU"
+        case .Morocco:
+            return "MA"
+        case .Monaco:
+            return "MC"
+        case .StMartin:
+            return "MF"
+        case .Madagascar:
+            return "MG"
+        case .Mali:
+            return "ML"
+        case .Martinique:
+            return "MQ"
+        case .Mauritania:
+            return "MR"
+        case .Mauritius:
+            return "MU"
+        case .NewCaledonia:
+            return "NC"
+        case .Niger:
+            return "NE"
+        case .FrenchPolynesia:
+            return "PF"
+        case .StPierreMiquelon:
+            return "PM"
+        case .Réunion:
+            return "RE"
+        case .Rwanda:
+            return "RW"
+        case .Seychelles:
+            return "SC"
+        case .Senegal:
+            return "SN"
+        case .Syria:
+            return "SY"
+        case .Chad:
+            return "TD"
+        case .Togo:
+            return "TG"
+        case .Tunisia:
+            return "TN"
+        case .Vanuatu:
+            return "VU"
+        case .WallisFutuna:
+            return "WF"
+        case .Mayotte:
+            return "YT"
+        }
+    }
+}
+
+public enum ArabicSpeakingCountry: CountryType {
+    case World
+    case UnitedArabEmirates
+    case Bahrain
+    case Djibouti
+    case Algeria
+    case Egypt
+    case WesternSahara
+    case Eritrea
+    case Israel
+    case Iraq
+    case Jordan
+    case Comoros
+    case Kuwait
+    case Lebanon
+    case Libya
+    case Morocco
+    case Mauritania
+    case Oman
+    case PalestinianTerritories
+    case Qatar
+    case SaudiArabia
+    case Sudan
+    case Somalia
+    case SouthSudan
+    case Syria
+    case Chad
+    case Tunisia
+    case Yemen
+
+    public var countryIdentifier: String {
+        switch self {
+        case .World:
+            return "001"
+        case .UnitedArabEmirates:
+            return "AE"
+        case .Bahrain:
+            return "BH"
+        case .Djibouti:
+            return "DJ"
+        case .Algeria:
+            return "DZ"
+        case .Egypt:
+            return "EG"
+        case .WesternSahara:
+            return "EH"
+        case .Eritrea:
+            return "ER"
+        case .Israel:
+            return "IL"
+        case .Iraq:
+            return "IQ"
+        case .Jordan:
+            return "JO"
+        case .Comoros:
+            return "KM"
+        case .Kuwait:
+            return "KW"
+        case .Lebanon:
+            return "LB"
+        case .Libya:
+            return "LY"
+        case .Morocco:
+            return "MA"
+        case .Mauritania:
+            return "MR"
+        case .Oman:
+            return "OM"
+        case .PalestinianTerritories:
+            return "PS"
+        case .Qatar:
+            return "QA"
+        case .SaudiArabia:
+            return "SA"
+        case .Sudan:
+            return "SD"
+        case .Somalia:
+            return "SO"
+        case .SouthSudan:
+            return "SS"
+        case .Syria:
+            return "SY"
+        case .Chad:
+            return "TD"
+        case .Tunisia:
+            return "TN"
+        case .Yemen:
+            return "YE"
+        }
+    }
+}
+
+public enum SpanishSpeakingCountry: CountryType {
+    case LatinAmerica
+    case Argentina
+    case Bolivia
+    case Chile
+    case Colombia
+    case CostaRica
+    case Cuba
+    case DominicanRepublic
+    case CeutaMelilla
+    case Ecuador
+    case Spain
+    case EquatorialGuinea
+    case Guatemala
+    case Honduras
+    case CanaryIslands
+    case Mexico
+    case Nicaragua
+    case Panama
+    case Peru
+    case Philippines
+    case PuertoRico
+    case Paraguay
+    case ElSalvador
+    case UnitedStates
+    case Uruguay
+    case Venezuela
+
+    public var countryIdentifier: String {
+        switch self {
+        case .LatinAmerica:
+            return "419"
+        case .Argentina:
+            return "AR"
+        case .Bolivia:
+            return "BO"
+        case .Chile:
+            return "CL"
+        case .Colombia:
+            return "CO"
+        case .CostaRica:
+            return "CR"
+        case .Cuba:
+            return "CU"
+        case .DominicanRepublic:
+            return "DO"
+        case .CeutaMelilla:
+            return "EA"
+        case .Ecuador:
+            return "EC"
+        case .Spain:
+            return "ES"
+        case .EquatorialGuinea:
+            return "GQ"
+        case .Guatemala:
+            return "GT"
+        case .Honduras:
+            return "HN"
+        case .CanaryIslands:
+            return "IC"
+        case .Mexico:
+            return "MX"
+        case .Nicaragua:
+            return "NI"
+        case .Panama:
+            return "PA"
+        case .Peru:
+            return "PE"
+        case .Philippines:
+            return "PH"
+        case .PuertoRico:
+            return "PR"
+        case .Paraguay:
+            return "PY"
+        case .ElSalvador:
+            return "SV"
+        case .UnitedStates:
+            return "US"
+        case .Uruguay:
+            return "UY"
+        case .Venezuela:
+            return "VE"
+        }
+    }
+}
+
+public enum PortugueseSpeakingCountry: CountryType {
+    case Angola
+    case Brazil
+    case CapeVerde
+    case GuineaBissau
+    case MacauSarChina
+    case Mozambique
+    case Portugal
+    case SãoToméPríncipe
+    case TimorLeste
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Angola:
+            return "AO"
+        case .Brazil:
+            return "BR"
+        case .CapeVerde:
+            return "CV"
+        case .GuineaBissau:
+            return "GW"
+        case .MacauSarChina:
+            return "MO"
+        case .Mozambique:
+            return "MZ"
+        case .Portugal:
+            return "PT"
+        case .SãoToméPríncipe:
+            return "ST"
+        case .TimorLeste:
+            return "TL"
+        }
+    }
+}
+
+public enum DutchSpeakingCountry: CountryType {
+    case Aruba
+    case Belgium
+    case CaribbeanNetherlands
+    case Curaçao
+    case Netherlands
+    case Suriname
+    case SintMaarten
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Aruba:
+            return "AW"
+        case .Belgium:
+            return "BE"
+        case .CaribbeanNetherlands:
+            return "BQ"
+        case .Curaçao:
+            return "CW"
+        case .Netherlands:
+            return "NL"
+        case .Suriname:
+            return "SR"
+        case .SintMaarten:
+            return "SX"
+        }
+    }
+}
+
+public enum RussianSpeakingCountry: CountryType {
+    case Belarus
+    case Kyrgyzstan
+    case Kazakhstan
+    case Moldova
+    case Russia
+    case Ukraine
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Belarus:
+            return "BY"
+        case .Kyrgyzstan:
+            return "KG"
+        case .Kazakhstan:
+            return "KZ"
+        case .Moldova:
+            return "MD"
+        case .Russia:
+            return "RU"
+        case .Ukraine:
+            return "UA"
+        }
+    }
+}
+
+public enum GermanSpeakingCountry: CountryType {
+    case Austria
+    case Belgium
+    case Switzerland
+    case Germany
+    case Liechtenstein
+    case Luxembourg
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Austria:
+            return "AT"
+        case .Belgium:
+            return "BE"
+        case .Switzerland:
+            return "CH"
+        case .Germany:
+            return "DE"
+        case .Liechtenstein:
+            return "LI"
+        case .Luxembourg:
+            return "LU"
+        }
+    }
+}
+
+public enum ChineseSpeakingCountry: CountryType {
+    case China
+    case HongKongSarChina
+    case MacauSarChina
+    case Singapore
+    case Taiwan
+
+    public var countryIdentifier: String {
+        switch self {
+        case .China:
+            return "CN"
+        case .HongKongSarChina:
+            return "HK"
+        case .MacauSarChina:
+            return "MO"
+        case .Singapore:
+            return "SG"
+        case .Taiwan:
+            return "TW"
+        }
+    }
+}
+
+public enum FulahSpeakingCountry: CountryType {
+    case Cameroon
+    case Guinea
+    case Mauritania
+    case Senegal
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Cameroon:
+            return "CM"
+        case .Guinea:
+            return "GN"
+        case .Mauritania:
+            return "MR"
+        case .Senegal:
+            return "SN"
+        }
+    }
+}
+
+public enum CatalanSpeakingCountry: CountryType {
+    case Andorra
+    case Spain
+    case France
+    case Italy
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Andorra:
+            return "AD"
+        case .Spain:
+            return "ES"
+        case .France:
+            return "FR"
+        case .Italy:
+            return "IT"
+        }
+    }
+}
+
+public enum SerbianSpeakingCountry: CountryType {
+    case BosniaHerzegovina
+    case Montenegro
+    case Serbia
+    case Kosovo
+
+    public var countryIdentifier: String {
+        switch self {
+        case .BosniaHerzegovina:
+            return "BA"
+        case .Montenegro:
+            return "ME"
+        case .Serbia:
+            return "RS"
+        case .Kosovo:
+            return "XK"
+        }
+    }
+}
+
+public enum SomaliSpeakingCountry: CountryType {
+    case Djibouti
+    case Ethiopia
+    case Kenya
+    case Somalia
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Djibouti:
+            return "DJ"
+        case .Ethiopia:
+            return "ET"
+        case .Kenya:
+            return "KE"
+        case .Somalia:
+            return "SO"
+        }
+    }
+}
+
+public enum TamilSpeakingCountry: CountryType {
+    case India
+    case SriLanka
+    case Malaysia
+    case Singapore
+
+    public var countryIdentifier: String {
+        switch self {
+        case .India:
+            return "IN"
+        case .SriLanka:
+            return "LK"
+        case .Malaysia:
+            return "MY"
+        case .Singapore:
+            return "SG"
+        }
+    }
+}
+
+public enum LingalaSpeakingCountry: CountryType {
+    case Angola
+    case CongoKinshasa
+    case CentralAfricanRepublic
+    case CongoBrazzaville
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Angola:
+            return "AO"
+        case .CongoKinshasa:
+            return "CD"
+        case .CentralAfricanRepublic:
+            return "CF"
+        case .CongoBrazzaville:
+            return "CG"
+        }
+    }
+}
+
+public enum SwahiliSpeakingCountry: CountryType {
+    case CongoKinshasa
+    case Kenya
+    case Tanzania
+    case Uganda
+
+    public var countryIdentifier: String {
+        switch self {
+        case .CongoKinshasa:
+            return "CD"
+        case .Kenya:
+            return "KE"
+        case .Tanzania:
+            return "TZ"
+        case .Uganda:
+            return "UG"
+        }
+    }
+}
+
+public enum NorthernSamiSpeakingCountry: CountryType {
+    case Finland
+    case Norway
+    case Sweden
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Finland:
+            return "FI"
+        case .Norway:
+            return "NO"
+        case .Sweden:
+            return "SE"
+        }
+    }
+}
+
+public enum SwissGermanSpeakingCountry: CountryType {
+    case Switzerland
+    case France
+    case Liechtenstein
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Switzerland:
+            return "CH"
+        case .France:
+            return "FR"
+        case .Liechtenstein:
+            return "LI"
+        }
+    }
+}
+
+public enum HausaSpeakingCountry: CountryType {
+    case Ghana
+    case Niger
+    case Nigeria
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Ghana:
+            return "GH"
+        case .Niger:
+            return "NE"
+        case .Nigeria:
+            return "NG"
+        }
+    }
+}
+
+public enum AlbanianSpeakingCountry: CountryType {
+    case Albania
+    case Macedonia
+    case Kosovo
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Albania:
+            return "AL"
+        case .Macedonia:
+            return "MK"
+        case .Kosovo:
+            return "XK"
+        }
+    }
+}
+
+public enum QuechuaSpeakingCountry: CountryType {
+    case Bolivia
+    case Ecuador
+    case Peru
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Bolivia:
+            return "BO"
+        case .Ecuador:
+            return "EC"
+        case .Peru:
+            return "PE"
+        }
+    }
+}
+
+public enum MalaySpeakingCountry: CountryType {
+    case Brunei
+    case Malaysia
+    case Singapore
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Brunei:
+            return "BN"
+        case .Malaysia:
+            return "MY"
+        case .Singapore:
+            return "SG"
+        }
+    }
+}
+
+public enum ItalianSpeakingCountry: CountryType {
+    case Switzerland
+    case Italy
+    case SanMarino
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Switzerland:
+            return "CH"
+        case .Italy:
+            return "IT"
+        case .SanMarino:
+            return "SM"
+        }
+    }
+}
+
+public enum SwedishSpeakingCountry: CountryType {
+    case ÅlandIslands
+    case Finland
+    case Sweden
+
+    public var countryIdentifier: String {
+        switch self {
+        case .ÅlandIslands:
+            return "AX"
+        case .Finland:
+            return "FI"
+        case .Sweden:
+            return "SE"
+        }
+    }
+}
+
+public enum PunjabiSpeakingCountry: CountryType {
+    case India
+    case Pakistan
+
+    public var countryIdentifier: String {
+        switch self {
+        case .India:
+            return "IN"
+        case .Pakistan:
+            return "PK"
+        }
+    }
+}
+
+public enum DanishSpeakingCountry: CountryType {
+    case Denmark
+    case Greenland
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Denmark:
+            return "DK"
+        case .Greenland:
+            return "GL"
+        }
+    }
+}
+
+public enum NorwegianBokmålSpeakingCountry: CountryType {
+    case Norway
+    case SvalbardJanMayen
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Norway:
+            return "NO"
+        case .SvalbardJanMayen:
+            return "SJ"
+        }
+    }
+}
+
+public enum UrduSpeakingCountry: CountryType {
+    case India
+    case Pakistan
+
+    public var countryIdentifier: String {
+        switch self {
+        case .India:
+            return "IN"
+        case .Pakistan:
+            return "PK"
+        }
+    }
+}
+
+public enum CroatianSpeakingCountry: CountryType {
+    case BosniaHerzegovina
+    case Croatia
+
+    public var countryIdentifier: String {
+        switch self {
+        case .BosniaHerzegovina:
+            return "BA"
+        case .Croatia:
+            return "HR"
+        }
+    }
+}
+
+public enum AfrikaansSpeakingCountry: CountryType {
+    case Namibia
+    case SouthAfrica
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Namibia:
+            return "NA"
+        case .SouthAfrica:
+            return "ZA"
+        }
+    }
+}
+
+public enum YorubaSpeakingCountry: CountryType {
+    case Benin
+    case Nigeria
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Benin:
+            return "BJ"
+        case .Nigeria:
+            return "NG"
+        }
+    }
+}
+
+public enum BengaliSpeakingCountry: CountryType {
+    case Bangladesh
+    case India
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Bangladesh:
+            return "BD"
+        case .India:
+            return "IN"
+        }
+    }
+}
+
+public enum GreekSpeakingCountry: CountryType {
+    case Cyprus
+    case Greece
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Cyprus:
+            return "CY"
+        case .Greece:
+            return "GR"
+        }
+    }
+}
+
+public enum TesoSpeakingCountry: CountryType {
+    case Kenya
+    case Uganda
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Kenya:
+            return "KE"
+        case .Uganda:
+            return "UG"
+        }
+    }
+}
+
+public enum KoreanSpeakingCountry: CountryType {
+    case NorthKorea
+    case SouthKorea
+
+    public var countryIdentifier: String {
+        switch self {
+        case .NorthKorea:
+            return "KP"
+        case .SouthKorea:
+            return "KR"
+        }
+    }
+}
+
+public enum UzbekSpeakingCountry: CountryType {
+    case Afghanistan
+    case Uzbekistan
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Afghanistan:
+            return "AF"
+        case .Uzbekistan:
+            return "UZ"
+        }
+    }
+}
+
+public enum OsseticSpeakingCountry: CountryType {
+    case Georgia
+    case Russia
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Georgia:
+            return "GE"
+        case .Russia:
+            return "RU"
+        }
+    }
+}
+
+public enum TurkishSpeakingCountry: CountryType {
+    case Cyprus
+    case Turkey
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Cyprus:
+            return "CY"
+        case .Turkey:
+            return "TR"
+        }
+    }
+}
+
+public enum EweSpeakingCountry: CountryType {
+    case Ghana
+    case Togo
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Ghana:
+            return "GH"
+        case .Togo:
+            return "TG"
+        }
+    }
+}
+
+public enum RomanianSpeakingCountry: CountryType {
+    case Moldova
+    case Romania
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Moldova:
+            return "MD"
+        case .Romania:
+            return "RO"
+        }
+    }
+}
+
+public enum TigrinyaSpeakingCountry: CountryType {
+    case Eritrea
+    case Ethiopia
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Eritrea:
+            return "ER"
+        case .Ethiopia:
+            return "ET"
+        }
+    }
+}
+
+public enum TibetanSpeakingCountry: CountryType {
+    case China
+    case India
+
+    public var countryIdentifier: String {
+        switch self {
+        case .China:
+            return "CN"
+        case .India:
+            return "IN"
+        }
+    }
+}
+
+public enum CentralKurdishSpeakingCountry: CountryType {
+    case Iraq
+    case Iran
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Iraq:
+            return "IQ"
+        case .Iran:
+            return "IR"
+        }
+    }
+}
+
+public enum MasaiSpeakingCountry: CountryType {
+    case Kenya
+    case Tanzania
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Kenya:
+            return "KE"
+        case .Tanzania:
+            return "TZ"
+        }
+    }
+}
+
+public enum OromoSpeakingCountry: CountryType {
+    case Ethiopia
+    case Kenya
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Ethiopia:
+            return "ET"
+        case .Kenya:
+            return "KE"
+        }
+    }
+}
+
+public enum NepaliSpeakingCountry: CountryType {
+    case India
+    case Nepal
+
+    public var countryIdentifier: String {
+        switch self {
+        case .India:
+            return "IN"
+        case .Nepal:
+            return "NP"
+        }
+    }
+}
+
+public enum PersianSpeakingCountry: CountryType {
+    case Afghanistan
+    case Iran
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Afghanistan:
+            return "AF"
+        case .Iran:
+            return "IR"
+        }
+    }
+}
+
+// MARK: - Locale
+
+public enum Locale {
+    case Afrikaans(AfrikaansSpeakingCountry)
+    case Aghem
+    case Akan
+    case Albanian(AlbanianSpeakingCountry)
+    case Amharic
+    case Arabic(ArabicSpeakingCountry)
+    case Armenian
+    case Assamese
+    case Asu
+    case Azerbaijani
+    case Bafia
+    case Bambara
+    case Basaa
+    case Basque
+    case Belarusian
+    case Bemba
+    case Bena
+    case Bengali(BengaliSpeakingCountry)
+    case Bodo
+    case Bosnian
+    case Breton
+    case Bulgarian
+    case Burmese
+    case Catalan(CatalanSpeakingCountry)
+    case CentralAtlasTamazight
+    case CentralKurdish(CentralKurdishSpeakingCountry)
+    case Cherokee
+    case Chiga
+    case Chinese(ChineseSpeakingCountry)
+    case Colognian
+    case Cornish
+    case Croatian(CroatianSpeakingCountry)
+    case Czech
+    case Danish(DanishSpeakingCountry)
+    case Duala
+    case Dutch(DutchSpeakingCountry)
+    case Dzongkha
+    case Embu
+    case English(EnglishSpeakingCountry)
+    case Estonian
+    case Ewe(EweSpeakingCountry)
+    case Ewondo
+    case Faroese
+    case Filipino
+    case Finnish
+    case French(FrenchSpeakingCountry)
+    case Friulian
+    case Fulah(FulahSpeakingCountry)
+    case Galician
+    case Ganda
+    case Georgian
+    case German(GermanSpeakingCountry)
+    case Greek(GreekSpeakingCountry)
+    case Gujarati
+    case Gusii
+    case Hausa(HausaSpeakingCountry)
+    case Hawaiian
+    case Hebrew
+    case Hindi
+    case Hungarian
+    case Icelandic
+    case Igbo
+    case InariSami
+    case Indonesian
+    case Inuktitut
+    case Irish
+    case Italian(ItalianSpeakingCountry)
+    case Japanese
+    case JolaFonyi
+    case Kabuverdianu
+    case Kabyle
+    case Kako
+    case Kalaallisut
+    case Kalenjin
+    case Kamba
+    case Kannada
+    case Kashmiri
+    case Kazakh
+    case Khmer
+    case Kikuyu
+    case Kinyarwanda
+    case Konkani
+    case Korean(KoreanSpeakingCountry)
+    case KoyraChiini
+    case KoyraboroSenni
+    case Kwasio
+    case Kyrgyz
+    case Lakota
+    case Langi
+    case Lao
+    case Latvian
+    case Lingala(LingalaSpeakingCountry)
+    case Lithuanian
+    case LowerSorbian
+    case LubaKatanga
+    case Luo
+    case Luxembourgish
+    case Luyia
+    case Macedonian
+    case Machame
+    case MakhuwaMeetto
+    case Makonde
+    case Malagasy
+    case Malay(MalaySpeakingCountry)
+    case Malayalam
+    case Maltese
+    case Manx
+    case Marathi
+    case Masai(MasaiSpeakingCountry)
+    case Meru
+    case Meta
+    case Mongolian
+    case Morisyen
+    case Mundang
+    case Nama
+    case Nepali(NepaliSpeakingCountry)
+    case Ngiemboon
+    case Ngomba
+    case NorthNdebele
+    case NorthernSami(NorthernSamiSpeakingCountry)
+    case NorwegianBokmål(NorwegianBokmålSpeakingCountry)
+    case NorwegianNynorsk
+    case Nuer
+    case Nyankole
+    case Oriya
+    case Oromo(OromoSpeakingCountry)
+    case Ossetic(OsseticSpeakingCountry)
+    case Pashto
+    case Persian(PersianSpeakingCountry)
+    case Polish
+    case Portuguese(PortugueseSpeakingCountry)
+    case Punjabi(PunjabiSpeakingCountry)
+    case Quechua(QuechuaSpeakingCountry)
+    case Romanian(RomanianSpeakingCountry)
+    case Romansh
+    case Rombo
+    case Rundi
+    case Russian(RussianSpeakingCountry)
+    case Rwa
+    case Sakha
+    case Samburu
+    case Sango
+    case Sangu
+    case ScottishGaelic
+    case Sena
+    case Serbian(SerbianSpeakingCountry)
+    case Shambala
+    case Shona
+    case SichuanYi
+    case Sinhala
+    case Slovak
+    case Slovenian
+    case Soga
+    case Somali(SomaliSpeakingCountry)
+    case Spanish(SpanishSpeakingCountry)
+    case StandardMoroccanTamazight
+    case Swahili(SwahiliSpeakingCountry)
+    case Swedish(SwedishSpeakingCountry)
+    case SwissGerman(SwissGermanSpeakingCountry)
+    case Tachelhit
+    case Taita
+    case Tajik
+    case Tamil(TamilSpeakingCountry)
+    case Tasawaq
+    case Telugu
+    case Teso(TesoSpeakingCountry)
+    case Thai
+    case Tibetan(TibetanSpeakingCountry)
+    case Tigrinya(TigrinyaSpeakingCountry)
+    case Tongan
+    case Turkish(TurkishSpeakingCountry)
+    case Turkmen
+    case Ukrainian
+    case UpperSorbian
+    case Urdu(UrduSpeakingCountry)
+    case Uyghur
+    case Uzbek(UzbekSpeakingCountry)
+    case Vai
+    case Vietnamese
+    case Vunjo
+    case Walser
+    case Welsh
+    case WesternFrisian
+    case Yangben
+    case Yiddish
+    case Yoruba(YorubaSpeakingCountry)
+    case Zarma
+    case Zulu
+}
+
+extension Locale: LanguageType {
+
+    public var languageIdentifier: String {
+        switch self {
+        case .Afrikaans(_):
+            return "af"
+        case .Aghem:
+            return "agq"
+        case .Akan:
+            return "ak"
+        case .Albanian(_):
+            return "sq"
+        case .Amharic:
+            return "am"
+        case .Arabic(_):
+            return "ar"
+        case .Armenian:
+            return "hy"
+        case .Assamese:
+            return "as"
+        case .Asu:
+            return "asa"
+        case .Azerbaijani:
+            return "az"
+        case .Bafia:
+            return "ksf"
+        case .Bambara:
+            return "bm"
+        case .Basaa:
+            return "bas"
+        case .Basque:
+            return "eu"
+        case .Belarusian:
+            return "be"
+        case .Bemba:
+            return "bem"
+        case .Bena:
+            return "bez"
+        case .Bengali(_):
+            return "bn"
+        case .Bodo:
+            return "brx"
+        case .Bosnian:
+            return "bs"
+        case .Breton:
+            return "br"
+        case .Bulgarian:
+            return "bg"
+        case .Burmese:
+            return "my"
+        case .Catalan(_):
+            return "ca"
+        case .CentralAtlasTamazight:
+            return "tzm"
+        case .CentralKurdish(_):
+            return "ckb"
+        case .Cherokee:
+            return "chr"
+        case .Chiga:
+            return "cgg"
+        case .Chinese(_):
+            return "zh"
+        case .Colognian:
+            return "ksh"
+        case .Cornish:
+            return "kw"
+        case .Croatian(_):
+            return "hr"
+        case .Czech:
+            return "cs"
+        case .Danish(_):
+            return "da"
+        case .Duala:
+            return "dua"
+        case .Dutch(_):
+            return "nl"
+        case .Dzongkha:
+            return "dz"
+        case .Embu:
+            return "ebu"
+        case .English(_):
+            return "en"
+        case .Estonian:
+            return "et"
+        case .Ewe(_):
+            return "ee"
+        case .Ewondo:
+            return "ewo"
+        case .Faroese:
+            return "fo"
+        case .Filipino:
+            return "fil"
+        case .Finnish:
+            return "fi"
+        case .French(_):
+            return "fr"
+        case .Friulian:
+            return "fur"
+        case .Fulah(_):
+            return "ff"
+        case .Galician:
+            return "gl"
+        case .Ganda:
+            return "lg"
+        case .Georgian:
+            return "ka"
+        case .German(_):
+            return "de"
+        case .Greek(_):
+            return "el"
+        case .Gujarati:
+            return "gu"
+        case .Gusii:
+            return "guz"
+        case .Hausa(_):
+            return "ha"
+        case .Hawaiian:
+            return "haw"
+        case .Hebrew:
+            return "he"
+        case .Hindi:
+            return "hi"
+        case .Hungarian:
+            return "hu"
+        case .Icelandic:
+            return "is"
+        case .Igbo:
+            return "ig"
+        case .InariSami:
+            return "smn"
+        case .Indonesian:
+            return "id"
+        case .Inuktitut:
+            return "iu"
+        case .Irish:
+            return "ga"
+        case .Italian(_):
+            return "it"
+        case .Japanese:
+            return "ja"
+        case .JolaFonyi:
+            return "dyo"
+        case .Kabuverdianu:
+            return "kea"
+        case .Kabyle:
+            return "kab"
+        case .Kako:
+            return "kkj"
+        case .Kalaallisut:
+            return "kl"
+        case .Kalenjin:
+            return "kln"
+        case .Kamba:
+            return "kam"
+        case .Kannada:
+            return "kn"
+        case .Kashmiri:
+            return "ks"
+        case .Kazakh:
+            return "kk"
+        case .Khmer:
+            return "km"
+        case .Kikuyu:
+            return "ki"
+        case .Kinyarwanda:
+            return "rw"
+        case .Konkani:
+            return "kok"
+        case .Korean(_):
+            return "ko"
+        case .KoyraChiini:
+            return "khq"
+        case .KoyraboroSenni:
+            return "ses"
+        case .Kwasio:
+            return "nmg"
+        case .Kyrgyz:
+            return "ky"
+        case .Lakota:
+            return "lkt"
+        case .Langi:
+            return "lag"
+        case .Lao:
+            return "lo"
+        case .Latvian:
+            return "lv"
+        case .Lingala(_):
+            return "ln"
+        case .Lithuanian:
+            return "lt"
+        case .LowerSorbian:
+            return "dsb"
+        case .LubaKatanga:
+            return "lu"
+        case .Luo:
+            return "luo"
+        case .Luxembourgish:
+            return "lb"
+        case .Luyia:
+            return "luy"
+        case .Macedonian:
+            return "mk"
+        case .Machame:
+            return "jmc"
+        case .MakhuwaMeetto:
+            return "mgh"
+        case .Makonde:
+            return "kde"
+        case .Malagasy:
+            return "mg"
+        case .Malay(_):
+            return "ms"
+        case .Malayalam:
+            return "ml"
+        case .Maltese:
+            return "mt"
+        case .Manx:
+            return "gv"
+        case .Marathi:
+            return "mr"
+        case .Masai(_):
+            return "mas"
+        case .Meru:
+            return "mer"
+        case .Meta:
+            return "mgo"
+        case .Mongolian:
+            return "mn"
+        case .Morisyen:
+            return "mfe"
+        case .Mundang:
+            return "mua"
+        case .Nama:
+            return "naq"
+        case .Nepali(_):
+            return "ne"
+        case .Ngiemboon:
+            return "nnh"
+        case .Ngomba:
+            return "jgo"
+        case .NorthNdebele:
+            return "nd"
+        case .NorthernSami(_):
+            return "se"
+        case .NorwegianBokmål(_):
+            return "nb"
+        case .NorwegianNynorsk:
+            return "nn"
+        case .Nuer:
+            return "nus"
+        case .Nyankole:
+            return "nyn"
+        case .Oriya:
+            return "or"
+        case .Oromo(_):
+            return "om"
+        case .Ossetic(_):
+            return "os"
+        case .Pashto:
+            return "ps"
+        case .Persian(_):
+            return "fa"
+        case .Polish:
+            return "pl"
+        case .Portuguese(_):
+            return "pt"
+        case .Punjabi(_):
+            return "pa"
+        case .Quechua(_):
+            return "qu"
+        case .Romanian(_):
+            return "ro"
+        case .Romansh:
+            return "rm"
+        case .Rombo:
+            return "rof"
+        case .Rundi:
+            return "rn"
+        case .Russian(_):
+            return "ru"
+        case .Rwa:
+            return "rwk"
+        case .Sakha:
+            return "sah"
+        case .Samburu:
+            return "saq"
+        case .Sango:
+            return "sg"
+        case .Sangu:
+            return "sbp"
+        case .ScottishGaelic:
+            return "gd"
+        case .Sena:
+            return "seh"
+        case .Serbian(_):
+            return "sr"
+        case .Shambala:
+            return "ksb"
+        case .Shona:
+            return "sn"
+        case .SichuanYi:
+            return "ii"
+        case .Sinhala:
+            return "si"
+        case .Slovak:
+            return "sk"
+        case .Slovenian:
+            return "sl"
+        case .Soga:
+            return "xog"
+        case .Somali(_):
+            return "so"
+        case .Spanish(_):
+            return "es"
+        case .StandardMoroccanTamazight:
+            return "zgh"
+        case .Swahili(_):
+            return "sw"
+        case .Swedish(_):
+            return "sv"
+        case .SwissGerman(_):
+            return "gsw"
+        case .Tachelhit:
+            return "shi"
+        case .Taita:
+            return "dav"
+        case .Tajik:
+            return "tg"
+        case .Tamil(_):
+            return "ta"
+        case .Tasawaq:
+            return "twq"
+        case .Telugu:
+            return "te"
+        case .Teso(_):
+            return "teo"
+        case .Thai:
+            return "th"
+        case .Tibetan(_):
+            return "bo"
+        case .Tigrinya(_):
+            return "ti"
+        case .Tongan:
+            return "to"
+        case .Turkish(_):
+            return "tr"
+        case .Turkmen:
+            return "tk"
+        case .Ukrainian:
+            return "uk"
+        case .UpperSorbian:
+            return "hsb"
+        case .Urdu(_):
+            return "ur"
+        case .Uyghur:
+            return "ug"
+        case .Uzbek(_):
+            return "uz"
+        case .Vai:
+            return "vai"
+        case .Vietnamese:
+            return "vi"
+        case .Vunjo:
+            return "vun"
+        case .Walser:
+            return "wae"
+        case .Welsh:
+            return "cy"
+        case .WesternFrisian:
+            return "fy"
+        case .Yangben:
+            return "yav"
+        case .Yiddish:
+            return "yi"
+        case .Yoruba(_):
+            return "yo"
+        case .Zarma:
+            return "dje"
+        case .Zulu:
+            return "zu"
+        }
+    }
+}
+
+extension Locale: CountryType {
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Aghem, .Akan, .Amharic, .Armenian, .Assamese, .Asu, .Azerbaijani, .Bafia, .Bambara, .Basaa, .Basque, .Belarusian, .Bemba, .Bena, .Bodo, .Bosnian, .Breton, .Bulgarian, .Burmese, .CentralAtlasTamazight, .Cherokee, .Chiga, .Colognian, .Cornish, .Czech, .Duala, .Dzongkha, .Embu, .Estonian, .Ewondo, .Faroese, .Filipino, .Finnish, .Friulian, .Galician, .Ganda, .Georgian, .Gujarati, .Gusii, .Hawaiian, .Hebrew, .Hindi, .Hungarian, .Icelandic, .Igbo, .InariSami, .Indonesian, .Inuktitut, .Irish, .Japanese, .JolaFonyi, .Kabuverdianu, .Kabyle, .Kako, .Kalaallisut, .Kalenjin, .Kamba, .Kannada, .Kashmiri, .Kazakh, .Khmer, .Kikuyu, .Kinyarwanda, .Konkani, .KoyraChiini, .KoyraboroSenni, .Kwasio, .Kyrgyz, .Lakota, .Langi, .Lao, .Latvian, .Lithuanian, .LowerSorbian, .LubaKatanga, .Luo, .Luxembourgish, .Luyia, .Macedonian, .Machame, .MakhuwaMeetto, .Makonde, .Malagasy, .Malayalam, .Maltese, .Manx, .Marathi, .Meru, .Meta, .Mongolian, .Morisyen, .Mundang, .Nama, .Ngiemboon, .Ngomba, .NorthNdebele, .NorwegianNynorsk, .Nuer, .Nyankole, .Oriya, .Pashto, .Polish, .Romansh, .Rombo, .Rundi, .Rwa, .Sakha, .Samburu, .Sango, .Sangu, .ScottishGaelic, .Sena, .Shambala, .Shona, .SichuanYi, .Sinhala, .Slovak, .Slovenian, .Soga, .StandardMoroccanTamazight, .Tachelhit, .Taita, .Tajik, .Tasawaq, .Telugu, .Thai, .Tongan, .Turkmen, .Ukrainian, .UpperSorbian, .Uyghur, .Vai, .Vietnamese, .Vunjo, .Walser, .Welsh, .WesternFrisian, .Yangben, .Yiddish, .Zarma, .Zulu:
+            return ""
+        case .Afrikaans(let country):
+            return country.countryIdentifier
+        case .Albanian(let country):
+            return country.countryIdentifier
+        case .Arabic(let country):
+            return country.countryIdentifier
+        case .Bengali(let country):
+            return country.countryIdentifier
+        case .Catalan(let country):
+            return country.countryIdentifier
+        case .CentralKurdish(let country):
+            return country.countryIdentifier
+        case .Chinese(let country):
+            return country.countryIdentifier
+        case .Croatian(let country):
+            return country.countryIdentifier
+        case .Danish(let country):
+            return country.countryIdentifier
+        case .Dutch(let country):
+            return country.countryIdentifier
+        case .English(let country):
+            return country.countryIdentifier
+        case .Ewe(let country):
+            return country.countryIdentifier
+        case .French(let country):
+            return country.countryIdentifier
+        case .Fulah(let country):
+            return country.countryIdentifier
+        case .German(let country):
+            return country.countryIdentifier
+        case .Greek(let country):
+            return country.countryIdentifier
+        case .Hausa(let country):
+            return country.countryIdentifier
+        case .Italian(let country):
+            return country.countryIdentifier
+        case .Korean(let country):
+            return country.countryIdentifier
+        case .Lingala(let country):
+            return country.countryIdentifier
+        case .Malay(let country):
+            return country.countryIdentifier
+        case .Masai(let country):
+            return country.countryIdentifier
+        case .Nepali(let country):
+            return country.countryIdentifier
+        case .NorthernSami(let country):
+            return country.countryIdentifier
+        case .NorwegianBokmål(let country):
+            return country.countryIdentifier
+        case .Oromo(let country):
+            return country.countryIdentifier
+        case .Ossetic(let country):
+            return country.countryIdentifier
+        case .Persian(let country):
+            return country.countryIdentifier
+        case .Portuguese(let country):
+            return country.countryIdentifier
+        case .Punjabi(let country):
+            return country.countryIdentifier
+        case .Quechua(let country):
+            return country.countryIdentifier
+        case .Romanian(let country):
+            return country.countryIdentifier
+        case .Russian(let country):
+            return country.countryIdentifier
+        case .Serbian(let country):
+            return country.countryIdentifier
+        case .Somali(let country):
+            return country.countryIdentifier
+        case .Spanish(let country):
+            return country.countryIdentifier
+        case .Swahili(let country):
+            return country.countryIdentifier
+        case .Swedish(let country):
+            return country.countryIdentifier
+        case .SwissGerman(let country):
+            return country.countryIdentifier
+        case .Tamil(let country):
+            return country.countryIdentifier
+        case .Teso(let country):
+            return country.countryIdentifier
+        case .Tibetan(let country):
+            return country.countryIdentifier
+        case .Tigrinya(let country):
+            return country.countryIdentifier
+        case .Turkish(let country):
+            return country.countryIdentifier
+        case .Urdu(let country):
+            return country.countryIdentifier
+        case .Uzbek(let country):
+            return country.countryIdentifier
+        case .Yoruba(let country):
+            return country.countryIdentifier
+        }
+    }
+}
+
+extension Locale: LocaleType {
+    // Uses default implementation
+}

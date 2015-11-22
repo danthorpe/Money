@@ -316,9 +316,24 @@ class MoneyFormattingTests: MoneyTests {
         jpy = 32_000
     }
 
+    // Tests assume a en_GB test environment
+    func test__locale_identifier_equals_current_locale() {
+        XCTAssertEqual(NSLocale.currentLocale().localeIdentifier, Locale.English(.UnitedKingdom).localeIdentifier)
+    }
+
     func test__formatted_for_es_ES() {
         let formatted = gbp.formattedForLanguageId("es_ES")
         XCTAssertEqual(formatted, "100,00 GBP")
+    }
+
+    func test__formatted_for_Spanish_Spain() {
+        let formatted = gbp.formattedForLocale(.Spanish(.Spain))
+        XCTAssertEqual(formatted, "100,00 GBP")
+    }
+
+    func test__formatted_for_English_UnitedKingdom() {
+        let formatted = gbp.formattedForLocale(.English(.UnitedKingdom))
+        XCTAssertEqual(formatted, "£100.00")
     }
 }
 

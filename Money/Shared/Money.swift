@@ -74,12 +74,16 @@ public extension MoneyType  {
 
 public extension MoneyType where Currency: ISOCurrencyType {
 
+    func formattedForLocale(locale: Locale, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
+        return formattedForLanguageId(locale.localeIdentifier, style: style)
+    }
+
     /**
 
      ### Localized Formatted String
 
      This function will format the Money into a string suitable
-     for the provided language identifier.
+     for the provided a locale identifier.
      */
     func formattedForLanguageId(languageId: String, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
         let formatter: NSNumberFormatter = Currency.formatter.copy() as! NSNumberFormatter
