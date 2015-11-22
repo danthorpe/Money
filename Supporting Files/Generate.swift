@@ -58,7 +58,7 @@ func createCurrencyTypes(line: Writer) {
     for code in NSLocale.ISOCurrencyCodes() {
         line("")
         line("    /// Currency \(code)")
-        line("    public final class \(code): Currency.Base, _CurrencyType {")
+        line("    public final class \(code): Currency.Base, ISOCurrencyType {")
         line("        public static var sharedInstance = \(code)(code: \"\(code)\")")
         line("    }")
     }
