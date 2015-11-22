@@ -101,4 +101,22 @@ class DecimalNumberTypeTests: XCTestCase {
         XCTAssertEqual(decimal, 9.999)
         XCTAssertEqual(money, 10.00)
     }
+
+    func testPerformanceInitInt() {
+        self.measureBlock {
+            for value in 1...10_000 {
+                self.money = Money(value)
+            }
+        }
+    }
+
+    func testPerformanceInitDouble() {
+        let value: Double = 9.99
+        self.measureBlock {
+            for _ in 1...10_000 {
+                self.money = Money(value)
+            }
+        }
+    }
+
 }
