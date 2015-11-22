@@ -28,5 +28,3 @@ extension LocaleType where Self: LanguageType, Self: CountryType {
         return "\(languageIdentifier)_\(countryIdentifier)"
     }
 }
-
-let locale: Locale = .English(.UnitedKingdom)
