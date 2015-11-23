@@ -81,6 +81,7 @@ public extension CurrencyType {
     }
 
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: NSLocale) -> NSDecimalNumber -> String {
+        __formatter.reset()
         __formatter.locale = locale
         __formatter.numberStyle = style
         switch locale.currencyCode {
