@@ -279,9 +279,6 @@ func createLocale(line: Writer) {
             }
         }
 
-        // Write a static constant for all
-
-        
         line("}") // End of enum
     }
 
@@ -365,7 +362,7 @@ func createXCTestCaseNamed(line: Writer, className: String, content: Generator) 
     line("}")
 }
 
-func createTestForCountryIentifierFromCountryCaseName(line: Writer, country: Country) {
+func createTestForCountryIdentifierFromCountryCaseName(line: Writer, country: Country) {
     line("")    
     line("    func test__country_identifier_for_\(country.name)() {")
     line("        country = .\(country.name)")
@@ -373,25 +370,66 @@ func createTestForCountryIentifierFromCountryCaseName(line: Writer, country: Cou
     line("    }")
 }
 
-func createUnitTestClassForLanguageSpeakingCountry(line: Writer, language: Language) {
+func createUnitTestsForLanguageSpeakingCountry(line: Writer, language: Language) {
     let name = language.languageSpeakingCountryEnumName
     createXCTestCaseNamed(line, className: name) { line in
         line("")
         line("    var country: \(name)!")
         for country in language.countryIds.flatMap({ info.countriesById[$0] }) {
-            createTestForCountryIentifierFromCountryCaseName(line, country: country)
+            createTestForCountryIdentifierFromCountryCaseName(line, country: country)
         }
     }
 }
 
-func createUnitTestClassesForLanguageSpeakingCountries(line: Writer) {
+func createUnitTestsForLanguageSpeakingCountries(line: Writer) {
     line("")
     line("// MARK: - Country Types Tests")
     for language in info.languagesWithMoreThanOneCountry {
-        createUnitTestClassForLanguageSpeakingCountry(line, language: language)
+        createUnitTestsForLanguageSpeakingCountry(line, language: language)
     }
 }
 
+func createTestForLanguageIdentifier(line: Writer, language: Language, country: Country? = .None) {
+    line("")
+    if let country = country {
+        line("    func test__language_identifier_for_\(language.name)_\(country.name)() {")
+        line("        locale = .\(language.name)(\(country.caseNameValue))")
+        line("        XCTAssertEqual(locale.languageIdentifier, \"\(language.id)\")")
+        line("        XCTAssertEqual(locale.localeIdentifier, \"\(language.id)_\(country.id)\")")
+        line("    }")
+    }
+    else {
+        line("    func test__language_identifier_for_\(language.name)() {")
+        line("        locale = .\(language.name)")
+        line("        XCTAssertEqual(locale.languageIdentifier, \"\(language.id)\")")
+        line("        XCTAssertEqual(locale.localeIdentifier, \"\(language.id)\")")
+        line("    }")
+    }
+}
+
+func createUnitTestsForLocaleWithLanguage(line: Writer, language: Language) {
+    if language.countryIds.count < 2 {
+        createTestForLanguageIdentifier(line, language: language)
+    }
+    else {
+        for country in language.countryIds.flatMap({ info.countriesById[$0] }) {
+            createTestForLanguageIdentifier(line, language: language, country: country)
+        }
+    }
+}
+
+func createUnitTestsForLocale(line: Writer) {
+    line("")
+    line("// MARK: - Locale Tests")
+    createXCTestCaseNamed(line, className: "Locale") { line in
+        line("")
+        line("    var locale: Locale!")
+
+        for language in info.languages {
+            createUnitTestsForLocaleWithLanguage(line, language: language)
+        }
+    }
+}
 
 // MARK: - Generators
 
@@ -449,9 +487,9 @@ func generateUnitTests(outputPath: String) {
 
     createUnitTestImports(writeLine)
 
-    createUnitTestClassesForLanguageSpeakingCountries(writeLine)
+    createUnitTestsForLanguageSpeakingCountries(writeLine)
 
-
+    createUnitTestsForLocale(writeLine)
 }
 
 // MARK: - Main()

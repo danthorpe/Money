@@ -2050,3 +2050,2998 @@ class YorubaSpeakingCountryTests: XCTestCase {
         XCTAssertEqual(country.countryIdentifier, "NG")
     }
 }
+
+// MARK: - Locale Tests
+
+class LocaleTests: XCTestCase {
+
+    var locale: Locale!
+
+    func test__language_identifier_for_English_Singapore() {
+        locale = .English(.Singapore)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SG")
+    }
+
+    func test__language_identifier_for_English_Netherlands() {
+        locale = .English(.Netherlands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NL")
+    }
+
+    func test__language_identifier_for_English_Malaysia() {
+        locale = .English(.Malaysia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MY")
+    }
+
+    func test__language_identifier_for_English_PapuaNewGuinea() {
+        locale = .English(.PapuaNewGuinea)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PG")
+    }
+
+    func test__language_identifier_for_English_Barbados() {
+        locale = .English(.Barbados)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_BB")
+    }
+
+    func test__language_identifier_for_English_HongKongSarChina() {
+        locale = .English(.HongKongSarChina)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_HK")
+    }
+
+    func test__language_identifier_for_English_Eritrea() {
+        locale = .English(.Eritrea)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_ER")
+    }
+
+    func test__language_identifier_for_English_IsleOfMan() {
+        locale = .English(.IsleOfMan)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_IM")
+    }
+
+    func test__language_identifier_for_English_Lesotho() {
+        locale = .English(.Lesotho)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_LS")
+    }
+
+    func test__language_identifier_for_English_Palau() {
+        locale = .English(.Palau)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PW")
+    }
+
+    func test__language_identifier_for_English_SintMaarten() {
+        locale = .English(.SintMaarten)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SX")
+    }
+
+    func test__language_identifier_for_English_Belgium() {
+        locale = .English(.Belgium)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_BE")
+    }
+
+    func test__language_identifier_for_English_BosniaHerzegovina() {
+        locale = .English(.BosniaHerzegovina)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_BA")
+    }
+
+    func test__language_identifier_for_English_Cameroon() {
+        locale = .English(.Cameroon)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CM")
+    }
+
+    func test__language_identifier_for_English_Gibraltar() {
+        locale = .English(.Gibraltar)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GI")
+    }
+
+    func test__language_identifier_for_English_Montenegro() {
+        locale = .English(.Montenegro)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_ME")
+    }
+
+    func test__language_identifier_for_English_Madagascar() {
+        locale = .English(.Madagascar)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MG")
+    }
+
+    func test__language_identifier_for_English_CzechRepublic() {
+        locale = .English(.CzechRepublic)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CZ")
+    }
+
+    func test__language_identifier_for_English_MarshallIslands() {
+        locale = .English(.MarshallIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MH")
+    }
+
+    func test__language_identifier_for_English_Swaziland() {
+        locale = .English(.Swaziland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SZ")
+    }
+
+    func test__language_identifier_for_English_Austria() {
+        locale = .English(.Austria)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_AT")
+    }
+
+    func test__language_identifier_for_English_Romania() {
+        locale = .English(.Romania)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_RO")
+    }
+
+    func test__language_identifier_for_English_Malawi() {
+        locale = .English(.Malawi)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MW")
+    }
+
+    func test__language_identifier_for_English_Jersey() {
+        locale = .English(.Jersey)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_JE")
+    }
+
+    func test__language_identifier_for_English_Germany() {
+        locale = .English(.Germany)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_DE")
+    }
+
+    func test__language_identifier_for_English_Kiribati() {
+        locale = .English(.Kiribati)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_KI")
+    }
+
+    func test__language_identifier_for_English_Norway() {
+        locale = .English(.Norway)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NO")
+    }
+
+    func test__language_identifier_for_English_MacauSarChina() {
+        locale = .English(.MacauSarChina)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MO")
+    }
+
+    func test__language_identifier_for_English_Jamaica() {
+        locale = .English(.Jamaica)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_JM")
+    }
+
+    func test__language_identifier_for_English_ChristmasIsland() {
+        locale = .English(.ChristmasIsland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CX")
+    }
+
+    func test__language_identifier_for_English_Montserrat() {
+        locale = .English(.Montserrat)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MS")
+    }
+
+    func test__language_identifier_for_English_SolomonIslands() {
+        locale = .English(.SolomonIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SB")
+    }
+
+    func test__language_identifier_for_English_USOutlyingIslands() {
+        locale = .English(.USOutlyingIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_UM")
+    }
+
+    func test__language_identifier_for_English_Seychelles() {
+        locale = .English(.Seychelles)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SC")
+    }
+
+    func test__language_identifier_for_English_CaymanIslands() {
+        locale = .English(.CaymanIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_KY")
+    }
+
+    func test__language_identifier_for_English_Finland() {
+        locale = .English(.Finland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_FI")
+    }
+
+    func test__language_identifier_for_English_AntiguaBarbuda() {
+        locale = .English(.AntiguaBarbuda)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_AG")
+    }
+
+    func test__language_identifier_for_English_Anguilla() {
+        locale = .English(.Anguilla)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_AI")
+    }
+
+    func test__language_identifier_for_English_Mauritius() {
+        locale = .English(.Mauritius)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MU")
+    }
+
+    func test__language_identifier_for_English_Tonga() {
+        locale = .English(.Tonga)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_TO")
+    }
+
+    func test__language_identifier_for_English_Italy() {
+        locale = .English(.Italy)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_IT")
+    }
+
+    func test__language_identifier_for_English_Nigeria() {
+        locale = .English(.Nigeria)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NG")
+    }
+
+    func test__language_identifier_for_English_Australia() {
+        locale = .English(.Australia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_AU")
+    }
+
+    func test__language_identifier_for_English_SierraLeone() {
+        locale = .English(.SierraLeone)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SL")
+    }
+
+    func test__language_identifier_for_English_BritishVirginIslands() {
+        locale = .English(.BritishVirginIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_VG")
+    }
+
+    func test__language_identifier_for_English_Guernsey() {
+        locale = .English(.Guernsey)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GG")
+    }
+
+    func test__language_identifier_for_English_SouthSudan() {
+        locale = .English(.SouthSudan)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SS")
+    }
+
+    func test__language_identifier_for_English_Denmark() {
+        locale = .English(.Denmark)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_DK")
+    }
+
+    func test__language_identifier_for_English_Guam() {
+        locale = .English(.Guam)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GU")
+    }
+
+    func test__language_identifier_for_English_Andorra() {
+        locale = .English(.Andorra)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_AD")
+    }
+
+    func test__language_identifier_for_English_Cyprus() {
+        locale = .English(.Cyprus)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CY")
+    }
+
+    func test__language_identifier_for_English_StVincentGrenadines() {
+        locale = .English(.StVincentGrenadines)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_VC")
+    }
+
+    func test__language_identifier_for_English_UnitedStates() {
+        locale = .English(.UnitedStates)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_US")
+    }
+
+    func test__language_identifier_for_English_Liberia() {
+        locale = .English(.Liberia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_LR")
+    }
+
+    func test__language_identifier_for_English_Uganda() {
+        locale = .English(.Uganda)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_UG")
+    }
+
+    func test__language_identifier_for_English_Slovakia() {
+        locale = .English(.Slovakia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SK")
+    }
+
+    func test__language_identifier_for_English_Bermuda() {
+        locale = .English(.Bermuda)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_BM")
+    }
+
+    func test__language_identifier_for_English_PitcairnIslands() {
+        locale = .English(.PitcairnIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PN")
+    }
+
+    func test__language_identifier_for_English_Slovenia() {
+        locale = .English(.Slovenia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SI")
+    }
+
+    func test__language_identifier_for_English_Switzerland() {
+        locale = .English(.Switzerland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CH")
+    }
+
+    func test__language_identifier_for_English_Lithuania() {
+        locale = .English(.Lithuania)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_LT")
+    }
+
+    func test__language_identifier_for_English_Tuvalu() {
+        locale = .English(.Tuvalu)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_TV")
+    }
+
+    func test__language_identifier_for_English_World() {
+        locale = .English(.World)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_001")
+    }
+
+    func test__language_identifier_for_English_TurksCaicosIslands() {
+        locale = .English(.TurksCaicosIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_TC")
+    }
+
+    func test__language_identifier_for_English_Vanuatu() {
+        locale = .English(.Vanuatu)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_VU")
+    }
+
+    func test__language_identifier_for_English_NewZealand() {
+        locale = .English(.NewZealand)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NZ")
+    }
+
+    func test__language_identifier_for_English_Latvia() {
+        locale = .English(.Latvia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_LV")
+    }
+
+    func test__language_identifier_for_English_Ireland() {
+        locale = .English(.Ireland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_IE")
+    }
+
+    func test__language_identifier_for_English_Guyana() {
+        locale = .English(.Guyana)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GY")
+    }
+
+    func test__language_identifier_for_English_BritishIndianOceanTerritory() {
+        locale = .English(.BritishIndianOceanTerritory)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_IO")
+    }
+
+    func test__language_identifier_for_English_Philippines() {
+        locale = .English(.Philippines)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PH")
+    }
+
+    func test__language_identifier_for_English_Niue() {
+        locale = .English(.Niue)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NU")
+    }
+
+    func test__language_identifier_for_English_Gambia() {
+        locale = .English(.Gambia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GM")
+    }
+
+    func test__language_identifier_for_English_Spain() {
+        locale = .English(.Spain)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_ES")
+    }
+
+    func test__language_identifier_for_English_NorthernMarianaIslands() {
+        locale = .English(.NorthernMarianaIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MP")
+    }
+
+    func test__language_identifier_for_English_Estonia() {
+        locale = .English(.Estonia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_EE")
+    }
+
+    func test__language_identifier_for_English_Greece() {
+        locale = .English(.Greece)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GR")
+    }
+
+    func test__language_identifier_for_English_Canada() {
+        locale = .English(.Canada)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CA")
+    }
+
+    func test__language_identifier_for_English_Sudan() {
+        locale = .English(.Sudan)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SD")
+    }
+
+    func test__language_identifier_for_English_StLucia() {
+        locale = .English(.StLucia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_LC")
+    }
+
+    func test__language_identifier_for_English_Croatia() {
+        locale = .English(.Croatia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_HR")
+    }
+
+    func test__language_identifier_for_English_NorfolkIsland() {
+        locale = .English(.NorfolkIsland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NF")
+    }
+
+    func test__language_identifier_for_English_UnitedKingdom() {
+        locale = .English(.UnitedKingdom)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GB")
+    }
+
+    func test__language_identifier_for_English_Dominica() {
+        locale = .English(.Dominica)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_DM")
+    }
+
+    func test__language_identifier_for_English_Europe() {
+        locale = .English(.Europe)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_150")
+    }
+
+    func test__language_identifier_for_English_Portugal() {
+        locale = .English(.Portugal)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PT")
+    }
+
+    func test__language_identifier_for_English_Turkey() {
+        locale = .English(.Turkey)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_TR")
+    }
+
+    func test__language_identifier_for_English_Malta() {
+        locale = .English(.Malta)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_MT")
+    }
+
+    func test__language_identifier_for_English_Albania() {
+        locale = .English(.Albania)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_AL")
+    }
+
+    func test__language_identifier_for_English_TrinidadTobago() {
+        locale = .English(.TrinidadTobago)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_TT")
+    }
+
+    func test__language_identifier_for_English_Samoa() {
+        locale = .English(.Samoa)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_WS")
+    }
+
+    func test__language_identifier_for_English_Israel() {
+        locale = .English(.Israel)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_IL")
+    }
+
+    func test__language_identifier_for_English_DiegoGarcia() {
+        locale = .English(.DiegoGarcia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_DG")
+    }
+
+    func test__language_identifier_for_English_Rwanda() {
+        locale = .English(.Rwanda)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_RW")
+    }
+
+    func test__language_identifier_for_English_Fiji() {
+        locale = .English(.Fiji)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_FJ")
+    }
+
+    func test__language_identifier_for_English_Kenya() {
+        locale = .English(.Kenya)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_KE")
+    }
+
+    func test__language_identifier_for_English_Russia() {
+        locale = .English(.Russia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_RU")
+    }
+
+    func test__language_identifier_for_English_Bahamas() {
+        locale = .English(.Bahamas)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_BS")
+    }
+
+    func test__language_identifier_for_English_Luxembourg() {
+        locale = .English(.Luxembourg)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_LU")
+    }
+
+    func test__language_identifier_for_English_Hungary() {
+        locale = .English(.Hungary)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_HU")
+    }
+
+    func test__language_identifier_for_English_Tanzania() {
+        locale = .English(.Tanzania)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_TZ")
+    }
+
+    func test__language_identifier_for_English_Namibia() {
+        locale = .English(.Namibia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NA")
+    }
+
+    func test__language_identifier_for_English_Zimbabwe() {
+        locale = .English(.Zimbabwe)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_ZW")
+    }
+
+    func test__language_identifier_for_English_SouthAfrica() {
+        locale = .English(.SouthAfrica)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_ZA")
+    }
+
+    func test__language_identifier_for_English_Grenada() {
+        locale = .English(.Grenada)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GD")
+    }
+
+    func test__language_identifier_for_English_Belize() {
+        locale = .English(.Belize)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_BZ")
+    }
+
+    func test__language_identifier_for_English_Botswana() {
+        locale = .English(.Botswana)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_BW")
+    }
+
+    func test__language_identifier_for_English_PuertoRico() {
+        locale = .English(.PuertoRico)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PR")
+    }
+
+    func test__language_identifier_for_English_USVirginIslands() {
+        locale = .English(.USVirginIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_VI")
+    }
+
+    func test__language_identifier_for_English_Sweden() {
+        locale = .English(.Sweden)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SE")
+    }
+
+    func test__language_identifier_for_English_FalklandIslands() {
+        locale = .English(.FalklandIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_FK")
+    }
+
+    func test__language_identifier_for_English_CocosKeelingIslands() {
+        locale = .English(.CocosKeelingIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CC")
+    }
+
+    func test__language_identifier_for_English_France() {
+        locale = .English(.France)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_FR")
+    }
+
+    func test__language_identifier_for_English_StKittsNevis() {
+        locale = .English(.StKittsNevis)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_KN")
+    }
+
+    func test__language_identifier_for_English_Pakistan() {
+        locale = .English(.Pakistan)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PK")
+    }
+
+    func test__language_identifier_for_English_Zambia() {
+        locale = .English(.Zambia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_ZM")
+    }
+
+    func test__language_identifier_for_English_Poland() {
+        locale = .English(.Poland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_PL")
+    }
+
+    func test__language_identifier_for_English_Tokelau() {
+        locale = .English(.Tokelau)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_TK")
+    }
+
+    func test__language_identifier_for_English_CookIslands() {
+        locale = .English(.CookIslands)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_CK")
+    }
+
+    func test__language_identifier_for_English_StHelena() {
+        locale = .English(.StHelena)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_SH")
+    }
+
+    func test__language_identifier_for_English_Nauru() {
+        locale = .English(.Nauru)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_NR")
+    }
+
+    func test__language_identifier_for_English_Ghana() {
+        locale = .English(.Ghana)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_GH")
+    }
+
+    func test__language_identifier_for_English_Iceland() {
+        locale = .English(.Iceland)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_IS")
+    }
+
+    func test__language_identifier_for_English_Micronesia() {
+        locale = .English(.Micronesia)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_FM")
+    }
+
+    func test__language_identifier_for_English_AmericanSamoa() {
+        locale = .English(.AmericanSamoa)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_AS")
+    }
+
+    func test__language_identifier_for_English_India() {
+        locale = .English(.India)
+        XCTAssertEqual(locale.languageIdentifier, "en")
+        XCTAssertEqual(locale.localeIdentifier, "en_IN")
+    }
+
+    func test__language_identifier_for_French_Rwanda() {
+        locale = .French(.Rwanda)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_RW")
+    }
+
+    func test__language_identifier_for_French_Seychelles() {
+        locale = .French(.Seychelles)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_SC")
+    }
+
+    func test__language_identifier_for_French_Vanuatu() {
+        locale = .French(.Vanuatu)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_VU")
+    }
+
+    func test__language_identifier_for_French_Mauritius() {
+        locale = .French(.Mauritius)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_MU")
+    }
+
+    func test__language_identifier_for_French_Chad() {
+        locale = .French(.Chad)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_TD")
+    }
+
+    func test__language_identifier_for_French_Djibouti() {
+        locale = .French(.Djibouti)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_DJ")
+    }
+
+    func test__language_identifier_for_French_CongoBrazzaville() {
+        locale = .French(.CongoBrazzaville)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_CG")
+    }
+
+    func test__language_identifier_for_French_Monaco() {
+        locale = .French(.Monaco)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_MC")
+    }
+
+    func test__language_identifier_for_French_Mauritania() {
+        locale = .French(.Mauritania)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_MR")
+    }
+
+    func test__language_identifier_for_French_Luxembourg() {
+        locale = .French(.Luxembourg)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_LU")
+    }
+
+    func test__language_identifier_for_French_Niger() {
+        locale = .French(.Niger)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_NE")
+    }
+
+    func test__language_identifier_for_French_StMartin() {
+        locale = .French(.StMartin)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_MF")
+    }
+
+    func test__language_identifier_for_French_Mayotte() {
+        locale = .French(.Mayotte)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_YT")
+    }
+
+    func test__language_identifier_for_French_Benin() {
+        locale = .French(.Benin)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_BJ")
+    }
+
+    func test__language_identifier_for_French_Canada() {
+        locale = .French(.Canada)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_CA")
+    }
+
+    func test__language_identifier_for_French_FrenchGuiana() {
+        locale = .French(.FrenchGuiana)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_GF")
+    }
+
+    func test__language_identifier_for_French_NewCaledonia() {
+        locale = .French(.NewCaledonia)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_NC")
+    }
+
+    func test__language_identifier_for_French_Haiti() {
+        locale = .French(.Haiti)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_HT")
+    }
+
+    func test__language_identifier_for_French_Senegal() {
+        locale = .French(.Senegal)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_SN")
+    }
+
+    func test__language_identifier_for_French_CentralAfricanRepublic() {
+        locale = .French(.CentralAfricanRepublic)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_CF")
+    }
+
+    func test__language_identifier_for_French_France() {
+        locale = .French(.France)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_FR")
+    }
+
+    func test__language_identifier_for_French_Belgium() {
+        locale = .French(.Belgium)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_BE")
+    }
+
+    func test__language_identifier_for_French_StPierreMiquelon() {
+        locale = .French(.StPierreMiquelon)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_PM")
+    }
+
+    func test__language_identifier_for_French_Togo() {
+        locale = .French(.Togo)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_TG")
+    }
+
+    func test__language_identifier_for_French_FrenchPolynesia() {
+        locale = .French(.FrenchPolynesia)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_PF")
+    }
+
+    func test__language_identifier_for_French_Morocco() {
+        locale = .French(.Morocco)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_MA")
+    }
+
+    func test__language_identifier_for_French_Cameroon() {
+        locale = .French(.Cameroon)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_CM")
+    }
+
+    func test__language_identifier_for_French_Burundi() {
+        locale = .French(.Burundi)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_BI")
+    }
+
+    func test__language_identifier_for_French_StBarthélemy() {
+        locale = .French(.StBarthélemy)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_BL")
+    }
+
+    func test__language_identifier_for_French_Madagascar() {
+        locale = .French(.Madagascar)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_MG")
+    }
+
+    func test__language_identifier_for_French_Algeria() {
+        locale = .French(.Algeria)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_DZ")
+    }
+
+    func test__language_identifier_for_French_Guinea() {
+        locale = .French(.Guinea)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_GN")
+    }
+
+    func test__language_identifier_for_French_BurkinaFaso() {
+        locale = .French(.BurkinaFaso)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_BF")
+    }
+
+    func test__language_identifier_for_French_Guadeloupe() {
+        locale = .French(.Guadeloupe)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_GP")
+    }
+
+    func test__language_identifier_for_French_CongoKinshasa() {
+        locale = .French(.CongoKinshasa)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_CD")
+    }
+
+    func test__language_identifier_for_French_Réunion() {
+        locale = .French(.Réunion)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_RE")
+    }
+
+    func test__language_identifier_for_French_Mali() {
+        locale = .French(.Mali)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_ML")
+    }
+
+    func test__language_identifier_for_French_Martinique() {
+        locale = .French(.Martinique)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_MQ")
+    }
+
+    func test__language_identifier_for_French_WallisFutuna() {
+        locale = .French(.WallisFutuna)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_WF")
+    }
+
+    func test__language_identifier_for_French_EquatorialGuinea() {
+        locale = .French(.EquatorialGuinea)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_GQ")
+    }
+
+    func test__language_identifier_for_French_Switzerland() {
+        locale = .French(.Switzerland)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_CH")
+    }
+
+    func test__language_identifier_for_French_CôteDivoire() {
+        locale = .French(.CôteDivoire)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_CI")
+    }
+
+    func test__language_identifier_for_French_Comoros() {
+        locale = .French(.Comoros)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_KM")
+    }
+
+    func test__language_identifier_for_French_Syria() {
+        locale = .French(.Syria)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_SY")
+    }
+
+    func test__language_identifier_for_French_Gabon() {
+        locale = .French(.Gabon)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_GA")
+    }
+
+    func test__language_identifier_for_French_Tunisia() {
+        locale = .French(.Tunisia)
+        XCTAssertEqual(locale.languageIdentifier, "fr")
+        XCTAssertEqual(locale.localeIdentifier, "fr_TN")
+    }
+
+    func test__language_identifier_for_Arabic_Somalia() {
+        locale = .Arabic(.Somalia)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_SO")
+    }
+
+    func test__language_identifier_for_Arabic_Iraq() {
+        locale = .Arabic(.Iraq)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_IQ")
+    }
+
+    func test__language_identifier_for_Arabic_Kuwait() {
+        locale = .Arabic(.Kuwait)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_KW")
+    }
+
+    func test__language_identifier_for_Arabic_Chad() {
+        locale = .Arabic(.Chad)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_TD")
+    }
+
+    func test__language_identifier_for_Arabic_Libya() {
+        locale = .Arabic(.Libya)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_LY")
+    }
+
+    func test__language_identifier_for_Arabic_Egypt() {
+        locale = .Arabic(.Egypt)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_EG")
+    }
+
+    func test__language_identifier_for_Arabic_WesternSahara() {
+        locale = .Arabic(.WesternSahara)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_EH")
+    }
+
+    func test__language_identifier_for_Arabic_SaudiArabia() {
+        locale = .Arabic(.SaudiArabia)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_SA")
+    }
+
+    func test__language_identifier_for_Arabic_Mauritania() {
+        locale = .Arabic(.Mauritania)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_MR")
+    }
+
+    func test__language_identifier_for_Arabic_Djibouti() {
+        locale = .Arabic(.Djibouti)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_DJ")
+    }
+
+    func test__language_identifier_for_Arabic_Eritrea() {
+        locale = .Arabic(.Eritrea)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_ER")
+    }
+
+    func test__language_identifier_for_Arabic_Lebanon() {
+        locale = .Arabic(.Lebanon)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_LB")
+    }
+
+    func test__language_identifier_for_Arabic_Oman() {
+        locale = .Arabic(.Oman)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_OM")
+    }
+
+    func test__language_identifier_for_Arabic_PalestinianTerritories() {
+        locale = .Arabic(.PalestinianTerritories)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_PS")
+    }
+
+    func test__language_identifier_for_Arabic_Sudan() {
+        locale = .Arabic(.Sudan)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_SD")
+    }
+
+    func test__language_identifier_for_Arabic_SouthSudan() {
+        locale = .Arabic(.SouthSudan)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_SS")
+    }
+
+    func test__language_identifier_for_Arabic_Algeria() {
+        locale = .Arabic(.Algeria)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_DZ")
+    }
+
+    func test__language_identifier_for_Arabic_Morocco() {
+        locale = .Arabic(.Morocco)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_MA")
+    }
+
+    func test__language_identifier_for_Arabic_Bahrain() {
+        locale = .Arabic(.Bahrain)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_BH")
+    }
+
+    func test__language_identifier_for_Arabic_UnitedArabEmirates() {
+        locale = .Arabic(.UnitedArabEmirates)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_AE")
+    }
+
+    func test__language_identifier_for_Arabic_Qatar() {
+        locale = .Arabic(.Qatar)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_QA")
+    }
+
+    func test__language_identifier_for_Arabic_Comoros() {
+        locale = .Arabic(.Comoros)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_KM")
+    }
+
+    func test__language_identifier_for_Arabic_Syria() {
+        locale = .Arabic(.Syria)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_SY")
+    }
+
+    func test__language_identifier_for_Arabic_Yemen() {
+        locale = .Arabic(.Yemen)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_YE")
+    }
+
+    func test__language_identifier_for_Arabic_Jordan() {
+        locale = .Arabic(.Jordan)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_JO")
+    }
+
+    func test__language_identifier_for_Arabic_Tunisia() {
+        locale = .Arabic(.Tunisia)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_TN")
+    }
+
+    func test__language_identifier_for_Arabic_Israel() {
+        locale = .Arabic(.Israel)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_IL")
+    }
+
+    func test__language_identifier_for_Arabic_World() {
+        locale = .Arabic(.World)
+        XCTAssertEqual(locale.languageIdentifier, "ar")
+        XCTAssertEqual(locale.localeIdentifier, "ar_001")
+    }
+
+    func test__language_identifier_for_Spanish_Bolivia() {
+        locale = .Spanish(.Bolivia)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_BO")
+    }
+
+    func test__language_identifier_for_Spanish_Peru() {
+        locale = .Spanish(.Peru)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_PE")
+    }
+
+    func test__language_identifier_for_Spanish_Panama() {
+        locale = .Spanish(.Panama)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_PA")
+    }
+
+    func test__language_identifier_for_Spanish_Venezuela() {
+        locale = .Spanish(.Venezuela)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_VE")
+    }
+
+    func test__language_identifier_for_Spanish_Philippines() {
+        locale = .Spanish(.Philippines)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_PH")
+    }
+
+    func test__language_identifier_for_Spanish_Spain() {
+        locale = .Spanish(.Spain)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_ES")
+    }
+
+    func test__language_identifier_for_Spanish_LatinAmerica() {
+        locale = .Spanish(.LatinAmerica)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_419")
+    }
+
+    func test__language_identifier_for_Spanish_Paraguay() {
+        locale = .Spanish(.Paraguay)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_PY")
+    }
+
+    func test__language_identifier_for_Spanish_Colombia() {
+        locale = .Spanish(.Colombia)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_CO")
+    }
+
+    func test__language_identifier_for_Spanish_Nicaragua() {
+        locale = .Spanish(.Nicaragua)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_NI")
+    }
+
+    func test__language_identifier_for_Spanish_Chile() {
+        locale = .Spanish(.Chile)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_CL")
+    }
+
+    func test__language_identifier_for_Spanish_CanaryIslands() {
+        locale = .Spanish(.CanaryIslands)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_IC")
+    }
+
+    func test__language_identifier_for_Spanish_PuertoRico() {
+        locale = .Spanish(.PuertoRico)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_PR")
+    }
+
+    func test__language_identifier_for_Spanish_Honduras() {
+        locale = .Spanish(.Honduras)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_HN")
+    }
+
+    func test__language_identifier_for_Spanish_Mexico() {
+        locale = .Spanish(.Mexico)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_MX")
+    }
+
+    func test__language_identifier_for_Spanish_Uruguay() {
+        locale = .Spanish(.Uruguay)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_UY")
+    }
+
+    func test__language_identifier_for_Spanish_CeutaMelilla() {
+        locale = .Spanish(.CeutaMelilla)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_EA")
+    }
+
+    func test__language_identifier_for_Spanish_UnitedStates() {
+        locale = .Spanish(.UnitedStates)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_US")
+    }
+
+    func test__language_identifier_for_Spanish_ElSalvador() {
+        locale = .Spanish(.ElSalvador)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_SV")
+    }
+
+    func test__language_identifier_for_Spanish_Argentina() {
+        locale = .Spanish(.Argentina)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_AR")
+    }
+
+    func test__language_identifier_for_Spanish_Ecuador() {
+        locale = .Spanish(.Ecuador)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_EC")
+    }
+
+    func test__language_identifier_for_Spanish_EquatorialGuinea() {
+        locale = .Spanish(.EquatorialGuinea)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_GQ")
+    }
+
+    func test__language_identifier_for_Spanish_Guatemala() {
+        locale = .Spanish(.Guatemala)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_GT")
+    }
+
+    func test__language_identifier_for_Spanish_Cuba() {
+        locale = .Spanish(.Cuba)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_CU")
+    }
+
+    func test__language_identifier_for_Spanish_DominicanRepublic() {
+        locale = .Spanish(.DominicanRepublic)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_DO")
+    }
+
+    func test__language_identifier_for_Spanish_CostaRica() {
+        locale = .Spanish(.CostaRica)
+        XCTAssertEqual(locale.languageIdentifier, "es")
+        XCTAssertEqual(locale.localeIdentifier, "es_CR")
+    }
+
+    func test__language_identifier_for_Portuguese_Brazil() {
+        locale = .Portuguese(.Brazil)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_BR")
+    }
+
+    func test__language_identifier_for_Portuguese_GuineaBissau() {
+        locale = .Portuguese(.GuineaBissau)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_GW")
+    }
+
+    func test__language_identifier_for_Portuguese_TimorLeste() {
+        locale = .Portuguese(.TimorLeste)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_TL")
+    }
+
+    func test__language_identifier_for_Portuguese_SãoToméPríncipe() {
+        locale = .Portuguese(.SãoToméPríncipe)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_ST")
+    }
+
+    func test__language_identifier_for_Portuguese_Portugal() {
+        locale = .Portuguese(.Portugal)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_PT")
+    }
+
+    func test__language_identifier_for_Portuguese_Angola() {
+        locale = .Portuguese(.Angola)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_AO")
+    }
+
+    func test__language_identifier_for_Portuguese_MacauSarChina() {
+        locale = .Portuguese(.MacauSarChina)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_MO")
+    }
+
+    func test__language_identifier_for_Portuguese_Mozambique() {
+        locale = .Portuguese(.Mozambique)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_MZ")
+    }
+
+    func test__language_identifier_for_Portuguese_CapeVerde() {
+        locale = .Portuguese(.CapeVerde)
+        XCTAssertEqual(locale.languageIdentifier, "pt")
+        XCTAssertEqual(locale.localeIdentifier, "pt_CV")
+    }
+
+    func test__language_identifier_for_Dutch_Belgium() {
+        locale = .Dutch(.Belgium)
+        XCTAssertEqual(locale.languageIdentifier, "nl")
+        XCTAssertEqual(locale.localeIdentifier, "nl_BE")
+    }
+
+    func test__language_identifier_for_Dutch_Curaçao() {
+        locale = .Dutch(.Curaçao)
+        XCTAssertEqual(locale.languageIdentifier, "nl")
+        XCTAssertEqual(locale.localeIdentifier, "nl_CW")
+    }
+
+    func test__language_identifier_for_Dutch_Suriname() {
+        locale = .Dutch(.Suriname)
+        XCTAssertEqual(locale.languageIdentifier, "nl")
+        XCTAssertEqual(locale.localeIdentifier, "nl_SR")
+    }
+
+    func test__language_identifier_for_Dutch_Netherlands() {
+        locale = .Dutch(.Netherlands)
+        XCTAssertEqual(locale.languageIdentifier, "nl")
+        XCTAssertEqual(locale.localeIdentifier, "nl_NL")
+    }
+
+    func test__language_identifier_for_Dutch_SintMaarten() {
+        locale = .Dutch(.SintMaarten)
+        XCTAssertEqual(locale.languageIdentifier, "nl")
+        XCTAssertEqual(locale.localeIdentifier, "nl_SX")
+    }
+
+    func test__language_identifier_for_Dutch_CaribbeanNetherlands() {
+        locale = .Dutch(.CaribbeanNetherlands)
+        XCTAssertEqual(locale.languageIdentifier, "nl")
+        XCTAssertEqual(locale.localeIdentifier, "nl_BQ")
+    }
+
+    func test__language_identifier_for_Dutch_Aruba() {
+        locale = .Dutch(.Aruba)
+        XCTAssertEqual(locale.languageIdentifier, "nl")
+        XCTAssertEqual(locale.localeIdentifier, "nl_AW")
+    }
+
+    func test__language_identifier_for_Russian_Kyrgyzstan() {
+        locale = .Russian(.Kyrgyzstan)
+        XCTAssertEqual(locale.languageIdentifier, "ru")
+        XCTAssertEqual(locale.localeIdentifier, "ru_KG")
+    }
+
+    func test__language_identifier_for_Russian_Belarus() {
+        locale = .Russian(.Belarus)
+        XCTAssertEqual(locale.languageIdentifier, "ru")
+        XCTAssertEqual(locale.localeIdentifier, "ru_BY")
+    }
+
+    func test__language_identifier_for_Russian_Russia() {
+        locale = .Russian(.Russia)
+        XCTAssertEqual(locale.languageIdentifier, "ru")
+        XCTAssertEqual(locale.localeIdentifier, "ru_RU")
+    }
+
+    func test__language_identifier_for_Russian_Ukraine() {
+        locale = .Russian(.Ukraine)
+        XCTAssertEqual(locale.languageIdentifier, "ru")
+        XCTAssertEqual(locale.localeIdentifier, "ru_UA")
+    }
+
+    func test__language_identifier_for_Russian_Moldova() {
+        locale = .Russian(.Moldova)
+        XCTAssertEqual(locale.languageIdentifier, "ru")
+        XCTAssertEqual(locale.localeIdentifier, "ru_MD")
+    }
+
+    func test__language_identifier_for_Russian_Kazakhstan() {
+        locale = .Russian(.Kazakhstan)
+        XCTAssertEqual(locale.languageIdentifier, "ru")
+        XCTAssertEqual(locale.localeIdentifier, "ru_KZ")
+    }
+
+    func test__language_identifier_for_German_Belgium() {
+        locale = .German(.Belgium)
+        XCTAssertEqual(locale.languageIdentifier, "de")
+        XCTAssertEqual(locale.localeIdentifier, "de_BE")
+    }
+
+    func test__language_identifier_for_German_Austria() {
+        locale = .German(.Austria)
+        XCTAssertEqual(locale.languageIdentifier, "de")
+        XCTAssertEqual(locale.localeIdentifier, "de_AT")
+    }
+
+    func test__language_identifier_for_German_Liechtenstein() {
+        locale = .German(.Liechtenstein)
+        XCTAssertEqual(locale.languageIdentifier, "de")
+        XCTAssertEqual(locale.localeIdentifier, "de_LI")
+    }
+
+    func test__language_identifier_for_German_Luxembourg() {
+        locale = .German(.Luxembourg)
+        XCTAssertEqual(locale.languageIdentifier, "de")
+        XCTAssertEqual(locale.localeIdentifier, "de_LU")
+    }
+
+    func test__language_identifier_for_German_Switzerland() {
+        locale = .German(.Switzerland)
+        XCTAssertEqual(locale.languageIdentifier, "de")
+        XCTAssertEqual(locale.localeIdentifier, "de_CH")
+    }
+
+    func test__language_identifier_for_German_Germany() {
+        locale = .German(.Germany)
+        XCTAssertEqual(locale.languageIdentifier, "de")
+        XCTAssertEqual(locale.localeIdentifier, "de_DE")
+    }
+
+    func test__language_identifier_for_Chinese_Taiwan() {
+        locale = .Chinese(.Taiwan)
+        XCTAssertEqual(locale.languageIdentifier, "zh")
+        XCTAssertEqual(locale.localeIdentifier, "zh_TW")
+    }
+
+    func test__language_identifier_for_Chinese_HongKongSarChina() {
+        locale = .Chinese(.HongKongSarChina)
+        XCTAssertEqual(locale.languageIdentifier, "zh")
+        XCTAssertEqual(locale.localeIdentifier, "zh_HK")
+    }
+
+    func test__language_identifier_for_Chinese_MacauSarChina() {
+        locale = .Chinese(.MacauSarChina)
+        XCTAssertEqual(locale.languageIdentifier, "zh")
+        XCTAssertEqual(locale.localeIdentifier, "zh_MO")
+    }
+
+    func test__language_identifier_for_Chinese_Singapore() {
+        locale = .Chinese(.Singapore)
+        XCTAssertEqual(locale.languageIdentifier, "zh")
+        XCTAssertEqual(locale.localeIdentifier, "zh_SG")
+    }
+
+    func test__language_identifier_for_Chinese_China() {
+        locale = .Chinese(.China)
+        XCTAssertEqual(locale.languageIdentifier, "zh")
+        XCTAssertEqual(locale.localeIdentifier, "zh_CN")
+    }
+
+    func test__language_identifier_for_Fulah_Senegal() {
+        locale = .Fulah(.Senegal)
+        XCTAssertEqual(locale.languageIdentifier, "ff")
+        XCTAssertEqual(locale.localeIdentifier, "ff_SN")
+    }
+
+    func test__language_identifier_for_Fulah_Cameroon() {
+        locale = .Fulah(.Cameroon)
+        XCTAssertEqual(locale.languageIdentifier, "ff")
+        XCTAssertEqual(locale.localeIdentifier, "ff_CM")
+    }
+
+    func test__language_identifier_for_Fulah_Mauritania() {
+        locale = .Fulah(.Mauritania)
+        XCTAssertEqual(locale.languageIdentifier, "ff")
+        XCTAssertEqual(locale.localeIdentifier, "ff_MR")
+    }
+
+    func test__language_identifier_for_Fulah_Guinea() {
+        locale = .Fulah(.Guinea)
+        XCTAssertEqual(locale.languageIdentifier, "ff")
+        XCTAssertEqual(locale.localeIdentifier, "ff_GN")
+    }
+
+    func test__language_identifier_for_Catalan_Italy() {
+        locale = .Catalan(.Italy)
+        XCTAssertEqual(locale.languageIdentifier, "ca")
+        XCTAssertEqual(locale.localeIdentifier, "ca_IT")
+    }
+
+    func test__language_identifier_for_Catalan_France() {
+        locale = .Catalan(.France)
+        XCTAssertEqual(locale.languageIdentifier, "ca")
+        XCTAssertEqual(locale.localeIdentifier, "ca_FR")
+    }
+
+    func test__language_identifier_for_Catalan_Spain() {
+        locale = .Catalan(.Spain)
+        XCTAssertEqual(locale.languageIdentifier, "ca")
+        XCTAssertEqual(locale.localeIdentifier, "ca_ES")
+    }
+
+    func test__language_identifier_for_Catalan_Andorra() {
+        locale = .Catalan(.Andorra)
+        XCTAssertEqual(locale.languageIdentifier, "ca")
+        XCTAssertEqual(locale.localeIdentifier, "ca_AD")
+    }
+
+    func test__language_identifier_for_Serbian_Montenegro() {
+        locale = .Serbian(.Montenegro)
+        XCTAssertEqual(locale.languageIdentifier, "sr")
+        XCTAssertEqual(locale.localeIdentifier, "sr_ME")
+    }
+
+    func test__language_identifier_for_Serbian_BosniaHerzegovina() {
+        locale = .Serbian(.BosniaHerzegovina)
+        XCTAssertEqual(locale.languageIdentifier, "sr")
+        XCTAssertEqual(locale.localeIdentifier, "sr_BA")
+    }
+
+    func test__language_identifier_for_Serbian_Serbia() {
+        locale = .Serbian(.Serbia)
+        XCTAssertEqual(locale.languageIdentifier, "sr")
+        XCTAssertEqual(locale.localeIdentifier, "sr_RS")
+    }
+
+    func test__language_identifier_for_Serbian_Kosovo() {
+        locale = .Serbian(.Kosovo)
+        XCTAssertEqual(locale.languageIdentifier, "sr")
+        XCTAssertEqual(locale.localeIdentifier, "sr_XK")
+    }
+
+    func test__language_identifier_for_Somali_Kenya() {
+        locale = .Somali(.Kenya)
+        XCTAssertEqual(locale.languageIdentifier, "so")
+        XCTAssertEqual(locale.localeIdentifier, "so_KE")
+    }
+
+    func test__language_identifier_for_Somali_Somalia() {
+        locale = .Somali(.Somalia)
+        XCTAssertEqual(locale.languageIdentifier, "so")
+        XCTAssertEqual(locale.localeIdentifier, "so_SO")
+    }
+
+    func test__language_identifier_for_Somali_Ethiopia() {
+        locale = .Somali(.Ethiopia)
+        XCTAssertEqual(locale.languageIdentifier, "so")
+        XCTAssertEqual(locale.localeIdentifier, "so_ET")
+    }
+
+    func test__language_identifier_for_Somali_Djibouti() {
+        locale = .Somali(.Djibouti)
+        XCTAssertEqual(locale.languageIdentifier, "so")
+        XCTAssertEqual(locale.localeIdentifier, "so_DJ")
+    }
+
+    func test__language_identifier_for_Tamil_India() {
+        locale = .Tamil(.India)
+        XCTAssertEqual(locale.languageIdentifier, "ta")
+        XCTAssertEqual(locale.localeIdentifier, "ta_IN")
+    }
+
+    func test__language_identifier_for_Tamil_Singapore() {
+        locale = .Tamil(.Singapore)
+        XCTAssertEqual(locale.languageIdentifier, "ta")
+        XCTAssertEqual(locale.localeIdentifier, "ta_SG")
+    }
+
+    func test__language_identifier_for_Tamil_Malaysia() {
+        locale = .Tamil(.Malaysia)
+        XCTAssertEqual(locale.languageIdentifier, "ta")
+        XCTAssertEqual(locale.localeIdentifier, "ta_MY")
+    }
+
+    func test__language_identifier_for_Tamil_SriLanka() {
+        locale = .Tamil(.SriLanka)
+        XCTAssertEqual(locale.languageIdentifier, "ta")
+        XCTAssertEqual(locale.localeIdentifier, "ta_LK")
+    }
+
+    func test__language_identifier_for_Lingala_CongoKinshasa() {
+        locale = .Lingala(.CongoKinshasa)
+        XCTAssertEqual(locale.languageIdentifier, "ln")
+        XCTAssertEqual(locale.localeIdentifier, "ln_CD")
+    }
+
+    func test__language_identifier_for_Lingala_CentralAfricanRepublic() {
+        locale = .Lingala(.CentralAfricanRepublic)
+        XCTAssertEqual(locale.languageIdentifier, "ln")
+        XCTAssertEqual(locale.localeIdentifier, "ln_CF")
+    }
+
+    func test__language_identifier_for_Lingala_Angola() {
+        locale = .Lingala(.Angola)
+        XCTAssertEqual(locale.languageIdentifier, "ln")
+        XCTAssertEqual(locale.localeIdentifier, "ln_AO")
+    }
+
+    func test__language_identifier_for_Lingala_CongoBrazzaville() {
+        locale = .Lingala(.CongoBrazzaville)
+        XCTAssertEqual(locale.languageIdentifier, "ln")
+        XCTAssertEqual(locale.localeIdentifier, "ln_CG")
+    }
+
+    func test__language_identifier_for_Swahili_CongoKinshasa() {
+        locale = .Swahili(.CongoKinshasa)
+        XCTAssertEqual(locale.languageIdentifier, "sw")
+        XCTAssertEqual(locale.localeIdentifier, "sw_CD")
+    }
+
+    func test__language_identifier_for_Swahili_Tanzania() {
+        locale = .Swahili(.Tanzania)
+        XCTAssertEqual(locale.languageIdentifier, "sw")
+        XCTAssertEqual(locale.localeIdentifier, "sw_TZ")
+    }
+
+    func test__language_identifier_for_Swahili_Kenya() {
+        locale = .Swahili(.Kenya)
+        XCTAssertEqual(locale.languageIdentifier, "sw")
+        XCTAssertEqual(locale.localeIdentifier, "sw_KE")
+    }
+
+    func test__language_identifier_for_Swahili_Uganda() {
+        locale = .Swahili(.Uganda)
+        XCTAssertEqual(locale.languageIdentifier, "sw")
+        XCTAssertEqual(locale.localeIdentifier, "sw_UG")
+    }
+
+    func test__language_identifier_for_NorthernSami_Sweden() {
+        locale = .NorthernSami(.Sweden)
+        XCTAssertEqual(locale.languageIdentifier, "se")
+        XCTAssertEqual(locale.localeIdentifier, "se_SE")
+    }
+
+    func test__language_identifier_for_NorthernSami_Norway() {
+        locale = .NorthernSami(.Norway)
+        XCTAssertEqual(locale.languageIdentifier, "se")
+        XCTAssertEqual(locale.localeIdentifier, "se_NO")
+    }
+
+    func test__language_identifier_for_NorthernSami_Finland() {
+        locale = .NorthernSami(.Finland)
+        XCTAssertEqual(locale.languageIdentifier, "se")
+        XCTAssertEqual(locale.localeIdentifier, "se_FI")
+    }
+
+    func test__language_identifier_for_SwissGerman_Switzerland() {
+        locale = .SwissGerman(.Switzerland)
+        XCTAssertEqual(locale.languageIdentifier, "gsw")
+        XCTAssertEqual(locale.localeIdentifier, "gsw_CH")
+    }
+
+    func test__language_identifier_for_SwissGerman_France() {
+        locale = .SwissGerman(.France)
+        XCTAssertEqual(locale.languageIdentifier, "gsw")
+        XCTAssertEqual(locale.localeIdentifier, "gsw_FR")
+    }
+
+    func test__language_identifier_for_SwissGerman_Liechtenstein() {
+        locale = .SwissGerman(.Liechtenstein)
+        XCTAssertEqual(locale.languageIdentifier, "gsw")
+        XCTAssertEqual(locale.localeIdentifier, "gsw_LI")
+    }
+
+    func test__language_identifier_for_Hausa_Niger() {
+        locale = .Hausa(.Niger)
+        XCTAssertEqual(locale.languageIdentifier, "ha")
+        XCTAssertEqual(locale.localeIdentifier, "ha_NE")
+    }
+
+    func test__language_identifier_for_Hausa_Ghana() {
+        locale = .Hausa(.Ghana)
+        XCTAssertEqual(locale.languageIdentifier, "ha")
+        XCTAssertEqual(locale.localeIdentifier, "ha_GH")
+    }
+
+    func test__language_identifier_for_Hausa_Nigeria() {
+        locale = .Hausa(.Nigeria)
+        XCTAssertEqual(locale.languageIdentifier, "ha")
+        XCTAssertEqual(locale.localeIdentifier, "ha_NG")
+    }
+
+    func test__language_identifier_for_Albanian_Macedonia() {
+        locale = .Albanian(.Macedonia)
+        XCTAssertEqual(locale.languageIdentifier, "sq")
+        XCTAssertEqual(locale.localeIdentifier, "sq_MK")
+    }
+
+    func test__language_identifier_for_Albanian_Albania() {
+        locale = .Albanian(.Albania)
+        XCTAssertEqual(locale.languageIdentifier, "sq")
+        XCTAssertEqual(locale.localeIdentifier, "sq_AL")
+    }
+
+    func test__language_identifier_for_Albanian_Kosovo() {
+        locale = .Albanian(.Kosovo)
+        XCTAssertEqual(locale.languageIdentifier, "sq")
+        XCTAssertEqual(locale.localeIdentifier, "sq_XK")
+    }
+
+    func test__language_identifier_for_Quechua_Bolivia() {
+        locale = .Quechua(.Bolivia)
+        XCTAssertEqual(locale.languageIdentifier, "qu")
+        XCTAssertEqual(locale.localeIdentifier, "qu_BO")
+    }
+
+    func test__language_identifier_for_Quechua_Ecuador() {
+        locale = .Quechua(.Ecuador)
+        XCTAssertEqual(locale.languageIdentifier, "qu")
+        XCTAssertEqual(locale.localeIdentifier, "qu_EC")
+    }
+
+    func test__language_identifier_for_Quechua_Peru() {
+        locale = .Quechua(.Peru)
+        XCTAssertEqual(locale.languageIdentifier, "qu")
+        XCTAssertEqual(locale.localeIdentifier, "qu_PE")
+    }
+
+    func test__language_identifier_for_Malay_Brunei() {
+        locale = .Malay(.Brunei)
+        XCTAssertEqual(locale.languageIdentifier, "ms")
+        XCTAssertEqual(locale.localeIdentifier, "ms_BN")
+    }
+
+    func test__language_identifier_for_Malay_Malaysia() {
+        locale = .Malay(.Malaysia)
+        XCTAssertEqual(locale.languageIdentifier, "ms")
+        XCTAssertEqual(locale.localeIdentifier, "ms_MY")
+    }
+
+    func test__language_identifier_for_Malay_Singapore() {
+        locale = .Malay(.Singapore)
+        XCTAssertEqual(locale.languageIdentifier, "ms")
+        XCTAssertEqual(locale.localeIdentifier, "ms_SG")
+    }
+
+    func test__language_identifier_for_Italian_Italy() {
+        locale = .Italian(.Italy)
+        XCTAssertEqual(locale.languageIdentifier, "it")
+        XCTAssertEqual(locale.localeIdentifier, "it_IT")
+    }
+
+    func test__language_identifier_for_Italian_Switzerland() {
+        locale = .Italian(.Switzerland)
+        XCTAssertEqual(locale.languageIdentifier, "it")
+        XCTAssertEqual(locale.localeIdentifier, "it_CH")
+    }
+
+    func test__language_identifier_for_Italian_SanMarino() {
+        locale = .Italian(.SanMarino)
+        XCTAssertEqual(locale.languageIdentifier, "it")
+        XCTAssertEqual(locale.localeIdentifier, "it_SM")
+    }
+
+    func test__language_identifier_for_Swedish_Sweden() {
+        locale = .Swedish(.Sweden)
+        XCTAssertEqual(locale.languageIdentifier, "sv")
+        XCTAssertEqual(locale.localeIdentifier, "sv_SE")
+    }
+
+    func test__language_identifier_for_Swedish_ÅlandIslands() {
+        locale = .Swedish(.ÅlandIslands)
+        XCTAssertEqual(locale.languageIdentifier, "sv")
+        XCTAssertEqual(locale.localeIdentifier, "sv_AX")
+    }
+
+    func test__language_identifier_for_Swedish_Finland() {
+        locale = .Swedish(.Finland)
+        XCTAssertEqual(locale.languageIdentifier, "sv")
+        XCTAssertEqual(locale.localeIdentifier, "sv_FI")
+    }
+
+    func test__language_identifier_for_Punjabi_Pakistan() {
+        locale = .Punjabi(.Pakistan)
+        XCTAssertEqual(locale.languageIdentifier, "pa")
+        XCTAssertEqual(locale.localeIdentifier, "pa_PK")
+    }
+
+    func test__language_identifier_for_Punjabi_India() {
+        locale = .Punjabi(.India)
+        XCTAssertEqual(locale.languageIdentifier, "pa")
+        XCTAssertEqual(locale.localeIdentifier, "pa_IN")
+    }
+
+    func test__language_identifier_for_Danish_Denmark() {
+        locale = .Danish(.Denmark)
+        XCTAssertEqual(locale.languageIdentifier, "da")
+        XCTAssertEqual(locale.localeIdentifier, "da_DK")
+    }
+
+    func test__language_identifier_for_Danish_Greenland() {
+        locale = .Danish(.Greenland)
+        XCTAssertEqual(locale.languageIdentifier, "da")
+        XCTAssertEqual(locale.localeIdentifier, "da_GL")
+    }
+
+    func test__language_identifier_for_NorwegianBokmål_SvalbardJanMayen() {
+        locale = .NorwegianBokmål(.SvalbardJanMayen)
+        XCTAssertEqual(locale.languageIdentifier, "nb")
+        XCTAssertEqual(locale.localeIdentifier, "nb_SJ")
+    }
+
+    func test__language_identifier_for_NorwegianBokmål_Norway() {
+        locale = .NorwegianBokmål(.Norway)
+        XCTAssertEqual(locale.languageIdentifier, "nb")
+        XCTAssertEqual(locale.localeIdentifier, "nb_NO")
+    }
+
+    func test__language_identifier_for_Urdu_Pakistan() {
+        locale = .Urdu(.Pakistan)
+        XCTAssertEqual(locale.languageIdentifier, "ur")
+        XCTAssertEqual(locale.localeIdentifier, "ur_PK")
+    }
+
+    func test__language_identifier_for_Urdu_India() {
+        locale = .Urdu(.India)
+        XCTAssertEqual(locale.languageIdentifier, "ur")
+        XCTAssertEqual(locale.localeIdentifier, "ur_IN")
+    }
+
+    func test__language_identifier_for_Croatian_Croatia() {
+        locale = .Croatian(.Croatia)
+        XCTAssertEqual(locale.languageIdentifier, "hr")
+        XCTAssertEqual(locale.localeIdentifier, "hr_HR")
+    }
+
+    func test__language_identifier_for_Croatian_BosniaHerzegovina() {
+        locale = .Croatian(.BosniaHerzegovina)
+        XCTAssertEqual(locale.languageIdentifier, "hr")
+        XCTAssertEqual(locale.localeIdentifier, "hr_BA")
+    }
+
+    func test__language_identifier_for_Afrikaans_Namibia() {
+        locale = .Afrikaans(.Namibia)
+        XCTAssertEqual(locale.languageIdentifier, "af")
+        XCTAssertEqual(locale.localeIdentifier, "af_NA")
+    }
+
+    func test__language_identifier_for_Afrikaans_SouthAfrica() {
+        locale = .Afrikaans(.SouthAfrica)
+        XCTAssertEqual(locale.languageIdentifier, "af")
+        XCTAssertEqual(locale.localeIdentifier, "af_ZA")
+    }
+
+    func test__language_identifier_for_Yoruba_Benin() {
+        locale = .Yoruba(.Benin)
+        XCTAssertEqual(locale.languageIdentifier, "yo")
+        XCTAssertEqual(locale.localeIdentifier, "yo_BJ")
+    }
+
+    func test__language_identifier_for_Yoruba_Nigeria() {
+        locale = .Yoruba(.Nigeria)
+        XCTAssertEqual(locale.languageIdentifier, "yo")
+        XCTAssertEqual(locale.localeIdentifier, "yo_NG")
+    }
+
+    func test__language_identifier_for_Bengali_Bangladesh() {
+        locale = .Bengali(.Bangladesh)
+        XCTAssertEqual(locale.languageIdentifier, "bn")
+        XCTAssertEqual(locale.localeIdentifier, "bn_BD")
+    }
+
+    func test__language_identifier_for_Bengali_India() {
+        locale = .Bengali(.India)
+        XCTAssertEqual(locale.languageIdentifier, "bn")
+        XCTAssertEqual(locale.localeIdentifier, "bn_IN")
+    }
+
+    func test__language_identifier_for_Greek_Cyprus() {
+        locale = .Greek(.Cyprus)
+        XCTAssertEqual(locale.languageIdentifier, "el")
+        XCTAssertEqual(locale.localeIdentifier, "el_CY")
+    }
+
+    func test__language_identifier_for_Greek_Greece() {
+        locale = .Greek(.Greece)
+        XCTAssertEqual(locale.languageIdentifier, "el")
+        XCTAssertEqual(locale.localeIdentifier, "el_GR")
+    }
+
+    func test__language_identifier_for_Teso_Kenya() {
+        locale = .Teso(.Kenya)
+        XCTAssertEqual(locale.languageIdentifier, "teo")
+        XCTAssertEqual(locale.localeIdentifier, "teo_KE")
+    }
+
+    func test__language_identifier_for_Teso_Uganda() {
+        locale = .Teso(.Uganda)
+        XCTAssertEqual(locale.languageIdentifier, "teo")
+        XCTAssertEqual(locale.localeIdentifier, "teo_UG")
+    }
+
+    func test__language_identifier_for_Korean_NorthKorea() {
+        locale = .Korean(.NorthKorea)
+        XCTAssertEqual(locale.languageIdentifier, "ko")
+        XCTAssertEqual(locale.localeIdentifier, "ko_KP")
+    }
+
+    func test__language_identifier_for_Korean_SouthKorea() {
+        locale = .Korean(.SouthKorea)
+        XCTAssertEqual(locale.languageIdentifier, "ko")
+        XCTAssertEqual(locale.localeIdentifier, "ko_KR")
+    }
+
+    func test__language_identifier_for_Uzbek_Uzbekistan() {
+        locale = .Uzbek(.Uzbekistan)
+        XCTAssertEqual(locale.languageIdentifier, "uz")
+        XCTAssertEqual(locale.localeIdentifier, "uz_UZ")
+    }
+
+    func test__language_identifier_for_Uzbek_Afghanistan() {
+        locale = .Uzbek(.Afghanistan)
+        XCTAssertEqual(locale.languageIdentifier, "uz")
+        XCTAssertEqual(locale.localeIdentifier, "uz_AF")
+    }
+
+    func test__language_identifier_for_Ossetic_Georgia() {
+        locale = .Ossetic(.Georgia)
+        XCTAssertEqual(locale.languageIdentifier, "os")
+        XCTAssertEqual(locale.localeIdentifier, "os_GE")
+    }
+
+    func test__language_identifier_for_Ossetic_Russia() {
+        locale = .Ossetic(.Russia)
+        XCTAssertEqual(locale.languageIdentifier, "os")
+        XCTAssertEqual(locale.localeIdentifier, "os_RU")
+    }
+
+    func test__language_identifier_for_Turkish_Cyprus() {
+        locale = .Turkish(.Cyprus)
+        XCTAssertEqual(locale.languageIdentifier, "tr")
+        XCTAssertEqual(locale.localeIdentifier, "tr_CY")
+    }
+
+    func test__language_identifier_for_Turkish_Turkey() {
+        locale = .Turkish(.Turkey)
+        XCTAssertEqual(locale.languageIdentifier, "tr")
+        XCTAssertEqual(locale.localeIdentifier, "tr_TR")
+    }
+
+    func test__language_identifier_for_Ewe_Togo() {
+        locale = .Ewe(.Togo)
+        XCTAssertEqual(locale.languageIdentifier, "ee")
+        XCTAssertEqual(locale.localeIdentifier, "ee_TG")
+    }
+
+    func test__language_identifier_for_Ewe_Ghana() {
+        locale = .Ewe(.Ghana)
+        XCTAssertEqual(locale.languageIdentifier, "ee")
+        XCTAssertEqual(locale.localeIdentifier, "ee_GH")
+    }
+
+    func test__language_identifier_for_Romanian_Romania() {
+        locale = .Romanian(.Romania)
+        XCTAssertEqual(locale.languageIdentifier, "ro")
+        XCTAssertEqual(locale.localeIdentifier, "ro_RO")
+    }
+
+    func test__language_identifier_for_Romanian_Moldova() {
+        locale = .Romanian(.Moldova)
+        XCTAssertEqual(locale.languageIdentifier, "ro")
+        XCTAssertEqual(locale.localeIdentifier, "ro_MD")
+    }
+
+    func test__language_identifier_for_Tigrinya_Ethiopia() {
+        locale = .Tigrinya(.Ethiopia)
+        XCTAssertEqual(locale.languageIdentifier, "ti")
+        XCTAssertEqual(locale.localeIdentifier, "ti_ET")
+    }
+
+    func test__language_identifier_for_Tigrinya_Eritrea() {
+        locale = .Tigrinya(.Eritrea)
+        XCTAssertEqual(locale.languageIdentifier, "ti")
+        XCTAssertEqual(locale.localeIdentifier, "ti_ER")
+    }
+
+    func test__language_identifier_for_Tibetan_India() {
+        locale = .Tibetan(.India)
+        XCTAssertEqual(locale.languageIdentifier, "bo")
+        XCTAssertEqual(locale.localeIdentifier, "bo_IN")
+    }
+
+    func test__language_identifier_for_Tibetan_China() {
+        locale = .Tibetan(.China)
+        XCTAssertEqual(locale.languageIdentifier, "bo")
+        XCTAssertEqual(locale.localeIdentifier, "bo_CN")
+    }
+
+    func test__language_identifier_for_CentralKurdish_Iraq() {
+        locale = .CentralKurdish(.Iraq)
+        XCTAssertEqual(locale.languageIdentifier, "ckb")
+        XCTAssertEqual(locale.localeIdentifier, "ckb_IQ")
+    }
+
+    func test__language_identifier_for_CentralKurdish_Iran() {
+        locale = .CentralKurdish(.Iran)
+        XCTAssertEqual(locale.languageIdentifier, "ckb")
+        XCTAssertEqual(locale.localeIdentifier, "ckb_IR")
+    }
+
+    func test__language_identifier_for_Masai_Tanzania() {
+        locale = .Masai(.Tanzania)
+        XCTAssertEqual(locale.languageIdentifier, "mas")
+        XCTAssertEqual(locale.localeIdentifier, "mas_TZ")
+    }
+
+    func test__language_identifier_for_Masai_Kenya() {
+        locale = .Masai(.Kenya)
+        XCTAssertEqual(locale.languageIdentifier, "mas")
+        XCTAssertEqual(locale.localeIdentifier, "mas_KE")
+    }
+
+    func test__language_identifier_for_Oromo_Ethiopia() {
+        locale = .Oromo(.Ethiopia)
+        XCTAssertEqual(locale.languageIdentifier, "om")
+        XCTAssertEqual(locale.localeIdentifier, "om_ET")
+    }
+
+    func test__language_identifier_for_Oromo_Kenya() {
+        locale = .Oromo(.Kenya)
+        XCTAssertEqual(locale.languageIdentifier, "om")
+        XCTAssertEqual(locale.localeIdentifier, "om_KE")
+    }
+
+    func test__language_identifier_for_Nepali_Nepal() {
+        locale = .Nepali(.Nepal)
+        XCTAssertEqual(locale.languageIdentifier, "ne")
+        XCTAssertEqual(locale.localeIdentifier, "ne_NP")
+    }
+
+    func test__language_identifier_for_Nepali_India() {
+        locale = .Nepali(.India)
+        XCTAssertEqual(locale.languageIdentifier, "ne")
+        XCTAssertEqual(locale.localeIdentifier, "ne_IN")
+    }
+
+    func test__language_identifier_for_Persian_Iran() {
+        locale = .Persian(.Iran)
+        XCTAssertEqual(locale.languageIdentifier, "fa")
+        XCTAssertEqual(locale.localeIdentifier, "fa_IR")
+    }
+
+    func test__language_identifier_for_Persian_Afghanistan() {
+        locale = .Persian(.Afghanistan)
+        XCTAssertEqual(locale.languageIdentifier, "fa")
+        XCTAssertEqual(locale.localeIdentifier, "fa_AF")
+    }
+
+    func test__language_identifier_for_JolaFonyi() {
+        locale = .JolaFonyi
+        XCTAssertEqual(locale.languageIdentifier, "dyo")
+        XCTAssertEqual(locale.localeIdentifier, "dyo")
+    }
+
+    func test__language_identifier_for_Soga() {
+        locale = .Soga
+        XCTAssertEqual(locale.languageIdentifier, "xog")
+        XCTAssertEqual(locale.localeIdentifier, "xog")
+    }
+
+    func test__language_identifier_for_Rombo() {
+        locale = .Rombo
+        XCTAssertEqual(locale.languageIdentifier, "rof")
+        XCTAssertEqual(locale.localeIdentifier, "rof")
+    }
+
+    func test__language_identifier_for_Manx() {
+        locale = .Manx
+        XCTAssertEqual(locale.languageIdentifier, "gv")
+        XCTAssertEqual(locale.localeIdentifier, "gv")
+    }
+
+    func test__language_identifier_for_LowerSorbian() {
+        locale = .LowerSorbian
+        XCTAssertEqual(locale.languageIdentifier, "dsb")
+        XCTAssertEqual(locale.localeIdentifier, "dsb")
+    }
+
+    func test__language_identifier_for_Pashto() {
+        locale = .Pashto
+        XCTAssertEqual(locale.languageIdentifier, "ps")
+        XCTAssertEqual(locale.localeIdentifier, "ps")
+    }
+
+    func test__language_identifier_for_CentralAtlasTamazight() {
+        locale = .CentralAtlasTamazight
+        XCTAssertEqual(locale.languageIdentifier, "tzm")
+        XCTAssertEqual(locale.localeIdentifier, "tzm")
+    }
+
+    func test__language_identifier_for_Gusii() {
+        locale = .Gusii
+        XCTAssertEqual(locale.languageIdentifier, "guz")
+        XCTAssertEqual(locale.localeIdentifier, "guz")
+    }
+
+    func test__language_identifier_for_Nama() {
+        locale = .Nama
+        XCTAssertEqual(locale.languageIdentifier, "naq")
+        XCTAssertEqual(locale.localeIdentifier, "naq")
+    }
+
+    func test__language_identifier_for_Tajik() {
+        locale = .Tajik
+        XCTAssertEqual(locale.languageIdentifier, "tg")
+        XCTAssertEqual(locale.localeIdentifier, "tg")
+    }
+
+    func test__language_identifier_for_Kwasio() {
+        locale = .Kwasio
+        XCTAssertEqual(locale.languageIdentifier, "nmg")
+        XCTAssertEqual(locale.localeIdentifier, "nmg")
+    }
+
+    func test__language_identifier_for_Akan() {
+        locale = .Akan
+        XCTAssertEqual(locale.languageIdentifier, "ak")
+        XCTAssertEqual(locale.localeIdentifier, "ak")
+    }
+
+    func test__language_identifier_for_Estonian() {
+        locale = .Estonian
+        XCTAssertEqual(locale.languageIdentifier, "et")
+        XCTAssertEqual(locale.localeIdentifier, "et")
+    }
+
+    func test__language_identifier_for_Colognian() {
+        locale = .Colognian
+        XCTAssertEqual(locale.languageIdentifier, "ksh")
+        XCTAssertEqual(locale.localeIdentifier, "ksh")
+    }
+
+    func test__language_identifier_for_Konkani() {
+        locale = .Konkani
+        XCTAssertEqual(locale.languageIdentifier, "kok")
+        XCTAssertEqual(locale.localeIdentifier, "kok")
+    }
+
+    func test__language_identifier_for_ScottishGaelic() {
+        locale = .ScottishGaelic
+        XCTAssertEqual(locale.languageIdentifier, "gd")
+        XCTAssertEqual(locale.localeIdentifier, "gd")
+    }
+
+    func test__language_identifier_for_Bambara() {
+        locale = .Bambara
+        XCTAssertEqual(locale.languageIdentifier, "bm")
+        XCTAssertEqual(locale.localeIdentifier, "bm")
+    }
+
+    func test__language_identifier_for_Lakota() {
+        locale = .Lakota
+        XCTAssertEqual(locale.languageIdentifier, "lkt")
+        XCTAssertEqual(locale.localeIdentifier, "lkt")
+    }
+
+    func test__language_identifier_for_Bosnian() {
+        locale = .Bosnian
+        XCTAssertEqual(locale.languageIdentifier, "bs")
+        XCTAssertEqual(locale.localeIdentifier, "bs")
+    }
+
+    func test__language_identifier_for_Turkmen() {
+        locale = .Turkmen
+        XCTAssertEqual(locale.languageIdentifier, "tk")
+        XCTAssertEqual(locale.localeIdentifier, "tk")
+    }
+
+    func test__language_identifier_for_Meta() {
+        locale = .Meta
+        XCTAssertEqual(locale.languageIdentifier, "mgo")
+        XCTAssertEqual(locale.localeIdentifier, "mgo")
+    }
+
+    func test__language_identifier_for_Sena() {
+        locale = .Sena
+        XCTAssertEqual(locale.languageIdentifier, "seh")
+        XCTAssertEqual(locale.localeIdentifier, "seh")
+    }
+
+    func test__language_identifier_for_Telugu() {
+        locale = .Telugu
+        XCTAssertEqual(locale.languageIdentifier, "te")
+        XCTAssertEqual(locale.localeIdentifier, "te")
+    }
+
+    func test__language_identifier_for_Icelandic() {
+        locale = .Icelandic
+        XCTAssertEqual(locale.languageIdentifier, "is")
+        XCTAssertEqual(locale.localeIdentifier, "is")
+    }
+
+    func test__language_identifier_for_Vunjo() {
+        locale = .Vunjo
+        XCTAssertEqual(locale.languageIdentifier, "vun")
+        XCTAssertEqual(locale.localeIdentifier, "vun")
+    }
+
+    func test__language_identifier_for_Finnish() {
+        locale = .Finnish
+        XCTAssertEqual(locale.languageIdentifier, "fi")
+        XCTAssertEqual(locale.localeIdentifier, "fi")
+    }
+
+    func test__language_identifier_for_Yangben() {
+        locale = .Yangben
+        XCTAssertEqual(locale.languageIdentifier, "yav")
+        XCTAssertEqual(locale.localeIdentifier, "yav")
+    }
+
+    func test__language_identifier_for_Sakha() {
+        locale = .Sakha
+        XCTAssertEqual(locale.languageIdentifier, "sah")
+        XCTAssertEqual(locale.localeIdentifier, "sah")
+    }
+
+    func test__language_identifier_for_Ngomba() {
+        locale = .Ngomba
+        XCTAssertEqual(locale.languageIdentifier, "jgo")
+        XCTAssertEqual(locale.localeIdentifier, "jgo")
+    }
+
+    func test__language_identifier_for_Friulian() {
+        locale = .Friulian
+        XCTAssertEqual(locale.languageIdentifier, "fur")
+        XCTAssertEqual(locale.localeIdentifier, "fur")
+    }
+
+    func test__language_identifier_for_Inuktitut() {
+        locale = .Inuktitut
+        XCTAssertEqual(locale.languageIdentifier, "iu")
+        XCTAssertEqual(locale.localeIdentifier, "iu")
+    }
+
+    func test__language_identifier_for_NorthNdebele() {
+        locale = .NorthNdebele
+        XCTAssertEqual(locale.languageIdentifier, "nd")
+        XCTAssertEqual(locale.localeIdentifier, "nd")
+    }
+
+    func test__language_identifier_for_Bulgarian() {
+        locale = .Bulgarian
+        XCTAssertEqual(locale.languageIdentifier, "bg")
+        XCTAssertEqual(locale.localeIdentifier, "bg")
+    }
+
+    func test__language_identifier_for_Nyankole() {
+        locale = .Nyankole
+        XCTAssertEqual(locale.languageIdentifier, "nyn")
+        XCTAssertEqual(locale.localeIdentifier, "nyn")
+    }
+
+    func test__language_identifier_for_Kabyle() {
+        locale = .Kabyle
+        XCTAssertEqual(locale.languageIdentifier, "kab")
+        XCTAssertEqual(locale.localeIdentifier, "kab")
+    }
+
+    func test__language_identifier_for_Filipino() {
+        locale = .Filipino
+        XCTAssertEqual(locale.languageIdentifier, "fil")
+        XCTAssertEqual(locale.localeIdentifier, "fil")
+    }
+
+    func test__language_identifier_for_Khmer() {
+        locale = .Khmer
+        XCTAssertEqual(locale.languageIdentifier, "km")
+        XCTAssertEqual(locale.localeIdentifier, "km")
+    }
+
+    func test__language_identifier_for_Slovenian() {
+        locale = .Slovenian
+        XCTAssertEqual(locale.languageIdentifier, "sl")
+        XCTAssertEqual(locale.localeIdentifier, "sl")
+    }
+
+    func test__language_identifier_for_Bemba() {
+        locale = .Bemba
+        XCTAssertEqual(locale.languageIdentifier, "bem")
+        XCTAssertEqual(locale.localeIdentifier, "bem")
+    }
+
+    func test__language_identifier_for_Sangu() {
+        locale = .Sangu
+        XCTAssertEqual(locale.languageIdentifier, "sbp")
+        XCTAssertEqual(locale.localeIdentifier, "sbp")
+    }
+
+    func test__language_identifier_for_Japanese() {
+        locale = .Japanese
+        XCTAssertEqual(locale.languageIdentifier, "ja")
+        XCTAssertEqual(locale.localeIdentifier, "ja")
+    }
+
+    func test__language_identifier_for_Kannada() {
+        locale = .Kannada
+        XCTAssertEqual(locale.languageIdentifier, "kn")
+        XCTAssertEqual(locale.localeIdentifier, "kn")
+    }
+
+    func test__language_identifier_for_Azerbaijani() {
+        locale = .Azerbaijani
+        XCTAssertEqual(locale.languageIdentifier, "az")
+        XCTAssertEqual(locale.localeIdentifier, "az")
+    }
+
+    func test__language_identifier_for_Shambala() {
+        locale = .Shambala
+        XCTAssertEqual(locale.languageIdentifier, "ksb")
+        XCTAssertEqual(locale.localeIdentifier, "ksb")
+    }
+
+    func test__language_identifier_for_Bafia() {
+        locale = .Bafia
+        XCTAssertEqual(locale.languageIdentifier, "ksf")
+        XCTAssertEqual(locale.localeIdentifier, "ksf")
+    }
+
+    func test__language_identifier_for_Kazakh() {
+        locale = .Kazakh
+        XCTAssertEqual(locale.languageIdentifier, "kk")
+        XCTAssertEqual(locale.localeIdentifier, "kk")
+    }
+
+    func test__language_identifier_for_Ngiemboon() {
+        locale = .Ngiemboon
+        XCTAssertEqual(locale.languageIdentifier, "nnh")
+        XCTAssertEqual(locale.localeIdentifier, "nnh")
+    }
+
+    func test__language_identifier_for_Chiga() {
+        locale = .Chiga
+        XCTAssertEqual(locale.languageIdentifier, "cgg")
+        XCTAssertEqual(locale.localeIdentifier, "cgg")
+    }
+
+    func test__language_identifier_for_Sango() {
+        locale = .Sango
+        XCTAssertEqual(locale.languageIdentifier, "sg")
+        XCTAssertEqual(locale.localeIdentifier, "sg")
+    }
+
+    func test__language_identifier_for_WesternFrisian() {
+        locale = .WesternFrisian
+        XCTAssertEqual(locale.languageIdentifier, "fy")
+        XCTAssertEqual(locale.localeIdentifier, "fy")
+    }
+
+    func test__language_identifier_for_Makonde() {
+        locale = .Makonde
+        XCTAssertEqual(locale.languageIdentifier, "kde")
+        XCTAssertEqual(locale.localeIdentifier, "kde")
+    }
+
+    func test__language_identifier_for_Ganda() {
+        locale = .Ganda
+        XCTAssertEqual(locale.languageIdentifier, "lg")
+        XCTAssertEqual(locale.localeIdentifier, "lg")
+    }
+
+    func test__language_identifier_for_Bodo() {
+        locale = .Bodo
+        XCTAssertEqual(locale.languageIdentifier, "brx")
+        XCTAssertEqual(locale.localeIdentifier, "brx")
+    }
+
+    func test__language_identifier_for_Polish() {
+        locale = .Polish
+        XCTAssertEqual(locale.languageIdentifier, "pl")
+        XCTAssertEqual(locale.localeIdentifier, "pl")
+    }
+
+    func test__language_identifier_for_Tongan() {
+        locale = .Tongan
+        XCTAssertEqual(locale.languageIdentifier, "to")
+        XCTAssertEqual(locale.localeIdentifier, "to")
+    }
+
+    func test__language_identifier_for_Bena() {
+        locale = .Bena
+        XCTAssertEqual(locale.languageIdentifier, "bez")
+        XCTAssertEqual(locale.localeIdentifier, "bez")
+    }
+
+    func test__language_identifier_for_Lithuanian() {
+        locale = .Lithuanian
+        XCTAssertEqual(locale.languageIdentifier, "lt")
+        XCTAssertEqual(locale.localeIdentifier, "lt")
+    }
+
+    func test__language_identifier_for_Morisyen() {
+        locale = .Morisyen
+        XCTAssertEqual(locale.languageIdentifier, "mfe")
+        XCTAssertEqual(locale.localeIdentifier, "mfe")
+    }
+
+    func test__language_identifier_for_Machame() {
+        locale = .Machame
+        XCTAssertEqual(locale.languageIdentifier, "jmc")
+        XCTAssertEqual(locale.localeIdentifier, "jmc")
+    }
+
+    func test__language_identifier_for_Kyrgyz() {
+        locale = .Kyrgyz
+        XCTAssertEqual(locale.languageIdentifier, "ky")
+        XCTAssertEqual(locale.localeIdentifier, "ky")
+    }
+
+    func test__language_identifier_for_Kalaallisut() {
+        locale = .Kalaallisut
+        XCTAssertEqual(locale.languageIdentifier, "kl")
+        XCTAssertEqual(locale.localeIdentifier, "kl")
+    }
+
+    func test__language_identifier_for_Oriya() {
+        locale = .Oriya
+        XCTAssertEqual(locale.languageIdentifier, "or")
+        XCTAssertEqual(locale.localeIdentifier, "or")
+    }
+
+    func test__language_identifier_for_Belarusian() {
+        locale = .Belarusian
+        XCTAssertEqual(locale.languageIdentifier, "be")
+        XCTAssertEqual(locale.localeIdentifier, "be")
+    }
+
+    func test__language_identifier_for_Hebrew() {
+        locale = .Hebrew
+        XCTAssertEqual(locale.languageIdentifier, "he")
+        XCTAssertEqual(locale.localeIdentifier, "he")
+    }
+
+    func test__language_identifier_for_Mongolian() {
+        locale = .Mongolian
+        XCTAssertEqual(locale.languageIdentifier, "mn")
+        XCTAssertEqual(locale.localeIdentifier, "mn")
+    }
+
+    func test__language_identifier_for_Rwa() {
+        locale = .Rwa
+        XCTAssertEqual(locale.languageIdentifier, "rwk")
+        XCTAssertEqual(locale.localeIdentifier, "rwk")
+    }
+
+    func test__language_identifier_for_Mundang() {
+        locale = .Mundang
+        XCTAssertEqual(locale.languageIdentifier, "mua")
+        XCTAssertEqual(locale.localeIdentifier, "mua")
+    }
+
+    func test__language_identifier_for_Langi() {
+        locale = .Langi
+        XCTAssertEqual(locale.languageIdentifier, "lag")
+        XCTAssertEqual(locale.localeIdentifier, "lag")
+    }
+
+    func test__language_identifier_for_Duala() {
+        locale = .Duala
+        XCTAssertEqual(locale.languageIdentifier, "dua")
+        XCTAssertEqual(locale.localeIdentifier, "dua")
+    }
+
+    func test__language_identifier_for_Embu() {
+        locale = .Embu
+        XCTAssertEqual(locale.languageIdentifier, "ebu")
+        XCTAssertEqual(locale.localeIdentifier, "ebu")
+    }
+
+    func test__language_identifier_for_Kikuyu() {
+        locale = .Kikuyu
+        XCTAssertEqual(locale.languageIdentifier, "ki")
+        XCTAssertEqual(locale.localeIdentifier, "ki")
+    }
+
+    func test__language_identifier_for_Basque() {
+        locale = .Basque
+        XCTAssertEqual(locale.languageIdentifier, "eu")
+        XCTAssertEqual(locale.localeIdentifier, "eu")
+    }
+
+    func test__language_identifier_for_Gujarati() {
+        locale = .Gujarati
+        XCTAssertEqual(locale.languageIdentifier, "gu")
+        XCTAssertEqual(locale.localeIdentifier, "gu")
+    }
+
+    func test__language_identifier_for_Galician() {
+        locale = .Galician
+        XCTAssertEqual(locale.languageIdentifier, "gl")
+        XCTAssertEqual(locale.localeIdentifier, "gl")
+    }
+
+    func test__language_identifier_for_Vietnamese() {
+        locale = .Vietnamese
+        XCTAssertEqual(locale.languageIdentifier, "vi")
+        XCTAssertEqual(locale.localeIdentifier, "vi")
+    }
+
+    func test__language_identifier_for_Meru() {
+        locale = .Meru
+        XCTAssertEqual(locale.languageIdentifier, "mer")
+        XCTAssertEqual(locale.localeIdentifier, "mer")
+    }
+
+    func test__language_identifier_for_Malayalam() {
+        locale = .Malayalam
+        XCTAssertEqual(locale.languageIdentifier, "ml")
+        XCTAssertEqual(locale.localeIdentifier, "ml")
+    }
+
+    func test__language_identifier_for_LubaKatanga() {
+        locale = .LubaKatanga
+        XCTAssertEqual(locale.languageIdentifier, "lu")
+        XCTAssertEqual(locale.localeIdentifier, "lu")
+    }
+
+    func test__language_identifier_for_Ukrainian() {
+        locale = .Ukrainian
+        XCTAssertEqual(locale.languageIdentifier, "uk")
+        XCTAssertEqual(locale.localeIdentifier, "uk")
+    }
+
+    func test__language_identifier_for_Maltese() {
+        locale = .Maltese
+        XCTAssertEqual(locale.languageIdentifier, "mt")
+        XCTAssertEqual(locale.localeIdentifier, "mt")
+    }
+
+    func test__language_identifier_for_Sinhala() {
+        locale = .Sinhala
+        XCTAssertEqual(locale.languageIdentifier, "si")
+        XCTAssertEqual(locale.localeIdentifier, "si")
+    }
+
+    func test__language_identifier_for_Luo() {
+        locale = .Luo
+        XCTAssertEqual(locale.languageIdentifier, "luo")
+        XCTAssertEqual(locale.localeIdentifier, "luo")
+    }
+
+    func test__language_identifier_for_Faroese() {
+        locale = .Faroese
+        XCTAssertEqual(locale.languageIdentifier, "fo")
+        XCTAssertEqual(locale.localeIdentifier, "fo")
+    }
+
+    func test__language_identifier_for_Zarma() {
+        locale = .Zarma
+        XCTAssertEqual(locale.languageIdentifier, "dje")
+        XCTAssertEqual(locale.localeIdentifier, "dje")
+    }
+
+    func test__language_identifier_for_Vai() {
+        locale = .Vai
+        XCTAssertEqual(locale.languageIdentifier, "vai")
+        XCTAssertEqual(locale.localeIdentifier, "vai")
+    }
+
+    func test__language_identifier_for_Taita() {
+        locale = .Taita
+        XCTAssertEqual(locale.languageIdentifier, "dav")
+        XCTAssertEqual(locale.localeIdentifier, "dav")
+    }
+
+    func test__language_identifier_for_Tachelhit() {
+        locale = .Tachelhit
+        XCTAssertEqual(locale.languageIdentifier, "shi")
+        XCTAssertEqual(locale.localeIdentifier, "shi")
+    }
+
+    func test__language_identifier_for_NorwegianNynorsk() {
+        locale = .NorwegianNynorsk
+        XCTAssertEqual(locale.languageIdentifier, "nn")
+        XCTAssertEqual(locale.localeIdentifier, "nn")
+    }
+
+    func test__language_identifier_for_Assamese() {
+        locale = .Assamese
+        XCTAssertEqual(locale.languageIdentifier, "as")
+        XCTAssertEqual(locale.localeIdentifier, "as")
+    }
+
+    func test__language_identifier_for_Latvian() {
+        locale = .Latvian
+        XCTAssertEqual(locale.languageIdentifier, "lv")
+        XCTAssertEqual(locale.localeIdentifier, "lv")
+    }
+
+    func test__language_identifier_for_Igbo() {
+        locale = .Igbo
+        XCTAssertEqual(locale.languageIdentifier, "ig")
+        XCTAssertEqual(locale.localeIdentifier, "ig")
+    }
+
+    func test__language_identifier_for_Kamba() {
+        locale = .Kamba
+        XCTAssertEqual(locale.languageIdentifier, "kam")
+        XCTAssertEqual(locale.localeIdentifier, "kam")
+    }
+
+    func test__language_identifier_for_Kako() {
+        locale = .Kako
+        XCTAssertEqual(locale.languageIdentifier, "kkj")
+        XCTAssertEqual(locale.localeIdentifier, "kkj")
+    }
+
+    func test__language_identifier_for_Lao() {
+        locale = .Lao
+        XCTAssertEqual(locale.languageIdentifier, "lo")
+        XCTAssertEqual(locale.localeIdentifier, "lo")
+    }
+
+    func test__language_identifier_for_Basaa() {
+        locale = .Basaa
+        XCTAssertEqual(locale.languageIdentifier, "bas")
+        XCTAssertEqual(locale.localeIdentifier, "bas")
+    }
+
+    func test__language_identifier_for_Nuer() {
+        locale = .Nuer
+        XCTAssertEqual(locale.languageIdentifier, "nus")
+        XCTAssertEqual(locale.localeIdentifier, "nus")
+    }
+
+    func test__language_identifier_for_Czech() {
+        locale = .Czech
+        XCTAssertEqual(locale.languageIdentifier, "cs")
+        XCTAssertEqual(locale.localeIdentifier, "cs")
+    }
+
+    func test__language_identifier_for_StandardMoroccanTamazight() {
+        locale = .StandardMoroccanTamazight
+        XCTAssertEqual(locale.languageIdentifier, "zgh")
+        XCTAssertEqual(locale.localeIdentifier, "zgh")
+    }
+
+    func test__language_identifier_for_Burmese() {
+        locale = .Burmese
+        XCTAssertEqual(locale.languageIdentifier, "my")
+        XCTAssertEqual(locale.localeIdentifier, "my")
+    }
+
+    func test__language_identifier_for_Romansh() {
+        locale = .Romansh
+        XCTAssertEqual(locale.languageIdentifier, "rm")
+        XCTAssertEqual(locale.localeIdentifier, "rm")
+    }
+
+    func test__language_identifier_for_Ewondo() {
+        locale = .Ewondo
+        XCTAssertEqual(locale.languageIdentifier, "ewo")
+        XCTAssertEqual(locale.localeIdentifier, "ewo")
+    }
+
+    func test__language_identifier_for_Amharic() {
+        locale = .Amharic
+        XCTAssertEqual(locale.languageIdentifier, "am")
+        XCTAssertEqual(locale.localeIdentifier, "am")
+    }
+
+    func test__language_identifier_for_Slovak() {
+        locale = .Slovak
+        XCTAssertEqual(locale.languageIdentifier, "sk")
+        XCTAssertEqual(locale.localeIdentifier, "sk")
+    }
+
+    func test__language_identifier_for_Kabuverdianu() {
+        locale = .Kabuverdianu
+        XCTAssertEqual(locale.languageIdentifier, "kea")
+        XCTAssertEqual(locale.localeIdentifier, "kea")
+    }
+
+    func test__language_identifier_for_Hungarian() {
+        locale = .Hungarian
+        XCTAssertEqual(locale.languageIdentifier, "hu")
+        XCTAssertEqual(locale.localeIdentifier, "hu")
+    }
+
+    func test__language_identifier_for_Breton() {
+        locale = .Breton
+        XCTAssertEqual(locale.languageIdentifier, "br")
+        XCTAssertEqual(locale.localeIdentifier, "br")
+    }
+
+    func test__language_identifier_for_Luyia() {
+        locale = .Luyia
+        XCTAssertEqual(locale.languageIdentifier, "luy")
+        XCTAssertEqual(locale.localeIdentifier, "luy")
+    }
+
+    func test__language_identifier_for_Luxembourgish() {
+        locale = .Luxembourgish
+        XCTAssertEqual(locale.languageIdentifier, "lb")
+        XCTAssertEqual(locale.localeIdentifier, "lb")
+    }
+
+    func test__language_identifier_for_Malagasy() {
+        locale = .Malagasy
+        XCTAssertEqual(locale.languageIdentifier, "mg")
+        XCTAssertEqual(locale.localeIdentifier, "mg")
+    }
+
+    func test__language_identifier_for_Rundi() {
+        locale = .Rundi
+        XCTAssertEqual(locale.languageIdentifier, "rn")
+        XCTAssertEqual(locale.localeIdentifier, "rn")
+    }
+
+    func test__language_identifier_for_KoyraChiini() {
+        locale = .KoyraChiini
+        XCTAssertEqual(locale.languageIdentifier, "khq")
+        XCTAssertEqual(locale.localeIdentifier, "khq")
+    }
+
+    func test__language_identifier_for_Thai() {
+        locale = .Thai
+        XCTAssertEqual(locale.languageIdentifier, "th")
+        XCTAssertEqual(locale.localeIdentifier, "th")
+    }
+
+    func test__language_identifier_for_Zulu() {
+        locale = .Zulu
+        XCTAssertEqual(locale.languageIdentifier, "zu")
+        XCTAssertEqual(locale.localeIdentifier, "zu")
+    }
+
+    func test__language_identifier_for_Shona() {
+        locale = .Shona
+        XCTAssertEqual(locale.languageIdentifier, "sn")
+        XCTAssertEqual(locale.localeIdentifier, "sn")
+    }
+
+    func test__language_identifier_for_Armenian() {
+        locale = .Armenian
+        XCTAssertEqual(locale.languageIdentifier, "hy")
+        XCTAssertEqual(locale.localeIdentifier, "hy")
+    }
+
+    func test__language_identifier_for_Uyghur() {
+        locale = .Uyghur
+        XCTAssertEqual(locale.languageIdentifier, "ug")
+        XCTAssertEqual(locale.localeIdentifier, "ug")
+    }
+
+    func test__language_identifier_for_Irish() {
+        locale = .Irish
+        XCTAssertEqual(locale.languageIdentifier, "ga")
+        XCTAssertEqual(locale.localeIdentifier, "ga")
+    }
+
+    func test__language_identifier_for_Marathi() {
+        locale = .Marathi
+        XCTAssertEqual(locale.languageIdentifier, "mr")
+        XCTAssertEqual(locale.localeIdentifier, "mr")
+    }
+
+    func test__language_identifier_for_Macedonian() {
+        locale = .Macedonian
+        XCTAssertEqual(locale.languageIdentifier, "mk")
+        XCTAssertEqual(locale.localeIdentifier, "mk")
+    }
+
+    func test__language_identifier_for_Asu() {
+        locale = .Asu
+        XCTAssertEqual(locale.languageIdentifier, "asa")
+        XCTAssertEqual(locale.localeIdentifier, "asa")
+    }
+
+    func test__language_identifier_for_Georgian() {
+        locale = .Georgian
+        XCTAssertEqual(locale.languageIdentifier, "ka")
+        XCTAssertEqual(locale.localeIdentifier, "ka")
+    }
+
+    func test__language_identifier_for_Hawaiian() {
+        locale = .Hawaiian
+        XCTAssertEqual(locale.languageIdentifier, "haw")
+        XCTAssertEqual(locale.localeIdentifier, "haw")
+    }
+
+    func test__language_identifier_for_Walser() {
+        locale = .Walser
+        XCTAssertEqual(locale.languageIdentifier, "wae")
+        XCTAssertEqual(locale.localeIdentifier, "wae")
+    }
+
+    func test__language_identifier_for_Kashmiri() {
+        locale = .Kashmiri
+        XCTAssertEqual(locale.languageIdentifier, "ks")
+        XCTAssertEqual(locale.localeIdentifier, "ks")
+    }
+
+    func test__language_identifier_for_KoyraboroSenni() {
+        locale = .KoyraboroSenni
+        XCTAssertEqual(locale.languageIdentifier, "ses")
+        XCTAssertEqual(locale.localeIdentifier, "ses")
+    }
+
+    func test__language_identifier_for_Kinyarwanda() {
+        locale = .Kinyarwanda
+        XCTAssertEqual(locale.languageIdentifier, "rw")
+        XCTAssertEqual(locale.localeIdentifier, "rw")
+    }
+
+    func test__language_identifier_for_Dzongkha() {
+        locale = .Dzongkha
+        XCTAssertEqual(locale.languageIdentifier, "dz")
+        XCTAssertEqual(locale.localeIdentifier, "dz")
+    }
+
+    func test__language_identifier_for_Aghem() {
+        locale = .Aghem
+        XCTAssertEqual(locale.languageIdentifier, "agq")
+        XCTAssertEqual(locale.localeIdentifier, "agq")
+    }
+
+    func test__language_identifier_for_MakhuwaMeetto() {
+        locale = .MakhuwaMeetto
+        XCTAssertEqual(locale.languageIdentifier, "mgh")
+        XCTAssertEqual(locale.localeIdentifier, "mgh")
+    }
+
+    func test__language_identifier_for_Tasawaq() {
+        locale = .Tasawaq
+        XCTAssertEqual(locale.languageIdentifier, "twq")
+        XCTAssertEqual(locale.localeIdentifier, "twq")
+    }
+
+    func test__language_identifier_for_InariSami() {
+        locale = .InariSami
+        XCTAssertEqual(locale.languageIdentifier, "smn")
+        XCTAssertEqual(locale.localeIdentifier, "smn")
+    }
+
+    func test__language_identifier_for_Yiddish() {
+        locale = .Yiddish
+        XCTAssertEqual(locale.languageIdentifier, "yi")
+        XCTAssertEqual(locale.localeIdentifier, "yi")
+    }
+
+    func test__language_identifier_for_SichuanYi() {
+        locale = .SichuanYi
+        XCTAssertEqual(locale.languageIdentifier, "ii")
+        XCTAssertEqual(locale.localeIdentifier, "ii")
+    }
+
+    func test__language_identifier_for_Hindi() {
+        locale = .Hindi
+        XCTAssertEqual(locale.languageIdentifier, "hi")
+        XCTAssertEqual(locale.localeIdentifier, "hi")
+    }
+
+    func test__language_identifier_for_Indonesian() {
+        locale = .Indonesian
+        XCTAssertEqual(locale.languageIdentifier, "id")
+        XCTAssertEqual(locale.localeIdentifier, "id")
+    }
+
+    func test__language_identifier_for_Samburu() {
+        locale = .Samburu
+        XCTAssertEqual(locale.languageIdentifier, "saq")
+        XCTAssertEqual(locale.localeIdentifier, "saq")
+    }
+
+    func test__language_identifier_for_UpperSorbian() {
+        locale = .UpperSorbian
+        XCTAssertEqual(locale.languageIdentifier, "hsb")
+        XCTAssertEqual(locale.localeIdentifier, "hsb")
+    }
+
+    func test__language_identifier_for_Kalenjin() {
+        locale = .Kalenjin
+        XCTAssertEqual(locale.languageIdentifier, "kln")
+        XCTAssertEqual(locale.localeIdentifier, "kln")
+    }
+
+    func test__language_identifier_for_Cherokee() {
+        locale = .Cherokee
+        XCTAssertEqual(locale.languageIdentifier, "chr")
+        XCTAssertEqual(locale.localeIdentifier, "chr")
+    }
+
+    func test__language_identifier_for_Cornish() {
+        locale = .Cornish
+        XCTAssertEqual(locale.languageIdentifier, "kw")
+        XCTAssertEqual(locale.localeIdentifier, "kw")
+    }
+
+    func test__language_identifier_for_Welsh() {
+        locale = .Welsh
+        XCTAssertEqual(locale.languageIdentifier, "cy")
+        XCTAssertEqual(locale.localeIdentifier, "cy")
+    }
+}
