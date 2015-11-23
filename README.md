@@ -10,7 +10,7 @@
 
 Money is a Swift framework for iOS, watchOS, tvOS and OS X. It provides types and functionality to represent, calculate and convert money in the 298 [ISO currencies](https://en.wikipedia.org/wiki/ISO_4217). 
 
-—
+---
 
 ## Usage
 
@@ -334,6 +334,8 @@ pod ‘Money’
 ```
 
 At of writing there are some issues with the CocoaDocs generator for pure Swift 2 projects. This means that the project doesn’t have a page/docs in CocoaPods sites, however they are available through Xcode. 
+
+---
 
 ## Architectural style
 Swift is designed to have a focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 
