@@ -120,7 +120,7 @@ In total, `NSLocale` has support for ~ 730 distinct locales. Typically when crea
 
 I think `NSLocale` is an amazing class, but it’s very easy to make mistakes, and not that easy to construct. Therefore, to support arbitrary locales, but remove the need for framework consumers to construct locale identifiers, a new `Locale` type is provided. This is an enum which means that it is type safe, and indexable for code completion in Xcode. Its cases are all the languages which `NSLocale` supports. For those languages which are spoken in more than one country, there is an associated value of country names of only those counties.
 
-To format a string of a specific currency, say `JPY`, but for a specific locale we can use the `Locale` enum. The following code uses `Locale.Chinese(.China)` to represent the `"zh_CN"` locale.
+To format money for a specific locale we can use the `Locale` enum. The following code uses `Locale.Chinese(.China)` to represent the `"zh_CN"` locale.
 
 ```swift
 let money: Money = 99.99
@@ -130,14 +130,14 @@ print("She has \(money.formattedWithStyle(.CurrencyPluralStyle, forLocale: .Chin
 Now, for our American in Russia, (or any user with a region set to Russia) we get:
 >She has 99.99俄罗斯卢布
 
-In this case, because our type is `Money`, and the user’s region is set to Russia, we’re working with `RUB` currency. But equally, if we need money in a specific currency, we can.
+In this case, because our type is `Money`, and the user’s region is set to Russia, we’re working with `RUB` currency. But equally, if we need money in a specific currency, we can. Here’s Australian dollars, for a SwissGerman speaking user, in France.
 
 ```swift
-let dollars: AUD = 29.99
-print("You’ll need \(dollars.formattedWithStyle(.CurrencyPluralStyle, forLocale: .SwissGerman(.France)))")
+let dollars: AUD = 39.99
+print("You’ll need \((dollars / 2.5).formattedWithStyle(.CurrencyPluralStyle, forLocale: .SwissGerman(.France)))")
 ``` 
 Regardless of the user’s current locale, this will print out:
->You’ll need 29.99 Auschtralischi Dollar
+>You’ll need 16.00 Auschtralischi Dollar
 
 ##  Pay
 
