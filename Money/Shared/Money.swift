@@ -53,6 +53,17 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
 
 // MARK: - MoneyType Extension
 
+public extension MoneyType {
+
+    var currencyCode: String {
+        return Currency.code
+    }
+
+    var currencySymbol: String? {
+        return Currency.symbol
+    }
+}
+
 public extension MoneyType where DecimalStorageType == NSDecimalNumber {
 
     /// Convenience access to the "amount" as an NSDecimalNumber.

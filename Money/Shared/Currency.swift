@@ -48,6 +48,9 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
     /// The currency scale
     static var scale: Int { get }
 
+    /// The currency symbol
+    static var symbol: String? { get }
+
     /// A number formatter for the currency
     static var formatter: NSNumberFormatter { get }
 
@@ -58,7 +61,7 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
 
 public extension CurrencyType {
 
-    static var symbol: String {
+    static var symbol: String? {
         return formatter.currencySymbol
     }
 
@@ -93,6 +96,7 @@ public extension CurrencyType {
             __formatter.internationalCurrencySymbol = formatter.internationalCurrencySymbol
             __formatter.currencyGroupingSeparator = formatter.currencyGroupingSeparator
             __formatter.currencyDecimalSeparator = formatter.currencyDecimalSeparator
+            __formatter.maximumFractionDigits = formatter.maximumFractionDigits
 
         }
         return { __formatter.stringFromNumber($0)! }
@@ -181,8 +185,10 @@ public struct Currency {
 
         public lazy var _formatter: NSNumberFormatter = {
             let fmtr = NSNumberFormatter()
+            let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: self._code])))
             fmtr.numberStyle = .CurrencyStyle
             fmtr.currencyCode = self._code
+            fmtr.currencySymbol = locale.currencySymbol
             return fmtr
         }()
 

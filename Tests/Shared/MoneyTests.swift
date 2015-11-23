@@ -30,6 +30,7 @@ class MoneyTests: XCTestCase {
     var aud: AUD!
     var eur: EUR!
     var jpy: JPY!
+    var btc: BTC!
 
     override func tearDown() {
         super.tearDown()
@@ -39,6 +40,7 @@ class MoneyTests: XCTestCase {
         cad = nil
         eur = nil
         jpy = nil
+        btc = nil
     }
 }
 
@@ -257,43 +259,62 @@ class MoneyDescriptionTests: MoneyTests {
         aud = 99.999
         eur = 249.499
         jpy = 32_000
+        btc = 0.002_007
     }
 
     func test__gbp_description() {
-        XCTAssertEqual(Currency.GBP.code, "GBP")
+        XCTAssertEqual(gbp.currencyCode, "GBP")
+        XCTAssertEqual(gbp.currencySymbol, "£")
         XCTAssertEqual(gbp.description, "£100.00")
     }
 
     func test__usd_formatted_with_style() {
-        XCTAssertEqual(Currency.USD.code, "USD")
+        XCTAssertEqual(usd.currencyCode, "USD")
         let formatted = usd.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
         XCTAssertEqual(formatted, "$99.00")
     }
 
+    func test__btc_formatted_with_style() {
+        XCTAssertEqual(btc.currencyCode, "BTC")
+        let formatted = btc.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
+        XCTAssertEqual(formatted, "Ƀ0.002007")
+    }
+
+    func test__btc_formatted_with_style_for_locale() {
+        XCTAssertEqual(btc.currencyCode, "BTC")
+        let formatted = btc.formattedWithStyle(.CurrencyStyle, forLocale: .Spanish(.Mexico))
+        XCTAssertEqual(formatted, "Ƀ0.002007")
+    }
+
     func test__cad_description() {
-        XCTAssertEqual(Currency.CAD.code, "CAD")
+        XCTAssertEqual(cad.currencyCode, "CAD")
         XCTAssertEqual(cad.description, "CA$102.01")
     }
 
     func test__aud_description() {
-        XCTAssertEqual(Currency.AUD.code, "AUD")
+        XCTAssertEqual(aud.currencyCode, "AUD")
         XCTAssertEqual(aud.description, "A$100.00")
     }
 
     func test__eur_description() {
-        XCTAssertEqual(Currency.EUR.code, "EUR")
+        XCTAssertEqual(eur.currencyCode, "EUR")
         XCTAssertEqual(eur.description, "€249.50")
     }
 
     func test__jpy_description() {
-        XCTAssertEqual(Currency.JPY.code, "JPY")
-        XCTAssertEqual(Currency.JPY.scale, 0)
+        XCTAssertEqual(jpy.currencyCode, "JPY")
+        XCTAssertEqual(JPY.Currency.scale, 0)
         if NSLocale.currentLocale().localeIdentifier == "en_US" {
             XCTAssertEqual(jpy.description, "¥32,000")
         }
         else {
             XCTAssertEqual(jpy.description, "JP¥32,000")
         }
+    }
+
+    func test__jpy_formatted_with_style_for_locale() {
+        let formatted = jpy.formattedWithStyle(.CurrencyStyle, forLocale: .German(.Germany))
+        XCTAssertEqual(formatted, "32.000 ¥")
     }
 }
 
