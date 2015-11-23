@@ -291,7 +291,7 @@ Lets imagine we’re making *Hive.app* - where you compete with your friends to 
 To create a custom currency, just conform to `CurrencyType`. 
 
 ```swift
-protocol HiveCurrencyType: CurrencyType { }
+protocol HiveCurrencyType: CustomCurrencyType { }
 
 extension Currency {
     final class Bee: HiveCurrencyType {
