@@ -67,7 +67,7 @@ Of course, `Money` supports the usual suspects of decimal arithmetic operators, 
 
 ## Convenience initializers
 
-`Money` (and [Decimal NumberType](friends)) can be initialized with `Int`s (and friends) and`Double`s.
+`Money` (and its friends) can be initialized with `Int`s (and friends) and`Double`s.
 
 ```swift
 let anIntegerFromSomewhereElse: Int = getAnInteger()
