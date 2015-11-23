@@ -34,6 +34,10 @@ extension TypeGenerator {
             .stringByReplacingOccurrencesOfString("’", withString: "")
     }
 
+    var caseNameValue: String {
+        return ".\(name)"
+    }
+
     var protocolName: String {
         return "\(name)\(Self.typeName)Type"
     }
@@ -128,10 +132,10 @@ struct Language: Comparable, TypeGenerator, CustomStringConvertible {
 
     let id: String
     let displayName: String
-    var coutryIds = Set<String>()
+    var countryIds = Set<String>()
 
     var description: String {
-        return "\(id): \(displayName) -> \(coutryIds)"
+        return "\(id): \(displayName) -> \(countryIds)"
     }
 
     var languageSpeakingCountryEnumName: String {
@@ -163,173 +167,238 @@ func <(lhs: Language, rhs: Language) -> Bool {
     return lhs.name < rhs.name
 }
 
-
-typealias CountriesById = Dictionary<String, Country>
 typealias LanguagesById = Dictionary<String, Language>
+typealias CountriesById = Dictionary<String, Country>
 
-func createLanguagesAndCountries() -> (languages: LanguagesById, countries: CountriesById) {
+struct LocaleInfo {
 
-    let localeIDs = NSLocale.availableLocaleIdentifiers()
-    var countriesById = CountriesById()
-    var languagesById = LanguagesById()
+    let languagesById: LanguagesById
+    let countriesById: CountriesById
+    let languages: [Language]
+    let countries: [Country]
+    let languagesWithLessThanTwoCountries: [Language]
+    let languagesWithMoreThanOneCountry: [Language]
 
-    for id in localeIDs {
-        let locale = NSLocale(localeIdentifier: id)
+    init() {
+        let localeIDs = NSLocale.availableLocaleIdentifiers()
+        var _countriesById = CountriesById()
+        var _languagesById = LanguagesById()
 
-        let countryId = locale.objectForKey(NSLocaleCountryCode) as? String
-        let country: Country? = countryId.flatMap { countriesById[$0] ?? Country(id: $0) }
+        for id in localeIDs {
+            let locale = NSLocale(localeIdentifier: id)
+            let countryId = locale.objectForKey(NSLocaleCountryCode) as? String
+            let country: Country? = countryId.flatMap { _countriesById[$0] ?? Country(id: $0) }
+            let languageId = locale.objectForKey(NSLocaleLanguageCode) as? String
+            let language: Language? = languageId.flatMap { _languagesById[$0] ?? Language(id: $0) }
 
-        let languageId = locale.objectForKey(NSLocaleLanguageCode) as? String
-        let language: Language? = languageId.flatMap { languagesById[$0] ?? Language(id: $0) }
+            if let countryId = countryId, var language = language {
+                language.countryIds.insert(countryId)
+                _languagesById.updateValue(language, forKey: language.id)
+            }
 
-        if let countryId = countryId, var language = language {
-            language.coutryIds.insert(countryId)
-            languagesById.updateValue(language, forKey: language.id)
+            if let languageId = languageId, var country = country {
+                country.langaugeIds.insert(languageId)
+                _countriesById.updateValue(country, forKey: country.id)
+            }
         }
 
-        if let languageId = languageId, var country = country {
-            country.langaugeIds.insert(languageId)
-            countriesById.updateValue(country, forKey: country.id)
-        }
+        self.languagesById = _languagesById
+        self.countriesById = _countriesById
+
+        countries = ([Country])(countriesById.values).sort { $0.langaugeIds.count > $1.langaugeIds.count }
+        languages = ([Language])(languagesById.values).sort { $0.countryIds.count > $1.countryIds.count }
+
+        languagesWithLessThanTwoCountries = languages.filter({ $0.countryIds.count < 2 }).sort()
+        languagesWithMoreThanOneCountry = languages.filter({ $0.countryIds.count > 1 }).sort()
     }
-
-    return (languagesById, countriesById)
 }
 
-func createLocaleTypes(line: Writer) {
-    let (languagesById, countriesById) = createLanguagesAndCountries()
+let info = LocaleInfo()
 
-    let countries: [Country] = ([Country])(countriesById.values).sort { $0.langaugeIds.count > $1.langaugeIds.count }
-    let languages: [Language] = ([Language])(languagesById.values).sort { $0.coutryIds.count > $1.coutryIds.count }
+func createLanguageSpeakingCountry(line: Writer, language: Language) {
+    let name = language.languageSpeakingCountryEnumName
 
-    let languagesWithLessThanTwoCountries = languages.filter({ $0.coutryIds.count < 2 }).sort()
-    let languagesWithMoreThanOneCountry = languages.filter({ $0.coutryIds.count > 1 }).sort()
+    line("")
 
-    func createLanguageSpeakingCountry(language: Language) {
-        line("")
+    // Write the enum type
+    line("public enum \(name): CountryType {")
 
-        // Write the enum type
-        line("public enum \(language.languageSpeakingCountryEnumName): CountryType {")
+    let _countries = language.countryIds.sort().flatMap({ info.countriesById[$0] })
 
-        let _countries = language.coutryIds.sort().flatMap({ countriesById[$0] })
+    // Write the cases
+    line("")
+    for country in _countries {
+        line("    case \(country.name)")
+    }
 
-        // Write the cases
-        for country in _countries {
-            line("    case \(country.name)")
-        }
 
-        line("")
-        line("    public var countryIdentifier: String {")
-        line("        switch self {")
+    // Write a static constant for all
+    let caseNames = _countries.map { $0.caseNameValue }
+    let joinedCaseNames = caseNames.joinWithSeparator(", ")
+    line("")
+    line("    public static let all: [\(name)] = [ \(joinedCaseNames) ]")
 
-        for country in _countries {
+    line("")
+    line("    public var countryIdentifier: String {")
+    line("        switch self {")
+
+    for country in _countries {
         line("        case .\(country.name):")
         line("            return \"\(country.id)\"")
-        }
-
-        line("        }") // End of switch
-        line("    }") // End of var
-
-        line("}") // End of enum
     }
 
-    func createLanguageSpeakingCountries() {
-        line("")
-        line("// MARK: - Country Types")
-        for language in languages.filter({ $0.coutryIds.count > 1 }) {
-            createLanguageSpeakingCountry(language)
-        }
-    }
+    line("        }") // End of switch
+    line("    }") // End of var
 
-    func createLocale() {
-        line("")
-        line("// MARK: - Locale")
+    line("}") // End of enum
+}
+
+func createLanguageSpeakingCountries(line: Writer) {
+    line("")
+    line("// MARK: - Country Types")
+    for language in info.languagesWithMoreThanOneCountry {
+        createLanguageSpeakingCountry(line, language: language)
+    }
+}
+
+func createLocale(line: Writer) {
+    line("")
+    line("// MARK: - Locale")
+
+    do {
         line("")
         line("public enum Locale {")
 
-        for language in languages.sort() {
-            if language.coutryIds.count > 1 {
-        line("    case \(language.name)(\(language.languageSpeakingCountryEnumName))")
+        // Write a static constant for all
+        //            let caseNames = info.languages.map { ".\($0.name)" }
+        //            let joinedCaseNames = caseNames.joinWithSeparator(", ")
+        //            line("")
+        //            line("    public static let all: [Locale] = [ \(joinedCaseNames) ]")
+
+        line("")
+        for language in info.languages.sort() {
+            if language.countryIds.count > 1 {
+                line("    case \(language.name)(\(language.languageSpeakingCountryEnumName))")
             }
             else {
-        line("    case \(language.name)")
+                line("    case \(language.name)")
             }
         }
 
         line("}") // End of enum
+    }
 
-        // Add extension for LanguageType protocol
+    // Add extension for LanguageType protocol
+    do {
         line("")
         line("extension Locale: LanguageType {")
         line("")
         line("    public var languageIdentifier: String {")
         line("        switch self {")
 
-        for language in languages.sort() {
-            if language.coutryIds.count > 1 {
-        line("        case .\(language.name)(_):")
-        line("            return \"\(language.id)\"")
+        for language in info.languages.sort() {
+            if language.countryIds.count > 1 {
+                line("        case .\(language.name)(_):")
+                line("            return \"\(language.id)\"")
             }
             else {
-        line("        case .\(language.name):")
-        line("            return \"\(language.id)\"")
+                line("        case .\(language.name):")
+                line("            return \"\(language.id)\"")
             }
         }
 
         line("        }") // End of switch
         line("    }") // End of var
         line("}") // End of extension
+    }
 
-        // Add extension for CountryType protocol
+    // Add extension for CountryType protocol
+    do {
         line("")
         line("extension Locale: CountryType {")
         line("")
         line("    public var countryIdentifier: String {")
         line("        switch self {")
 
-        let caseNames = languagesWithLessThanTwoCountries.map { ".\($0.name)" }
+        let caseNames = info.languagesWithLessThanTwoCountries.map { $0.caseNameValue }
         let joinedCaseNames = caseNames.joinWithSeparator(", ")
         line("        case \(joinedCaseNames):")
         line("            return \"\"")
 
-        for language in languagesWithMoreThanOneCountry {
+        for language in info.languagesWithMoreThanOneCountry {
             line("        case .\(language.name)(let country):")
             line("            return country.countryIdentifier")
         }
 
-//        for language in languages.sort() {
-//            if language.coutryIds.count > 1 {
-//        line("            case .\(language.name)(let country):")
-//        line("                return country.countryIdentifier")
-//            }
-//            else {
-//        line("            case .\(language.name):")
-//        line("                return \"\"")
-//            }
-//        }
-
         line("        }") // End of switch
         line("    }") // End of var
         line("}") // End of extension
+    }
 
-
-        // Add extension for LocaleType protocol
+    // Add extension for LocaleType protocol
+    do {
         line("")
         line("extension Locale: LocaleType {")
         line("    // Uses default implementation")
         line("}") // End of extension
-
     }
+}
+
+func createLocaleTypes(line: Writer) {
 
     // Create the (Language)SpeakingCountry enum types
-    createLanguageSpeakingCountries()
+    createLanguageSpeakingCountries(line)
 
     // Create the Locale enum
-    createLocale()
+    createLocale(line)
 
 }
 
-func generate(outputPath: String) {
+// MARK: - Unit Tests
+
+func createUnitTestImports(line: Writer) {
+    line("import XCTest")
+    line("@testable import Money")
+}
+
+func createXCTestCaseNamed(line: Writer, className: String, content: Generator) {
+    line("")
+    line("class \(className)Tests: XCTestCase {")
+    content(line)
+    line("}")
+}
+
+func createTestForCountryIentifierFromCountryCaseName(line: Writer, country: Country) {
+    line("")    
+    line("    func test__country_identifier_for_\(country.name)() {")
+    line("        country = .\(country.name)")
+    line("        XCTAssertEqual(country.countryIdentifier, \"\(country.id)\")")
+    line("    }")
+}
+
+func createUnitTestClassForLanguageSpeakingCountry(line: Writer, language: Language) {
+    let name = language.languageSpeakingCountryEnumName
+    createXCTestCaseNamed(line, className: name) { line in
+        line("")        
+        line("    var country: \(name)!")
+        for country in language.countryIds.flatMap({ info.countriesById[$0] }) {
+            createTestForCountryIentifierFromCountryCaseName(line, country: country)
+        }
+    }
+}
+
+func createUnitTestClassesForLanguageSpeakingCountries(line: Writer) {
+    line("")
+    line("// MARK: - Country Types Tests")
+    for language in info.languagesWithMoreThanOneCountry {
+        createUnitTestClassForLanguageSpeakingCountry(line, language: language)
+    }
+}
+
+
+// MARK: - Generators
+
+func generateSourceCode(outputPath: String) {
 
     guard let outputStream = NSOutputStream(toFileAtPath: outputPath, append: false) else {
         fatalError("Unable to create output stream at path: \(outputPath)")
@@ -350,6 +419,8 @@ func generate(outputPath: String) {
 
     outputStream.open()
     createFrontMatter(writeLine)
+
+
     createExtensionFor("Currency", writer: writeLine, content: createCurrencyTypes)
     write("\n")
     createMoneyTypes(writeLine)
@@ -357,12 +428,47 @@ func generate(outputPath: String) {
     createLocaleTypes(writeLine)
 }
 
+func generateUnitTests(outputPath: String) {
+
+    guard let outputStream = NSOutputStream(toFileAtPath: outputPath, append: false) else {
+        fatalError("Unable to create output stream at path: \(outputPath)")
+    }
+
+    defer {
+        outputStream.close()
+    }
+
+    let write: Writer = { str in
+        guard let data = str.dataUsingEncoding(NSUTF8StringEncoding) else {
+            fatalError("Unable to encode str: \(str)")
+        }
+        outputStream.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
+    }
+
+    let writeLine: Writer = { write("\($0)\n") }
+
+    outputStream.open()
+    createFrontMatter(writeLine)
+
+    createUnitTestImports(writeLine)
+
+    createUnitTestClassesForLanguageSpeakingCountries(writeLine)
+
+
+}
+
 // MARK: - Main()
 
-if Process.arguments.count == 1 {
+print(Process.arguments)
+
+if Process.arguments.count < 1 {
     print("Invalid usage. Requires an output path.")
     exit(1)
 }
 
-let outputPath = Process.arguments[1]
-generate(outputPath)
+let pathToSourceCodeFile = Process.arguments[1]
+generateSourceCode(pathToSourceCodeFile)
+
+let pathToUnitTestsFile = Process.arguments[2]
+generateUnitTests(pathToUnitTestsFile)
+

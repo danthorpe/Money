@@ -2127,7 +2127,289 @@ public typealias ZWD = _Money<Currency.ZWD>
 
 // MARK: - Country Types
 
+public enum AfrikaansSpeakingCountry: CountryType {
+
+    case Namibia
+    case SouthAfrica
+
+    public static let all: [AfrikaansSpeakingCountry] = [ .Namibia, .SouthAfrica ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Namibia:
+            return "NA"
+        case .SouthAfrica:
+            return "ZA"
+        }
+    }
+}
+
+public enum AlbanianSpeakingCountry: CountryType {
+
+    case Albania
+    case Macedonia
+    case Kosovo
+
+    public static let all: [AlbanianSpeakingCountry] = [ .Albania, .Macedonia, .Kosovo ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Albania:
+            return "AL"
+        case .Macedonia:
+            return "MK"
+        case .Kosovo:
+            return "XK"
+        }
+    }
+}
+
+public enum ArabicSpeakingCountry: CountryType {
+
+    case World
+    case UnitedArabEmirates
+    case Bahrain
+    case Djibouti
+    case Algeria
+    case Egypt
+    case WesternSahara
+    case Eritrea
+    case Israel
+    case Iraq
+    case Jordan
+    case Comoros
+    case Kuwait
+    case Lebanon
+    case Libya
+    case Morocco
+    case Mauritania
+    case Oman
+    case PalestinianTerritories
+    case Qatar
+    case SaudiArabia
+    case Sudan
+    case Somalia
+    case SouthSudan
+    case Syria
+    case Chad
+    case Tunisia
+    case Yemen
+
+    public static let all: [ArabicSpeakingCountry] = [ .World, .UnitedArabEmirates, .Bahrain, .Djibouti, .Algeria, .Egypt, .WesternSahara, .Eritrea, .Israel, .Iraq, .Jordan, .Comoros, .Kuwait, .Lebanon, .Libya, .Morocco, .Mauritania, .Oman, .PalestinianTerritories, .Qatar, .SaudiArabia, .Sudan, .Somalia, .SouthSudan, .Syria, .Chad, .Tunisia, .Yemen ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .World:
+            return "001"
+        case .UnitedArabEmirates:
+            return "AE"
+        case .Bahrain:
+            return "BH"
+        case .Djibouti:
+            return "DJ"
+        case .Algeria:
+            return "DZ"
+        case .Egypt:
+            return "EG"
+        case .WesternSahara:
+            return "EH"
+        case .Eritrea:
+            return "ER"
+        case .Israel:
+            return "IL"
+        case .Iraq:
+            return "IQ"
+        case .Jordan:
+            return "JO"
+        case .Comoros:
+            return "KM"
+        case .Kuwait:
+            return "KW"
+        case .Lebanon:
+            return "LB"
+        case .Libya:
+            return "LY"
+        case .Morocco:
+            return "MA"
+        case .Mauritania:
+            return "MR"
+        case .Oman:
+            return "OM"
+        case .PalestinianTerritories:
+            return "PS"
+        case .Qatar:
+            return "QA"
+        case .SaudiArabia:
+            return "SA"
+        case .Sudan:
+            return "SD"
+        case .Somalia:
+            return "SO"
+        case .SouthSudan:
+            return "SS"
+        case .Syria:
+            return "SY"
+        case .Chad:
+            return "TD"
+        case .Tunisia:
+            return "TN"
+        case .Yemen:
+            return "YE"
+        }
+    }
+}
+
+public enum BengaliSpeakingCountry: CountryType {
+
+    case Bangladesh
+    case India
+
+    public static let all: [BengaliSpeakingCountry] = [ .Bangladesh, .India ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Bangladesh:
+            return "BD"
+        case .India:
+            return "IN"
+        }
+    }
+}
+
+public enum CatalanSpeakingCountry: CountryType {
+
+    case Andorra
+    case Spain
+    case France
+    case Italy
+
+    public static let all: [CatalanSpeakingCountry] = [ .Andorra, .Spain, .France, .Italy ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Andorra:
+            return "AD"
+        case .Spain:
+            return "ES"
+        case .France:
+            return "FR"
+        case .Italy:
+            return "IT"
+        }
+    }
+}
+
+public enum CentralKurdishSpeakingCountry: CountryType {
+
+    case Iraq
+    case Iran
+
+    public static let all: [CentralKurdishSpeakingCountry] = [ .Iraq, .Iran ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Iraq:
+            return "IQ"
+        case .Iran:
+            return "IR"
+        }
+    }
+}
+
+public enum ChineseSpeakingCountry: CountryType {
+
+    case China
+    case HongKongSarChina
+    case MacauSarChina
+    case Singapore
+    case Taiwan
+
+    public static let all: [ChineseSpeakingCountry] = [ .China, .HongKongSarChina, .MacauSarChina, .Singapore, .Taiwan ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .China:
+            return "CN"
+        case .HongKongSarChina:
+            return "HK"
+        case .MacauSarChina:
+            return "MO"
+        case .Singapore:
+            return "SG"
+        case .Taiwan:
+            return "TW"
+        }
+    }
+}
+
+public enum CroatianSpeakingCountry: CountryType {
+
+    case BosniaHerzegovina
+    case Croatia
+
+    public static let all: [CroatianSpeakingCountry] = [ .BosniaHerzegovina, .Croatia ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .BosniaHerzegovina:
+            return "BA"
+        case .Croatia:
+            return "HR"
+        }
+    }
+}
+
+public enum DanishSpeakingCountry: CountryType {
+
+    case Denmark
+    case Greenland
+
+    public static let all: [DanishSpeakingCountry] = [ .Denmark, .Greenland ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Denmark:
+            return "DK"
+        case .Greenland:
+            return "GL"
+        }
+    }
+}
+
+public enum DutchSpeakingCountry: CountryType {
+
+    case Aruba
+    case Belgium
+    case CaribbeanNetherlands
+    case Curaçao
+    case Netherlands
+    case Suriname
+    case SintMaarten
+
+    public static let all: [DutchSpeakingCountry] = [ .Aruba, .Belgium, .CaribbeanNetherlands, .Curaçao, .Netherlands, .Suriname, .SintMaarten ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Aruba:
+            return "AW"
+        case .Belgium:
+            return "BE"
+        case .CaribbeanNetherlands:
+            return "BQ"
+        case .Curaçao:
+            return "CW"
+        case .Netherlands:
+            return "NL"
+        case .Suriname:
+            return "SR"
+        case .SintMaarten:
+            return "SX"
+        }
+    }
+}
+
 public enum EnglishSpeakingCountry: CountryType {
+
     case World
     case Europe
     case Andorra
@@ -2254,6 +2536,8 @@ public enum EnglishSpeakingCountry: CountryType {
     case SouthAfrica
     case Zambia
     case Zimbabwe
+
+    public static let all: [EnglishSpeakingCountry] = [ .World, .Europe, .Andorra, .AntiguaBarbuda, .Anguilla, .Albania, .AmericanSamoa, .Austria, .Australia, .BosniaHerzegovina, .Barbados, .Belgium, .Bermuda, .Bahamas, .Botswana, .Belize, .Canada, .CocosKeelingIslands, .Switzerland, .CookIslands, .Cameroon, .ChristmasIsland, .Cyprus, .CzechRepublic, .Germany, .DiegoGarcia, .Denmark, .Dominica, .Estonia, .Eritrea, .Spain, .Finland, .Fiji, .FalklandIslands, .Micronesia, .France, .UnitedKingdom, .Grenada, .Guernsey, .Ghana, .Gibraltar, .Gambia, .Greece, .Guam, .Guyana, .HongKongSarChina, .Croatia, .Hungary, .Ireland, .Israel, .IsleOfMan, .India, .BritishIndianOceanTerritory, .Iceland, .Italy, .Jersey, .Jamaica, .Kenya, .Kiribati, .StKittsNevis, .CaymanIslands, .StLucia, .Liberia, .Lesotho, .Lithuania, .Luxembourg, .Latvia, .Montenegro, .Madagascar, .MarshallIslands, .MacauSarChina, .NorthernMarianaIslands, .Montserrat, .Malta, .Mauritius, .Malawi, .Malaysia, .Namibia, .NorfolkIsland, .Nigeria, .Netherlands, .Norway, .Nauru, .Niue, .NewZealand, .PapuaNewGuinea, .Philippines, .Pakistan, .Poland, .PitcairnIslands, .PuertoRico, .Portugal, .Palau, .Romania, .Russia, .Rwanda, .SolomonIslands, .Seychelles, .Sudan, .Sweden, .Singapore, .StHelena, .Slovenia, .Slovakia, .SierraLeone, .SouthSudan, .SintMaarten, .Swaziland, .TurksCaicosIslands, .Tokelau, .Tonga, .Turkey, .TrinidadTobago, .Tuvalu, .Tanzania, .Uganda, .USOutlyingIslands, .UnitedStates, .StVincentGrenadines, .BritishVirginIslands, .USVirginIslands, .Vanuatu, .Samoa, .SouthAfrica, .Zambia, .Zimbabwe ]
 
     public var countryIdentifier: String {
         switch self {
@@ -2513,7 +2797,25 @@ public enum EnglishSpeakingCountry: CountryType {
     }
 }
 
+public enum EweSpeakingCountry: CountryType {
+
+    case Ghana
+    case Togo
+
+    public static let all: [EweSpeakingCountry] = [ .Ghana, .Togo ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Ghana:
+            return "GH"
+        case .Togo:
+            return "TG"
+        }
+    }
+}
+
 public enum FrenchSpeakingCountry: CountryType {
+
     case Belgium
     case BurkinaFaso
     case Burundi
@@ -2560,6 +2862,8 @@ public enum FrenchSpeakingCountry: CountryType {
     case Vanuatu
     case WallisFutuna
     case Mayotte
+
+    public static let all: [FrenchSpeakingCountry] = [ .Belgium, .BurkinaFaso, .Burundi, .Benin, .StBarthélemy, .Canada, .CongoKinshasa, .CentralAfricanRepublic, .CongoBrazzaville, .Switzerland, .CôteDivoire, .Cameroon, .Djibouti, .Algeria, .France, .Gabon, .FrenchGuiana, .Guinea, .Guadeloupe, .EquatorialGuinea, .Haiti, .Comoros, .Luxembourg, .Morocco, .Monaco, .StMartin, .Madagascar, .Mali, .Martinique, .Mauritania, .Mauritius, .NewCaledonia, .Niger, .FrenchPolynesia, .StPierreMiquelon, .Réunion, .Rwanda, .Seychelles, .Senegal, .Syria, .Chad, .Togo, .Tunisia, .Vanuatu, .WallisFutuna, .Mayotte ]
 
     public var countryIdentifier: String {
         switch self {
@@ -2659,99 +2963,466 @@ public enum FrenchSpeakingCountry: CountryType {
     }
 }
 
-public enum ArabicSpeakingCountry: CountryType {
-    case World
-    case UnitedArabEmirates
-    case Bahrain
-    case Djibouti
-    case Algeria
-    case Egypt
-    case WesternSahara
-    case Eritrea
-    case Israel
-    case Iraq
-    case Jordan
-    case Comoros
-    case Kuwait
-    case Lebanon
-    case Libya
-    case Morocco
+public enum FulahSpeakingCountry: CountryType {
+
+    case Cameroon
+    case Guinea
     case Mauritania
-    case Oman
-    case PalestinianTerritories
-    case Qatar
-    case SaudiArabia
-    case Sudan
-    case Somalia
-    case SouthSudan
-    case Syria
-    case Chad
-    case Tunisia
-    case Yemen
+    case Senegal
+
+    public static let all: [FulahSpeakingCountry] = [ .Cameroon, .Guinea, .Mauritania, .Senegal ]
 
     public var countryIdentifier: String {
         switch self {
-        case .World:
-            return "001"
-        case .UnitedArabEmirates:
-            return "AE"
-        case .Bahrain:
-            return "BH"
-        case .Djibouti:
-            return "DJ"
-        case .Algeria:
-            return "DZ"
-        case .Egypt:
-            return "EG"
-        case .WesternSahara:
-            return "EH"
-        case .Eritrea:
-            return "ER"
-        case .Israel:
-            return "IL"
-        case .Iraq:
-            return "IQ"
-        case .Jordan:
-            return "JO"
-        case .Comoros:
-            return "KM"
-        case .Kuwait:
-            return "KW"
-        case .Lebanon:
-            return "LB"
-        case .Libya:
-            return "LY"
-        case .Morocco:
-            return "MA"
+        case .Cameroon:
+            return "CM"
+        case .Guinea:
+            return "GN"
         case .Mauritania:
             return "MR"
-        case .Oman:
-            return "OM"
-        case .PalestinianTerritories:
-            return "PS"
-        case .Qatar:
-            return "QA"
-        case .SaudiArabia:
-            return "SA"
-        case .Sudan:
-            return "SD"
+        case .Senegal:
+            return "SN"
+        }
+    }
+}
+
+public enum GermanSpeakingCountry: CountryType {
+
+    case Austria
+    case Belgium
+    case Switzerland
+    case Germany
+    case Liechtenstein
+    case Luxembourg
+
+    public static let all: [GermanSpeakingCountry] = [ .Austria, .Belgium, .Switzerland, .Germany, .Liechtenstein, .Luxembourg ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Austria:
+            return "AT"
+        case .Belgium:
+            return "BE"
+        case .Switzerland:
+            return "CH"
+        case .Germany:
+            return "DE"
+        case .Liechtenstein:
+            return "LI"
+        case .Luxembourg:
+            return "LU"
+        }
+    }
+}
+
+public enum GreekSpeakingCountry: CountryType {
+
+    case Cyprus
+    case Greece
+
+    public static let all: [GreekSpeakingCountry] = [ .Cyprus, .Greece ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Cyprus:
+            return "CY"
+        case .Greece:
+            return "GR"
+        }
+    }
+}
+
+public enum HausaSpeakingCountry: CountryType {
+
+    case Ghana
+    case Niger
+    case Nigeria
+
+    public static let all: [HausaSpeakingCountry] = [ .Ghana, .Niger, .Nigeria ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Ghana:
+            return "GH"
+        case .Niger:
+            return "NE"
+        case .Nigeria:
+            return "NG"
+        }
+    }
+}
+
+public enum ItalianSpeakingCountry: CountryType {
+
+    case Switzerland
+    case Italy
+    case SanMarino
+
+    public static let all: [ItalianSpeakingCountry] = [ .Switzerland, .Italy, .SanMarino ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Switzerland:
+            return "CH"
+        case .Italy:
+            return "IT"
+        case .SanMarino:
+            return "SM"
+        }
+    }
+}
+
+public enum KoreanSpeakingCountry: CountryType {
+
+    case NorthKorea
+    case SouthKorea
+
+    public static let all: [KoreanSpeakingCountry] = [ .NorthKorea, .SouthKorea ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .NorthKorea:
+            return "KP"
+        case .SouthKorea:
+            return "KR"
+        }
+    }
+}
+
+public enum LingalaSpeakingCountry: CountryType {
+
+    case Angola
+    case CongoKinshasa
+    case CentralAfricanRepublic
+    case CongoBrazzaville
+
+    public static let all: [LingalaSpeakingCountry] = [ .Angola, .CongoKinshasa, .CentralAfricanRepublic, .CongoBrazzaville ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Angola:
+            return "AO"
+        case .CongoKinshasa:
+            return "CD"
+        case .CentralAfricanRepublic:
+            return "CF"
+        case .CongoBrazzaville:
+            return "CG"
+        }
+    }
+}
+
+public enum MalaySpeakingCountry: CountryType {
+
+    case Brunei
+    case Malaysia
+    case Singapore
+
+    public static let all: [MalaySpeakingCountry] = [ .Brunei, .Malaysia, .Singapore ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Brunei:
+            return "BN"
+        case .Malaysia:
+            return "MY"
+        case .Singapore:
+            return "SG"
+        }
+    }
+}
+
+public enum MasaiSpeakingCountry: CountryType {
+
+    case Kenya
+    case Tanzania
+
+    public static let all: [MasaiSpeakingCountry] = [ .Kenya, .Tanzania ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Kenya:
+            return "KE"
+        case .Tanzania:
+            return "TZ"
+        }
+    }
+}
+
+public enum NepaliSpeakingCountry: CountryType {
+
+    case India
+    case Nepal
+
+    public static let all: [NepaliSpeakingCountry] = [ .India, .Nepal ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .India:
+            return "IN"
+        case .Nepal:
+            return "NP"
+        }
+    }
+}
+
+public enum NorthernSamiSpeakingCountry: CountryType {
+
+    case Finland
+    case Norway
+    case Sweden
+
+    public static let all: [NorthernSamiSpeakingCountry] = [ .Finland, .Norway, .Sweden ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Finland:
+            return "FI"
+        case .Norway:
+            return "NO"
+        case .Sweden:
+            return "SE"
+        }
+    }
+}
+
+public enum NorwegianBokmålSpeakingCountry: CountryType {
+
+    case Norway
+    case SvalbardJanMayen
+
+    public static let all: [NorwegianBokmålSpeakingCountry] = [ .Norway, .SvalbardJanMayen ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Norway:
+            return "NO"
+        case .SvalbardJanMayen:
+            return "SJ"
+        }
+    }
+}
+
+public enum OromoSpeakingCountry: CountryType {
+
+    case Ethiopia
+    case Kenya
+
+    public static let all: [OromoSpeakingCountry] = [ .Ethiopia, .Kenya ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Ethiopia:
+            return "ET"
+        case .Kenya:
+            return "KE"
+        }
+    }
+}
+
+public enum OsseticSpeakingCountry: CountryType {
+
+    case Georgia
+    case Russia
+
+    public static let all: [OsseticSpeakingCountry] = [ .Georgia, .Russia ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Georgia:
+            return "GE"
+        case .Russia:
+            return "RU"
+        }
+    }
+}
+
+public enum PersianSpeakingCountry: CountryType {
+
+    case Afghanistan
+    case Iran
+
+    public static let all: [PersianSpeakingCountry] = [ .Afghanistan, .Iran ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Afghanistan:
+            return "AF"
+        case .Iran:
+            return "IR"
+        }
+    }
+}
+
+public enum PortugueseSpeakingCountry: CountryType {
+
+    case Angola
+    case Brazil
+    case CapeVerde
+    case GuineaBissau
+    case MacauSarChina
+    case Mozambique
+    case Portugal
+    case SãoToméPríncipe
+    case TimorLeste
+
+    public static let all: [PortugueseSpeakingCountry] = [ .Angola, .Brazil, .CapeVerde, .GuineaBissau, .MacauSarChina, .Mozambique, .Portugal, .SãoToméPríncipe, .TimorLeste ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Angola:
+            return "AO"
+        case .Brazil:
+            return "BR"
+        case .CapeVerde:
+            return "CV"
+        case .GuineaBissau:
+            return "GW"
+        case .MacauSarChina:
+            return "MO"
+        case .Mozambique:
+            return "MZ"
+        case .Portugal:
+            return "PT"
+        case .SãoToméPríncipe:
+            return "ST"
+        case .TimorLeste:
+            return "TL"
+        }
+    }
+}
+
+public enum PunjabiSpeakingCountry: CountryType {
+
+    case India
+    case Pakistan
+
+    public static let all: [PunjabiSpeakingCountry] = [ .India, .Pakistan ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .India:
+            return "IN"
+        case .Pakistan:
+            return "PK"
+        }
+    }
+}
+
+public enum QuechuaSpeakingCountry: CountryType {
+
+    case Bolivia
+    case Ecuador
+    case Peru
+
+    public static let all: [QuechuaSpeakingCountry] = [ .Bolivia, .Ecuador, .Peru ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Bolivia:
+            return "BO"
+        case .Ecuador:
+            return "EC"
+        case .Peru:
+            return "PE"
+        }
+    }
+}
+
+public enum RomanianSpeakingCountry: CountryType {
+
+    case Moldova
+    case Romania
+
+    public static let all: [RomanianSpeakingCountry] = [ .Moldova, .Romania ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Moldova:
+            return "MD"
+        case .Romania:
+            return "RO"
+        }
+    }
+}
+
+public enum RussianSpeakingCountry: CountryType {
+
+    case Belarus
+    case Kyrgyzstan
+    case Kazakhstan
+    case Moldova
+    case Russia
+    case Ukraine
+
+    public static let all: [RussianSpeakingCountry] = [ .Belarus, .Kyrgyzstan, .Kazakhstan, .Moldova, .Russia, .Ukraine ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Belarus:
+            return "BY"
+        case .Kyrgyzstan:
+            return "KG"
+        case .Kazakhstan:
+            return "KZ"
+        case .Moldova:
+            return "MD"
+        case .Russia:
+            return "RU"
+        case .Ukraine:
+            return "UA"
+        }
+    }
+}
+
+public enum SerbianSpeakingCountry: CountryType {
+
+    case BosniaHerzegovina
+    case Montenegro
+    case Serbia
+    case Kosovo
+
+    public static let all: [SerbianSpeakingCountry] = [ .BosniaHerzegovina, .Montenegro, .Serbia, .Kosovo ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .BosniaHerzegovina:
+            return "BA"
+        case .Montenegro:
+            return "ME"
+        case .Serbia:
+            return "RS"
+        case .Kosovo:
+            return "XK"
+        }
+    }
+}
+
+public enum SomaliSpeakingCountry: CountryType {
+
+    case Djibouti
+    case Ethiopia
+    case Kenya
+    case Somalia
+
+    public static let all: [SomaliSpeakingCountry] = [ .Djibouti, .Ethiopia, .Kenya, .Somalia ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Djibouti:
+            return "DJ"
+        case .Ethiopia:
+            return "ET"
+        case .Kenya:
+            return "KE"
         case .Somalia:
             return "SO"
-        case .SouthSudan:
-            return "SS"
-        case .Syria:
-            return "SY"
-        case .Chad:
-            return "TD"
-        case .Tunisia:
-            return "TN"
-        case .Yemen:
-            return "YE"
         }
     }
 }
 
 public enum SpanishSpeakingCountry: CountryType {
+
     case LatinAmerica
     case Argentina
     case Bolivia
@@ -2778,6 +3449,8 @@ public enum SpanishSpeakingCountry: CountryType {
     case UnitedStates
     case Uruguay
     case Venezuela
+
+    public static let all: [SpanishSpeakingCountry] = [ .LatinAmerica, .Argentina, .Bolivia, .Chile, .Colombia, .CostaRica, .Cuba, .DominicanRepublic, .CeutaMelilla, .Ecuador, .Spain, .EquatorialGuinea, .Guatemala, .Honduras, .CanaryIslands, .Mexico, .Nicaragua, .Panama, .Peru, .Philippines, .PuertoRico, .Paraguay, .ElSalvador, .UnitedStates, .Uruguay, .Venezuela ]
 
     public var countryIdentifier: String {
         switch self {
@@ -2837,230 +3510,77 @@ public enum SpanishSpeakingCountry: CountryType {
     }
 }
 
-public enum PortugueseSpeakingCountry: CountryType {
-    case Angola
-    case Brazil
-    case CapeVerde
-    case GuineaBissau
-    case MacauSarChina
-    case Mozambique
-    case Portugal
-    case SãoToméPríncipe
-    case TimorLeste
+public enum SwahiliSpeakingCountry: CountryType {
 
-    public var countryIdentifier: String {
-        switch self {
-        case .Angola:
-            return "AO"
-        case .Brazil:
-            return "BR"
-        case .CapeVerde:
-            return "CV"
-        case .GuineaBissau:
-            return "GW"
-        case .MacauSarChina:
-            return "MO"
-        case .Mozambique:
-            return "MZ"
-        case .Portugal:
-            return "PT"
-        case .SãoToméPríncipe:
-            return "ST"
-        case .TimorLeste:
-            return "TL"
-        }
-    }
-}
-
-public enum DutchSpeakingCountry: CountryType {
-    case Aruba
-    case Belgium
-    case CaribbeanNetherlands
-    case Curaçao
-    case Netherlands
-    case Suriname
-    case SintMaarten
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Aruba:
-            return "AW"
-        case .Belgium:
-            return "BE"
-        case .CaribbeanNetherlands:
-            return "BQ"
-        case .Curaçao:
-            return "CW"
-        case .Netherlands:
-            return "NL"
-        case .Suriname:
-            return "SR"
-        case .SintMaarten:
-            return "SX"
-        }
-    }
-}
-
-public enum RussianSpeakingCountry: CountryType {
-    case Belarus
-    case Kyrgyzstan
-    case Kazakhstan
-    case Moldova
-    case Russia
-    case Ukraine
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Belarus:
-            return "BY"
-        case .Kyrgyzstan:
-            return "KG"
-        case .Kazakhstan:
-            return "KZ"
-        case .Moldova:
-            return "MD"
-        case .Russia:
-            return "RU"
-        case .Ukraine:
-            return "UA"
-        }
-    }
-}
-
-public enum GermanSpeakingCountry: CountryType {
-    case Austria
-    case Belgium
-    case Switzerland
-    case Germany
-    case Liechtenstein
-    case Luxembourg
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Austria:
-            return "AT"
-        case .Belgium:
-            return "BE"
-        case .Switzerland:
-            return "CH"
-        case .Germany:
-            return "DE"
-        case .Liechtenstein:
-            return "LI"
-        case .Luxembourg:
-            return "LU"
-        }
-    }
-}
-
-public enum ChineseSpeakingCountry: CountryType {
-    case China
-    case HongKongSarChina
-    case MacauSarChina
-    case Singapore
-    case Taiwan
-
-    public var countryIdentifier: String {
-        switch self {
-        case .China:
-            return "CN"
-        case .HongKongSarChina:
-            return "HK"
-        case .MacauSarChina:
-            return "MO"
-        case .Singapore:
-            return "SG"
-        case .Taiwan:
-            return "TW"
-        }
-    }
-}
-
-public enum FulahSpeakingCountry: CountryType {
-    case Cameroon
-    case Guinea
-    case Mauritania
-    case Senegal
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Cameroon:
-            return "CM"
-        case .Guinea:
-            return "GN"
-        case .Mauritania:
-            return "MR"
-        case .Senegal:
-            return "SN"
-        }
-    }
-}
-
-public enum CatalanSpeakingCountry: CountryType {
-    case Andorra
-    case Spain
-    case France
-    case Italy
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Andorra:
-            return "AD"
-        case .Spain:
-            return "ES"
-        case .France:
-            return "FR"
-        case .Italy:
-            return "IT"
-        }
-    }
-}
-
-public enum SerbianSpeakingCountry: CountryType {
-    case BosniaHerzegovina
-    case Montenegro
-    case Serbia
-    case Kosovo
-
-    public var countryIdentifier: String {
-        switch self {
-        case .BosniaHerzegovina:
-            return "BA"
-        case .Montenegro:
-            return "ME"
-        case .Serbia:
-            return "RS"
-        case .Kosovo:
-            return "XK"
-        }
-    }
-}
-
-public enum SomaliSpeakingCountry: CountryType {
-    case Djibouti
-    case Ethiopia
+    case CongoKinshasa
     case Kenya
-    case Somalia
+    case Tanzania
+    case Uganda
+
+    public static let all: [SwahiliSpeakingCountry] = [ .CongoKinshasa, .Kenya, .Tanzania, .Uganda ]
 
     public var countryIdentifier: String {
         switch self {
-        case .Djibouti:
-            return "DJ"
-        case .Ethiopia:
-            return "ET"
+        case .CongoKinshasa:
+            return "CD"
         case .Kenya:
             return "KE"
-        case .Somalia:
-            return "SO"
+        case .Tanzania:
+            return "TZ"
+        case .Uganda:
+            return "UG"
+        }
+    }
+}
+
+public enum SwedishSpeakingCountry: CountryType {
+
+    case ÅlandIslands
+    case Finland
+    case Sweden
+
+    public static let all: [SwedishSpeakingCountry] = [ .ÅlandIslands, .Finland, .Sweden ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .ÅlandIslands:
+            return "AX"
+        case .Finland:
+            return "FI"
+        case .Sweden:
+            return "SE"
+        }
+    }
+}
+
+public enum SwissGermanSpeakingCountry: CountryType {
+
+    case Switzerland
+    case France
+    case Liechtenstein
+
+    public static let all: [SwissGermanSpeakingCountry] = [ .Switzerland, .France, .Liechtenstein ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Switzerland:
+            return "CH"
+        case .France:
+            return "FR"
+        case .Liechtenstein:
+            return "LI"
         }
     }
 }
 
 public enum TamilSpeakingCountry: CountryType {
+
     case India
     case SriLanka
     case Malaysia
     case Singapore
+
+    public static let all: [TamilSpeakingCountry] = [ .India, .SriLanka, .Malaysia, .Singapore ]
 
     public var countryIdentifier: String {
         switch self {
@@ -3076,311 +3596,12 @@ public enum TamilSpeakingCountry: CountryType {
     }
 }
 
-public enum LingalaSpeakingCountry: CountryType {
-    case Angola
-    case CongoKinshasa
-    case CentralAfricanRepublic
-    case CongoBrazzaville
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Angola:
-            return "AO"
-        case .CongoKinshasa:
-            return "CD"
-        case .CentralAfricanRepublic:
-            return "CF"
-        case .CongoBrazzaville:
-            return "CG"
-        }
-    }
-}
-
-public enum SwahiliSpeakingCountry: CountryType {
-    case CongoKinshasa
-    case Kenya
-    case Tanzania
-    case Uganda
-
-    public var countryIdentifier: String {
-        switch self {
-        case .CongoKinshasa:
-            return "CD"
-        case .Kenya:
-            return "KE"
-        case .Tanzania:
-            return "TZ"
-        case .Uganda:
-            return "UG"
-        }
-    }
-}
-
-public enum NorthernSamiSpeakingCountry: CountryType {
-    case Finland
-    case Norway
-    case Sweden
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Finland:
-            return "FI"
-        case .Norway:
-            return "NO"
-        case .Sweden:
-            return "SE"
-        }
-    }
-}
-
-public enum SwissGermanSpeakingCountry: CountryType {
-    case Switzerland
-    case France
-    case Liechtenstein
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Switzerland:
-            return "CH"
-        case .France:
-            return "FR"
-        case .Liechtenstein:
-            return "LI"
-        }
-    }
-}
-
-public enum HausaSpeakingCountry: CountryType {
-    case Ghana
-    case Niger
-    case Nigeria
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Ghana:
-            return "GH"
-        case .Niger:
-            return "NE"
-        case .Nigeria:
-            return "NG"
-        }
-    }
-}
-
-public enum AlbanianSpeakingCountry: CountryType {
-    case Albania
-    case Macedonia
-    case Kosovo
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Albania:
-            return "AL"
-        case .Macedonia:
-            return "MK"
-        case .Kosovo:
-            return "XK"
-        }
-    }
-}
-
-public enum QuechuaSpeakingCountry: CountryType {
-    case Bolivia
-    case Ecuador
-    case Peru
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Bolivia:
-            return "BO"
-        case .Ecuador:
-            return "EC"
-        case .Peru:
-            return "PE"
-        }
-    }
-}
-
-public enum MalaySpeakingCountry: CountryType {
-    case Brunei
-    case Malaysia
-    case Singapore
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Brunei:
-            return "BN"
-        case .Malaysia:
-            return "MY"
-        case .Singapore:
-            return "SG"
-        }
-    }
-}
-
-public enum ItalianSpeakingCountry: CountryType {
-    case Switzerland
-    case Italy
-    case SanMarino
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Switzerland:
-            return "CH"
-        case .Italy:
-            return "IT"
-        case .SanMarino:
-            return "SM"
-        }
-    }
-}
-
-public enum SwedishSpeakingCountry: CountryType {
-    case ÅlandIslands
-    case Finland
-    case Sweden
-
-    public var countryIdentifier: String {
-        switch self {
-        case .ÅlandIslands:
-            return "AX"
-        case .Finland:
-            return "FI"
-        case .Sweden:
-            return "SE"
-        }
-    }
-}
-
-public enum PunjabiSpeakingCountry: CountryType {
-    case India
-    case Pakistan
-
-    public var countryIdentifier: String {
-        switch self {
-        case .India:
-            return "IN"
-        case .Pakistan:
-            return "PK"
-        }
-    }
-}
-
-public enum DanishSpeakingCountry: CountryType {
-    case Denmark
-    case Greenland
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Denmark:
-            return "DK"
-        case .Greenland:
-            return "GL"
-        }
-    }
-}
-
-public enum NorwegianBokmålSpeakingCountry: CountryType {
-    case Norway
-    case SvalbardJanMayen
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Norway:
-            return "NO"
-        case .SvalbardJanMayen:
-            return "SJ"
-        }
-    }
-}
-
-public enum UrduSpeakingCountry: CountryType {
-    case India
-    case Pakistan
-
-    public var countryIdentifier: String {
-        switch self {
-        case .India:
-            return "IN"
-        case .Pakistan:
-            return "PK"
-        }
-    }
-}
-
-public enum CroatianSpeakingCountry: CountryType {
-    case BosniaHerzegovina
-    case Croatia
-
-    public var countryIdentifier: String {
-        switch self {
-        case .BosniaHerzegovina:
-            return "BA"
-        case .Croatia:
-            return "HR"
-        }
-    }
-}
-
-public enum AfrikaansSpeakingCountry: CountryType {
-    case Namibia
-    case SouthAfrica
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Namibia:
-            return "NA"
-        case .SouthAfrica:
-            return "ZA"
-        }
-    }
-}
-
-public enum YorubaSpeakingCountry: CountryType {
-    case Benin
-    case Nigeria
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Benin:
-            return "BJ"
-        case .Nigeria:
-            return "NG"
-        }
-    }
-}
-
-public enum BengaliSpeakingCountry: CountryType {
-    case Bangladesh
-    case India
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Bangladesh:
-            return "BD"
-        case .India:
-            return "IN"
-        }
-    }
-}
-
-public enum GreekSpeakingCountry: CountryType {
-    case Cyprus
-    case Greece
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Cyprus:
-            return "CY"
-        case .Greece:
-            return "GR"
-        }
-    }
-}
-
 public enum TesoSpeakingCountry: CountryType {
+
     case Kenya
     case Uganda
+
+    public static let all: [TesoSpeakingCountry] = [ .Kenya, .Uganda ]
 
     public var countryIdentifier: String {
         switch self {
@@ -3388,111 +3609,16 @@ public enum TesoSpeakingCountry: CountryType {
             return "KE"
         case .Uganda:
             return "UG"
-        }
-    }
-}
-
-public enum KoreanSpeakingCountry: CountryType {
-    case NorthKorea
-    case SouthKorea
-
-    public var countryIdentifier: String {
-        switch self {
-        case .NorthKorea:
-            return "KP"
-        case .SouthKorea:
-            return "KR"
-        }
-    }
-}
-
-public enum UzbekSpeakingCountry: CountryType {
-    case Afghanistan
-    case Uzbekistan
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Afghanistan:
-            return "AF"
-        case .Uzbekistan:
-            return "UZ"
-        }
-    }
-}
-
-public enum OsseticSpeakingCountry: CountryType {
-    case Georgia
-    case Russia
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Georgia:
-            return "GE"
-        case .Russia:
-            return "RU"
-        }
-    }
-}
-
-public enum TurkishSpeakingCountry: CountryType {
-    case Cyprus
-    case Turkey
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Cyprus:
-            return "CY"
-        case .Turkey:
-            return "TR"
-        }
-    }
-}
-
-public enum EweSpeakingCountry: CountryType {
-    case Ghana
-    case Togo
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Ghana:
-            return "GH"
-        case .Togo:
-            return "TG"
-        }
-    }
-}
-
-public enum RomanianSpeakingCountry: CountryType {
-    case Moldova
-    case Romania
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Moldova:
-            return "MD"
-        case .Romania:
-            return "RO"
-        }
-    }
-}
-
-public enum TigrinyaSpeakingCountry: CountryType {
-    case Eritrea
-    case Ethiopia
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Eritrea:
-            return "ER"
-        case .Ethiopia:
-            return "ET"
         }
     }
 }
 
 public enum TibetanSpeakingCountry: CountryType {
+
     case China
     case India
+
+    public static let all: [TibetanSpeakingCountry] = [ .China, .India ]
 
     public var countryIdentifier: String {
         switch self {
@@ -3504,72 +3630,87 @@ public enum TibetanSpeakingCountry: CountryType {
     }
 }
 
-public enum CentralKurdishSpeakingCountry: CountryType {
-    case Iraq
-    case Iran
+public enum TigrinyaSpeakingCountry: CountryType {
 
-    public var countryIdentifier: String {
-        switch self {
-        case .Iraq:
-            return "IQ"
-        case .Iran:
-            return "IR"
-        }
-    }
-}
-
-public enum MasaiSpeakingCountry: CountryType {
-    case Kenya
-    case Tanzania
-
-    public var countryIdentifier: String {
-        switch self {
-        case .Kenya:
-            return "KE"
-        case .Tanzania:
-            return "TZ"
-        }
-    }
-}
-
-public enum OromoSpeakingCountry: CountryType {
+    case Eritrea
     case Ethiopia
-    case Kenya
+
+    public static let all: [TigrinyaSpeakingCountry] = [ .Eritrea, .Ethiopia ]
 
     public var countryIdentifier: String {
         switch self {
+        case .Eritrea:
+            return "ER"
         case .Ethiopia:
             return "ET"
-        case .Kenya:
-            return "KE"
         }
     }
 }
 
-public enum NepaliSpeakingCountry: CountryType {
+public enum TurkishSpeakingCountry: CountryType {
+
+    case Cyprus
+    case Turkey
+
+    public static let all: [TurkishSpeakingCountry] = [ .Cyprus, .Turkey ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Cyprus:
+            return "CY"
+        case .Turkey:
+            return "TR"
+        }
+    }
+}
+
+public enum UrduSpeakingCountry: CountryType {
+
     case India
-    case Nepal
+    case Pakistan
+
+    public static let all: [UrduSpeakingCountry] = [ .India, .Pakistan ]
 
     public var countryIdentifier: String {
         switch self {
         case .India:
             return "IN"
-        case .Nepal:
-            return "NP"
+        case .Pakistan:
+            return "PK"
         }
     }
 }
 
-public enum PersianSpeakingCountry: CountryType {
+public enum UzbekSpeakingCountry: CountryType {
+
     case Afghanistan
-    case Iran
+    case Uzbekistan
+
+    public static let all: [UzbekSpeakingCountry] = [ .Afghanistan, .Uzbekistan ]
 
     public var countryIdentifier: String {
         switch self {
         case .Afghanistan:
             return "AF"
-        case .Iran:
-            return "IR"
+        case .Uzbekistan:
+            return "UZ"
+        }
+    }
+}
+
+public enum YorubaSpeakingCountry: CountryType {
+
+    case Benin
+    case Nigeria
+
+    public static let all: [YorubaSpeakingCountry] = [ .Benin, .Nigeria ]
+
+    public var countryIdentifier: String {
+        switch self {
+        case .Benin:
+            return "BJ"
+        case .Nigeria:
+            return "NG"
         }
     }
 }
@@ -3577,6 +3718,7 @@ public enum PersianSpeakingCountry: CountryType {
 // MARK: - Locale
 
 public enum Locale {
+
     case Afrikaans(AfrikaansSpeakingCountry)
     case Aghem
     case Akan
