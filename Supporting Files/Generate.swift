@@ -421,11 +421,22 @@ func createUnitTestsForLocaleWithLanguage(line: Writer, language: Language) {
 func createUnitTestsForLocale(line: Writer) {
     line("")
     line("// MARK: - Locale Tests")
+
+    for language in info.languagesWithMoreThanOneCountry {
+
+        createXCTestCaseNamed(line, className: "Locale\(language.name)Language") { line in
+            line("")
+            line("    var locale: Locale!")
+
+            createUnitTestsForLocaleWithLanguage(line, language: language)
+        }
+    }
+
     createXCTestCaseNamed(line, className: "Locale") { line in
         line("")
         line("    var locale: Locale!")
 
-        for language in info.languages {
+        for language in info.languagesWithLessThanTwoCountries {
             createUnitTestsForLocaleWithLanguage(line, language: language)
         }
     }
