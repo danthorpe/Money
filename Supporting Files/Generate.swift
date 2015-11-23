@@ -269,12 +269,6 @@ func createLocale(line: Writer) {
         line("")
         line("public enum Locale {")
 
-        // Write a static constant for all
-        //            let caseNames = info.languages.map { ".\($0.name)" }
-        //            let joinedCaseNames = caseNames.joinWithSeparator(", ")
-        //            line("")
-        //            line("    public static let all: [Locale] = [ \(joinedCaseNames) ]")
-
         line("")
         for language in info.languages.sort() {
             if language.countryIds.count > 1 {
@@ -285,6 +279,9 @@ func createLocale(line: Writer) {
             }
         }
 
+        // Write a static constant for all
+
+        
         line("}") // End of enum
     }
 
@@ -379,7 +376,7 @@ func createTestForCountryIentifierFromCountryCaseName(line: Writer, country: Cou
 func createUnitTestClassForLanguageSpeakingCountry(line: Writer, language: Language) {
     let name = language.languageSpeakingCountryEnumName
     createXCTestCaseNamed(line, className: name) { line in
-        line("")        
+        line("")
         line("    var country: \(name)!")
         for country in language.countryIds.flatMap({ info.countriesById[$0] }) {
             createTestForCountryIentifierFromCountryCaseName(line, country: country)
