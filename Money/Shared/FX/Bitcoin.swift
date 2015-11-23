@@ -44,7 +44,7 @@ extension Currency {
         public static let code = "XBT"
         /// unicode \u{20bf} was accepted as the Bitcoin currency
         /// symbol in November
-        public static let symbol = "Ƀ"
+        public static let symbol: String? = "Ƀ"
         /// The smallest unit of Bitcoin is the Satoshi
         /// - see: https://en.bitcoin.it/wiki/Satoshi_(unit)
         public static let scale: Int = 8

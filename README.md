@@ -10,6 +10,8 @@
 
 Money is a Swift framework for iOS, watchOS, tvOS and OS X. It provides types and functionality to represent, calculate and convert money in the 298 [ISO currencies](https://en.wikipedia.org/wiki/ISO_4217). 
 
+---
+
 ## Usage
 
 The Money framework defines the type `Money`, which represents money in the device’s current locale. The following code:
@@ -23,19 +25,19 @@ print("I'll give \(money) to charity.”)
 
 will print out
 
-> I'll give $ 100.00 to charity 
+> I'll give $100.00 to charity 
 
 when the region is set to United States
 
-> I'll give £ 100.00 to charity
+> I'll give £100.00 to charity
 
 when the region is set to United Kingdom
 
-> I'll give CN¥ 100.00 to charity
+> I'll give CN¥100.00 to charity
 
 when the region is set to China
 
-You get the idea.
+You get the idea. See [Localized Formatting][] for more info.
 
 `Money` is `IntegerLiteralConvertible` and  `FloatLiteralConvertible`. Which means values can be initialized using literal `Int`s and `Double`s as shown in these code snippets.
 
@@ -63,19 +65,79 @@ let money = pounds + euros
 
 Of course, `Money` supports the usual suspects of decimal arithmetic operators, so you can add, subtract, multiply, divide values of the same type, and values with `Int` and `Double` with the expected limitations.
 
-## Minor Units
+## Convenience initializers
+
+`Money` (and its friends) can be initialized with `Int`s (and friends) and`Double`s.
+
+```swift
+let anIntegerFromSomewhereElse: Int = getAnInteger()
+let money = Money(anIntegerFromSomewhereElse)
+
+let aDoubleFromSomewhere: Double = getAnotherDouble()
+let pounds = GBP(aDoubleFromSomewhere)
+```
+
+### Minor Units
 
 `Money` can be initialized using the smallest units of currency:
 
 ```swift
 let dollars = USD(minorUnits: 3250)
 let yuen = JPY(minorUnits: 3000)
-let bitcoin = BTC(minorUnits: 5000)
 
-print(“You have \(dollars), \(yuen) and \(bitcoin) Satoshis”)
+print(“You have \(dollars) and \(yuen)”)
 ```
 
-> You have $ 32.50, JP¥ 3,000 and 0.00005 Satoshis
+> You have $32.50 and ¥3,000
+
+## Localized Formatting
+
+When displaying money values, it is important that they be correctly localized for the user. In general, it’s best to use the `Money` type to always work in currency of the user’s current locale.
+
+When printing a `MoneyType` value, the `.description` uses the current locale with `.CurrencyStyle` number style, in conjunction with [`NSNumberFormatter`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSNumberFormatter_Class/index.html). The code snippets throughout this README uses `.description` whenever the value of money is printed.
+
+However, to specify a different style for the number formatter, use the `formattedWithStyle` method, like this:
+
+```swift
+let money: Money = 99.99
+print("She has \(money.formattedWithStyle(.CurrencyPluralStyle))")
+```
+
+For an American in Russia, this would print out:
+>She has 99,99 Russian roubles
+
+### Working with Locales
+
+A *locale* is the codification of associated regional and linguistic attributes. A locale varies by language and region. Each locale has an [identifier](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), which is the concatenation of language, country and modifier codes. 
+
+The language code is two or three lowercase letters. English is `en`, French is `fr`. There is a [long list](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Some languages are spoken in more than one country, in which case a country code (two uppercase letters) is appended (with an underscore). For example, English in the United States is `en_US`, which is the default locale in the iOS Simulator. English in the United Kingdom is `en_GB`. 
+
+Lastly, a locale identifier can be modified, say for example to set the currency code to “USD”, for Portuguese speaking user in Brazil, the locale identifier would be `pt_BR@currency=USD`.
+
+In total, `NSLocale` has support for ~ 730 distinct locales. Typically when creating a specific `NSLocale` it is done with the locale identifier. The `NSLocale` is like a dictionary with an `objectForKey` method which returns `AnyObject!`.
+
+### Formatting for specific Locale
+
+I think `NSLocale` is an amazing class, but it’s very easy to make mistakes, and not that easy to construct. Therefore, to support arbitrary locales, but remove the need for framework consumers to construct locale identifiers, a new `Locale` type is provided. This is an enum which means that it is type safe, and indexable for code completion in Xcode. Its cases are all the languages which `NSLocale` supports. For those languages which are spoken in more than one country, there is an associated value of country names of only those counties.
+
+To format money for a specific locale we can use the `Locale` enum. The following code uses `Locale.Chinese(.China)` to represent the `"zh_CN"` locale.
+
+```swift
+let money: Money = 99.99
+print("She has \(money.formattedWithStyle(.CurrencyPluralStyle, forLocale: .Chinese(.China)))")
+```
+
+Now, for our American in Russia, (or any user with a region set to Russia) we get:
+>She has 99.99俄罗斯卢布
+
+In this case, because our type is `Money`, and the user’s region is set to Russia, we’re working with `RUB` currency. But equally, if we need money in a specific currency, we can. Here’s Australian dollars, for a SwissGerman speaking user, in France.
+
+```swift
+let dollars: AUD = 39.99
+print("You’ll need \((dollars / 2.5).formattedWithStyle(.CurrencyPluralStyle, forLocale: .SwissGerman(.France)))")
+``` 
+Regardless of the user’s current locale, this will print out:
+>You’ll need 16.00 Auschtralischi Dollar
 
 ##  Pay
 
@@ -229,7 +291,7 @@ Lets imagine we’re making *Hive.app* - where you compete with your friends to 
 To create a custom currency, just conform to `CurrencyType`. 
 
 ```swift
-protocol HiveCurrencyType: CurrencyType { }
+protocol HiveCurrencyType: CustomCurrencyType { }
 
 extension Currency {
     final class Bee: HiveCurrencyType {
@@ -272,6 +334,8 @@ pod ‘Money’
 ```
 
 At of writing there are some issues with the CocoaDocs generator for pure Swift 2 projects. This means that the project doesn’t have a page/docs in CocoaPods sites, however they are available through Xcode. 
+
+---
 
 ## Architectural style
 Swift is designed to have a focus on safety, enabled primarily through strong typing. This framework fully embraces this ethos and uses generics heavily to achieve this goal. 

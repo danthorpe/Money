@@ -99,23 +99,3 @@ public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject,
 }
 
 
-// TODO: - Move these into DecimalNumberType
-
-extension NSNumberFormatter {
-
-    func stringFromDecimal<B: DecimalNumberBehaviorType>(decimal: _Decimal<B>) -> String? {
-        return stringFromNumber(decimal.storage)
-    }
-
-    func formattedStringWithStyle<B: DecimalNumberBehaviorType>(style: NSNumberFormatterStyle) -> _Decimal<B> -> String {
-        let currentStyle = numberStyle
-        numberStyle = style
-        let result: _Decimal<B> -> String = { decimal in
-            return self.stringFromDecimal(decimal)!
-        }
-        numberStyle = currentStyle
-        return result
-    }
-}
-
-

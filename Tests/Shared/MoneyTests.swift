@@ -21,9 +21,30 @@ class MoneyTestHelper {
     }
 }
 
-class MoneyInitializerTests: XCTestCase {
+class MoneyTests: XCTestCase {
 
     var money: Money!
+    var gbp: GBP!
+    var usd: USD!
+    var cad: CAD!
+    var aud: AUD!
+    var eur: EUR!
+    var jpy: JPY!
+    var btc: BTC!
+
+    override func tearDown() {
+        super.tearDown()
+        money = nil
+        gbp = nil
+        usd = nil
+        cad = nil
+        eur = nil
+        jpy = nil
+        btc = nil
+    }
+}
+
+class MoneyInitializerTests: MoneyTests {
 
     func test__money_initialize_with__nothing() {
         money = Money()
@@ -43,6 +64,11 @@ class MoneyInitializerTests: XCTestCase {
     func test__money_can_be_negated() {
         money = 10
         XCTAssertEqual(money.negative, -10)
+    }
+
+    func test__money_amount() {
+        money = 10
+        XCTAssertEqual(money.amount, NSDecimalNumber(integer: 10))
     }
 }
 
@@ -223,56 +249,102 @@ class MoneyDivisionTests: XCTestCase {
     }
 }
 
-class MoneyDescriptionTests: XCTestCase {
+class MoneyDescriptionTests: MoneyTests {
 
-    let gbp: GBP = 100
-    let usd: USD = 99
-    let cad: CAD = 102.01
-    let aud: AUD = 99.999
-    let eur: EUR = 249.499
-    let jpy: JPY = 319.500002
-
-    func test__gbp_description() {
-        XCTAssertEqual(Currency.GBP.code, "GBP")
-        XCTAssertEqual(Currency.GBP.symbol, "£")
-        XCTAssertEqual(gbp.description, "£ 100.00")
-        XCTAssertEqual(Currency.GBP.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+    override func setUp() {
+        super.setUp()
+        gbp = 100
+        usd = 99
+        cad = 102.01
+        aud = 99.999
+        eur = 249.499
+        jpy = 32_000
+        btc = 0.002_007
     }
 
-    func test__usd_description() {
-        XCTAssertEqual(Currency.USD.code, "USD")
-        XCTAssertEqual(Currency.USD.symbol, "US$")
-        XCTAssertEqual(usd.description, "US$ 99.00")
-        XCTAssertEqual(Currency.USD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+    func test__gbp_description() {
+        XCTAssertEqual(gbp.currencyCode, "GBP")
+        XCTAssertEqual(gbp.currencySymbol, "£")
+        XCTAssertEqual(gbp.description, "£100.00")
+    }
+
+    func test__usd_formatted_with_style() {
+        XCTAssertEqual(usd.currencyCode, "USD")
+        let formatted = usd.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
+        XCTAssertEqual(formatted, "$99.00")
+    }
+
+    func test__btc_formatted_with_style() {
+        XCTAssertEqual(btc.currencyCode, "BTC")
+        let formatted = btc.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
+        XCTAssertEqual(formatted, "Ƀ0.002007")
+    }
+
+    func test__btc_formatted_with_style_for_locale() {
+        XCTAssertEqual(btc.currencyCode, "BTC")
+        let formatted = btc.formattedWithStyle(.CurrencyStyle, forLocale: .Spanish(.Mexico))
+        XCTAssertEqual(formatted, "Ƀ0.002007")
     }
 
     func test__cad_description() {
-        XCTAssertEqual(Currency.CAD.code, "CAD")
-        XCTAssertEqual(Currency.CAD.symbol, "CA$")
-        XCTAssertEqual(cad.description, "CA$ 102.01")
-        XCTAssertEqual(Currency.CAD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+        XCTAssertEqual(cad.currencyCode, "CAD")
+        XCTAssertEqual(cad.description, "CA$102.01")
     }
 
     func test__aud_description() {
-        XCTAssertEqual(Currency.AUD.code, "AUD")
-        XCTAssertEqual(Currency.AUD.symbol, "A$")
-        XCTAssertEqual(aud.description, "A$ 100.00")
-        XCTAssertEqual(Currency.AUD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+        XCTAssertEqual(aud.currencyCode, "AUD")
+        XCTAssertEqual(aud.description, "A$100.00")
     }
 
     func test__eur_description() {
-        XCTAssertEqual(Currency.EUR.code, "EUR")
-        XCTAssertEqual(Currency.EUR.symbol, "€")
-        XCTAssertEqual(eur.description, "€ 249.50")
-        XCTAssertEqual(Currency.EUR.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+        XCTAssertEqual(eur.currencyCode, "EUR")
+        XCTAssertEqual(eur.description, "€249.50")
     }
 
     func test__jpy_description() {
-        XCTAssertEqual(Currency.JPY.code, "JPY")
-        XCTAssertEqual(Currency.JPY.symbol, "JP¥")
-        XCTAssertEqual(Currency.JPY.scale, 0)
-        XCTAssertEqual(jpy.description, "JP¥ 320")
-        XCTAssertEqual(Currency.JPY.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+        XCTAssertEqual(jpy.currencyCode, "JPY")
+        XCTAssertEqual(JPY.Currency.scale, 0)
+        if NSLocale.currentLocale().localeIdentifier == "en_US" {
+            XCTAssertEqual(jpy.description, "¥32,000")
+        }
+        else {
+            XCTAssertEqual(jpy.description, "JP¥32,000")
+        }
+    }
+
+    func test__jpy_formatted_with_style_for_locale() {
+        let formatted = jpy.formattedWithStyle(.CurrencyStyle, forLocale: .German(.Germany))
+        XCTAssertEqual(formatted, "32.000 ¥")
+    }
+}
+
+class MoneyFormattingTests: MoneyTests {
+
+    override func setUp() {
+        super.setUp()
+        gbp = 100
+        usd = 99
+        cad = 102.01
+        aud = 99.999
+        eur = 249.499
+        jpy = 32_000
+    }
+
+    // Tests assume a en_GB test environment
+    func test__locale_identifier_equals_current_locale() {
+        let gb = NSLocale.currentLocale().localeIdentifier == Locale.English(.UnitedKingdom).localeIdentifier
+        let us = NSLocale.currentLocale().localeIdentifier == Locale.English(.UnitedStates).localeIdentifier
+        XCTAssertTrue(gb || us)
+    }
+
+    func test__formatted_for_Spanish_Spain() {
+        let result = gbp.formattedWithStyle(.CurrencyStyle, forLocale: .Spanish(.Spain))
+        XCTAssertEqual(result, "100,00 GBP")
+    }
+
+    func test__formatted_for_English_UnitedKingdom() {
+        let result = gbp.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedKingdom))
+        XCTAssertEqual(result, "£100.00")
     }
 }
 

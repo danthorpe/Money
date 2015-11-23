@@ -40,7 +40,7 @@ GEM
       faraday (>= 0.7.4, < 0.10)
     fastimage (1.6.8)
       addressable (~> 2.3, >= 2.3.5)
-    fastlane (1.41.0)
+    fastlane (1.41.1)
       addressable (~> 2.3.8)
       cert (>= 1.2.3, < 2.0.0)
       credentials_manager (>= 0.10.0, < 1.0.0)

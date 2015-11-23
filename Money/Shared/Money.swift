@@ -53,10 +53,64 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
 
 // MARK: - MoneyType Extension
 
+public extension MoneyType {
+
+    var currencyCode: String {
+        return Currency.code
+    }
+
+    var currencySymbol: String? {
+        return Currency.symbol
+    }
+}
+
 public extension MoneyType where DecimalStorageType == NSDecimalNumber {
 
+    /// Convenience access to the "amount" as an NSDecimalNumber.
     var amount: DecimalStorageType {
         return storage
+    }
+
+    /**
+
+     ### Formatted String
+
+     This function will format the Money type into a string for 
+     the current locale.
+
+     For custom currencies which define their own currency code,
+     create a lazy static `NSNumberFormatter`. Set the following
+     properties on it: `currencySymbol`, `internationalCurrencySymbol`
+     `currencyGroupingSeparator` and `currencyDecimalSeparator`, as they
+     will be used when formatting the string. Feel free to fall back to
+     the current locale's values for any of these to maintain
+     natural looking formatting. See the example project for more.
+
+     - parameter style: the `NSNumberFormatterStyle` to use.
+     - returns: a localized and formatted string for the money amount.
+     */
+    func formattedWithStyle(style: NSNumberFormatterStyle) -> String {
+        return Currency.formattedWithStyle(style, forLocaleId: NSLocale.currentLocale().localeIdentifier)(amount)
+    }
+
+    /**
+
+     ### Formatted String for specific Locale
+
+     This function will format the Money type into a string suitable
+     for a specific local. It accepts an parameter for the
+     style `NSNumberFormatterStyle`. Note that iOS 9 and OS X 10.11
+     added new styles which are relevant for currency.
+
+     These are `.CurrencyISOCodeStyle`, `.CurrencyPluralStyle`, and
+     `.CurrencyAccountingStyle`.
+
+     - parameter style: the `NSNumberFormatterStyle` to use.
+     - parameter locale: a `Locale` value
+     - returns: a localized and formatted string for the money amount.
+     */
+    func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> String {
+        return Currency.formattedWithStyle(style, forLocale: locale)(amount)
     }
 }
 
@@ -233,11 +287,6 @@ public func <<C: CurrencyType>(lhs: _Money<C>, rhs: _Money<C>) -> Bool {
     return lhs.decimal < rhs.decimal
 }
 
-// MARK: - Consumption Types
-
-/// The current locale money
-public typealias Money = _Money<Currency.Local>
-
 // MARK: - CustomStringConvertible
 
 extension _Money: CustomStringConvertible {
@@ -247,23 +296,7 @@ extension _Money: CustomStringConvertible {
      NSNumberFormatterStyle.CurrencyStyle.
     */
     public var description: String {
-        return formatted(.CurrencyStyle)
-    }
-
-    /**
-     
-     ### Localized Formatted String
-     
-     This function will format the Money type into a string suitable
-     for the current localization. It accepts an parameter for the 
-     style `NSNumberFormatterStyle`. Note that iOS 9 and OS X 10.11
-     added new styles which are relevant for currency.
-     
-     These are `.CurrencyISOCodeStyle`, `.CurrencyPluralStyle`, and 
-     `.CurrencyAccountingStyle`.
-    */
-    public func formatted(style: NSNumberFormatterStyle) -> String {
-        return C.formatter.formattedStringWithStyle(style)(decimal)
+        return formattedWithStyle(.CurrencyStyle)
     }
 }
 
@@ -293,3 +326,9 @@ public final class _MoneyCoder<C: CurrencyType>: NSObject, NSCoding, CodingType 
         aCoder.encodeObject(value.decimal.encoded, forKey: "decimal")
     }
 }
+
+
+// MARK: - Consumption Types
+
+/// The current locale money
+public typealias Money = _Money<Currency.Local>
