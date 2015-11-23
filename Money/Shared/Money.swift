@@ -53,59 +53,53 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
 
 // MARK: - MoneyType Extension
 
-public extension MoneyType  {
-
-    /**
-
-     ### Formatted String
-
-     This function will format the Money type into a string suitable
-     for the current localization. It accepts an parameter for the
-     style `NSNumberFormatterStyle`. Note that iOS 9 and OS X 10.11
-     added new styles which are relevant for currency.
-
-     These are `.CurrencyISOCodeStyle`, `.CurrencyPluralStyle`, and
-     `.CurrencyAccountingStyle`.
-     */
-    func formattedWithStyle(style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
-        return Currency.formatter.formattedStringWithStyle(style)(decimal)
-    }
-}
-
-extension MoneyType where Currency: ISOCurrencyType {
-
-    public func formattedForLocale(locale: Locale, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
-        return formattedForLocaleId(locale.localeIdentifier, style: style)
-    }
-
-    /**
-
-     ### Localized Formatted String
-
-     This function will format the Money into a string suitable
-     for the provided a locale identifier.
-     */
-    public func formattedForLocaleId(localeId: String, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
-        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(localeId))
-        return formattedForLocale(locale)
-    }
-
-    internal func formattedForLocale(locale: NSLocale, style: NSNumberFormatterStyle = .CurrencyStyle) -> String {
-        __formatter.locale = locale
-        __formatter.numberStyle = style
-        __formatter.currencyCode = Currency.code
-        __formatter.currencySymbol = Currency.symbol
-        __formatter.currencyGroupingSeparator = locale.currencyGroupingSeparator
-        __formatter.currencyDecimalSeparator = locale.currencyDecimalSeparator
-        return __formatter.stringFromDecimal(decimal)!
-    }
-}
-
 public extension MoneyType where DecimalStorageType == NSDecimalNumber {
 
     /// Convenience access to the "amount" as an NSDecimalNumber.
     var amount: DecimalStorageType {
         return storage
+    }
+
+    /**
+
+     ### Formatted String
+
+     This function will format the Money type into a string for 
+     the current locale.
+
+     For custom currencies which define their own currency code,
+     create a lazy static `NSNumberFormatter`. Set the following
+     properties on it: `currencySymbol`, `internationalCurrencySymbol`
+     `currencyGroupingSeparator` and `currencyDecimalSeparator`, as they
+     will be used when formatting the string. Feel free to fall back to
+     the current locale's values for any of these to maintain
+     natural looking formatting. See the example project for more.
+
+     - parameter style: the `NSNumberFormatterStyle` to use.
+     - returns: a localized and formatted string for the money amount.
+     */
+    func formattedWithStyle(style: NSNumberFormatterStyle) -> String {
+        return Currency.formattedWithStyle(style, forLocaleId: NSLocale.currentLocale().localeIdentifier)(amount)
+    }
+
+    /**
+
+     ### Formatted String for specific Locale
+
+     This function will format the Money type into a string suitable
+     for a specific local. It accepts an parameter for the
+     style `NSNumberFormatterStyle`. Note that iOS 9 and OS X 10.11
+     added new styles which are relevant for currency.
+
+     These are `.CurrencyISOCodeStyle`, `.CurrencyPluralStyle`, and
+     `.CurrencyAccountingStyle`.
+
+     - parameter style: the `NSNumberFormatterStyle` to use.
+     - parameter locale: a `Locale` value
+     - returns: a localized and formatted string for the money amount.
+     */
+    func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> String {
+        return Currency.formattedWithStyle(style, forLocale: locale)(amount)
     }
 }
 
@@ -291,7 +285,7 @@ extension _Money: CustomStringConvertible {
      NSNumberFormatterStyle.CurrencyStyle.
     */
     public var description: String {
-        return formattedWithStyle()
+        return formattedWithStyle(.CurrencyStyle)
     }
 }
 

@@ -31,17 +31,21 @@ extension LocaleType where Self: LanguageType, Self: CountryType {
     }
 }
 
-internal extension NSLocale {
+public extension NSLocale {
 
-    var currencySymbol: String {
-        return objectForKey(NSLocaleCurrencySymbol) as! String
+    var currencyCode: String? {
+        return objectForKey(NSLocaleCurrencyCode) as? String
     }
 
-    var currencyGroupingSeparator: String {
-        return objectForKey(NSLocaleGroupingSeparator) as! String
+    var currencySymbol: String? {
+        return objectForKey(NSLocaleCurrencySymbol) as? String
     }
 
-    var currencyDecimalSeparator: String {
-        return objectForKey(NSLocaleDecimalSeparator) as! String
+    var currencyGroupingSeparator: String? {
+        return objectForKey(NSLocaleGroupingSeparator) as? String
+    }
+
+    var currencyDecimalSeparator: String? {
+        return objectForKey(NSLocaleDecimalSeparator) as? String
     }
 }
