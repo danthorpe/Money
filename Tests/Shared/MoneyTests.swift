@@ -256,50 +256,39 @@ class MoneyDescriptionTests: MoneyTests {
         cad = 102.01
         aud = 99.999
         eur = 249.499
-        jpy = 319.500002
-    }
-
-    /// These tests all assume en_GB language settings
-
-    func test__language_setting_is_en_US_or_en_GB() {
-        XCTAssertTrue(["en_GB", "en_US"].contains(NSLocale.currentLocale().localeIdentifier))
+        jpy = 32_000
     }
 
     func test__gbp_description() {
         XCTAssertEqual(Currency.GBP.code, "GBP")
         XCTAssertEqual(gbp.description, "£100.00")
-        XCTAssertEqual(Currency.GBP.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
-    func test__usd_description() {
+    func test__usd_formatted_with_style() {
         XCTAssertEqual(Currency.USD.code, "USD")
-        XCTAssertEqual(usd.description, "US$99.00")
-        XCTAssertEqual(Currency.USD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+        let formatted = usd.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
+        XCTAssertEqual(formatted, "$99.00")
     }
 
     func test__cad_description() {
         XCTAssertEqual(Currency.CAD.code, "CAD")
         XCTAssertEqual(cad.description, "CA$102.01")
-        XCTAssertEqual(Currency.CAD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__aud_description() {
         XCTAssertEqual(Currency.AUD.code, "AUD")
         XCTAssertEqual(aud.description, "A$100.00")
-        XCTAssertEqual(Currency.AUD.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__eur_description() {
         XCTAssertEqual(Currency.EUR.code, "EUR")
         XCTAssertEqual(eur.description, "€249.50")
-        XCTAssertEqual(Currency.EUR.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
     }
 
     func test__jpy_description() {
         XCTAssertEqual(Currency.JPY.code, "JPY")
         XCTAssertEqual(Currency.JPY.scale, 0)
-        XCTAssertEqual(jpy.description, "JP¥320")
-        XCTAssertEqual(Currency.JPY.formatter.numberStyle, NSNumberFormatterStyle.CurrencyStyle)
+        XCTAssertEqual(jpy.description, "¥32,000")
     }
 }
 
