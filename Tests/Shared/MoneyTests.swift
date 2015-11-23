@@ -288,7 +288,12 @@ class MoneyDescriptionTests: MoneyTests {
     func test__jpy_description() {
         XCTAssertEqual(Currency.JPY.code, "JPY")
         XCTAssertEqual(Currency.JPY.scale, 0)
-        XCTAssertEqual(jpy.description, "¥32,000")
+        if NSLocale.currentLocale().localeIdentifier == "en_US" {
+            XCTAssertEqual(jpy.description, "¥32,000")
+        }
+        else {
+            XCTAssertEqual(jpy.description, "JP¥32,000")
+        }
     }
 }
 
