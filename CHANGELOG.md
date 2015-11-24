@@ -1,3 +1,6 @@
+# 1.4.1
+1. [[MNY-28](https://github.com/danthorpe/Money/pull/28)]: Documentation is now hosted at [docs.danthorpe.me](http://docs.danthorpe.me/money/1.4.1/).
+
 # 1.4.0
 1. [[MNY-25](https://github.com/danthorpe/Money/pull/25)]: Adds convenience initializers to `DecimalNumberType` for `Int` (including all the variants) and `Double` parameters. Although not technically needed, (as it’s integer and float convertible) this makes it a lot easier to construct `Money` types.
 2. [[MNY-24](https://github.com/danthorpe/Money/pull/26)]: Refactors the localized string formatting APIs. Fixed a few bugs which may have rendered string incorrectly formatted in some locales. Also added the ability to format `MoneyType` values using specific language and country locales. See the README for more info.
