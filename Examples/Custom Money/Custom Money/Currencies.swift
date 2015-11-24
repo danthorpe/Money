@@ -9,20 +9,23 @@
 import Foundation
 import Money
 
-protocol MyCustomCurrencyType: CurrencyType { }
+protocol MyCustomCurrencyType: CustomCurrencyType { }
 
 extension Currency {
 
     final class Heart: MyCustomCurrencyType {
 
         static let code: String = "HEARTS"
-        static let symbol: String = "❤️"
         static let scale: Int  = 0
         static let formatter: NSNumberFormatter = {
             let fmtr = NSNumberFormatter()
             fmtr.numberStyle = .CurrencyStyle
             fmtr.maximumFractionDigits = Currency.Heart.scale
-            fmtr.currencySymbol = Currency.Heart.symbol
+            fmtr.currencySymbol = "❤️"
+            fmtr.internationalCurrencySymbol = Currency.Heart.code
+            let locale = NSLocale.currentLocale()
+            fmtr.currencyGroupingSeparator = locale.currencyGroupingSeparator
+            fmtr.currencyDecimalSeparator = locale.currencyDecimalSeparator
             return fmtr
         }()
     }
@@ -30,13 +33,16 @@ extension Currency {
     final class Bee: MyCustomCurrencyType {
 
         static let code: String = "BEES"
-        static let symbol: String = "🐝"
         static let scale: Int  = 0
         static let formatter: NSNumberFormatter = {
             let fmtr = NSNumberFormatter()
             fmtr.numberStyle = .CurrencyStyle
             fmtr.maximumFractionDigits = Currency.Bee.scale
-            fmtr.currencySymbol = Currency.Bee.symbol
+            fmtr.currencySymbol = "🐝"
+            fmtr.internationalCurrencySymbol = Currency.Bee.code
+            let locale = NSLocale.currentLocale()
+            fmtr.currencyGroupingSeparator = locale.currencyGroupingSeparator
+            fmtr.currencyDecimalSeparator = locale.currencyDecimalSeparator
             return fmtr
         }()
     }

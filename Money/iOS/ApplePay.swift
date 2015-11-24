@@ -28,7 +28,7 @@ import Foundation
 import PassKit
 import ValueCoding
 
-// MARK: - Apple Pay equivalent types
+// MARK: - Pay equivalent types
 
 /**
 
@@ -165,7 +165,7 @@ public final class PaymentSummaryItemCoder<Cost: MoneyType where Cost.DecimalSto
     }
 }
 
-// MARK: - Apple Pay type extensions
+// MARK: - Pay type extensions
 
 @available(iOS 9.0, iOSApplicationExtension 9.0, *)
 internal extension PKPaymentSummaryItemType {

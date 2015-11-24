@@ -1,3 +1,8 @@
+# 1.4.0
+1. [[MNY-25](https://github.com/danthorpe/Money/pull/25)]: Adds convenience initializers to `DecimalNumberType` for `Int` (including all the variants) and `Double` parameters. Although not technically needed, (as it’s integer and float convertible) this makes it a lot easier to construct `Money` types.
+2. [[MNY-24](https://github.com/danthorpe/Money/pull/26)]: Refactors the localized string formatting APIs. Fixed a few bugs which may have rendered string incorrectly formatted in some locales. Also added the ability to format `MoneyType` values using specific language and country locales. See the README for more info.
+3. [[MNY-27](https://github.com/danthorpe/Money/pull/27)]: Finally got Jazzy to generate the documentation, and have created a config for the project. Hopefully now CocoaDocs will correctly parse the framework and generate docs. Documentation coverage is 96%.  
+
 # 1.3.0
 1. [[MNY-21](https://github.com/danthorpe/Money/pull/21), [MNY-22](https://github.com/danthorpe/Money/pull/22)]: Adds support for initializing `MoneyType`s with minor units. Thanks to [@jlalvarez18](https://github.com/jlalvarez18).
 2. [[MNY-23](https://github.com/danthorpe/Money/pull/23)]: Adds some convenience extensions to create  pay payment requests using an array of `PaymentSummaryItem` which is a new type generic over `MoneyType`. This is only available on iOS, and it allows consumers to use `Money` directly with  pay APIs.
