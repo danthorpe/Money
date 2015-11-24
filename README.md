@@ -37,7 +37,7 @@ when the region is set to United Kingdom
 
 when the region is set to China
 
-You get the idea. See [Localized Formatting][] for more info.
+You get the idea. See [Localized Formatting](#localized-formatting) for more info.
 
 `Money` is `IntegerLiteralConvertible` and  `FloatLiteralConvertible`. Which means values can be initialized using literal `Int`s and `Double`s as shown in these code snippets.
 
