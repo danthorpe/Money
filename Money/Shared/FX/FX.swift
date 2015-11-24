@@ -47,16 +47,44 @@ public protocol MoneyPairType {
     typealias CounterMoney: MoneyType
 }
 
+/**
+ An enum to define the transaction from the perspective
+ of the user. i.e. either a buy or sell.
+*/
 public enum CurrencyMarketTransactionKind {
-    case Buy, Sell
+    /// User is performing a buy transaction
+    case Buy
+    /// User is performing a sell transaction
+    case Sell
 }
 
+/**
+ A protocol to define a currency market transaction. It refines
+ MoneyPairType. It exposes the kind of transaction as a property.
+*/
 public protocol CurrencyMarketTransactionType: MoneyPairType {
+
+    /// - returns: the transactionKind, a CurrencyMarketTransactionKind
     static var transactionKind: CurrencyMarketTransactionKind { get }
 }
 
+/**
+ A protocol to define a crypto currency market transaction. It refines
+ CurrencyMarketTransactionType, and adds a new typealias for the FiatCurrency.
+ 
+ By crypto currency market transaction, we refer to a currency exchange 
+ involving a crypto currency, such as bitcoin, or litecoin or similar.
+ 
+ A Fiat Currency is a currency which is maintained by a national bank, such as
+ USD, or EUR.
+ 
+ Typrically a crypto currency market transaction is where the user is purchasing
+ bitcoin with USD, or selling bitcoin for USD.
+*/
 public protocol CryptoCurrencyMarketTransactionType: CurrencyMarketTransactionType {
-    typealias FiatCurrency: CurrencyType
+
+    /// The FiatCurrency must be an ISO currency.
+    typealias FiatCurrency: ISOCurrencyType
 }
 
 // MARK: - FX Types
@@ -114,6 +142,17 @@ public struct FXQuote {
     }
 }
 
+/**
+ FXTransaction is a generic value type which represents a
+ foreign currency transaction. It is generic over two
+ MoneyType.
+ 
+ There are some restrictions on the two generic types, to support
+ the mathematics and ValueCoding. However, essentially, if you use
+ _Money then these are limitations are all met.
+ 
+ - see: MoneyPairType
+*/
 public struct FXTransaction<Base, Counter where
     Base: MoneyType,
     Base.Coder: NSCoding,
@@ -127,9 +166,16 @@ public struct FXTransaction<Base, Counter where
     public typealias BaseMoney = Base
     public typealias CounterMoney = Counter
 
+    /// - returns: the BaseMoney value.
     public let base: BaseMoney
+
+    /// - returns: the BaseMoney commission.
     public let commission: BaseMoney
+
+    /// - returns: the rate, a BankersDecimal.
     public let rate: BankersDecimal
+
+    /// - returns: the CounterMoney value.
     public let counter: CounterMoney
 
     internal init(base: BaseMoney, commission: BaseMoney, rate: BankersDecimal, counter: CounterMoney) {
@@ -139,6 +185,16 @@ public struct FXTransaction<Base, Counter where
         self.counter = counter
     }
 
+    /**
+     A FXTransaction can be created with the BaseMoney value (i.e. how much money
+     is being exchanged), and the FXQuote value. Using the quote, the
+     counter value (i.e. how much is received) and commission (i.e. how much of 
+     the base is spent on commission) is automatically calculated.
+     
+     - parameter base: the value for base
+     - parameter quote: a FXQuote
+     - returns: an initialized FXTransaction value
+    */
     public init(base: BaseMoney, quote: FXQuote) {
         self.base = base
         self.commission = quote.commission(base)

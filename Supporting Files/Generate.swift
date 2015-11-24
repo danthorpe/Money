@@ -91,6 +91,7 @@ func createCurrencyTypes(line: Writer) {
         line("")
         line("    /// Currency \(code)")
         line("    public final class \(code): Currency.Base, ISOCurrencyType {")
+        line("        /// - returns: lazy shared instance for Currency.\(code)")
         line("        public static var sharedInstance = \(code)(code: \"\(code)\")")
         line("    }")
     }
@@ -219,8 +220,9 @@ func createLanguageSpeakingCountry(line: Writer, language: Language) {
     let name = language.languageSpeakingCountryEnumName
 
     line("")
-
-    // Write the enum type
+    line("/**")
+    line(" An enum of countries which speak \(language.displayName).")
+    line("*/")
     line("public enum \(name): CountryType {")
 
     let _countries = language.countryIds.sort().flatMap({ info.countriesById[$0] })
@@ -228,7 +230,8 @@ func createLanguageSpeakingCountry(line: Writer, language: Language) {
     // Write the cases
     line("")
     for country in _countries {
-        line("    case \(country.name)")
+    line("    /// \(country.displayName) is a country which speaks \(language.displayName).")
+    line("    case \(country.name)")
     }
 
 
@@ -236,9 +239,11 @@ func createLanguageSpeakingCountry(line: Writer, language: Language) {
     let caseNames = _countries.map { $0.caseNameValue }
     let joinedCaseNames = caseNames.joinWithSeparator(", ")
     line("")
+    line("    /// - returns: an Array of all the countries which speak \(language.displayName)")
     line("    public static let all: [\(name)] = [ \(joinedCaseNames) ]")
 
     line("")
+    line("    /// - returns: the country identifier of a specific \(language.displayName) speaking country.")
     line("    public var countryIdentifier: String {")
     line("        switch self {")
 
@@ -267,14 +272,31 @@ func createLocale(line: Writer) {
 
     do {
         line("")
+        line("/**")
+        line("")
+        line("Locale is an enum for type safe representation ")
+        line("of locale identifiers. Its cases are languages ")
+        line("in US English. For languages which are spoken ")
+        line("in more than one country, an associated value ")
+        line("of the country should be provided. For example ")
+        line("")
+        line("```swift")
+        line("let locale: Locale = .French(.France)")        
+        line("```")
+        line("*/")
         line("public enum Locale {")
 
-        line("")
         for language in info.languages.sort() {
+            line("")
             if language.countryIds.count > 1 {
+                line("    /**")
+                line("     ### \(language.displayName)")
+                line("    - requires: \(language.languageSpeakingCountryEnumName)")
+                line("    */")
                 line("    case \(language.name)(\(language.languageSpeakingCountryEnumName))")
             }
             else {
+                line("    /// ### \(language.displayName)")
                 line("    case \(language.name)")
             }
         }
@@ -285,8 +307,12 @@ func createLocale(line: Writer) {
     // Add extension for LanguageType protocol
     do {
         line("")
+        line("/**")
+        line(" Locale conforms to LanguageType.")
+        line("*/")
         line("extension Locale: LanguageType {")
         line("")
+        line("    /// - returns: the lanauge identifier as a String.")
         line("    public var languageIdentifier: String {")
         line("        switch self {")
 
@@ -309,8 +335,12 @@ func createLocale(line: Writer) {
     // Add extension for CountryType protocol
     do {
         line("")
+        line("/**")
+        line(" Locale conforms to CountryType.")
+        line("*/")
         line("extension Locale: CountryType {")
         line("")
+        line("    /// - returns: the country identifier as a String.")
         line("    public var countryIdentifier: String {")
         line("        switch self {")
 
