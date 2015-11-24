@@ -137,6 +137,11 @@ public extension CustomCurrencyType {
     }
 }
 
+/**
+ Crypto currency types (Bitcoin etc) should refine CryptoCurrencyType.
+
+ This is to benefit from default implementations.
+*/
 public protocol CryptoCurrencyType: CustomCurrencyType { }
 
 /**

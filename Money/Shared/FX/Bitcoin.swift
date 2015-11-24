@@ -92,19 +92,37 @@ public typealias BTC = _Money<Currency.BTC>
 
 // MARK - cex.io FX
 
+/**
+ CEX.io Supported fiat currencies
+ 
+ CEX only supports USD, EUR and RUB.
+ 
+ - see: https://cex.io
+*/
 public protocol CEXSupportedFiatCurrencyType: ISOCurrencyType {
+
+    /**
+     CEX.io charge a percentage based commission with FX transactions.
+     - returns: a BankersDecimal representing the % commission.
+    */
     static var cex_commissionPercentage: BankersDecimal { get }
 }
 
 extension Currency.USD: CEXSupportedFiatCurrencyType {
+
+    /// - returns: the commission charged for USD transactions, a BankersDecimal
     public static let cex_commissionPercentage: BankersDecimal = 0.2
 }
 
 extension Currency.EUR: CEXSupportedFiatCurrencyType {
+
+    /// - returns: the commission charged for EUR transactions, a BankersDecimal
     public static let cex_commissionPercentage: BankersDecimal = 0.2
 }
 
 extension Currency.RUB: CEXSupportedFiatCurrencyType {
+
+    /// - returns: the commission charged for RUB transactions, a BankersDecimal
     public static let cex_commissionPercentage: BankersDecimal = 0
 }
 
@@ -176,7 +194,36 @@ class _CEX<T: CryptoCurrencyMarketTransactionType where T.FiatCurrency: CEXSuppo
     }
 }
 
+/**
+  Represents the purchase of bitcoin using CEX.io.
+  
+  Usage is entirely type based - there is nothing to initialize. It is
+  generic over USD, EUR or RUB, no other currency types. For example.
+  
+  ```swift
+  CEXBuy<USD>.quote(1_000) { transaction in 
+    // etc.
+  }
+  ```
+  
+  The above sample represents buying US$1,000 worth of BTC using CEX.io.
+*/
 public final class CEXBuy<Base: MoneyType where Base.Currency: CEXSupportedFiatCurrencyType>: _CEX<_CEXBuy<Base>> { }
+
+ /**
+  Represents the sale of bitcoin using CEX.io.
+
+  Usage is entirely type based - there is nothing to initialize. It is
+  generic over USD, EUR or RUB, no other currency types. For example.
+
+  ```swift
+  CEXBuy<EUR>.quote(10) { transaction in
+  // etc.
+  }
+  ```
+
+  The above sample represents selling 10 bitcoins for euros using CEX.io.
+  */
 public final class CEXSell<Counter: MoneyType where Counter.Currency: CEXSupportedFiatCurrencyType>: _CEX<_CEXSell<Counter>> { }
 
 

@@ -30,8 +30,6 @@ import ValueCoding
 import Result
 import SwiftyJSON
 
-// MARK: - Currency Markets
-
 /**
  # MoneyPairType
  Used to represent currency pairs.
@@ -82,19 +80,18 @@ public protocol CurrencyMarketTransactionType: MoneyPairType {
  bitcoin with USD, or selling bitcoin for USD.
 */
 public protocol CryptoCurrencyMarketTransactionType: CurrencyMarketTransactionType {
-
-    /// The FiatCurrency must be an ISO currency.
     typealias FiatCurrency: ISOCurrencyType
 }
-
-// MARK: - FX Types
 
 /**
  # Quote
  Represents an FX quote with a rate and commision
  percentage. By default the percentage is 0.
 */
-public struct FXQuote {
+public struct FXQuote: ValueCoding {
+
+    /// The Coder required for ValueCoding
+    public typealias Coder = FXQuoteCoder
 
     /// The exchange rate, stored as a `BankersDecimal`.
     public let rate: BankersDecimal
@@ -161,8 +158,9 @@ public struct FXTransaction<Base, Counter where
     Counter: MoneyType,
     Counter.Coder: NSCoding,
     Counter.Coder.ValueType == Counter,
-    Counter.DecimalStorageType == BankersDecimal.DecimalStorageType>: MoneyPairType {
+    Counter.DecimalStorageType == BankersDecimal.DecimalStorageType>: MoneyPairType, ValueCoding {
 
+    public typealias Coder = FXTransactionCoder<BaseMoney, CounterMoney>
     public typealias BaseMoney = Base
     public typealias CounterMoney = Counter
 
@@ -202,9 +200,6 @@ public struct FXTransaction<Base, Counter where
         self.counter = quote.transactionValueForBaseValue(base)
     }
 }
-
-
-// MARK: - FX Provider Errors
 
 /**
  # FXError
@@ -284,8 +279,6 @@ extension FXLocalProviderType where
     }
 }
 
-// MARK: - Protocol: Remote Provider
-
 /**
  FX Providers which get their rates via a network request
  should conform to `FXRemoteProviderType`, which defines
@@ -330,8 +323,6 @@ public protocol FXRemoteProviderType: FXProviderType {
      */
     static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse?), NSError>) -> Result<FXQuote, FXError>
 }
-
-// MARK: - FXRemoteProviderType Extension
 
 extension FXRemoteProviderType {
 
@@ -405,8 +396,6 @@ extension FXRemoteProviderType where
     }
 }
 
-// MARK: - FX Network Client
-
 internal class FXServiceProviderNetworkClient {
     let session: NSURLSession
 
@@ -424,6 +413,10 @@ internal class FXServiceProviderNetworkClient {
     }
 }
 
+/**
+ A trivial generic class suitable for subclassing for FX remote providers.
+ It automatically sets up the typealias for MoneyPairType.
+*/
 public class FXRemoteProvider<B: MoneyType, T: MoneyType> {
     public typealias BaseMoney = B
     public typealias CounterMoney = T
@@ -431,18 +424,19 @@ public class FXRemoteProvider<B: MoneyType, T: MoneyType> {
 
 // MARK: - ValueCoding
 
-extension FXQuote: ValueCoding {
-    public typealias Coder = FXQuoteCoder
-}
-
+/**
+ A CodingType which codes FXQuote
+*/
 public final class FXQuoteCoder: NSObject, NSCoding, CodingType {
     enum Keys: String {
         case Rate = "rate"
         case Percentage = "percentage"
     }
 
+    /// The value being encoded or decoded
     public let value: FXQuote
 
+    /// Initialized with an FXQuote
     public required init(_ v: FXQuote) {
         value = v
     }
@@ -459,9 +453,6 @@ public final class FXQuoteCoder: NSObject, NSCoding, CodingType {
     }
 }
 
-extension FXTransaction: ValueCoding {
-    public typealias Coder = FXTransactionCoder<BaseMoney, CounterMoney>
-}
 
 private enum FXTransactionCoderKeys: String {
     case Base = "base"
@@ -470,6 +461,9 @@ private enum FXTransactionCoderKeys: String {
     case Counter = "counter"
 }
 
+/**
+ A CodingType which codes FXTransaction
+*/
 public final class FXTransactionCoder<Base, Counter where
     Base: MoneyType,
     Base.Coder: NSCoding,
@@ -480,8 +474,10 @@ public final class FXTransactionCoder<Base, Counter where
     Counter.Coder.ValueType == Counter,
     Counter.DecimalStorageType == BankersDecimal.DecimalStorageType>: NSObject, NSCoding, CodingType {
 
+    /// The value being encoded or decoded
     public let value: FXTransaction<Base, Counter>
 
+    /// Initialized with an FXTransaction
     public required init(_ v: FXTransaction<Base, Counter>) {
         value = v
     }
