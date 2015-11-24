@@ -35,6 +35,8 @@ public func ==(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
 
 // MARK: - Comparable
 
+extension NSDecimalNumber: Comparable { }
+
 public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
     return lhs.compare(rhs) == .OrderedAscending
 }
@@ -48,9 +50,9 @@ public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
  because it is a framework class which cannot be made final, and the protocol
  has functions which return Self.
  */
-extension NSDecimalNumber: Comparable {
+internal extension NSDecimalNumber {
 
-    public var isNegative: Bool {
+    var isNegative: Bool {
         return self < NSDecimalNumber.zero()
     }
 
@@ -62,7 +64,7 @@ extension NSDecimalNumber: Comparable {
      - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
-    public func subtract(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+    func subtract(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberBySubtracting(other, withBehavior: behaviors)
     }
 
@@ -74,7 +76,7 @@ extension NSDecimalNumber: Comparable {
      - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
-    public func add(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+    func add(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByAdding(other, withBehavior: behaviors)
     }
 
@@ -85,7 +87,7 @@ extension NSDecimalNumber: Comparable {
      - returns: another instance of this type.
      */
     @warn_unused_result
-    public func multiplyByPowerOf10(index: Int, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+    func multiplyByPowerOf10(index: Int, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByMultiplyingByPowerOf10(Int16(index), withBehavior: behaviors)
     }
 
@@ -97,7 +99,7 @@ extension NSDecimalNumber: Comparable {
      - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
-    public func multiplyBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+    func multiplyBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByMultiplyingBy(other, withBehavior: behaviors)
     }
 
@@ -109,7 +111,7 @@ extension NSDecimalNumber: Comparable {
      - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
-    public func divideBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+    func divideBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByDividingBy(other, withBehavior: behaviors)
     }
 
@@ -119,7 +121,7 @@ extension NSDecimalNumber: Comparable {
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: a `NSDecimalNumber`.
      */
-    public func negateWithBehaviors(behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+    func negateWithBehaviors(behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         let negativeOne = NSDecimalNumber(mantissa: 1, exponent: 0, isNegative: true)
         let result = decimalNumberByMultiplyingBy(negativeOne, withBehavior: behaviors)
         return result
@@ -133,7 +135,7 @@ extension NSDecimalNumber: Comparable {
      - returns: a `NSDecimalNumber`.
      */
     @warn_unused_result
-    public func remainder(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
+    func remainder(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         let roundingMode: NSRoundingMode = Int(isNegative) ^ Int(other.isNegative) ? .RoundUp : .RoundDown
         let roundingBehaviors = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
         let quotient = divideBy(other, withBehaviors: roundingBehaviors)

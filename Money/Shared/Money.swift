@@ -51,14 +51,14 @@ public protocol MoneyType: DecimalNumberType, ValueCoding {
     init(minorUnits: IntegerLiteralType)
 }
 
-// MARK: - MoneyType Extension
-
 public extension MoneyType {
 
+    /// - returns: a String for the currency's international code.
     var currencyCode: String {
         return Currency.code
     }
 
+    /// - returns: a String for the currency's symbol in the current locale.
     var currencySymbol: String? {
         return Currency.symbol
     }

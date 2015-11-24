@@ -1,4 +1,4 @@
-//
+ //
 //  Bitcoin.swift
 //  Money
 //
@@ -31,28 +31,42 @@ import SwiftyJSON
 
 // MARK: - Bitcoin Currency
 
-protocol BitcoinCurrencyType: CryptoCurrencyType { }
+/**
+ # Bitcoin Currency Type
 
-extension Currency {
+ BitcoinCurrencyType is a refinement of CryptoCurrencyType, 
+ which allows type restriction when working with Bitcoin.
+*/
+public protocol BitcoinCurrencyType: CryptoCurrencyType { }
+
+public extension Currency {
 
     /**
      # Currency.XBT
      This is the ISO 4217 currency code, however at the moment
      it is unofficial.
+     
+     unicode \u{20bf} was accepted as the Bitcoin currency
+     symbol in November. However, it's not yet available
+     on Apple platforms. Ƀ is a popular alternative
+     which is available.
+
      */
-    public struct XBT: BitcoinCurrencyType {
+    struct XBT: BitcoinCurrencyType {
+
+        /// - returns: the proposed ISO 4217 currency code
         public static let code = "XBT"
-        /// unicode \u{20bf} was accepted as the Bitcoin currency
-        /// symbol in November
-        public static let symbol: String? = "Ƀ"
+
         /// The smallest unit of Bitcoin is the Satoshi
         /// - see: https://en.bitcoin.it/wiki/Satoshi_(unit)
         public static let scale: Int = 8
+
+        /// - returns: a configured NSNumberFormatter
         public static let formatter: NSNumberFormatter = {
             let fmtr = NSNumberFormatter()
             fmtr.numberStyle = .CurrencyStyle
             fmtr.maximumFractionDigits = scale
-            fmtr.currencySymbol = symbol
+            fmtr.currencySymbol = "Ƀ"
             return fmtr
         }()
     }
@@ -62,33 +76,53 @@ extension Currency {
      This is the common code used for Bitcoin,  although it can never become
      the ISO standard as BT is the country code for Bhutan.
      */
-    public struct BTC: BitcoinCurrencyType {
+    struct BTC: BitcoinCurrencyType {
         public static let code = "BTC"
-        public static let symbol = Currency.XBT.symbol
         public static let scale = Currency.XBT.scale
         public static let formatter = Currency.XBT.formatter
     }
 }
 
+/// The proposed ISO 4217 Bitcoin MoneyType
 public typealias XBT = _Money<Currency.XBT>
+
+/// The most commonly used Bitcoin MoneyType
 public typealias BTC = _Money<Currency.BTC>
 
 
 // MARK - cex.io FX
 
-public protocol CEXSupportedFiatCurrencyType: CurrencyType {
+/**
+ CEX.io Supported fiat currencies
+ 
+ CEX only supports USD, EUR and RUB.
+ 
+ - see: https://cex.io
+*/
+public protocol CEXSupportedFiatCurrencyType: ISOCurrencyType {
+
+    /**
+     CEX.io charge a percentage based commission with FX transactions.
+     - returns: a BankersDecimal representing the % commission.
+    */
     static var cex_commissionPercentage: BankersDecimal { get }
 }
 
 extension Currency.USD: CEXSupportedFiatCurrencyType {
+
+    /// - returns: the commission charged for USD transactions, a BankersDecimal
     public static let cex_commissionPercentage: BankersDecimal = 0.2
 }
 
 extension Currency.EUR: CEXSupportedFiatCurrencyType {
+
+    /// - returns: the commission charged for EUR transactions, a BankersDecimal
     public static let cex_commissionPercentage: BankersDecimal = 0.2
 }
 
 extension Currency.RUB: CEXSupportedFiatCurrencyType {
+
+    /// - returns: the commission charged for RUB transactions, a BankersDecimal
     public static let cex_commissionPercentage: BankersDecimal = 0
 }
 
@@ -160,7 +194,36 @@ class _CEX<T: CryptoCurrencyMarketTransactionType where T.FiatCurrency: CEXSuppo
     }
 }
 
+/**
+  Represents the purchase of bitcoin using CEX.io.
+  
+  Usage is entirely type based - there is nothing to initialize. It is
+  generic over USD, EUR or RUB, no other currency types. For example.
+  
+  ```swift
+  CEXBuy<USD>.quote(1_000) { transaction in 
+    // etc.
+  }
+  ```
+  
+  The above sample represents buying US$1,000 worth of BTC using CEX.io.
+*/
 public final class CEXBuy<Base: MoneyType where Base.Currency: CEXSupportedFiatCurrencyType>: _CEX<_CEXBuy<Base>> { }
+
+ /**
+  Represents the sale of bitcoin using CEX.io.
+
+  Usage is entirely type based - there is nothing to initialize. It is
+  generic over USD, EUR or RUB, no other currency types. For example.
+
+  ```swift
+  CEXBuy<EUR>.quote(10) { transaction in
+  // etc.
+  }
+  ```
+
+  The above sample represents selling 10 bitcoins for euros using CEX.io.
+  */
 public final class CEXSell<Counter: MoneyType where Counter.Currency: CEXSupportedFiatCurrencyType>: _CEX<_CEXSell<Counter>> { }
 
 
