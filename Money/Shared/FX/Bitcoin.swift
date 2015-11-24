@@ -92,7 +92,7 @@ public typealias BTC = _Money<Currency.BTC>
 
 // MARK - cex.io FX
 
-public protocol CEXSupportedFiatCurrencyType: CurrencyType {
+public protocol CEXSupportedFiatCurrencyType: ISOCurrencyType {
     static var cex_commissionPercentage: BankersDecimal { get }
 }
 
