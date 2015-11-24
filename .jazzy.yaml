@@ -1,0 +1,121 @@
+module_name: Money
+author_name: Daniel Thorpe
+author_url: http://danthorpe.me
+github_url: https://github.com/danthorpe/Money
+
+swift_version: 2.1
+
+custom_categories:
+  - name: Decimals
+    children:
+    - DecimalNumberType
+    - DecimalNumberBehaviorType
+    - DecimalNumberBehavior
+    - _Decimal
+    - Decimal
+    - BankersDecimal
+    - _DecimalCoder
+
+  - name: Currency
+    children:
+    - CurrencyType
+    - CustomCurrencyType
+    - ISOCurrencyType
+    - CryptoCurrencyType
+    - Currency
+
+  - name: Money
+    children:
+    - MoneyType
+    - _Money
+    - _MoneyCoder
+    - Money
+
+  - name: FX
+    children:
+    - MoneyPairType
+    - FXProviderType
+    - FXLocalProviderType
+    - FXRemoteProviderType
+    - CurrencyMarketTransactionType
+    - CryptoCurrencyMarketTransactionType
+    - FXQuote
+    - FXQuoteCoder
+    - FXTransaction
+    - FXTransactionCoder
+    - FXError
+    - FXRemoteProvider
+    - Yahoo
+    - OpenExchangeRatesAppID
+    - _OpenExchangeRates
+    - _ForeverFreeOpenExchangeRates
+    - CurrencyMarketTransactionKind
+
+  - name: Bitcoin
+    children:
+    - BitcoinCurrencyType
+    - BTC
+    - XBT
+    - CEXSupportedFiatCurrencyType
+    - CEXBuy
+    - CEXSell
+
+  - name: Pay 
+    children:
+    - PaymentSummaryItemType
+    - PaymentSummaryItem
+    - PKPaymentRequest
+
+  - name: Locale
+    children:
+    - LocaleType
+    - CountryType
+    - LanguageType
+    - Locale
+    - AfrikaansSpeakingCountry
+    - AlbanianSpeakingCountry
+    - ArabicSpeakingCountry
+    - BengaliSpeakingCountry
+    - CatalanSpeakingCountry
+    - CentralKurdishSpeakingCountry
+    - ChineseSpeakingCountry
+    - CroatianSpeakingCountry
+    - DanishSpeakingCountry
+    - DutchSpeakingCountry
+    - EnglishSpeakingCountry
+    - EweSpeakingCountry
+    - FrenchSpeakingCountry
+    - FulahSpeakingCountry
+    - GermanSpeakingCountry
+    - GreekSpeakingCountry
+    - HausaSpeakingCountry
+    - ItalianSpeakingCountry
+    - KoreanSpeakingCountry
+    - LingalaSpeakingCountry
+    - MalaySpeakingCountry
+    - MasaiSpeakingCountry
+    - NepaliSpeakingCountry
+    - NorthernSamiSpeakingCountry
+    - NorwegianBokmålSpeakingCountry
+    - OromoSpeakingCountry
+    - OsseticSpeakingCountry
+    - PersianSpeakingCountry
+    - PortugueseSpeakingCountry
+    - PunjabiSpeakingCountry
+    - QuechuaSpeakingCountry
+    - RomanianSpeakingCountry
+    - RussianSpeakingCountry
+    - SerbianSpeakingCountry
+    - SomaliSpeakingCountry
+    - SpanishSpeakingCountry
+    - SwahiliSpeakingCountry
+    - SwedishSpeakingCountry
+    - SwissGermanSpeakingCountry
+    - TamilSpeakingCountry
+    - TesoSpeakingCountry
+    - TibetanSpeakingCountry
+    - TigrinyaSpeakingCountry
+    - TurkishSpeakingCountry
+    - UrduSpeakingCountry
+    - UzbekSpeakingCountry
+    - YorubaSpeakingCountry
