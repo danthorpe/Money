@@ -1,9 +1,13 @@
-module_name: Money
 author_name: Daniel Thorpe
 author_url: http://danthorpe.me
+module_name: Money
+module_version: 1.4.0
 github_url: https://github.com/danthorpe/Money
+readme: README.md
+podspec: Money.podspec
 
 swift_version: 2.1
+xcodebuild-arguments: -scheme,Money-iOS
 
 custom_categories:
   - name: Decimals
@@ -31,7 +35,7 @@ custom_categories:
     - _MoneyCoder
     - Money
 
-  - name: FX
+  - name: Foreign Exchange
     children:
     - MoneyPairType
     - FXProviderType
@@ -64,6 +68,7 @@ custom_categories:
     children:
     - PaymentSummaryItemType
     - PaymentSummaryItem
+    - PaymentSummaryItemCoder
     - PKPaymentRequest
 
   - name: Locale
@@ -71,6 +76,7 @@ custom_categories:
     - LocaleType
     - CountryType
     - LanguageType
+    - NSLocale
     - Locale
     - AfrikaansSpeakingCountry
     - AlbanianSpeakingCountry
