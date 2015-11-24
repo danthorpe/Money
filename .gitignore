@@ -26,3 +26,4 @@ Carthage/Build
 .fastlane/report.xml
 .ci/xcodebuild-data/*
 *.coverage.txt
+docs

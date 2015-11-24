@@ -82,6 +82,9 @@ public extension CurrencyType {
             raiseOnDivideByZero: true
         )
     }
+}
+
+internal extension CurrencyType {
 
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: NSLocale) -> NSDecimalNumber -> String {
         __formatter.reset()
@@ -103,22 +106,42 @@ public extension CurrencyType {
     }
 }
 
-// MARK: - Customized Currency Types
 
+/**
+ Custom currency types should refine CustomCurrencyType.
+
+ This is to benefit from default implementations of string
+ formatting.
+*/
 public protocol CustomCurrencyType: CurrencyType { }
 
 public extension CustomCurrencyType {
 
+    /**
+     Use the provided locale identifier to format a supplied NSDecimalNumber.
+     
+     - returns: a NSDecimalNumber -> String closure.
+    */
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocaleId localeId: String) -> NSDecimalNumber -> String {
         let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(localeId))
         return formattedWithStyle(style, forLocale: locale)
     }
 
+    /**
+     Use the provided Local to format a supplied NSDecimalNumber.
+
+     - returns: a NSDecimalNumber -> String closure.
+     */
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> NSDecimalNumber -> String {
         return formattedWithStyle(style, forLocaleId: locale.localeIdentifier)
     }
 }
 
+/**
+ Crypto currency types (Bitcoin etc) should refine CryptoCurrencyType.
+
+ This is to benefit from default implementations.
+*/
 public protocol CryptoCurrencyType: CustomCurrencyType { }
 
 /**
@@ -127,10 +150,16 @@ public protocol CryptoCurrencyType: CustomCurrencyType { }
 */
 public protocol ISOCurrencyType: CurrencyType {
 
+    /** 
+     A shared instance of the currency. Note that static
+     variables are lazily created.
+    */
     static var sharedInstance: Self { get }
 
+    /// - returns: the currency code
     var _code: String { get }
 
+    /// - returns: a number formatter for the currency in the current locale.
     var _formatter: NSNumberFormatter { get }
 }
 
@@ -151,12 +180,22 @@ public extension ISOCurrencyType {
         return sharedInstance._formatter
     }
 
+    /**
+     Use the provided locale identifier to format a supplied NSDecimalNumber.
+
+     - returns: a NSDecimalNumber -> String closure.
+     */
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocaleId localeId: String) -> NSDecimalNumber -> String {
         let id = "\(NSLocale.currentLocale().localeIdentifier)@currency=\(code)"
         let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(id))
         return formattedWithStyle(style, forLocale: locale)
     }
 
+    /**
+     Use the provided Local to format a supplied NSDecimalNumber.
+
+     - returns: a NSDecimalNumber -> String closure.
+     */
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> NSDecimalNumber -> String {
         let id = "\(locale.localeIdentifier)@currency=\(code)"
         let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(id))

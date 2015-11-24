@@ -30,1496 +30,1795 @@ extension Currency {
 
     /// Currency ADP
     public final class ADP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ADP
         public static var sharedInstance = ADP(code: "ADP")
     }
 
     /// Currency AED
     public final class AED: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AED
         public static var sharedInstance = AED(code: "AED")
     }
 
     /// Currency AFA
     public final class AFA: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AFA
         public static var sharedInstance = AFA(code: "AFA")
     }
 
     /// Currency AFN
     public final class AFN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AFN
         public static var sharedInstance = AFN(code: "AFN")
     }
 
     /// Currency ALK
     public final class ALK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ALK
         public static var sharedInstance = ALK(code: "ALK")
     }
 
     /// Currency ALL
     public final class ALL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ALL
         public static var sharedInstance = ALL(code: "ALL")
     }
 
     /// Currency AMD
     public final class AMD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AMD
         public static var sharedInstance = AMD(code: "AMD")
     }
 
     /// Currency ANG
     public final class ANG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ANG
         public static var sharedInstance = ANG(code: "ANG")
     }
 
     /// Currency AOA
     public final class AOA: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AOA
         public static var sharedInstance = AOA(code: "AOA")
     }
 
     /// Currency AOK
     public final class AOK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AOK
         public static var sharedInstance = AOK(code: "AOK")
     }
 
     /// Currency AON
     public final class AON: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AON
         public static var sharedInstance = AON(code: "AON")
     }
 
     /// Currency AOR
     public final class AOR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AOR
         public static var sharedInstance = AOR(code: "AOR")
     }
 
     /// Currency ARA
     public final class ARA: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ARA
         public static var sharedInstance = ARA(code: "ARA")
     }
 
     /// Currency ARL
     public final class ARL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ARL
         public static var sharedInstance = ARL(code: "ARL")
     }
 
     /// Currency ARM
     public final class ARM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ARM
         public static var sharedInstance = ARM(code: "ARM")
     }
 
     /// Currency ARP
     public final class ARP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ARP
         public static var sharedInstance = ARP(code: "ARP")
     }
 
     /// Currency ARS
     public final class ARS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ARS
         public static var sharedInstance = ARS(code: "ARS")
     }
 
     /// Currency ATS
     public final class ATS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ATS
         public static var sharedInstance = ATS(code: "ATS")
     }
 
     /// Currency AUD
     public final class AUD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AUD
         public static var sharedInstance = AUD(code: "AUD")
     }
 
     /// Currency AWG
     public final class AWG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AWG
         public static var sharedInstance = AWG(code: "AWG")
     }
 
     /// Currency AZM
     public final class AZM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AZM
         public static var sharedInstance = AZM(code: "AZM")
     }
 
     /// Currency AZN
     public final class AZN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.AZN
         public static var sharedInstance = AZN(code: "AZN")
     }
 
     /// Currency BAD
     public final class BAD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BAD
         public static var sharedInstance = BAD(code: "BAD")
     }
 
     /// Currency BAM
     public final class BAM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BAM
         public static var sharedInstance = BAM(code: "BAM")
     }
 
     /// Currency BAN
     public final class BAN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BAN
         public static var sharedInstance = BAN(code: "BAN")
     }
 
     /// Currency BBD
     public final class BBD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BBD
         public static var sharedInstance = BBD(code: "BBD")
     }
 
     /// Currency BDT
     public final class BDT: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BDT
         public static var sharedInstance = BDT(code: "BDT")
     }
 
     /// Currency BEC
     public final class BEC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BEC
         public static var sharedInstance = BEC(code: "BEC")
     }
 
     /// Currency BEF
     public final class BEF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BEF
         public static var sharedInstance = BEF(code: "BEF")
     }
 
     /// Currency BEL
     public final class BEL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BEL
         public static var sharedInstance = BEL(code: "BEL")
     }
 
     /// Currency BGL
     public final class BGL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BGL
         public static var sharedInstance = BGL(code: "BGL")
     }
 
     /// Currency BGM
     public final class BGM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BGM
         public static var sharedInstance = BGM(code: "BGM")
     }
 
     /// Currency BGN
     public final class BGN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BGN
         public static var sharedInstance = BGN(code: "BGN")
     }
 
     /// Currency BGO
     public final class BGO: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BGO
         public static var sharedInstance = BGO(code: "BGO")
     }
 
     /// Currency BHD
     public final class BHD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BHD
         public static var sharedInstance = BHD(code: "BHD")
     }
 
     /// Currency BIF
     public final class BIF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BIF
         public static var sharedInstance = BIF(code: "BIF")
     }
 
     /// Currency BMD
     public final class BMD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BMD
         public static var sharedInstance = BMD(code: "BMD")
     }
 
     /// Currency BND
     public final class BND: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BND
         public static var sharedInstance = BND(code: "BND")
     }
 
     /// Currency BOB
     public final class BOB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BOB
         public static var sharedInstance = BOB(code: "BOB")
     }
 
     /// Currency BOL
     public final class BOL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BOL
         public static var sharedInstance = BOL(code: "BOL")
     }
 
     /// Currency BOP
     public final class BOP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BOP
         public static var sharedInstance = BOP(code: "BOP")
     }
 
     /// Currency BOV
     public final class BOV: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BOV
         public static var sharedInstance = BOV(code: "BOV")
     }
 
     /// Currency BRB
     public final class BRB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BRB
         public static var sharedInstance = BRB(code: "BRB")
     }
 
     /// Currency BRC
     public final class BRC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BRC
         public static var sharedInstance = BRC(code: "BRC")
     }
 
     /// Currency BRE
     public final class BRE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BRE
         public static var sharedInstance = BRE(code: "BRE")
     }
 
     /// Currency BRL
     public final class BRL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BRL
         public static var sharedInstance = BRL(code: "BRL")
     }
 
     /// Currency BRN
     public final class BRN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BRN
         public static var sharedInstance = BRN(code: "BRN")
     }
 
     /// Currency BRR
     public final class BRR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BRR
         public static var sharedInstance = BRR(code: "BRR")
     }
 
     /// Currency BRZ
     public final class BRZ: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BRZ
         public static var sharedInstance = BRZ(code: "BRZ")
     }
 
     /// Currency BSD
     public final class BSD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BSD
         public static var sharedInstance = BSD(code: "BSD")
     }
 
     /// Currency BTN
     public final class BTN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BTN
         public static var sharedInstance = BTN(code: "BTN")
     }
 
     /// Currency BUK
     public final class BUK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BUK
         public static var sharedInstance = BUK(code: "BUK")
     }
 
     /// Currency BWP
     public final class BWP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BWP
         public static var sharedInstance = BWP(code: "BWP")
     }
 
     /// Currency BYB
     public final class BYB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BYB
         public static var sharedInstance = BYB(code: "BYB")
     }
 
     /// Currency BYR
     public final class BYR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BYR
         public static var sharedInstance = BYR(code: "BYR")
     }
 
     /// Currency BZD
     public final class BZD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.BZD
         public static var sharedInstance = BZD(code: "BZD")
     }
 
     /// Currency CAD
     public final class CAD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CAD
         public static var sharedInstance = CAD(code: "CAD")
     }
 
     /// Currency CDF
     public final class CDF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CDF
         public static var sharedInstance = CDF(code: "CDF")
     }
 
     /// Currency CHE
     public final class CHE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CHE
         public static var sharedInstance = CHE(code: "CHE")
     }
 
     /// Currency CHF
     public final class CHF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CHF
         public static var sharedInstance = CHF(code: "CHF")
     }
 
     /// Currency CHW
     public final class CHW: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CHW
         public static var sharedInstance = CHW(code: "CHW")
     }
 
     /// Currency CLE
     public final class CLE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CLE
         public static var sharedInstance = CLE(code: "CLE")
     }
 
     /// Currency CLF
     public final class CLF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CLF
         public static var sharedInstance = CLF(code: "CLF")
     }
 
     /// Currency CLP
     public final class CLP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CLP
         public static var sharedInstance = CLP(code: "CLP")
     }
 
     /// Currency CNX
     public final class CNX: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CNX
         public static var sharedInstance = CNX(code: "CNX")
     }
 
     /// Currency CNY
     public final class CNY: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CNY
         public static var sharedInstance = CNY(code: "CNY")
     }
 
     /// Currency COP
     public final class COP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.COP
         public static var sharedInstance = COP(code: "COP")
     }
 
     /// Currency COU
     public final class COU: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.COU
         public static var sharedInstance = COU(code: "COU")
     }
 
     /// Currency CRC
     public final class CRC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CRC
         public static var sharedInstance = CRC(code: "CRC")
     }
 
     /// Currency CSD
     public final class CSD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CSD
         public static var sharedInstance = CSD(code: "CSD")
     }
 
     /// Currency CSK
     public final class CSK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CSK
         public static var sharedInstance = CSK(code: "CSK")
     }
 
     /// Currency CUC
     public final class CUC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CUC
         public static var sharedInstance = CUC(code: "CUC")
     }
 
     /// Currency CUP
     public final class CUP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CUP
         public static var sharedInstance = CUP(code: "CUP")
     }
 
     /// Currency CVE
     public final class CVE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CVE
         public static var sharedInstance = CVE(code: "CVE")
     }
 
     /// Currency CYP
     public final class CYP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CYP
         public static var sharedInstance = CYP(code: "CYP")
     }
 
     /// Currency CZK
     public final class CZK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.CZK
         public static var sharedInstance = CZK(code: "CZK")
     }
 
     /// Currency DDM
     public final class DDM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.DDM
         public static var sharedInstance = DDM(code: "DDM")
     }
 
     /// Currency DEM
     public final class DEM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.DEM
         public static var sharedInstance = DEM(code: "DEM")
     }
 
     /// Currency DJF
     public final class DJF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.DJF
         public static var sharedInstance = DJF(code: "DJF")
     }
 
     /// Currency DKK
     public final class DKK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.DKK
         public static var sharedInstance = DKK(code: "DKK")
     }
 
     /// Currency DOP
     public final class DOP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.DOP
         public static var sharedInstance = DOP(code: "DOP")
     }
 
     /// Currency DZD
     public final class DZD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.DZD
         public static var sharedInstance = DZD(code: "DZD")
     }
 
     /// Currency ECS
     public final class ECS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ECS
         public static var sharedInstance = ECS(code: "ECS")
     }
 
     /// Currency ECV
     public final class ECV: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ECV
         public static var sharedInstance = ECV(code: "ECV")
     }
 
     /// Currency EEK
     public final class EEK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.EEK
         public static var sharedInstance = EEK(code: "EEK")
     }
 
     /// Currency EGP
     public final class EGP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.EGP
         public static var sharedInstance = EGP(code: "EGP")
     }
 
     /// Currency EQE
     public final class EQE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.EQE
         public static var sharedInstance = EQE(code: "EQE")
     }
 
     /// Currency ERN
     public final class ERN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ERN
         public static var sharedInstance = ERN(code: "ERN")
     }
 
     /// Currency ESA
     public final class ESA: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ESA
         public static var sharedInstance = ESA(code: "ESA")
     }
 
     /// Currency ESB
     public final class ESB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ESB
         public static var sharedInstance = ESB(code: "ESB")
     }
 
     /// Currency ESP
     public final class ESP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ESP
         public static var sharedInstance = ESP(code: "ESP")
     }
 
     /// Currency ETB
     public final class ETB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ETB
         public static var sharedInstance = ETB(code: "ETB")
     }
 
     /// Currency EUR
     public final class EUR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.EUR
         public static var sharedInstance = EUR(code: "EUR")
     }
 
     /// Currency FIM
     public final class FIM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.FIM
         public static var sharedInstance = FIM(code: "FIM")
     }
 
     /// Currency FJD
     public final class FJD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.FJD
         public static var sharedInstance = FJD(code: "FJD")
     }
 
     /// Currency FKP
     public final class FKP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.FKP
         public static var sharedInstance = FKP(code: "FKP")
     }
 
     /// Currency FRF
     public final class FRF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.FRF
         public static var sharedInstance = FRF(code: "FRF")
     }
 
     /// Currency GBP
     public final class GBP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GBP
         public static var sharedInstance = GBP(code: "GBP")
     }
 
     /// Currency GEK
     public final class GEK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GEK
         public static var sharedInstance = GEK(code: "GEK")
     }
 
     /// Currency GEL
     public final class GEL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GEL
         public static var sharedInstance = GEL(code: "GEL")
     }
 
     /// Currency GHC
     public final class GHC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GHC
         public static var sharedInstance = GHC(code: "GHC")
     }
 
     /// Currency GHS
     public final class GHS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GHS
         public static var sharedInstance = GHS(code: "GHS")
     }
 
     /// Currency GIP
     public final class GIP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GIP
         public static var sharedInstance = GIP(code: "GIP")
     }
 
     /// Currency GMD
     public final class GMD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GMD
         public static var sharedInstance = GMD(code: "GMD")
     }
 
     /// Currency GNF
     public final class GNF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GNF
         public static var sharedInstance = GNF(code: "GNF")
     }
 
     /// Currency GNS
     public final class GNS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GNS
         public static var sharedInstance = GNS(code: "GNS")
     }
 
     /// Currency GQE
     public final class GQE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GQE
         public static var sharedInstance = GQE(code: "GQE")
     }
 
     /// Currency GRD
     public final class GRD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GRD
         public static var sharedInstance = GRD(code: "GRD")
     }
 
     /// Currency GTQ
     public final class GTQ: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GTQ
         public static var sharedInstance = GTQ(code: "GTQ")
     }
 
     /// Currency GWE
     public final class GWE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GWE
         public static var sharedInstance = GWE(code: "GWE")
     }
 
     /// Currency GWP
     public final class GWP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GWP
         public static var sharedInstance = GWP(code: "GWP")
     }
 
     /// Currency GYD
     public final class GYD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.GYD
         public static var sharedInstance = GYD(code: "GYD")
     }
 
     /// Currency HKD
     public final class HKD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.HKD
         public static var sharedInstance = HKD(code: "HKD")
     }
 
     /// Currency HNL
     public final class HNL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.HNL
         public static var sharedInstance = HNL(code: "HNL")
     }
 
     /// Currency HRD
     public final class HRD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.HRD
         public static var sharedInstance = HRD(code: "HRD")
     }
 
     /// Currency HRK
     public final class HRK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.HRK
         public static var sharedInstance = HRK(code: "HRK")
     }
 
     /// Currency HTG
     public final class HTG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.HTG
         public static var sharedInstance = HTG(code: "HTG")
     }
 
     /// Currency HUF
     public final class HUF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.HUF
         public static var sharedInstance = HUF(code: "HUF")
     }
 
     /// Currency IDR
     public final class IDR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.IDR
         public static var sharedInstance = IDR(code: "IDR")
     }
 
     /// Currency IEP
     public final class IEP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.IEP
         public static var sharedInstance = IEP(code: "IEP")
     }
 
     /// Currency ILP
     public final class ILP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ILP
         public static var sharedInstance = ILP(code: "ILP")
     }
 
     /// Currency ILR
     public final class ILR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ILR
         public static var sharedInstance = ILR(code: "ILR")
     }
 
     /// Currency ILS
     public final class ILS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ILS
         public static var sharedInstance = ILS(code: "ILS")
     }
 
     /// Currency INR
     public final class INR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.INR
         public static var sharedInstance = INR(code: "INR")
     }
 
     /// Currency IQD
     public final class IQD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.IQD
         public static var sharedInstance = IQD(code: "IQD")
     }
 
     /// Currency IRR
     public final class IRR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.IRR
         public static var sharedInstance = IRR(code: "IRR")
     }
 
     /// Currency ISJ
     public final class ISJ: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ISJ
         public static var sharedInstance = ISJ(code: "ISJ")
     }
 
     /// Currency ISK
     public final class ISK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ISK
         public static var sharedInstance = ISK(code: "ISK")
     }
 
     /// Currency ITL
     public final class ITL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ITL
         public static var sharedInstance = ITL(code: "ITL")
     }
 
     /// Currency JMD
     public final class JMD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.JMD
         public static var sharedInstance = JMD(code: "JMD")
     }
 
     /// Currency JOD
     public final class JOD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.JOD
         public static var sharedInstance = JOD(code: "JOD")
     }
 
     /// Currency JPY
     public final class JPY: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.JPY
         public static var sharedInstance = JPY(code: "JPY")
     }
 
     /// Currency KES
     public final class KES: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KES
         public static var sharedInstance = KES(code: "KES")
     }
 
     /// Currency KGS
     public final class KGS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KGS
         public static var sharedInstance = KGS(code: "KGS")
     }
 
     /// Currency KHR
     public final class KHR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KHR
         public static var sharedInstance = KHR(code: "KHR")
     }
 
     /// Currency KMF
     public final class KMF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KMF
         public static var sharedInstance = KMF(code: "KMF")
     }
 
     /// Currency KPW
     public final class KPW: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KPW
         public static var sharedInstance = KPW(code: "KPW")
     }
 
     /// Currency KRH
     public final class KRH: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KRH
         public static var sharedInstance = KRH(code: "KRH")
     }
 
     /// Currency KRO
     public final class KRO: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KRO
         public static var sharedInstance = KRO(code: "KRO")
     }
 
     /// Currency KRW
     public final class KRW: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KRW
         public static var sharedInstance = KRW(code: "KRW")
     }
 
     /// Currency KWD
     public final class KWD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KWD
         public static var sharedInstance = KWD(code: "KWD")
     }
 
     /// Currency KYD
     public final class KYD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KYD
         public static var sharedInstance = KYD(code: "KYD")
     }
 
     /// Currency KZT
     public final class KZT: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.KZT
         public static var sharedInstance = KZT(code: "KZT")
     }
 
     /// Currency LAK
     public final class LAK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LAK
         public static var sharedInstance = LAK(code: "LAK")
     }
 
     /// Currency LBP
     public final class LBP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LBP
         public static var sharedInstance = LBP(code: "LBP")
     }
 
     /// Currency LKR
     public final class LKR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LKR
         public static var sharedInstance = LKR(code: "LKR")
     }
 
     /// Currency LRD
     public final class LRD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LRD
         public static var sharedInstance = LRD(code: "LRD")
     }
 
     /// Currency LSL
     public final class LSL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LSL
         public static var sharedInstance = LSL(code: "LSL")
     }
 
     /// Currency LSM
     public final class LSM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LSM
         public static var sharedInstance = LSM(code: "LSM")
     }
 
     /// Currency LTL
     public final class LTL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LTL
         public static var sharedInstance = LTL(code: "LTL")
     }
 
     /// Currency LTT
     public final class LTT: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LTT
         public static var sharedInstance = LTT(code: "LTT")
     }
 
     /// Currency LUC
     public final class LUC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LUC
         public static var sharedInstance = LUC(code: "LUC")
     }
 
     /// Currency LUF
     public final class LUF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LUF
         public static var sharedInstance = LUF(code: "LUF")
     }
 
     /// Currency LUL
     public final class LUL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LUL
         public static var sharedInstance = LUL(code: "LUL")
     }
 
     /// Currency LVL
     public final class LVL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LVL
         public static var sharedInstance = LVL(code: "LVL")
     }
 
     /// Currency LVR
     public final class LVR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LVR
         public static var sharedInstance = LVR(code: "LVR")
     }
 
     /// Currency LYD
     public final class LYD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.LYD
         public static var sharedInstance = LYD(code: "LYD")
     }
 
     /// Currency MAD
     public final class MAD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MAD
         public static var sharedInstance = MAD(code: "MAD")
     }
 
     /// Currency MAF
     public final class MAF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MAF
         public static var sharedInstance = MAF(code: "MAF")
     }
 
     /// Currency MCF
     public final class MCF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MCF
         public static var sharedInstance = MCF(code: "MCF")
     }
 
     /// Currency MDC
     public final class MDC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MDC
         public static var sharedInstance = MDC(code: "MDC")
     }
 
     /// Currency MDL
     public final class MDL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MDL
         public static var sharedInstance = MDL(code: "MDL")
     }
 
     /// Currency MGA
     public final class MGA: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MGA
         public static var sharedInstance = MGA(code: "MGA")
     }
 
     /// Currency MGF
     public final class MGF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MGF
         public static var sharedInstance = MGF(code: "MGF")
     }
 
     /// Currency MKD
     public final class MKD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MKD
         public static var sharedInstance = MKD(code: "MKD")
     }
 
     /// Currency MKN
     public final class MKN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MKN
         public static var sharedInstance = MKN(code: "MKN")
     }
 
     /// Currency MLF
     public final class MLF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MLF
         public static var sharedInstance = MLF(code: "MLF")
     }
 
     /// Currency MMK
     public final class MMK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MMK
         public static var sharedInstance = MMK(code: "MMK")
     }
 
     /// Currency MNT
     public final class MNT: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MNT
         public static var sharedInstance = MNT(code: "MNT")
     }
 
     /// Currency MOP
     public final class MOP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MOP
         public static var sharedInstance = MOP(code: "MOP")
     }
 
     /// Currency MRO
     public final class MRO: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MRO
         public static var sharedInstance = MRO(code: "MRO")
     }
 
     /// Currency MTL
     public final class MTL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MTL
         public static var sharedInstance = MTL(code: "MTL")
     }
 
     /// Currency MTP
     public final class MTP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MTP
         public static var sharedInstance = MTP(code: "MTP")
     }
 
     /// Currency MUR
     public final class MUR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MUR
         public static var sharedInstance = MUR(code: "MUR")
     }
 
     /// Currency MVP
     public final class MVP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MVP
         public static var sharedInstance = MVP(code: "MVP")
     }
 
     /// Currency MVR
     public final class MVR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MVR
         public static var sharedInstance = MVR(code: "MVR")
     }
 
     /// Currency MWK
     public final class MWK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MWK
         public static var sharedInstance = MWK(code: "MWK")
     }
 
     /// Currency MXN
     public final class MXN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MXN
         public static var sharedInstance = MXN(code: "MXN")
     }
 
     /// Currency MXP
     public final class MXP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MXP
         public static var sharedInstance = MXP(code: "MXP")
     }
 
     /// Currency MXV
     public final class MXV: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MXV
         public static var sharedInstance = MXV(code: "MXV")
     }
 
     /// Currency MYR
     public final class MYR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MYR
         public static var sharedInstance = MYR(code: "MYR")
     }
 
     /// Currency MZE
     public final class MZE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MZE
         public static var sharedInstance = MZE(code: "MZE")
     }
 
     /// Currency MZM
     public final class MZM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MZM
         public static var sharedInstance = MZM(code: "MZM")
     }
 
     /// Currency MZN
     public final class MZN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.MZN
         public static var sharedInstance = MZN(code: "MZN")
     }
 
     /// Currency NAD
     public final class NAD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NAD
         public static var sharedInstance = NAD(code: "NAD")
     }
 
     /// Currency NGN
     public final class NGN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NGN
         public static var sharedInstance = NGN(code: "NGN")
     }
 
     /// Currency NIC
     public final class NIC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NIC
         public static var sharedInstance = NIC(code: "NIC")
     }
 
     /// Currency NIO
     public final class NIO: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NIO
         public static var sharedInstance = NIO(code: "NIO")
     }
 
     /// Currency NLG
     public final class NLG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NLG
         public static var sharedInstance = NLG(code: "NLG")
     }
 
     /// Currency NOK
     public final class NOK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NOK
         public static var sharedInstance = NOK(code: "NOK")
     }
 
     /// Currency NPR
     public final class NPR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NPR
         public static var sharedInstance = NPR(code: "NPR")
     }
 
     /// Currency NZD
     public final class NZD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.NZD
         public static var sharedInstance = NZD(code: "NZD")
     }
 
     /// Currency OMR
     public final class OMR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.OMR
         public static var sharedInstance = OMR(code: "OMR")
     }
 
     /// Currency PAB
     public final class PAB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PAB
         public static var sharedInstance = PAB(code: "PAB")
     }
 
     /// Currency PEI
     public final class PEI: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PEI
         public static var sharedInstance = PEI(code: "PEI")
     }
 
     /// Currency PEN
     public final class PEN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PEN
         public static var sharedInstance = PEN(code: "PEN")
     }
 
     /// Currency PES
     public final class PES: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PES
         public static var sharedInstance = PES(code: "PES")
     }
 
     /// Currency PGK
     public final class PGK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PGK
         public static var sharedInstance = PGK(code: "PGK")
     }
 
     /// Currency PHP
     public final class PHP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PHP
         public static var sharedInstance = PHP(code: "PHP")
     }
 
     /// Currency PKR
     public final class PKR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PKR
         public static var sharedInstance = PKR(code: "PKR")
     }
 
     /// Currency PLN
     public final class PLN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PLN
         public static var sharedInstance = PLN(code: "PLN")
     }
 
     /// Currency PLZ
     public final class PLZ: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PLZ
         public static var sharedInstance = PLZ(code: "PLZ")
     }
 
     /// Currency PTE
     public final class PTE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PTE
         public static var sharedInstance = PTE(code: "PTE")
     }
 
     /// Currency PYG
     public final class PYG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.PYG
         public static var sharedInstance = PYG(code: "PYG")
     }
 
     /// Currency QAR
     public final class QAR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.QAR
         public static var sharedInstance = QAR(code: "QAR")
     }
 
     /// Currency RHD
     public final class RHD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.RHD
         public static var sharedInstance = RHD(code: "RHD")
     }
 
     /// Currency ROL
     public final class ROL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ROL
         public static var sharedInstance = ROL(code: "ROL")
     }
 
     /// Currency RON
     public final class RON: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.RON
         public static var sharedInstance = RON(code: "RON")
     }
 
     /// Currency RSD
     public final class RSD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.RSD
         public static var sharedInstance = RSD(code: "RSD")
     }
 
     /// Currency RUB
     public final class RUB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.RUB
         public static var sharedInstance = RUB(code: "RUB")
     }
 
     /// Currency RUR
     public final class RUR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.RUR
         public static var sharedInstance = RUR(code: "RUR")
     }
 
     /// Currency RWF
     public final class RWF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.RWF
         public static var sharedInstance = RWF(code: "RWF")
     }
 
     /// Currency SAR
     public final class SAR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SAR
         public static var sharedInstance = SAR(code: "SAR")
     }
 
     /// Currency SBD
     public final class SBD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SBD
         public static var sharedInstance = SBD(code: "SBD")
     }
 
     /// Currency SCR
     public final class SCR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SCR
         public static var sharedInstance = SCR(code: "SCR")
     }
 
     /// Currency SDD
     public final class SDD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SDD
         public static var sharedInstance = SDD(code: "SDD")
     }
 
     /// Currency SDG
     public final class SDG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SDG
         public static var sharedInstance = SDG(code: "SDG")
     }
 
     /// Currency SDP
     public final class SDP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SDP
         public static var sharedInstance = SDP(code: "SDP")
     }
 
     /// Currency SEK
     public final class SEK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SEK
         public static var sharedInstance = SEK(code: "SEK")
     }
 
     /// Currency SGD
     public final class SGD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SGD
         public static var sharedInstance = SGD(code: "SGD")
     }
 
     /// Currency SHP
     public final class SHP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SHP
         public static var sharedInstance = SHP(code: "SHP")
     }
 
     /// Currency SIT
     public final class SIT: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SIT
         public static var sharedInstance = SIT(code: "SIT")
     }
 
     /// Currency SKK
     public final class SKK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SKK
         public static var sharedInstance = SKK(code: "SKK")
     }
 
     /// Currency SLL
     public final class SLL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SLL
         public static var sharedInstance = SLL(code: "SLL")
     }
 
     /// Currency SOS
     public final class SOS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SOS
         public static var sharedInstance = SOS(code: "SOS")
     }
 
     /// Currency SRD
     public final class SRD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SRD
         public static var sharedInstance = SRD(code: "SRD")
     }
 
     /// Currency SRG
     public final class SRG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SRG
         public static var sharedInstance = SRG(code: "SRG")
     }
 
     /// Currency SSP
     public final class SSP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SSP
         public static var sharedInstance = SSP(code: "SSP")
     }
 
     /// Currency STD
     public final class STD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.STD
         public static var sharedInstance = STD(code: "STD")
     }
 
     /// Currency SUR
     public final class SUR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SUR
         public static var sharedInstance = SUR(code: "SUR")
     }
 
     /// Currency SVC
     public final class SVC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SVC
         public static var sharedInstance = SVC(code: "SVC")
     }
 
     /// Currency SYP
     public final class SYP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SYP
         public static var sharedInstance = SYP(code: "SYP")
     }
 
     /// Currency SZL
     public final class SZL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.SZL
         public static var sharedInstance = SZL(code: "SZL")
     }
 
     /// Currency THB
     public final class THB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.THB
         public static var sharedInstance = THB(code: "THB")
     }
 
     /// Currency TJR
     public final class TJR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TJR
         public static var sharedInstance = TJR(code: "TJR")
     }
 
     /// Currency TJS
     public final class TJS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TJS
         public static var sharedInstance = TJS(code: "TJS")
     }
 
     /// Currency TMM
     public final class TMM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TMM
         public static var sharedInstance = TMM(code: "TMM")
     }
 
     /// Currency TMT
     public final class TMT: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TMT
         public static var sharedInstance = TMT(code: "TMT")
     }
 
     /// Currency TND
     public final class TND: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TND
         public static var sharedInstance = TND(code: "TND")
     }
 
     /// Currency TOP
     public final class TOP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TOP
         public static var sharedInstance = TOP(code: "TOP")
     }
 
     /// Currency TPE
     public final class TPE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TPE
         public static var sharedInstance = TPE(code: "TPE")
     }
 
     /// Currency TRL
     public final class TRL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TRL
         public static var sharedInstance = TRL(code: "TRL")
     }
 
     /// Currency TRY
     public final class TRY: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TRY
         public static var sharedInstance = TRY(code: "TRY")
     }
 
     /// Currency TTD
     public final class TTD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TTD
         public static var sharedInstance = TTD(code: "TTD")
     }
 
     /// Currency TWD
     public final class TWD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TWD
         public static var sharedInstance = TWD(code: "TWD")
     }
 
     /// Currency TZS
     public final class TZS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.TZS
         public static var sharedInstance = TZS(code: "TZS")
     }
 
     /// Currency UAH
     public final class UAH: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UAH
         public static var sharedInstance = UAH(code: "UAH")
     }
 
     /// Currency UAK
     public final class UAK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UAK
         public static var sharedInstance = UAK(code: "UAK")
     }
 
     /// Currency UGS
     public final class UGS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UGS
         public static var sharedInstance = UGS(code: "UGS")
     }
 
     /// Currency UGX
     public final class UGX: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UGX
         public static var sharedInstance = UGX(code: "UGX")
     }
 
     /// Currency USD
     public final class USD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.USD
         public static var sharedInstance = USD(code: "USD")
     }
 
     /// Currency USN
     public final class USN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.USN
         public static var sharedInstance = USN(code: "USN")
     }
 
     /// Currency USS
     public final class USS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.USS
         public static var sharedInstance = USS(code: "USS")
     }
 
     /// Currency UYI
     public final class UYI: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UYI
         public static var sharedInstance = UYI(code: "UYI")
     }
 
     /// Currency UYP
     public final class UYP: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UYP
         public static var sharedInstance = UYP(code: "UYP")
     }
 
     /// Currency UYU
     public final class UYU: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UYU
         public static var sharedInstance = UYU(code: "UYU")
     }
 
     /// Currency UZS
     public final class UZS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.UZS
         public static var sharedInstance = UZS(code: "UZS")
     }
 
     /// Currency VEB
     public final class VEB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.VEB
         public static var sharedInstance = VEB(code: "VEB")
     }
 
     /// Currency VEF
     public final class VEF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.VEF
         public static var sharedInstance = VEF(code: "VEF")
     }
 
     /// Currency VND
     public final class VND: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.VND
         public static var sharedInstance = VND(code: "VND")
     }
 
     /// Currency VNN
     public final class VNN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.VNN
         public static var sharedInstance = VNN(code: "VNN")
     }
 
     /// Currency VUV
     public final class VUV: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.VUV
         public static var sharedInstance = VUV(code: "VUV")
     }
 
     /// Currency WST
     public final class WST: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.WST
         public static var sharedInstance = WST(code: "WST")
     }
 
     /// Currency XAF
     public final class XAF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XAF
         public static var sharedInstance = XAF(code: "XAF")
     }
 
     /// Currency XAG
     public final class XAG: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XAG
         public static var sharedInstance = XAG(code: "XAG")
     }
 
     /// Currency XAU
     public final class XAU: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XAU
         public static var sharedInstance = XAU(code: "XAU")
     }
 
     /// Currency XBA
     public final class XBA: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XBA
         public static var sharedInstance = XBA(code: "XBA")
     }
 
     /// Currency XBB
     public final class XBB: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XBB
         public static var sharedInstance = XBB(code: "XBB")
     }
 
     /// Currency XBC
     public final class XBC: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XBC
         public static var sharedInstance = XBC(code: "XBC")
     }
 
     /// Currency XBD
     public final class XBD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XBD
         public static var sharedInstance = XBD(code: "XBD")
     }
 
     /// Currency XCD
     public final class XCD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XCD
         public static var sharedInstance = XCD(code: "XCD")
     }
 
     /// Currency XDR
     public final class XDR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XDR
         public static var sharedInstance = XDR(code: "XDR")
     }
 
     /// Currency XEU
     public final class XEU: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XEU
         public static var sharedInstance = XEU(code: "XEU")
     }
 
     /// Currency XFO
     public final class XFO: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XFO
         public static var sharedInstance = XFO(code: "XFO")
     }
 
     /// Currency XFU
     public final class XFU: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XFU
         public static var sharedInstance = XFU(code: "XFU")
     }
 
     /// Currency XOF
     public final class XOF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XOF
         public static var sharedInstance = XOF(code: "XOF")
     }
 
     /// Currency XPD
     public final class XPD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XPD
         public static var sharedInstance = XPD(code: "XPD")
     }
 
     /// Currency XPF
     public final class XPF: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XPF
         public static var sharedInstance = XPF(code: "XPF")
     }
 
     /// Currency XPT
     public final class XPT: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XPT
         public static var sharedInstance = XPT(code: "XPT")
     }
 
     /// Currency XRE
     public final class XRE: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XRE
         public static var sharedInstance = XRE(code: "XRE")
     }
 
     /// Currency XSU
     public final class XSU: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XSU
         public static var sharedInstance = XSU(code: "XSU")
     }
 
     /// Currency XTS
     public final class XTS: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XTS
         public static var sharedInstance = XTS(code: "XTS")
     }
 
     /// Currency XUA
     public final class XUA: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XUA
         public static var sharedInstance = XUA(code: "XUA")
     }
 
     /// Currency XXX
     public final class XXX: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.XXX
         public static var sharedInstance = XXX(code: "XXX")
     }
 
     /// Currency YDD
     public final class YDD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.YDD
         public static var sharedInstance = YDD(code: "YDD")
     }
 
     /// Currency YER
     public final class YER: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.YER
         public static var sharedInstance = YER(code: "YER")
     }
 
     /// Currency YUD
     public final class YUD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.YUD
         public static var sharedInstance = YUD(code: "YUD")
     }
 
     /// Currency YUM
     public final class YUM: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.YUM
         public static var sharedInstance = YUM(code: "YUM")
     }
 
     /// Currency YUN
     public final class YUN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.YUN
         public static var sharedInstance = YUN(code: "YUN")
     }
 
     /// Currency YUR
     public final class YUR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.YUR
         public static var sharedInstance = YUR(code: "YUR")
     }
 
     /// Currency ZAL
     public final class ZAL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZAL
         public static var sharedInstance = ZAL(code: "ZAL")
     }
 
     /// Currency ZAR
     public final class ZAR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZAR
         public static var sharedInstance = ZAR(code: "ZAR")
     }
 
     /// Currency ZMK
     public final class ZMK: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZMK
         public static var sharedInstance = ZMK(code: "ZMK")
     }
 
     /// Currency ZMW
     public final class ZMW: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZMW
         public static var sharedInstance = ZMW(code: "ZMW")
     }
 
     /// Currency ZRN
     public final class ZRN: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZRN
         public static var sharedInstance = ZRN(code: "ZRN")
     }
 
     /// Currency ZRZ
     public final class ZRZ: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZRZ
         public static var sharedInstance = ZRZ(code: "ZRZ")
     }
 
     /// Currency ZWL
     public final class ZWL: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZWL
         public static var sharedInstance = ZWL(code: "ZWL")
     }
 
     /// Currency ZWR
     public final class ZWR: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZWR
         public static var sharedInstance = ZWR(code: "ZWR")
     }
 
     /// Currency ZWD
     public final class ZWD: Currency.Base, ISOCurrencyType {
+        /// - returns: lazy shared instance for Currency.ZWD
         public static var sharedInstance = ZWD(code: "ZWD")
     }
 }
@@ -2127,13 +2426,20 @@ public typealias ZWD = _Money<Currency.ZWD>
 
 // MARK: - Country Types
 
+/**
+ An enum of countries which speak Afrikaans.
+*/
 public enum AfrikaansSpeakingCountry: CountryType {
 
+    /// Namibia is a country which speaks Afrikaans.
     case Namibia
+    /// South Africa is a country which speaks Afrikaans.
     case SouthAfrica
 
+    /// - returns: an Array of all the countries which speak Afrikaans
     public static let all: [AfrikaansSpeakingCountry] = [ .Namibia, .SouthAfrica ]
 
+    /// - returns: the country identifier of a specific Afrikaans speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Namibia:
@@ -2144,14 +2450,22 @@ public enum AfrikaansSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Albanian.
+*/
 public enum AlbanianSpeakingCountry: CountryType {
 
+    /// Albania is a country which speaks Albanian.
     case Albania
+    /// Macedonia is a country which speaks Albanian.
     case Macedonia
+    /// Kosovo is a country which speaks Albanian.
     case Kosovo
 
+    /// - returns: an Array of all the countries which speak Albanian
     public static let all: [AlbanianSpeakingCountry] = [ .Albania, .Macedonia, .Kosovo ]
 
+    /// - returns: the country identifier of a specific Albanian speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Albania:
@@ -2164,39 +2478,72 @@ public enum AlbanianSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Arabic.
+*/
 public enum ArabicSpeakingCountry: CountryType {
 
+    /// World is a country which speaks Arabic.
     case World
+    /// United Arab Emirates is a country which speaks Arabic.
     case UnitedArabEmirates
+    /// Bahrain is a country which speaks Arabic.
     case Bahrain
+    /// Djibouti is a country which speaks Arabic.
     case Djibouti
+    /// Algeria is a country which speaks Arabic.
     case Algeria
+    /// Egypt is a country which speaks Arabic.
     case Egypt
+    /// Western Sahara is a country which speaks Arabic.
     case WesternSahara
+    /// Eritrea is a country which speaks Arabic.
     case Eritrea
+    /// Israel is a country which speaks Arabic.
     case Israel
+    /// Iraq is a country which speaks Arabic.
     case Iraq
+    /// Jordan is a country which speaks Arabic.
     case Jordan
+    /// Comoros is a country which speaks Arabic.
     case Comoros
+    /// Kuwait is a country which speaks Arabic.
     case Kuwait
+    /// Lebanon is a country which speaks Arabic.
     case Lebanon
+    /// Libya is a country which speaks Arabic.
     case Libya
+    /// Morocco is a country which speaks Arabic.
     case Morocco
+    /// Mauritania is a country which speaks Arabic.
     case Mauritania
+    /// Oman is a country which speaks Arabic.
     case Oman
+    /// Palestinian Territories is a country which speaks Arabic.
     case PalestinianTerritories
+    /// Qatar is a country which speaks Arabic.
     case Qatar
+    /// Saudi Arabia is a country which speaks Arabic.
     case SaudiArabia
+    /// Sudan is a country which speaks Arabic.
     case Sudan
+    /// Somalia is a country which speaks Arabic.
     case Somalia
+    /// South Sudan is a country which speaks Arabic.
     case SouthSudan
+    /// Syria is a country which speaks Arabic.
     case Syria
+    /// Chad is a country which speaks Arabic.
     case Chad
+    /// Tunisia is a country which speaks Arabic.
     case Tunisia
+    /// Yemen is a country which speaks Arabic.
     case Yemen
 
+    /// - returns: an Array of all the countries which speak Arabic
     public static let all: [ArabicSpeakingCountry] = [ .World, .UnitedArabEmirates, .Bahrain, .Djibouti, .Algeria, .Egypt, .WesternSahara, .Eritrea, .Israel, .Iraq, .Jordan, .Comoros, .Kuwait, .Lebanon, .Libya, .Morocco, .Mauritania, .Oman, .PalestinianTerritories, .Qatar, .SaudiArabia, .Sudan, .Somalia, .SouthSudan, .Syria, .Chad, .Tunisia, .Yemen ]
 
+    /// - returns: the country identifier of a specific Arabic speaking country.
     public var countryIdentifier: String {
         switch self {
         case .World:
@@ -2259,13 +2606,20 @@ public enum ArabicSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Bengali.
+*/
 public enum BengaliSpeakingCountry: CountryType {
 
+    /// Bangladesh is a country which speaks Bengali.
     case Bangladesh
+    /// India is a country which speaks Bengali.
     case India
 
+    /// - returns: an Array of all the countries which speak Bengali
     public static let all: [BengaliSpeakingCountry] = [ .Bangladesh, .India ]
 
+    /// - returns: the country identifier of a specific Bengali speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Bangladesh:
@@ -2276,15 +2630,24 @@ public enum BengaliSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Catalan.
+*/
 public enum CatalanSpeakingCountry: CountryType {
 
+    /// Andorra is a country which speaks Catalan.
     case Andorra
+    /// Spain is a country which speaks Catalan.
     case Spain
+    /// France is a country which speaks Catalan.
     case France
+    /// Italy is a country which speaks Catalan.
     case Italy
 
+    /// - returns: an Array of all the countries which speak Catalan
     public static let all: [CatalanSpeakingCountry] = [ .Andorra, .Spain, .France, .Italy ]
 
+    /// - returns: the country identifier of a specific Catalan speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Andorra:
@@ -2299,13 +2662,20 @@ public enum CatalanSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Central Kurdish.
+*/
 public enum CentralKurdishSpeakingCountry: CountryType {
 
+    /// Iraq is a country which speaks Central Kurdish.
     case Iraq
+    /// Iran is a country which speaks Central Kurdish.
     case Iran
 
+    /// - returns: an Array of all the countries which speak Central Kurdish
     public static let all: [CentralKurdishSpeakingCountry] = [ .Iraq, .Iran ]
 
+    /// - returns: the country identifier of a specific Central Kurdish speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Iraq:
@@ -2316,16 +2686,26 @@ public enum CentralKurdishSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Chinese.
+*/
 public enum ChineseSpeakingCountry: CountryType {
 
+    /// China is a country which speaks Chinese.
     case China
+    /// Hong Kong SAR China is a country which speaks Chinese.
     case HongKongSarChina
+    /// Macau SAR China is a country which speaks Chinese.
     case MacauSarChina
+    /// Singapore is a country which speaks Chinese.
     case Singapore
+    /// Taiwan is a country which speaks Chinese.
     case Taiwan
 
+    /// - returns: an Array of all the countries which speak Chinese
     public static let all: [ChineseSpeakingCountry] = [ .China, .HongKongSarChina, .MacauSarChina, .Singapore, .Taiwan ]
 
+    /// - returns: the country identifier of a specific Chinese speaking country.
     public var countryIdentifier: String {
         switch self {
         case .China:
@@ -2342,13 +2722,20 @@ public enum ChineseSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Croatian.
+*/
 public enum CroatianSpeakingCountry: CountryType {
 
+    /// Bosnia & Herzegovina is a country which speaks Croatian.
     case BosniaHerzegovina
+    /// Croatia is a country which speaks Croatian.
     case Croatia
 
+    /// - returns: an Array of all the countries which speak Croatian
     public static let all: [CroatianSpeakingCountry] = [ .BosniaHerzegovina, .Croatia ]
 
+    /// - returns: the country identifier of a specific Croatian speaking country.
     public var countryIdentifier: String {
         switch self {
         case .BosniaHerzegovina:
@@ -2359,13 +2746,20 @@ public enum CroatianSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Danish.
+*/
 public enum DanishSpeakingCountry: CountryType {
 
+    /// Denmark is a country which speaks Danish.
     case Denmark
+    /// Greenland is a country which speaks Danish.
     case Greenland
 
+    /// - returns: an Array of all the countries which speak Danish
     public static let all: [DanishSpeakingCountry] = [ .Denmark, .Greenland ]
 
+    /// - returns: the country identifier of a specific Danish speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Denmark:
@@ -2376,18 +2770,30 @@ public enum DanishSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Dutch.
+*/
 public enum DutchSpeakingCountry: CountryType {
 
+    /// Aruba is a country which speaks Dutch.
     case Aruba
+    /// Belgium is a country which speaks Dutch.
     case Belgium
+    /// Caribbean Netherlands is a country which speaks Dutch.
     case CaribbeanNetherlands
+    /// Curaçao is a country which speaks Dutch.
     case Curaçao
+    /// Netherlands is a country which speaks Dutch.
     case Netherlands
+    /// Suriname is a country which speaks Dutch.
     case Suriname
+    /// Sint Maarten is a country which speaks Dutch.
     case SintMaarten
 
+    /// - returns: an Array of all the countries which speak Dutch
     public static let all: [DutchSpeakingCountry] = [ .Aruba, .Belgium, .CaribbeanNetherlands, .Curaçao, .Netherlands, .Suriname, .SintMaarten ]
 
+    /// - returns: the country identifier of a specific Dutch speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Aruba:
@@ -2408,137 +2814,268 @@ public enum DutchSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak English.
+*/
 public enum EnglishSpeakingCountry: CountryType {
 
+    /// World is a country which speaks English.
     case World
+    /// Europe is a country which speaks English.
     case Europe
+    /// Andorra is a country which speaks English.
     case Andorra
+    /// Antigua & Barbuda is a country which speaks English.
     case AntiguaBarbuda
+    /// Anguilla is a country which speaks English.
     case Anguilla
+    /// Albania is a country which speaks English.
     case Albania
+    /// American Samoa is a country which speaks English.
     case AmericanSamoa
+    /// Austria is a country which speaks English.
     case Austria
+    /// Australia is a country which speaks English.
     case Australia
+    /// Bosnia & Herzegovina is a country which speaks English.
     case BosniaHerzegovina
+    /// Barbados is a country which speaks English.
     case Barbados
+    /// Belgium is a country which speaks English.
     case Belgium
+    /// Bermuda is a country which speaks English.
     case Bermuda
+    /// Bahamas is a country which speaks English.
     case Bahamas
+    /// Botswana is a country which speaks English.
     case Botswana
+    /// Belize is a country which speaks English.
     case Belize
+    /// Canada is a country which speaks English.
     case Canada
+    /// Cocos (Keeling) Islands is a country which speaks English.
     case CocosKeelingIslands
+    /// Switzerland is a country which speaks English.
     case Switzerland
+    /// Cook Islands is a country which speaks English.
     case CookIslands
+    /// Cameroon is a country which speaks English.
     case Cameroon
+    /// Christmas Island is a country which speaks English.
     case ChristmasIsland
+    /// Cyprus is a country which speaks English.
     case Cyprus
+    /// Czech Republic is a country which speaks English.
     case CzechRepublic
+    /// Germany is a country which speaks English.
     case Germany
+    /// Diego Garcia is a country which speaks English.
     case DiegoGarcia
+    /// Denmark is a country which speaks English.
     case Denmark
+    /// Dominica is a country which speaks English.
     case Dominica
+    /// Estonia is a country which speaks English.
     case Estonia
+    /// Eritrea is a country which speaks English.
     case Eritrea
+    /// Spain is a country which speaks English.
     case Spain
+    /// Finland is a country which speaks English.
     case Finland
+    /// Fiji is a country which speaks English.
     case Fiji
+    /// Falkland Islands is a country which speaks English.
     case FalklandIslands
+    /// Micronesia is a country which speaks English.
     case Micronesia
+    /// France is a country which speaks English.
     case France
+    /// United Kingdom is a country which speaks English.
     case UnitedKingdom
+    /// Grenada is a country which speaks English.
     case Grenada
+    /// Guernsey is a country which speaks English.
     case Guernsey
+    /// Ghana is a country which speaks English.
     case Ghana
+    /// Gibraltar is a country which speaks English.
     case Gibraltar
+    /// Gambia is a country which speaks English.
     case Gambia
+    /// Greece is a country which speaks English.
     case Greece
+    /// Guam is a country which speaks English.
     case Guam
+    /// Guyana is a country which speaks English.
     case Guyana
+    /// Hong Kong SAR China is a country which speaks English.
     case HongKongSarChina
+    /// Croatia is a country which speaks English.
     case Croatia
+    /// Hungary is a country which speaks English.
     case Hungary
+    /// Ireland is a country which speaks English.
     case Ireland
+    /// Israel is a country which speaks English.
     case Israel
+    /// Isle of Man is a country which speaks English.
     case IsleOfMan
+    /// India is a country which speaks English.
     case India
+    /// British Indian Ocean Territory is a country which speaks English.
     case BritishIndianOceanTerritory
+    /// Iceland is a country which speaks English.
     case Iceland
+    /// Italy is a country which speaks English.
     case Italy
+    /// Jersey is a country which speaks English.
     case Jersey
+    /// Jamaica is a country which speaks English.
     case Jamaica
+    /// Kenya is a country which speaks English.
     case Kenya
+    /// Kiribati is a country which speaks English.
     case Kiribati
+    /// St. Kitts & Nevis is a country which speaks English.
     case StKittsNevis
+    /// Cayman Islands is a country which speaks English.
     case CaymanIslands
+    /// St. Lucia is a country which speaks English.
     case StLucia
+    /// Liberia is a country which speaks English.
     case Liberia
+    /// Lesotho is a country which speaks English.
     case Lesotho
+    /// Lithuania is a country which speaks English.
     case Lithuania
+    /// Luxembourg is a country which speaks English.
     case Luxembourg
+    /// Latvia is a country which speaks English.
     case Latvia
+    /// Montenegro is a country which speaks English.
     case Montenegro
+    /// Madagascar is a country which speaks English.
     case Madagascar
+    /// Marshall Islands is a country which speaks English.
     case MarshallIslands
+    /// Macau SAR China is a country which speaks English.
     case MacauSarChina
+    /// Northern Mariana Islands is a country which speaks English.
     case NorthernMarianaIslands
+    /// Montserrat is a country which speaks English.
     case Montserrat
+    /// Malta is a country which speaks English.
     case Malta
+    /// Mauritius is a country which speaks English.
     case Mauritius
+    /// Malawi is a country which speaks English.
     case Malawi
+    /// Malaysia is a country which speaks English.
     case Malaysia
+    /// Namibia is a country which speaks English.
     case Namibia
+    /// Norfolk Island is a country which speaks English.
     case NorfolkIsland
+    /// Nigeria is a country which speaks English.
     case Nigeria
+    /// Netherlands is a country which speaks English.
     case Netherlands
+    /// Norway is a country which speaks English.
     case Norway
+    /// Nauru is a country which speaks English.
     case Nauru
+    /// Niue is a country which speaks English.
     case Niue
+    /// New Zealand is a country which speaks English.
     case NewZealand
+    /// Papua New Guinea is a country which speaks English.
     case PapuaNewGuinea
+    /// Philippines is a country which speaks English.
     case Philippines
+    /// Pakistan is a country which speaks English.
     case Pakistan
+    /// Poland is a country which speaks English.
     case Poland
+    /// Pitcairn Islands is a country which speaks English.
     case PitcairnIslands
+    /// Puerto Rico is a country which speaks English.
     case PuertoRico
+    /// Portugal is a country which speaks English.
     case Portugal
+    /// Palau is a country which speaks English.
     case Palau
+    /// Romania is a country which speaks English.
     case Romania
+    /// Russia is a country which speaks English.
     case Russia
+    /// Rwanda is a country which speaks English.
     case Rwanda
+    /// Solomon Islands is a country which speaks English.
     case SolomonIslands
+    /// Seychelles is a country which speaks English.
     case Seychelles
+    /// Sudan is a country which speaks English.
     case Sudan
+    /// Sweden is a country which speaks English.
     case Sweden
+    /// Singapore is a country which speaks English.
     case Singapore
+    /// St. Helena is a country which speaks English.
     case StHelena
+    /// Slovenia is a country which speaks English.
     case Slovenia
+    /// Slovakia is a country which speaks English.
     case Slovakia
+    /// Sierra Leone is a country which speaks English.
     case SierraLeone
+    /// South Sudan is a country which speaks English.
     case SouthSudan
+    /// Sint Maarten is a country which speaks English.
     case SintMaarten
+    /// Swaziland is a country which speaks English.
     case Swaziland
+    /// Turks & Caicos Islands is a country which speaks English.
     case TurksCaicosIslands
+    /// Tokelau is a country which speaks English.
     case Tokelau
+    /// Tonga is a country which speaks English.
     case Tonga
+    /// Turkey is a country which speaks English.
     case Turkey
+    /// Trinidad & Tobago is a country which speaks English.
     case TrinidadTobago
+    /// Tuvalu is a country which speaks English.
     case Tuvalu
+    /// Tanzania is a country which speaks English.
     case Tanzania
+    /// Uganda is a country which speaks English.
     case Uganda
+    /// U.S. Outlying Islands is a country which speaks English.
     case USOutlyingIslands
+    /// United States is a country which speaks English.
     case UnitedStates
+    /// St. Vincent & Grenadines is a country which speaks English.
     case StVincentGrenadines
+    /// British Virgin Islands is a country which speaks English.
     case BritishVirginIslands
+    /// U.S. Virgin Islands is a country which speaks English.
     case USVirginIslands
+    /// Vanuatu is a country which speaks English.
     case Vanuatu
+    /// Samoa is a country which speaks English.
     case Samoa
+    /// South Africa is a country which speaks English.
     case SouthAfrica
+    /// Zambia is a country which speaks English.
     case Zambia
+    /// Zimbabwe is a country which speaks English.
     case Zimbabwe
 
+    /// - returns: an Array of all the countries which speak English
     public static let all: [EnglishSpeakingCountry] = [ .World, .Europe, .Andorra, .AntiguaBarbuda, .Anguilla, .Albania, .AmericanSamoa, .Austria, .Australia, .BosniaHerzegovina, .Barbados, .Belgium, .Bermuda, .Bahamas, .Botswana, .Belize, .Canada, .CocosKeelingIslands, .Switzerland, .CookIslands, .Cameroon, .ChristmasIsland, .Cyprus, .CzechRepublic, .Germany, .DiegoGarcia, .Denmark, .Dominica, .Estonia, .Eritrea, .Spain, .Finland, .Fiji, .FalklandIslands, .Micronesia, .France, .UnitedKingdom, .Grenada, .Guernsey, .Ghana, .Gibraltar, .Gambia, .Greece, .Guam, .Guyana, .HongKongSarChina, .Croatia, .Hungary, .Ireland, .Israel, .IsleOfMan, .India, .BritishIndianOceanTerritory, .Iceland, .Italy, .Jersey, .Jamaica, .Kenya, .Kiribati, .StKittsNevis, .CaymanIslands, .StLucia, .Liberia, .Lesotho, .Lithuania, .Luxembourg, .Latvia, .Montenegro, .Madagascar, .MarshallIslands, .MacauSarChina, .NorthernMarianaIslands, .Montserrat, .Malta, .Mauritius, .Malawi, .Malaysia, .Namibia, .NorfolkIsland, .Nigeria, .Netherlands, .Norway, .Nauru, .Niue, .NewZealand, .PapuaNewGuinea, .Philippines, .Pakistan, .Poland, .PitcairnIslands, .PuertoRico, .Portugal, .Palau, .Romania, .Russia, .Rwanda, .SolomonIslands, .Seychelles, .Sudan, .Sweden, .Singapore, .StHelena, .Slovenia, .Slovakia, .SierraLeone, .SouthSudan, .SintMaarten, .Swaziland, .TurksCaicosIslands, .Tokelau, .Tonga, .Turkey, .TrinidadTobago, .Tuvalu, .Tanzania, .Uganda, .USOutlyingIslands, .UnitedStates, .StVincentGrenadines, .BritishVirginIslands, .USVirginIslands, .Vanuatu, .Samoa, .SouthAfrica, .Zambia, .Zimbabwe ]
 
+    /// - returns: the country identifier of a specific English speaking country.
     public var countryIdentifier: String {
         switch self {
         case .World:
@@ -2797,13 +3334,20 @@ public enum EnglishSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Ewe.
+*/
 public enum EweSpeakingCountry: CountryType {
 
+    /// Ghana is a country which speaks Ewe.
     case Ghana
+    /// Togo is a country which speaks Ewe.
     case Togo
 
+    /// - returns: an Array of all the countries which speak Ewe
     public static let all: [EweSpeakingCountry] = [ .Ghana, .Togo ]
 
+    /// - returns: the country identifier of a specific Ewe speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Ghana:
@@ -2814,57 +3358,108 @@ public enum EweSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak French.
+*/
 public enum FrenchSpeakingCountry: CountryType {
 
+    /// Belgium is a country which speaks French.
     case Belgium
+    /// Burkina Faso is a country which speaks French.
     case BurkinaFaso
+    /// Burundi is a country which speaks French.
     case Burundi
+    /// Benin is a country which speaks French.
     case Benin
+    /// St. Barthélemy is a country which speaks French.
     case StBarthélemy
+    /// Canada is a country which speaks French.
     case Canada
+    /// Congo - Kinshasa is a country which speaks French.
     case CongoKinshasa
+    /// Central African Republic is a country which speaks French.
     case CentralAfricanRepublic
+    /// Congo - Brazzaville is a country which speaks French.
     case CongoBrazzaville
+    /// Switzerland is a country which speaks French.
     case Switzerland
+    /// Côte d’Ivoire is a country which speaks French.
     case CôteDivoire
+    /// Cameroon is a country which speaks French.
     case Cameroon
+    /// Djibouti is a country which speaks French.
     case Djibouti
+    /// Algeria is a country which speaks French.
     case Algeria
+    /// France is a country which speaks French.
     case France
+    /// Gabon is a country which speaks French.
     case Gabon
+    /// French Guiana is a country which speaks French.
     case FrenchGuiana
+    /// Guinea is a country which speaks French.
     case Guinea
+    /// Guadeloupe is a country which speaks French.
     case Guadeloupe
+    /// Equatorial Guinea is a country which speaks French.
     case EquatorialGuinea
+    /// Haiti is a country which speaks French.
     case Haiti
+    /// Comoros is a country which speaks French.
     case Comoros
+    /// Luxembourg is a country which speaks French.
     case Luxembourg
+    /// Morocco is a country which speaks French.
     case Morocco
+    /// Monaco is a country which speaks French.
     case Monaco
+    /// St. Martin is a country which speaks French.
     case StMartin
+    /// Madagascar is a country which speaks French.
     case Madagascar
+    /// Mali is a country which speaks French.
     case Mali
+    /// Martinique is a country which speaks French.
     case Martinique
+    /// Mauritania is a country which speaks French.
     case Mauritania
+    /// Mauritius is a country which speaks French.
     case Mauritius
+    /// New Caledonia is a country which speaks French.
     case NewCaledonia
+    /// Niger is a country which speaks French.
     case Niger
+    /// French Polynesia is a country which speaks French.
     case FrenchPolynesia
+    /// St. Pierre & Miquelon is a country which speaks French.
     case StPierreMiquelon
+    /// Réunion is a country which speaks French.
     case Réunion
+    /// Rwanda is a country which speaks French.
     case Rwanda
+    /// Seychelles is a country which speaks French.
     case Seychelles
+    /// Senegal is a country which speaks French.
     case Senegal
+    /// Syria is a country which speaks French.
     case Syria
+    /// Chad is a country which speaks French.
     case Chad
+    /// Togo is a country which speaks French.
     case Togo
+    /// Tunisia is a country which speaks French.
     case Tunisia
+    /// Vanuatu is a country which speaks French.
     case Vanuatu
+    /// Wallis & Futuna is a country which speaks French.
     case WallisFutuna
+    /// Mayotte is a country which speaks French.
     case Mayotte
 
+    /// - returns: an Array of all the countries which speak French
     public static let all: [FrenchSpeakingCountry] = [ .Belgium, .BurkinaFaso, .Burundi, .Benin, .StBarthélemy, .Canada, .CongoKinshasa, .CentralAfricanRepublic, .CongoBrazzaville, .Switzerland, .CôteDivoire, .Cameroon, .Djibouti, .Algeria, .France, .Gabon, .FrenchGuiana, .Guinea, .Guadeloupe, .EquatorialGuinea, .Haiti, .Comoros, .Luxembourg, .Morocco, .Monaco, .StMartin, .Madagascar, .Mali, .Martinique, .Mauritania, .Mauritius, .NewCaledonia, .Niger, .FrenchPolynesia, .StPierreMiquelon, .Réunion, .Rwanda, .Seychelles, .Senegal, .Syria, .Chad, .Togo, .Tunisia, .Vanuatu, .WallisFutuna, .Mayotte ]
 
+    /// - returns: the country identifier of a specific French speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Belgium:
@@ -2963,15 +3558,24 @@ public enum FrenchSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Fulah.
+*/
 public enum FulahSpeakingCountry: CountryType {
 
+    /// Cameroon is a country which speaks Fulah.
     case Cameroon
+    /// Guinea is a country which speaks Fulah.
     case Guinea
+    /// Mauritania is a country which speaks Fulah.
     case Mauritania
+    /// Senegal is a country which speaks Fulah.
     case Senegal
 
+    /// - returns: an Array of all the countries which speak Fulah
     public static let all: [FulahSpeakingCountry] = [ .Cameroon, .Guinea, .Mauritania, .Senegal ]
 
+    /// - returns: the country identifier of a specific Fulah speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Cameroon:
@@ -2986,17 +3590,28 @@ public enum FulahSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak German.
+*/
 public enum GermanSpeakingCountry: CountryType {
 
+    /// Austria is a country which speaks German.
     case Austria
+    /// Belgium is a country which speaks German.
     case Belgium
+    /// Switzerland is a country which speaks German.
     case Switzerland
+    /// Germany is a country which speaks German.
     case Germany
+    /// Liechtenstein is a country which speaks German.
     case Liechtenstein
+    /// Luxembourg is a country which speaks German.
     case Luxembourg
 
+    /// - returns: an Array of all the countries which speak German
     public static let all: [GermanSpeakingCountry] = [ .Austria, .Belgium, .Switzerland, .Germany, .Liechtenstein, .Luxembourg ]
 
+    /// - returns: the country identifier of a specific German speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Austria:
@@ -3015,13 +3630,20 @@ public enum GermanSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Greek.
+*/
 public enum GreekSpeakingCountry: CountryType {
 
+    /// Cyprus is a country which speaks Greek.
     case Cyprus
+    /// Greece is a country which speaks Greek.
     case Greece
 
+    /// - returns: an Array of all the countries which speak Greek
     public static let all: [GreekSpeakingCountry] = [ .Cyprus, .Greece ]
 
+    /// - returns: the country identifier of a specific Greek speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Cyprus:
@@ -3032,14 +3654,22 @@ public enum GreekSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Hausa.
+*/
 public enum HausaSpeakingCountry: CountryType {
 
+    /// Ghana is a country which speaks Hausa.
     case Ghana
+    /// Niger is a country which speaks Hausa.
     case Niger
+    /// Nigeria is a country which speaks Hausa.
     case Nigeria
 
+    /// - returns: an Array of all the countries which speak Hausa
     public static let all: [HausaSpeakingCountry] = [ .Ghana, .Niger, .Nigeria ]
 
+    /// - returns: the country identifier of a specific Hausa speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Ghana:
@@ -3052,14 +3682,22 @@ public enum HausaSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Italian.
+*/
 public enum ItalianSpeakingCountry: CountryType {
 
+    /// Switzerland is a country which speaks Italian.
     case Switzerland
+    /// Italy is a country which speaks Italian.
     case Italy
+    /// San Marino is a country which speaks Italian.
     case SanMarino
 
+    /// - returns: an Array of all the countries which speak Italian
     public static let all: [ItalianSpeakingCountry] = [ .Switzerland, .Italy, .SanMarino ]
 
+    /// - returns: the country identifier of a specific Italian speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Switzerland:
@@ -3072,13 +3710,20 @@ public enum ItalianSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Korean.
+*/
 public enum KoreanSpeakingCountry: CountryType {
 
+    /// North Korea is a country which speaks Korean.
     case NorthKorea
+    /// South Korea is a country which speaks Korean.
     case SouthKorea
 
+    /// - returns: an Array of all the countries which speak Korean
     public static let all: [KoreanSpeakingCountry] = [ .NorthKorea, .SouthKorea ]
 
+    /// - returns: the country identifier of a specific Korean speaking country.
     public var countryIdentifier: String {
         switch self {
         case .NorthKorea:
@@ -3089,15 +3734,24 @@ public enum KoreanSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Lingala.
+*/
 public enum LingalaSpeakingCountry: CountryType {
 
+    /// Angola is a country which speaks Lingala.
     case Angola
+    /// Congo - Kinshasa is a country which speaks Lingala.
     case CongoKinshasa
+    /// Central African Republic is a country which speaks Lingala.
     case CentralAfricanRepublic
+    /// Congo - Brazzaville is a country which speaks Lingala.
     case CongoBrazzaville
 
+    /// - returns: an Array of all the countries which speak Lingala
     public static let all: [LingalaSpeakingCountry] = [ .Angola, .CongoKinshasa, .CentralAfricanRepublic, .CongoBrazzaville ]
 
+    /// - returns: the country identifier of a specific Lingala speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Angola:
@@ -3112,14 +3766,22 @@ public enum LingalaSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Malay.
+*/
 public enum MalaySpeakingCountry: CountryType {
 
+    /// Brunei is a country which speaks Malay.
     case Brunei
+    /// Malaysia is a country which speaks Malay.
     case Malaysia
+    /// Singapore is a country which speaks Malay.
     case Singapore
 
+    /// - returns: an Array of all the countries which speak Malay
     public static let all: [MalaySpeakingCountry] = [ .Brunei, .Malaysia, .Singapore ]
 
+    /// - returns: the country identifier of a specific Malay speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Brunei:
@@ -3132,13 +3794,20 @@ public enum MalaySpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Masai.
+*/
 public enum MasaiSpeakingCountry: CountryType {
 
+    /// Kenya is a country which speaks Masai.
     case Kenya
+    /// Tanzania is a country which speaks Masai.
     case Tanzania
 
+    /// - returns: an Array of all the countries which speak Masai
     public static let all: [MasaiSpeakingCountry] = [ .Kenya, .Tanzania ]
 
+    /// - returns: the country identifier of a specific Masai speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Kenya:
@@ -3149,13 +3818,20 @@ public enum MasaiSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Nepali.
+*/
 public enum NepaliSpeakingCountry: CountryType {
 
+    /// India is a country which speaks Nepali.
     case India
+    /// Nepal is a country which speaks Nepali.
     case Nepal
 
+    /// - returns: an Array of all the countries which speak Nepali
     public static let all: [NepaliSpeakingCountry] = [ .India, .Nepal ]
 
+    /// - returns: the country identifier of a specific Nepali speaking country.
     public var countryIdentifier: String {
         switch self {
         case .India:
@@ -3166,14 +3842,22 @@ public enum NepaliSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Northern Sami.
+*/
 public enum NorthernSamiSpeakingCountry: CountryType {
 
+    /// Finland is a country which speaks Northern Sami.
     case Finland
+    /// Norway is a country which speaks Northern Sami.
     case Norway
+    /// Sweden is a country which speaks Northern Sami.
     case Sweden
 
+    /// - returns: an Array of all the countries which speak Northern Sami
     public static let all: [NorthernSamiSpeakingCountry] = [ .Finland, .Norway, .Sweden ]
 
+    /// - returns: the country identifier of a specific Northern Sami speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Finland:
@@ -3186,13 +3870,20 @@ public enum NorthernSamiSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Norwegian Bokmål.
+*/
 public enum NorwegianBokmålSpeakingCountry: CountryType {
 
+    /// Norway is a country which speaks Norwegian Bokmål.
     case Norway
+    /// Svalbard & Jan Mayen is a country which speaks Norwegian Bokmål.
     case SvalbardJanMayen
 
+    /// - returns: an Array of all the countries which speak Norwegian Bokmål
     public static let all: [NorwegianBokmålSpeakingCountry] = [ .Norway, .SvalbardJanMayen ]
 
+    /// - returns: the country identifier of a specific Norwegian Bokmål speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Norway:
@@ -3203,13 +3894,20 @@ public enum NorwegianBokmålSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Oromo.
+*/
 public enum OromoSpeakingCountry: CountryType {
 
+    /// Ethiopia is a country which speaks Oromo.
     case Ethiopia
+    /// Kenya is a country which speaks Oromo.
     case Kenya
 
+    /// - returns: an Array of all the countries which speak Oromo
     public static let all: [OromoSpeakingCountry] = [ .Ethiopia, .Kenya ]
 
+    /// - returns: the country identifier of a specific Oromo speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Ethiopia:
@@ -3220,13 +3918,20 @@ public enum OromoSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Ossetic.
+*/
 public enum OsseticSpeakingCountry: CountryType {
 
+    /// Georgia is a country which speaks Ossetic.
     case Georgia
+    /// Russia is a country which speaks Ossetic.
     case Russia
 
+    /// - returns: an Array of all the countries which speak Ossetic
     public static let all: [OsseticSpeakingCountry] = [ .Georgia, .Russia ]
 
+    /// - returns: the country identifier of a specific Ossetic speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Georgia:
@@ -3237,13 +3942,20 @@ public enum OsseticSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Persian.
+*/
 public enum PersianSpeakingCountry: CountryType {
 
+    /// Afghanistan is a country which speaks Persian.
     case Afghanistan
+    /// Iran is a country which speaks Persian.
     case Iran
 
+    /// - returns: an Array of all the countries which speak Persian
     public static let all: [PersianSpeakingCountry] = [ .Afghanistan, .Iran ]
 
+    /// - returns: the country identifier of a specific Persian speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Afghanistan:
@@ -3254,20 +3966,34 @@ public enum PersianSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Portuguese.
+*/
 public enum PortugueseSpeakingCountry: CountryType {
 
+    /// Angola is a country which speaks Portuguese.
     case Angola
+    /// Brazil is a country which speaks Portuguese.
     case Brazil
+    /// Cape Verde is a country which speaks Portuguese.
     case CapeVerde
+    /// Guinea-Bissau is a country which speaks Portuguese.
     case GuineaBissau
+    /// Macau SAR China is a country which speaks Portuguese.
     case MacauSarChina
+    /// Mozambique is a country which speaks Portuguese.
     case Mozambique
+    /// Portugal is a country which speaks Portuguese.
     case Portugal
+    /// São Tomé & Príncipe is a country which speaks Portuguese.
     case SãoToméPríncipe
+    /// Timor-Leste is a country which speaks Portuguese.
     case TimorLeste
 
+    /// - returns: an Array of all the countries which speak Portuguese
     public static let all: [PortugueseSpeakingCountry] = [ .Angola, .Brazil, .CapeVerde, .GuineaBissau, .MacauSarChina, .Mozambique, .Portugal, .SãoToméPríncipe, .TimorLeste ]
 
+    /// - returns: the country identifier of a specific Portuguese speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Angola:
@@ -3292,13 +4018,20 @@ public enum PortugueseSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Punjabi.
+*/
 public enum PunjabiSpeakingCountry: CountryType {
 
+    /// India is a country which speaks Punjabi.
     case India
+    /// Pakistan is a country which speaks Punjabi.
     case Pakistan
 
+    /// - returns: an Array of all the countries which speak Punjabi
     public static let all: [PunjabiSpeakingCountry] = [ .India, .Pakistan ]
 
+    /// - returns: the country identifier of a specific Punjabi speaking country.
     public var countryIdentifier: String {
         switch self {
         case .India:
@@ -3309,14 +4042,22 @@ public enum PunjabiSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Quechua.
+*/
 public enum QuechuaSpeakingCountry: CountryType {
 
+    /// Bolivia is a country which speaks Quechua.
     case Bolivia
+    /// Ecuador is a country which speaks Quechua.
     case Ecuador
+    /// Peru is a country which speaks Quechua.
     case Peru
 
+    /// - returns: an Array of all the countries which speak Quechua
     public static let all: [QuechuaSpeakingCountry] = [ .Bolivia, .Ecuador, .Peru ]
 
+    /// - returns: the country identifier of a specific Quechua speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Bolivia:
@@ -3329,13 +4070,20 @@ public enum QuechuaSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Romanian.
+*/
 public enum RomanianSpeakingCountry: CountryType {
 
+    /// Moldova is a country which speaks Romanian.
     case Moldova
+    /// Romania is a country which speaks Romanian.
     case Romania
 
+    /// - returns: an Array of all the countries which speak Romanian
     public static let all: [RomanianSpeakingCountry] = [ .Moldova, .Romania ]
 
+    /// - returns: the country identifier of a specific Romanian speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Moldova:
@@ -3346,17 +4094,28 @@ public enum RomanianSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Russian.
+*/
 public enum RussianSpeakingCountry: CountryType {
 
+    /// Belarus is a country which speaks Russian.
     case Belarus
+    /// Kyrgyzstan is a country which speaks Russian.
     case Kyrgyzstan
+    /// Kazakhstan is a country which speaks Russian.
     case Kazakhstan
+    /// Moldova is a country which speaks Russian.
     case Moldova
+    /// Russia is a country which speaks Russian.
     case Russia
+    /// Ukraine is a country which speaks Russian.
     case Ukraine
 
+    /// - returns: an Array of all the countries which speak Russian
     public static let all: [RussianSpeakingCountry] = [ .Belarus, .Kyrgyzstan, .Kazakhstan, .Moldova, .Russia, .Ukraine ]
 
+    /// - returns: the country identifier of a specific Russian speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Belarus:
@@ -3375,15 +4134,24 @@ public enum RussianSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Serbian.
+*/
 public enum SerbianSpeakingCountry: CountryType {
 
+    /// Bosnia & Herzegovina is a country which speaks Serbian.
     case BosniaHerzegovina
+    /// Montenegro is a country which speaks Serbian.
     case Montenegro
+    /// Serbia is a country which speaks Serbian.
     case Serbia
+    /// Kosovo is a country which speaks Serbian.
     case Kosovo
 
+    /// - returns: an Array of all the countries which speak Serbian
     public static let all: [SerbianSpeakingCountry] = [ .BosniaHerzegovina, .Montenegro, .Serbia, .Kosovo ]
 
+    /// - returns: the country identifier of a specific Serbian speaking country.
     public var countryIdentifier: String {
         switch self {
         case .BosniaHerzegovina:
@@ -3398,15 +4166,24 @@ public enum SerbianSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Somali.
+*/
 public enum SomaliSpeakingCountry: CountryType {
 
+    /// Djibouti is a country which speaks Somali.
     case Djibouti
+    /// Ethiopia is a country which speaks Somali.
     case Ethiopia
+    /// Kenya is a country which speaks Somali.
     case Kenya
+    /// Somalia is a country which speaks Somali.
     case Somalia
 
+    /// - returns: an Array of all the countries which speak Somali
     public static let all: [SomaliSpeakingCountry] = [ .Djibouti, .Ethiopia, .Kenya, .Somalia ]
 
+    /// - returns: the country identifier of a specific Somali speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Djibouti:
@@ -3421,37 +4198,68 @@ public enum SomaliSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Spanish.
+*/
 public enum SpanishSpeakingCountry: CountryType {
 
+    /// Latin America is a country which speaks Spanish.
     case LatinAmerica
+    /// Argentina is a country which speaks Spanish.
     case Argentina
+    /// Bolivia is a country which speaks Spanish.
     case Bolivia
+    /// Chile is a country which speaks Spanish.
     case Chile
+    /// Colombia is a country which speaks Spanish.
     case Colombia
+    /// Costa Rica is a country which speaks Spanish.
     case CostaRica
+    /// Cuba is a country which speaks Spanish.
     case Cuba
+    /// Dominican Republic is a country which speaks Spanish.
     case DominicanRepublic
+    /// Ceuta & Melilla is a country which speaks Spanish.
     case CeutaMelilla
+    /// Ecuador is a country which speaks Spanish.
     case Ecuador
+    /// Spain is a country which speaks Spanish.
     case Spain
+    /// Equatorial Guinea is a country which speaks Spanish.
     case EquatorialGuinea
+    /// Guatemala is a country which speaks Spanish.
     case Guatemala
+    /// Honduras is a country which speaks Spanish.
     case Honduras
+    /// Canary Islands is a country which speaks Spanish.
     case CanaryIslands
+    /// Mexico is a country which speaks Spanish.
     case Mexico
+    /// Nicaragua is a country which speaks Spanish.
     case Nicaragua
+    /// Panama is a country which speaks Spanish.
     case Panama
+    /// Peru is a country which speaks Spanish.
     case Peru
+    /// Philippines is a country which speaks Spanish.
     case Philippines
+    /// Puerto Rico is a country which speaks Spanish.
     case PuertoRico
+    /// Paraguay is a country which speaks Spanish.
     case Paraguay
+    /// El Salvador is a country which speaks Spanish.
     case ElSalvador
+    /// United States is a country which speaks Spanish.
     case UnitedStates
+    /// Uruguay is a country which speaks Spanish.
     case Uruguay
+    /// Venezuela is a country which speaks Spanish.
     case Venezuela
 
+    /// - returns: an Array of all the countries which speak Spanish
     public static let all: [SpanishSpeakingCountry] = [ .LatinAmerica, .Argentina, .Bolivia, .Chile, .Colombia, .CostaRica, .Cuba, .DominicanRepublic, .CeutaMelilla, .Ecuador, .Spain, .EquatorialGuinea, .Guatemala, .Honduras, .CanaryIslands, .Mexico, .Nicaragua, .Panama, .Peru, .Philippines, .PuertoRico, .Paraguay, .ElSalvador, .UnitedStates, .Uruguay, .Venezuela ]
 
+    /// - returns: the country identifier of a specific Spanish speaking country.
     public var countryIdentifier: String {
         switch self {
         case .LatinAmerica:
@@ -3510,15 +4318,24 @@ public enum SpanishSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Swahili.
+*/
 public enum SwahiliSpeakingCountry: CountryType {
 
+    /// Congo - Kinshasa is a country which speaks Swahili.
     case CongoKinshasa
+    /// Kenya is a country which speaks Swahili.
     case Kenya
+    /// Tanzania is a country which speaks Swahili.
     case Tanzania
+    /// Uganda is a country which speaks Swahili.
     case Uganda
 
+    /// - returns: an Array of all the countries which speak Swahili
     public static let all: [SwahiliSpeakingCountry] = [ .CongoKinshasa, .Kenya, .Tanzania, .Uganda ]
 
+    /// - returns: the country identifier of a specific Swahili speaking country.
     public var countryIdentifier: String {
         switch self {
         case .CongoKinshasa:
@@ -3533,14 +4350,22 @@ public enum SwahiliSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Swedish.
+*/
 public enum SwedishSpeakingCountry: CountryType {
 
+    /// Åland Islands is a country which speaks Swedish.
     case ÅlandIslands
+    /// Finland is a country which speaks Swedish.
     case Finland
+    /// Sweden is a country which speaks Swedish.
     case Sweden
 
+    /// - returns: an Array of all the countries which speak Swedish
     public static let all: [SwedishSpeakingCountry] = [ .ÅlandIslands, .Finland, .Sweden ]
 
+    /// - returns: the country identifier of a specific Swedish speaking country.
     public var countryIdentifier: String {
         switch self {
         case .ÅlandIslands:
@@ -3553,14 +4378,22 @@ public enum SwedishSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Swiss German.
+*/
 public enum SwissGermanSpeakingCountry: CountryType {
 
+    /// Switzerland is a country which speaks Swiss German.
     case Switzerland
+    /// France is a country which speaks Swiss German.
     case France
+    /// Liechtenstein is a country which speaks Swiss German.
     case Liechtenstein
 
+    /// - returns: an Array of all the countries which speak Swiss German
     public static let all: [SwissGermanSpeakingCountry] = [ .Switzerland, .France, .Liechtenstein ]
 
+    /// - returns: the country identifier of a specific Swiss German speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Switzerland:
@@ -3573,15 +4406,24 @@ public enum SwissGermanSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Tamil.
+*/
 public enum TamilSpeakingCountry: CountryType {
 
+    /// India is a country which speaks Tamil.
     case India
+    /// Sri Lanka is a country which speaks Tamil.
     case SriLanka
+    /// Malaysia is a country which speaks Tamil.
     case Malaysia
+    /// Singapore is a country which speaks Tamil.
     case Singapore
 
+    /// - returns: an Array of all the countries which speak Tamil
     public static let all: [TamilSpeakingCountry] = [ .India, .SriLanka, .Malaysia, .Singapore ]
 
+    /// - returns: the country identifier of a specific Tamil speaking country.
     public var countryIdentifier: String {
         switch self {
         case .India:
@@ -3596,13 +4438,20 @@ public enum TamilSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Teso.
+*/
 public enum TesoSpeakingCountry: CountryType {
 
+    /// Kenya is a country which speaks Teso.
     case Kenya
+    /// Uganda is a country which speaks Teso.
     case Uganda
 
+    /// - returns: an Array of all the countries which speak Teso
     public static let all: [TesoSpeakingCountry] = [ .Kenya, .Uganda ]
 
+    /// - returns: the country identifier of a specific Teso speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Kenya:
@@ -3613,13 +4462,20 @@ public enum TesoSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Tibetan.
+*/
 public enum TibetanSpeakingCountry: CountryType {
 
+    /// China is a country which speaks Tibetan.
     case China
+    /// India is a country which speaks Tibetan.
     case India
 
+    /// - returns: an Array of all the countries which speak Tibetan
     public static let all: [TibetanSpeakingCountry] = [ .China, .India ]
 
+    /// - returns: the country identifier of a specific Tibetan speaking country.
     public var countryIdentifier: String {
         switch self {
         case .China:
@@ -3630,13 +4486,20 @@ public enum TibetanSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Tigrinya.
+*/
 public enum TigrinyaSpeakingCountry: CountryType {
 
+    /// Eritrea is a country which speaks Tigrinya.
     case Eritrea
+    /// Ethiopia is a country which speaks Tigrinya.
     case Ethiopia
 
+    /// - returns: an Array of all the countries which speak Tigrinya
     public static let all: [TigrinyaSpeakingCountry] = [ .Eritrea, .Ethiopia ]
 
+    /// - returns: the country identifier of a specific Tigrinya speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Eritrea:
@@ -3647,13 +4510,20 @@ public enum TigrinyaSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Turkish.
+*/
 public enum TurkishSpeakingCountry: CountryType {
 
+    /// Cyprus is a country which speaks Turkish.
     case Cyprus
+    /// Turkey is a country which speaks Turkish.
     case Turkey
 
+    /// - returns: an Array of all the countries which speak Turkish
     public static let all: [TurkishSpeakingCountry] = [ .Cyprus, .Turkey ]
 
+    /// - returns: the country identifier of a specific Turkish speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Cyprus:
@@ -3664,13 +4534,20 @@ public enum TurkishSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Urdu.
+*/
 public enum UrduSpeakingCountry: CountryType {
 
+    /// India is a country which speaks Urdu.
     case India
+    /// Pakistan is a country which speaks Urdu.
     case Pakistan
 
+    /// - returns: an Array of all the countries which speak Urdu
     public static let all: [UrduSpeakingCountry] = [ .India, .Pakistan ]
 
+    /// - returns: the country identifier of a specific Urdu speaking country.
     public var countryIdentifier: String {
         switch self {
         case .India:
@@ -3681,13 +4558,20 @@ public enum UrduSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Uzbek.
+*/
 public enum UzbekSpeakingCountry: CountryType {
 
+    /// Afghanistan is a country which speaks Uzbek.
     case Afghanistan
+    /// Uzbekistan is a country which speaks Uzbek.
     case Uzbekistan
 
+    /// - returns: an Array of all the countries which speak Uzbek
     public static let all: [UzbekSpeakingCountry] = [ .Afghanistan, .Uzbekistan ]
 
+    /// - returns: the country identifier of a specific Uzbek speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Afghanistan:
@@ -3698,13 +4582,20 @@ public enum UzbekSpeakingCountry: CountryType {
     }
 }
 
+/**
+ An enum of countries which speak Yoruba.
+*/
 public enum YorubaSpeakingCountry: CountryType {
 
+    /// Benin is a country which speaks Yoruba.
     case Benin
+    /// Nigeria is a country which speaks Yoruba.
     case Nigeria
 
+    /// - returns: an Array of all the countries which speak Yoruba
     public static let all: [YorubaSpeakingCountry] = [ .Benin, .Nigeria ]
 
+    /// - returns: the country identifier of a specific Yoruba speaking country.
     public var countryIdentifier: String {
         switch self {
         case .Benin:
@@ -3717,200 +4608,732 @@ public enum YorubaSpeakingCountry: CountryType {
 
 // MARK: - Locale
 
+/**
+
+Locale is an enum for type safe representation 
+of locale identifiers. Its cases are languages 
+in US English. For languages which are spoken 
+in more than one country, an associated value 
+of the country should be provided. For example 
+
+```swift
+let locale: Locale = .French(.France)
+```
+*/
 public enum Locale {
 
+    /**
+     ### Afrikaans
+    - requires: AfrikaansSpeakingCountry
+    */
     case Afrikaans(AfrikaansSpeakingCountry)
+
+    /// ### Aghem
     case Aghem
+
+    /// ### Akan
     case Akan
+
+    /**
+     ### Albanian
+    - requires: AlbanianSpeakingCountry
+    */
     case Albanian(AlbanianSpeakingCountry)
+
+    /// ### Amharic
     case Amharic
+
+    /**
+     ### Arabic
+    - requires: ArabicSpeakingCountry
+    */
     case Arabic(ArabicSpeakingCountry)
+
+    /// ### Armenian
     case Armenian
+
+    /// ### Assamese
     case Assamese
+
+    /// ### Asu
     case Asu
+
+    /// ### Azerbaijani
     case Azerbaijani
+
+    /// ### Bafia
     case Bafia
+
+    /// ### Bambara
     case Bambara
+
+    /// ### Basaa
     case Basaa
+
+    /// ### Basque
     case Basque
+
+    /// ### Belarusian
     case Belarusian
+
+    /// ### Bemba
     case Bemba
+
+    /// ### Bena
     case Bena
+
+    /**
+     ### Bengali
+    - requires: BengaliSpeakingCountry
+    */
     case Bengali(BengaliSpeakingCountry)
+
+    /// ### Bodo
     case Bodo
+
+    /// ### Bosnian
     case Bosnian
+
+    /// ### Breton
     case Breton
+
+    /// ### Bulgarian
     case Bulgarian
+
+    /// ### Burmese
     case Burmese
+
+    /**
+     ### Catalan
+    - requires: CatalanSpeakingCountry
+    */
     case Catalan(CatalanSpeakingCountry)
+
+    /// ### Central Atlas Tamazight
     case CentralAtlasTamazight
+
+    /**
+     ### Central Kurdish
+    - requires: CentralKurdishSpeakingCountry
+    */
     case CentralKurdish(CentralKurdishSpeakingCountry)
+
+    /// ### Cherokee
     case Cherokee
+
+    /// ### Chiga
     case Chiga
+
+    /**
+     ### Chinese
+    - requires: ChineseSpeakingCountry
+    */
     case Chinese(ChineseSpeakingCountry)
+
+    /// ### Colognian
     case Colognian
+
+    /// ### Cornish
     case Cornish
+
+    /**
+     ### Croatian
+    - requires: CroatianSpeakingCountry
+    */
     case Croatian(CroatianSpeakingCountry)
+
+    /// ### Czech
     case Czech
+
+    /**
+     ### Danish
+    - requires: DanishSpeakingCountry
+    */
     case Danish(DanishSpeakingCountry)
+
+    /// ### Duala
     case Duala
+
+    /**
+     ### Dutch
+    - requires: DutchSpeakingCountry
+    */
     case Dutch(DutchSpeakingCountry)
+
+    /// ### Dzongkha
     case Dzongkha
+
+    /// ### Embu
     case Embu
+
+    /**
+     ### English
+    - requires: EnglishSpeakingCountry
+    */
     case English(EnglishSpeakingCountry)
+
+    /// ### Estonian
     case Estonian
+
+    /**
+     ### Ewe
+    - requires: EweSpeakingCountry
+    */
     case Ewe(EweSpeakingCountry)
+
+    /// ### Ewondo
     case Ewondo
+
+    /// ### Faroese
     case Faroese
+
+    /// ### Filipino
     case Filipino
+
+    /// ### Finnish
     case Finnish
+
+    /**
+     ### French
+    - requires: FrenchSpeakingCountry
+    */
     case French(FrenchSpeakingCountry)
+
+    /// ### Friulian
     case Friulian
+
+    /**
+     ### Fulah
+    - requires: FulahSpeakingCountry
+    */
     case Fulah(FulahSpeakingCountry)
+
+    /// ### Galician
     case Galician
+
+    /// ### Ganda
     case Ganda
+
+    /// ### Georgian
     case Georgian
+
+    /**
+     ### German
+    - requires: GermanSpeakingCountry
+    */
     case German(GermanSpeakingCountry)
+
+    /**
+     ### Greek
+    - requires: GreekSpeakingCountry
+    */
     case Greek(GreekSpeakingCountry)
+
+    /// ### Gujarati
     case Gujarati
+
+    /// ### Gusii
     case Gusii
+
+    /**
+     ### Hausa
+    - requires: HausaSpeakingCountry
+    */
     case Hausa(HausaSpeakingCountry)
+
+    /// ### Hawaiian
     case Hawaiian
+
+    /// ### Hebrew
     case Hebrew
+
+    /// ### Hindi
     case Hindi
+
+    /// ### Hungarian
     case Hungarian
+
+    /// ### Icelandic
     case Icelandic
+
+    /// ### Igbo
     case Igbo
+
+    /// ### Inari Sami
     case InariSami
+
+    /// ### Indonesian
     case Indonesian
+
+    /// ### Inuktitut
     case Inuktitut
+
+    /// ### Irish
     case Irish
+
+    /**
+     ### Italian
+    - requires: ItalianSpeakingCountry
+    */
     case Italian(ItalianSpeakingCountry)
+
+    /// ### Japanese
     case Japanese
+
+    /// ### Jola-Fonyi
     case JolaFonyi
+
+    /// ### Kabuverdianu
     case Kabuverdianu
+
+    /// ### Kabyle
     case Kabyle
+
+    /// ### Kako
     case Kako
+
+    /// ### Kalaallisut
     case Kalaallisut
+
+    /// ### Kalenjin
     case Kalenjin
+
+    /// ### Kamba
     case Kamba
+
+    /// ### Kannada
     case Kannada
+
+    /// ### Kashmiri
     case Kashmiri
+
+    /// ### Kazakh
     case Kazakh
+
+    /// ### Khmer
     case Khmer
+
+    /// ### Kikuyu
     case Kikuyu
+
+    /// ### Kinyarwanda
     case Kinyarwanda
+
+    /// ### Konkani
     case Konkani
+
+    /**
+     ### Korean
+    - requires: KoreanSpeakingCountry
+    */
     case Korean(KoreanSpeakingCountry)
+
+    /// ### Koyra Chiini
     case KoyraChiini
+
+    /// ### Koyraboro Senni
     case KoyraboroSenni
+
+    /// ### Kwasio
     case Kwasio
+
+    /// ### Kyrgyz
     case Kyrgyz
+
+    /// ### Lakota
     case Lakota
+
+    /// ### Langi
     case Langi
+
+    /// ### Lao
     case Lao
+
+    /// ### Latvian
     case Latvian
+
+    /**
+     ### Lingala
+    - requires: LingalaSpeakingCountry
+    */
     case Lingala(LingalaSpeakingCountry)
+
+    /// ### Lithuanian
     case Lithuanian
+
+    /// ### Lower Sorbian
     case LowerSorbian
+
+    /// ### Luba-Katanga
     case LubaKatanga
+
+    /// ### Luo
     case Luo
+
+    /// ### Luxembourgish
     case Luxembourgish
+
+    /// ### Luyia
     case Luyia
+
+    /// ### Macedonian
     case Macedonian
+
+    /// ### Machame
     case Machame
+
+    /// ### Makhuwa-Meetto
     case MakhuwaMeetto
+
+    /// ### Makonde
     case Makonde
+
+    /// ### Malagasy
     case Malagasy
+
+    /**
+     ### Malay
+    - requires: MalaySpeakingCountry
+    */
     case Malay(MalaySpeakingCountry)
+
+    /// ### Malayalam
     case Malayalam
+
+    /// ### Maltese
     case Maltese
+
+    /// ### Manx
     case Manx
+
+    /// ### Marathi
     case Marathi
+
+    /**
+     ### Masai
+    - requires: MasaiSpeakingCountry
+    */
     case Masai(MasaiSpeakingCountry)
+
+    /// ### Meru
     case Meru
+
+    /// ### Metaʼ
     case Meta
+
+    /// ### Mongolian
     case Mongolian
+
+    /// ### Morisyen
     case Morisyen
+
+    /// ### Mundang
     case Mundang
+
+    /// ### Nama
     case Nama
+
+    /**
+     ### Nepali
+    - requires: NepaliSpeakingCountry
+    */
     case Nepali(NepaliSpeakingCountry)
+
+    /// ### Ngiemboon
     case Ngiemboon
+
+    /// ### Ngomba
     case Ngomba
+
+    /// ### North Ndebele
     case NorthNdebele
+
+    /**
+     ### Northern Sami
+    - requires: NorthernSamiSpeakingCountry
+    */
     case NorthernSami(NorthernSamiSpeakingCountry)
+
+    /**
+     ### Norwegian Bokmål
+    - requires: NorwegianBokmålSpeakingCountry
+    */
     case NorwegianBokmål(NorwegianBokmålSpeakingCountry)
+
+    /// ### Norwegian Nynorsk
     case NorwegianNynorsk
+
+    /// ### Nuer
     case Nuer
+
+    /// ### Nyankole
     case Nyankole
+
+    /// ### Oriya
     case Oriya
+
+    /**
+     ### Oromo
+    - requires: OromoSpeakingCountry
+    */
     case Oromo(OromoSpeakingCountry)
+
+    /**
+     ### Ossetic
+    - requires: OsseticSpeakingCountry
+    */
     case Ossetic(OsseticSpeakingCountry)
+
+    /// ### Pashto
     case Pashto
+
+    /**
+     ### Persian
+    - requires: PersianSpeakingCountry
+    */
     case Persian(PersianSpeakingCountry)
+
+    /// ### Polish
     case Polish
+
+    /**
+     ### Portuguese
+    - requires: PortugueseSpeakingCountry
+    */
     case Portuguese(PortugueseSpeakingCountry)
+
+    /**
+     ### Punjabi
+    - requires: PunjabiSpeakingCountry
+    */
     case Punjabi(PunjabiSpeakingCountry)
+
+    /**
+     ### Quechua
+    - requires: QuechuaSpeakingCountry
+    */
     case Quechua(QuechuaSpeakingCountry)
+
+    /**
+     ### Romanian
+    - requires: RomanianSpeakingCountry
+    */
     case Romanian(RomanianSpeakingCountry)
+
+    /// ### Romansh
     case Romansh
+
+    /// ### Rombo
     case Rombo
+
+    /// ### Rundi
     case Rundi
+
+    /**
+     ### Russian
+    - requires: RussianSpeakingCountry
+    */
     case Russian(RussianSpeakingCountry)
+
+    /// ### Rwa
     case Rwa
+
+    /// ### Sakha
     case Sakha
+
+    /// ### Samburu
     case Samburu
+
+    /// ### Sango
     case Sango
+
+    /// ### Sangu
     case Sangu
+
+    /// ### Scottish Gaelic
     case ScottishGaelic
+
+    /// ### Sena
     case Sena
+
+    /**
+     ### Serbian
+    - requires: SerbianSpeakingCountry
+    */
     case Serbian(SerbianSpeakingCountry)
+
+    /// ### Shambala
     case Shambala
+
+    /// ### Shona
     case Shona
+
+    /// ### Sichuan Yi
     case SichuanYi
+
+    /// ### Sinhala
     case Sinhala
+
+    /// ### Slovak
     case Slovak
+
+    /// ### Slovenian
     case Slovenian
+
+    /// ### Soga
     case Soga
+
+    /**
+     ### Somali
+    - requires: SomaliSpeakingCountry
+    */
     case Somali(SomaliSpeakingCountry)
+
+    /**
+     ### Spanish
+    - requires: SpanishSpeakingCountry
+    */
     case Spanish(SpanishSpeakingCountry)
+
+    /// ### Standard Moroccan Tamazight
     case StandardMoroccanTamazight
+
+    /**
+     ### Swahili
+    - requires: SwahiliSpeakingCountry
+    */
     case Swahili(SwahiliSpeakingCountry)
+
+    /**
+     ### Swedish
+    - requires: SwedishSpeakingCountry
+    */
     case Swedish(SwedishSpeakingCountry)
+
+    /**
+     ### Swiss German
+    - requires: SwissGermanSpeakingCountry
+    */
     case SwissGerman(SwissGermanSpeakingCountry)
+
+    /// ### Tachelhit
     case Tachelhit
+
+    /// ### Taita
     case Taita
+
+    /// ### Tajik
     case Tajik
+
+    /**
+     ### Tamil
+    - requires: TamilSpeakingCountry
+    */
     case Tamil(TamilSpeakingCountry)
+
+    /// ### Tasawaq
     case Tasawaq
+
+    /// ### Telugu
     case Telugu
+
+    /**
+     ### Teso
+    - requires: TesoSpeakingCountry
+    */
     case Teso(TesoSpeakingCountry)
+
+    /// ### Thai
     case Thai
+
+    /**
+     ### Tibetan
+    - requires: TibetanSpeakingCountry
+    */
     case Tibetan(TibetanSpeakingCountry)
+
+    /**
+     ### Tigrinya
+    - requires: TigrinyaSpeakingCountry
+    */
     case Tigrinya(TigrinyaSpeakingCountry)
+
+    /// ### Tongan
     case Tongan
+
+    /**
+     ### Turkish
+    - requires: TurkishSpeakingCountry
+    */
     case Turkish(TurkishSpeakingCountry)
+
+    /// ### Turkmen
     case Turkmen
+
+    /// ### Ukrainian
     case Ukrainian
+
+    /// ### Upper Sorbian
     case UpperSorbian
+
+    /**
+     ### Urdu
+    - requires: UrduSpeakingCountry
+    */
     case Urdu(UrduSpeakingCountry)
+
+    /// ### Uyghur
     case Uyghur
+
+    /**
+     ### Uzbek
+    - requires: UzbekSpeakingCountry
+    */
     case Uzbek(UzbekSpeakingCountry)
+
+    /// ### Vai
     case Vai
+
+    /// ### Vietnamese
     case Vietnamese
+
+    /// ### Vunjo
     case Vunjo
+
+    /// ### Walser
     case Walser
+
+    /// ### Welsh
     case Welsh
+
+    /// ### Western Frisian
     case WesternFrisian
+
+    /// ### Yangben
     case Yangben
+
+    /// ### Yiddish
     case Yiddish
+
+    /**
+     ### Yoruba
+    - requires: YorubaSpeakingCountry
+    */
     case Yoruba(YorubaSpeakingCountry)
+
+    /// ### Zarma
     case Zarma
+
+    /// ### Zulu
     case Zulu
 }
 
+/**
+ Locale conforms to LanguageType.
+*/
 extension Locale: LanguageType {
 
+    /// - returns: the lanauge identifier as a String.
     public var languageIdentifier: String {
         switch self {
         case .Afrikaans(_):
@@ -4293,8 +5716,12 @@ extension Locale: LanguageType {
     }
 }
 
+/**
+ Locale conforms to CountryType.
+*/
 extension Locale: CountryType {
 
+    /// - returns: the country identifier as a String.
     public var countryIdentifier: String {
         switch self {
         case .Aghem, .Akan, .Amharic, .Armenian, .Assamese, .Asu, .Azerbaijani, .Bafia, .Bambara, .Basaa, .Basque, .Belarusian, .Bemba, .Bena, .Bodo, .Bosnian, .Breton, .Bulgarian, .Burmese, .CentralAtlasTamazight, .Cherokee, .Chiga, .Colognian, .Cornish, .Czech, .Duala, .Dzongkha, .Embu, .Estonian, .Ewondo, .Faroese, .Filipino, .Finnish, .Friulian, .Galician, .Ganda, .Georgian, .Gujarati, .Gusii, .Hawaiian, .Hebrew, .Hindi, .Hungarian, .Icelandic, .Igbo, .InariSami, .Indonesian, .Inuktitut, .Irish, .Japanese, .JolaFonyi, .Kabuverdianu, .Kabyle, .Kako, .Kalaallisut, .Kalenjin, .Kamba, .Kannada, .Kashmiri, .Kazakh, .Khmer, .Kikuyu, .Kinyarwanda, .Konkani, .KoyraChiini, .KoyraboroSenni, .Kwasio, .Kyrgyz, .Lakota, .Langi, .Lao, .Latvian, .Lithuanian, .LowerSorbian, .LubaKatanga, .Luo, .Luxembourgish, .Luyia, .Macedonian, .Machame, .MakhuwaMeetto, .Makonde, .Malagasy, .Malayalam, .Maltese, .Manx, .Marathi, .Meru, .Meta, .Mongolian, .Morisyen, .Mundang, .Nama, .Ngiemboon, .Ngomba, .NorthNdebele, .NorwegianNynorsk, .Nuer, .Nyankole, .Oriya, .Pashto, .Polish, .Romansh, .Rombo, .Rundi, .Rwa, .Sakha, .Samburu, .Sango, .Sangu, .ScottishGaelic, .Sena, .Shambala, .Shona, .SichuanYi, .Sinhala, .Slovak, .Slovenian, .Soga, .StandardMoroccanTamazight, .Tachelhit, .Taita, .Tajik, .Tasawaq, .Telugu, .Thai, .Tongan, .Turkmen, .Ukrainian, .UpperSorbian, .Uyghur, .Vai, .Vietnamese, .Vunjo, .Walser, .Welsh, .WesternFrisian, .Yangben, .Yiddish, .Zarma, .Zulu:

@@ -1,0 +1,127 @@
+author_name: Daniel Thorpe
+author_url: http://danthorpe.me
+module_name: Money
+module_version: 1.4.0
+github_url: https://github.com/danthorpe/Money
+readme: README.md
+podspec: Money.podspec
+
+swift_version: 2.1
+xcodebuild-arguments: -scheme,Money-iOS
+
+custom_categories:
+  - name: Decimals
+    children:
+    - DecimalNumberType
+    - DecimalNumberBehaviorType
+    - DecimalNumberBehavior
+    - _Decimal
+    - Decimal
+    - BankersDecimal
+    - _DecimalCoder
+
+  - name: Currency
+    children:
+    - CurrencyType
+    - CustomCurrencyType
+    - ISOCurrencyType
+    - CryptoCurrencyType
+    - Currency
+
+  - name: Money
+    children:
+    - MoneyType
+    - _Money
+    - _MoneyCoder
+    - Money
+
+  - name: Foreign Exchange
+    children:
+    - MoneyPairType
+    - FXProviderType
+    - FXLocalProviderType
+    - FXRemoteProviderType
+    - CurrencyMarketTransactionType
+    - CryptoCurrencyMarketTransactionType
+    - FXQuote
+    - FXQuoteCoder
+    - FXTransaction
+    - FXTransactionCoder
+    - FXError
+    - FXRemoteProvider
+    - Yahoo
+    - OpenExchangeRatesAppID
+    - _OpenExchangeRates
+    - _ForeverFreeOpenExchangeRates
+    - CurrencyMarketTransactionKind
+
+  - name: Bitcoin
+    children:
+    - BitcoinCurrencyType
+    - BTC
+    - XBT
+    - CEXSupportedFiatCurrencyType
+    - CEXBuy
+    - CEXSell
+
+  - name: Pay 
+    children:
+    - PaymentSummaryItemType
+    - PaymentSummaryItem
+    - PaymentSummaryItemCoder
+    - PKPaymentRequest
+
+  - name: Locale
+    children:
+    - LocaleType
+    - CountryType
+    - LanguageType
+    - NSLocale
+    - Locale
+    - AfrikaansSpeakingCountry
+    - AlbanianSpeakingCountry
+    - ArabicSpeakingCountry
+    - BengaliSpeakingCountry
+    - CatalanSpeakingCountry
+    - CentralKurdishSpeakingCountry
+    - ChineseSpeakingCountry
+    - CroatianSpeakingCountry
+    - DanishSpeakingCountry
+    - DutchSpeakingCountry
+    - EnglishSpeakingCountry
+    - EweSpeakingCountry
+    - FrenchSpeakingCountry
+    - FulahSpeakingCountry
+    - GermanSpeakingCountry
+    - GreekSpeakingCountry
+    - HausaSpeakingCountry
+    - ItalianSpeakingCountry
+    - KoreanSpeakingCountry
+    - LingalaSpeakingCountry
+    - MalaySpeakingCountry
+    - MasaiSpeakingCountry
+    - NepaliSpeakingCountry
+    - NorthernSamiSpeakingCountry
+    - NorwegianBokmålSpeakingCountry
+    - OromoSpeakingCountry
+    - OsseticSpeakingCountry
+    - PersianSpeakingCountry
+    - PortugueseSpeakingCountry
+    - PunjabiSpeakingCountry
+    - QuechuaSpeakingCountry
+    - RomanianSpeakingCountry
+    - RussianSpeakingCountry
+    - SerbianSpeakingCountry
+    - SomaliSpeakingCountry
+    - SpanishSpeakingCountry
+    - SwahiliSpeakingCountry
+    - SwedishSpeakingCountry
+    - SwissGermanSpeakingCountry
+    - TamilSpeakingCountry
+    - TesoSpeakingCountry
+    - TibetanSpeakingCountry
+    - TigrinyaSpeakingCountry
+    - TurkishSpeakingCountry
+    - UrduSpeakingCountry
+    - UzbekSpeakingCountry
+    - YorubaSpeakingCountry

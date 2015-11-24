@@ -35,16 +35,19 @@ public func ==(var lhs: NSDecimal, var rhs: NSDecimal) -> Bool {
 
 // MARK: - Comparable
 
+extension NSDecimal: Comparable { }
+
 public func <(var lhs: NSDecimal, var rhs: NSDecimal) -> Bool {
     return NSDecimalCompare(&lhs, &rhs) == .OrderedAscending
 }
 
 /**
  # NSDecimal Extension
+
  This is an extension on NSDecimal to support `DecimalNumberType` and
  `Decimal`.
  */
-extension NSDecimal: Comparable {
+internal extension NSDecimal {
 
     /**
      Static function to get the `NSDecimal` representation of 
@@ -52,7 +55,7 @@ extension NSDecimal: Comparable {
      
      - returns: a `NSDecimal` of zero.
     */
-    public static func zero() -> NSDecimal {
+    static func zero() -> NSDecimal {
         return NSDecimalNumber.zero().decimalValue
     }
 
@@ -62,7 +65,7 @@ extension NSDecimal: Comparable {
 
      - returns: a `NSDecimal` of one.
      */
-    public static func one() -> NSDecimal {
+    static func one() -> NSDecimal {
         return NSDecimalNumber.one().decimalValue
     }
 
@@ -72,7 +75,7 @@ extension NSDecimal: Comparable {
      
      - returns: a `Bool` if the value is below zero.
     */
-    public var isNegative: Bool {
+    var isNegative: Bool {
         return self < NSDecimal.zero()
     }
 
@@ -88,7 +91,7 @@ extension NSDecimal: Comparable {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    public func subtract(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+    func subtract(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
         var result = NSDecimal()
         NSDecimalSubtract(&result, &lhs, &rhs, roundingMode)
@@ -103,7 +106,7 @@ extension NSDecimal: Comparable {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    public func add(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+    func add(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
         var result = NSDecimal()
         NSDecimalAdd(&result, &lhs, &rhs, roundingMode)
@@ -118,7 +121,7 @@ extension NSDecimal: Comparable {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    public func multiplyBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+    func multiplyBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
         var result = NSDecimal()
         NSDecimalMultiply(&result, &lhs, &rhs, roundingMode)
@@ -133,7 +136,7 @@ extension NSDecimal: Comparable {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    public func divideBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+    func divideBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var lhs = self
         var result = NSDecimal()
         NSDecimalDivide(&result, &lhs, &rhs, roundingMode)
@@ -146,7 +149,7 @@ extension NSDecimal: Comparable {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    public func negateWithRoundingMode(roundingMode: NSRoundingMode) -> NSDecimal {
+    func negateWithRoundingMode(roundingMode: NSRoundingMode) -> NSDecimal {
         let negativeOne = NSDecimal.zero().subtract(NSDecimal.one(), withRoundingMode: roundingMode)
         let result = multiplyBy(negativeOne, withRoundingMode: roundingMode)
         return result
@@ -160,7 +163,7 @@ extension NSDecimal: Comparable {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    public func remainder(_rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+    func remainder(_rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         let lhs = NSDecimalNumber(decimal: self)
         let rhs = NSDecimalNumber(decimal: _rhs)
         let behaviors = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 38, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: true)
