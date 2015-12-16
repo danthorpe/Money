@@ -6,7 +6,7 @@ github_url: https://github.com/danthorpe/Money
 readme: README.md
 podspec: Money.podspec
 
-swift_version: 2.1
+swift_version: 2.1.1
 xcodebuild-arguments: -scheme,Money-iOS
 
 custom_categories:
