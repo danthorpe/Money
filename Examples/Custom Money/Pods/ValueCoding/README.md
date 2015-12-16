@@ -1,7 +1,12 @@
-# ValueCoding
+![](https://raw.githubusercontent.com/danthorpe/ValueCoding/development/header.png)
 
 [![Build status](https://badge.buildkite.com/482fd5558d9ccf05b669c55f40450166033522f32314a1bbb2.svg)](https://buildkite.com/blindingskies/valuecoding)
 [![codecov.io](http://codecov.io/github/danthorpe/ValueCoding/coverage.svg?branch=development)](http://codecov.io/github/danthorpe/ValueCoding?branch=development)
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/ValueCoding.svg)](https://img.shields.io/cocoapods/v/ValueCoding.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/cocoapods/p/ValueCoding.svg?style=flat)](http://cocoadocs.org/docsets/ValueCoding)
+
+# ValueCoding
 
 ValueCoding is a simple pair of protocols to support the coding of Swift value types.
 
@@ -42,13 +47,13 @@ class FooCoder: NSObject, NSCoding, CodingType {
 
 If you are converting existing models from classes to values types, the `NSCoding` methods should look familiar, and hopefully you are able to reuse your existing code.
 
-The framework provides static methods and properties for types which conform to `ValueCoding` with correct archivers. Therefore, given a value of `Foo`, you can encode it ready for serialization using `NSKeyedArchiver`.
+The framework provides static methods and properties for types which conform to `ValueCoding` with valid coders. Therefore, given a value of `Foo`, you can encode it ready for archiving using `NSKeyedArchiver`.
 
 ```swift
 let data = NSKeyedArchiver.archivedDataWithRootObject(foo.encoded)
 ```
 
-and likewise, unarchiving (and decoding) can be done:
+and likewise, decoding from unarchiving can be done:
 
 ```swift
 if let foo = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data)) {
@@ -65,16 +70,21 @@ let foos = Set(arrayLiteral: Foo(), Foo(), Foo())
 let data = NSKeyedArchiver.archivedDataWithRootObject(foos.encoded)
 ```
 
-When decoding an `NSArray`, perform a conditional cast to `[AnyObject]` before passing it to `decode`. The result will be an `Array<Foo>` which will be empty if the object was not cast successfully. In addition, any members of `[AnyObject]` which did not decode will filtered from the result. This means that the length of the result will be less than the original encoded array if there was an issue decoding.
+When decoding an `NSArray`, perform a conditional cast to `[AnyObject]` before passing it to `decode`. The result will be an `Array<Foo>` which will be empty if the object was not cast successfully. In addition, any members of `[AnyObject]` which did not decode will be filtered from the result. This means that the length of the result will be less than the original encoded array if there was an issue decoding.
 
 ```swift
 let foos = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject])
 ```
+### CoderType Examples
+
+The [Money](https://github.com/danthorpe/Money) framework contains more examples of implementing `ValueCoding`. Including the generic type [`FXTransactionCoder`](https://github.com/danthorpe/Money/blob/development/Money/Shared/FX/FX.swift#L467).
+
+The [YapDatabaseExtensions](https://github.com/danthorpe/YapDatabaseExtension) framework relies heavily on `ValueCoding`. For more examples of generic where constraints see its [Functional API](https://github.com/danthorpe/YapDatabaseExtensions/tree/development/YapDatabaseExtensions/Shared/Functional).
 
 ### Installation
-ValueCoding builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is also available via CocoaPods
+ValueCoding builds as a cross platform (iOS, OS X, watchOS, tvOS) extension compatible framework. It is also available via CocoaPods
 
 ```ruby
-pod ‘ValueCoding’
+pod 'ValueCoding'
 ```
 

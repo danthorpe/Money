@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   s.tvos.exclude_files = [ 'Money/iOS' ]  
   
   s.dependency 'ValueCoding'
-  s.dependency 'Result', '0.6.0-beta.6'
+  s.dependency 'Result'
   s.dependency 'SwiftyJSON'    
 end
 

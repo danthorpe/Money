@@ -16,6 +16,20 @@ encode/decode value types.
 */
 public protocol CodingType {
 
+    /** 
+     The type of the composed value, ValueType
+     
+     Bear in mind that there are no constraints on this
+     type. However, in reality when working with generic
+     types which require coding, it will be necessary to
+     constrain your generic clauses like this:
+     
+     ```swift
+     func foo<T: ValueCoding where T.Coder.ValueType == T>()
+     ```
+     
+     - see: ValueCoding
+    */
     typealias ValueType
 
     /// The value type which is being encoded/decoded
@@ -32,6 +46,12 @@ A generic protocol for value types which require
 coding.
 */
 public protocol ValueCoding {
+
+    /**
+     The Coder which implements CodingType
+     
+     - see: CodingType
+    */
     typealias Coder: CodingType
 }
 
@@ -48,8 +68,7 @@ extension CodingType where ValueType: ValueCoding, ValueType.Coder == Self {
     }
 }
 
-extension SequenceType
-    where
+extension SequenceType where
     Generator.Element: CodingType {
 
     /// Access the values from a sequence of coders.
@@ -106,8 +125,7 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     }
 }
 
-extension SequenceType
-    where
+extension SequenceType where
     Generator.Element: ValueCoding,
     Generator.Element.Coder: NSCoding,
     Generator.Element.Coder.ValueType == Generator.Element {
