@@ -224,7 +224,7 @@ public static func quoteFromNetworkResult(result: Result<(NSData?, NSURLResponse
   return result.analysis(
     ifSuccess: { data, response in
       let rate: BankersDecimal = 1.5 // or whatever	 
-      return Result(value: FXQuote(rate: BankersDecimal(floatLiteral: rate)))
+      return Result(value: FXQuote(rate: rate))
     },
     ifFailure: { error in
       return Result(error: .NetworkError(error))
