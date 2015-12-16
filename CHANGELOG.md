@@ -1,3 +1,6 @@
+# 1.4.2
+1. [[MNY-39](https://github.com/danthorpe/Money/pull/30)]: Updates to the latest version of [Result](https://github.com/antitypical/Result/releases/tag/1.0.1) dependency. Thanks to [@mrdavey](https://github.com/mrdavey) and [@hsoi](https://github.com/hsoi) for spotting this!
+
 # 1.4.1
 1. [[MNY-28](https://github.com/danthorpe/Money/pull/28)]: Documentation is now hosted at [docs.danthorpe.me](http://docs.danthorpe.me/money/1.4.1/).
 
