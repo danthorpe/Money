@@ -48,7 +48,6 @@
 		65B92B071BE0E4D800F82024 /* Money.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B92AFD1BE0E4D800F82024 /* Money.framework */; };
 		65B92B231BE0E4E700F82024 /* Money.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B92B191BE0E4E700F82024 /* Money.framework */; };
 		65B92B351BE0E51E00F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65B92B3A1BE0E69500F82024 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B92B381BE0E69500F82024 /* Info.plist */; };
 		65B92B3C1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3D1BE0E70500F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65B92B3E1BE0E70600F82024 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B92B331BE0E51E00F82024 /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -724,7 +723,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B92B3A1BE0E69500F82024 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
