@@ -57,44 +57,20 @@
 		65D305601BE955020032D99F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3055F1BE955020032D99F /* Result.framework */; };
 		65DD22AE1BFA10F10054F62D /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A01BFA10DF0054F62D /* BitcoinTests.swift */; };
 		65DD22AF1BFA10F10054F62D /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A11BFA10DF0054F62D /* DecimalTests.swift */; };
-		65DD22B01BFA10F10054F62D /* FXOpenExchangeRatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A71BFA10DF0054F62D /* FXOpenExchangeRatesTests.swift */; };
-		65DD22B11BFA10F10054F62D /* FXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A81BFA10DF0054F62D /* FXTests.swift */; };
-		65DD22B21BFA10F10054F62D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A91BFA10DF0054F62D /* FXYahooTests.swift */; };
 		65DD22B31BFA10F10054F62D /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AA1BFA10DF0054F62D /* MoneyTests.swift */; };
 		65DD22B41BFA10F10054F62D /* NSDecimalNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AB1BFA10DF0054F62D /* NSDecimalNumberTests.swift */; };
 		65DD22B51BFA10F10054F62D /* NSDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AC1BFA10DF0054F62D /* NSDecimalTests.swift */; };
 		65DD22B61BFA10F20054F62D /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A01BFA10DF0054F62D /* BitcoinTests.swift */; };
 		65DD22B71BFA10F20054F62D /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A11BFA10DF0054F62D /* DecimalTests.swift */; };
-		65DD22B81BFA10F20054F62D /* FXOpenExchangeRatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A71BFA10DF0054F62D /* FXOpenExchangeRatesTests.swift */; };
-		65DD22B91BFA10F20054F62D /* FXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A81BFA10DF0054F62D /* FXTests.swift */; };
-		65DD22BA1BFA10F20054F62D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A91BFA10DF0054F62D /* FXYahooTests.swift */; };
 		65DD22BB1BFA10F20054F62D /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AA1BFA10DF0054F62D /* MoneyTests.swift */; };
 		65DD22BC1BFA10F20054F62D /* NSDecimalNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AB1BFA10DF0054F62D /* NSDecimalNumberTests.swift */; };
 		65DD22BD1BFA10F20054F62D /* NSDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AC1BFA10DF0054F62D /* NSDecimalTests.swift */; };
 		65DD22BE1BFA10F30054F62D /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A01BFA10DF0054F62D /* BitcoinTests.swift */; };
 		65DD22BF1BFA10F30054F62D /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A11BFA10DF0054F62D /* DecimalTests.swift */; };
-		65DD22C01BFA10F30054F62D /* FXOpenExchangeRatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A71BFA10DF0054F62D /* FXOpenExchangeRatesTests.swift */; };
-		65DD22C11BFA10F30054F62D /* FXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A81BFA10DF0054F62D /* FXTests.swift */; };
-		65DD22C21BFA10F30054F62D /* FXYahooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22A91BFA10DF0054F62D /* FXYahooTests.swift */; };
 		65DD22C31BFA10F30054F62D /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AA1BFA10DF0054F62D /* MoneyTests.swift */; };
 		65DD22C41BFA10F30054F62D /* NSDecimalNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AB1BFA10DF0054F62D /* NSDecimalNumberTests.swift */; };
 		65DD22C51BFA10F30054F62D /* NSDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD22AC1BFA10DF0054F62D /* NSDecimalTests.swift */; };
 		65DD22C61BFA10F60054F62D /* ApplePayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD229E1BFA10DF0054F62D /* ApplePayTests.swift */; };
-		65DD22C81BFA110D0054F62D /* CEX.IO BTCUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A31BFA10DF0054F62D /* CEX.IO BTCUSD.json */; };
-		65DD22C91BFA110D0054F62D /* CEX.IO USDBTC.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A41BFA10DF0054F62D /* CEX.IO USDBTC.json */; };
-		65DD22CA1BFA110D0054F62D /* OpenExchangeRates.org USDEUR.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A51BFA10DF0054F62D /* OpenExchangeRates.org USDEUR.json */; };
-		65DD22CB1BFA110D0054F62D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A61BFA10DF0054F62D /* Yahoo GBPUSD.json */; };
-		65DD22CC1BFA11150054F62D /* CEX.IO BTCUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A31BFA10DF0054F62D /* CEX.IO BTCUSD.json */; };
-		65DD22CD1BFA11150054F62D /* CEX.IO USDBTC.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A41BFA10DF0054F62D /* CEX.IO USDBTC.json */; };
-		65DD22CE1BFA11150054F62D /* OpenExchangeRates.org USDEUR.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A51BFA10DF0054F62D /* OpenExchangeRates.org USDEUR.json */; };
-		65DD22CF1BFA11150054F62D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A61BFA10DF0054F62D /* Yahoo GBPUSD.json */; };
-		65DD22D01BFA111B0054F62D /* CEX.IO BTCUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A31BFA10DF0054F62D /* CEX.IO BTCUSD.json */; };
-		65DD22D11BFA111B0054F62D /* CEX.IO USDBTC.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A41BFA10DF0054F62D /* CEX.IO USDBTC.json */; };
-		65DD22D21BFA111B0054F62D /* OpenExchangeRates.org USDEUR.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A51BFA10DF0054F62D /* OpenExchangeRates.org USDEUR.json */; };
-		65DD22D31BFA111B0054F62D /* Yahoo GBPUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22A61BFA10DF0054F62D /* Yahoo GBPUSD.json */; };
-		65DD22D41BFA12810054F62D /* Troll.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22AD1BFA10DF0054F62D /* Troll.png */; };
-		65DD22D51BFA12870054F62D /* Troll.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22AD1BFA10DF0054F62D /* Troll.png */; };
-		65DD22D61BFA128D0054F62D /* Troll.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DD22AD1BFA10DF0054F62D /* Troll.png */; };
 		65DEE3351BFA0F370043A718 /* ApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3251BFA0F370043A718 /* ApplePay.swift */; };
 		65DEE3391BFA0F370043A718 /* Autogenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3271BFA0F370043A718 /* Autogenerated.swift */; };
 		65DEE33A1BFA0F370043A718 /* Autogenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3271BFA0F370043A718 /* Autogenerated.swift */; };
@@ -124,18 +100,6 @@
 		65DEE3521BFA0F370043A718 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE32F1BFA0F370043A718 /* Bitcoin.swift */; };
 		65DEE3531BFA0F370043A718 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE32F1BFA0F370043A718 /* Bitcoin.swift */; };
 		65DEE3541BFA0F370043A718 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE32F1BFA0F370043A718 /* Bitcoin.swift */; };
-		65DEE3551BFA0F370043A718 /* FX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3301BFA0F370043A718 /* FX.swift */; };
-		65DEE3561BFA0F370043A718 /* FX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3301BFA0F370043A718 /* FX.swift */; };
-		65DEE3571BFA0F370043A718 /* FX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3301BFA0F370043A718 /* FX.swift */; };
-		65DEE3581BFA0F370043A718 /* FX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3301BFA0F370043A718 /* FX.swift */; };
-		65DEE3591BFA0F370043A718 /* OpenExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3311BFA0F370043A718 /* OpenExchangeRates.swift */; };
-		65DEE35A1BFA0F370043A718 /* OpenExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3311BFA0F370043A718 /* OpenExchangeRates.swift */; };
-		65DEE35B1BFA0F370043A718 /* OpenExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3311BFA0F370043A718 /* OpenExchangeRates.swift */; };
-		65DEE35C1BFA0F370043A718 /* OpenExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3311BFA0F370043A718 /* OpenExchangeRates.swift */; };
-		65DEE35D1BFA0F370043A718 /* Yahoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3321BFA0F370043A718 /* Yahoo.swift */; };
-		65DEE35E1BFA0F370043A718 /* Yahoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3321BFA0F370043A718 /* Yahoo.swift */; };
-		65DEE35F1BFA0F370043A718 /* Yahoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3321BFA0F370043A718 /* Yahoo.swift */; };
-		65DEE3601BFA0F370043A718 /* Yahoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3321BFA0F370043A718 /* Yahoo.swift */; };
 		65DEE3611BFA0F370043A718 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3331BFA0F370043A718 /* Money.swift */; };
 		65DEE3621BFA0F370043A718 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3331BFA0F370043A718 /* Money.swift */; };
 		65DEE3631BFA0F370043A718 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEE3331BFA0F370043A718 /* Money.swift */; };
@@ -232,17 +196,9 @@
 		65DD229E1BFA10DF0054F62D /* ApplePayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayTests.swift; sourceTree = "<group>"; };
 		65DD22A01BFA10DF0054F62D /* BitcoinTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinTests.swift; sourceTree = "<group>"; };
 		65DD22A11BFA10DF0054F62D /* DecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalTests.swift; sourceTree = "<group>"; };
-		65DD22A31BFA10DF0054F62D /* CEX.IO BTCUSD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "CEX.IO BTCUSD.json"; sourceTree = "<group>"; };
-		65DD22A41BFA10DF0054F62D /* CEX.IO USDBTC.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "CEX.IO USDBTC.json"; sourceTree = "<group>"; };
-		65DD22A51BFA10DF0054F62D /* OpenExchangeRates.org USDEUR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "OpenExchangeRates.org USDEUR.json"; sourceTree = "<group>"; };
-		65DD22A61BFA10DF0054F62D /* Yahoo GBPUSD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Yahoo GBPUSD.json"; sourceTree = "<group>"; };
-		65DD22A71BFA10DF0054F62D /* FXOpenExchangeRatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXOpenExchangeRatesTests.swift; sourceTree = "<group>"; };
-		65DD22A81BFA10DF0054F62D /* FXTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXTests.swift; sourceTree = "<group>"; };
-		65DD22A91BFA10DF0054F62D /* FXYahooTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FXYahooTests.swift; sourceTree = "<group>"; };
 		65DD22AA1BFA10DF0054F62D /* MoneyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyTests.swift; sourceTree = "<group>"; };
 		65DD22AB1BFA10DF0054F62D /* NSDecimalNumberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberTests.swift; sourceTree = "<group>"; };
 		65DD22AC1BFA10DF0054F62D /* NSDecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalTests.swift; sourceTree = "<group>"; };
-		65DD22AD1BFA10DF0054F62D /* Troll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Troll.png; sourceTree = "<group>"; };
 		65DEE3251BFA0F370043A718 /* ApplePay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePay.swift; sourceTree = "<group>"; };
 		65DEE3271BFA0F370043A718 /* Autogenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autogenerated.swift; sourceTree = "<group>"; };
 		65DEE3281BFA0F370043A718 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -251,9 +207,6 @@
 		65DEE32C1BFA0F370043A718 /* NSDecimalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalExtensions.swift; sourceTree = "<group>"; };
 		65DEE32D1BFA0F370043A718 /* NSDecimalNumberExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtensions.swift; sourceTree = "<group>"; };
 		65DEE32F1BFA0F370043A718 /* Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
-		65DEE3301BFA0F370043A718 /* FX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FX.swift; sourceTree = "<group>"; };
-		65DEE3311BFA0F370043A718 /* OpenExchangeRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenExchangeRates.swift; sourceTree = "<group>"; };
-		65DEE3321BFA0F370043A718 /* Yahoo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yahoo.swift; sourceTree = "<group>"; };
 		65DEE3331BFA0F370043A718 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		65DEE3341BFA0F370043A718 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -416,32 +369,16 @@
 		65DD229F1BFA10DF0054F62D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				65DD22AD1BFA10DF0054F62D /* Troll.png */,
 				65579FC51C0288A300C3F8C7 /* AutogeneratedTests.swift */,
 				65DD22A01BFA10DF0054F62D /* BitcoinTests.swift */,
 				65579F8B1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift */,
 				65DD22A11BFA10DF0054F62D /* DecimalTests.swift */,
-				65DD22A71BFA10DF0054F62D /* FXOpenExchangeRatesTests.swift */,
-				65DD22A81BFA10DF0054F62D /* FXTests.swift */,
-				65DD22A91BFA10DF0054F62D /* FXYahooTests.swift */,
 				6553909C1C037A1A00610C6F /* LocaleTests.swift */,
 				65DD22AA1BFA10DF0054F62D /* MoneyTests.swift */,
 				65DD22AB1BFA10DF0054F62D /* NSDecimalNumberTests.swift */,
 				65DD22AC1BFA10DF0054F62D /* NSDecimalTests.swift */,
-				65DD22A21BFA10DF0054F62D /* DVR Cassettes */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		65DD22A21BFA10DF0054F62D /* DVR Cassettes */ = {
-			isa = PBXGroup;
-			children = (
-				65DD22A31BFA10DF0054F62D /* CEX.IO BTCUSD.json */,
-				65DD22A41BFA10DF0054F62D /* CEX.IO USDBTC.json */,
-				65DD22A51BFA10DF0054F62D /* OpenExchangeRates.org USDEUR.json */,
-				65DD22A61BFA10DF0054F62D /* Yahoo GBPUSD.json */,
-			);
-			path = "DVR Cassettes";
 			sourceTree = "<group>";
 		};
 		65DEE3241BFA0F370043A718 /* iOS */ = {
@@ -481,9 +418,6 @@
 			isa = PBXGroup;
 			children = (
 				65DEE32F1BFA0F370043A718 /* Bitcoin.swift */,
-				65DEE3301BFA0F370043A718 /* FX.swift */,
-				65DEE3311BFA0F370043A718 /* OpenExchangeRates.swift */,
-				65DEE3321BFA0F370043A718 /* Yahoo.swift */,
 			);
 			path = FX;
 			sourceTree = "<group>";
@@ -730,11 +664,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65DD22D41BFA12810054F62D /* Troll.png in Resources */,
-				65DD22C81BFA110D0054F62D /* CEX.IO BTCUSD.json in Resources */,
-				65DD22C91BFA110D0054F62D /* CEX.IO USDBTC.json in Resources */,
-				65DD22CA1BFA110D0054F62D /* OpenExchangeRates.org USDEUR.json in Resources */,
-				65DD22CB1BFA110D0054F62D /* Yahoo GBPUSD.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,11 +685,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65DD22D51BFA12870054F62D /* Troll.png in Resources */,
-				65DD22CC1BFA11150054F62D /* CEX.IO BTCUSD.json in Resources */,
-				65DD22CD1BFA11150054F62D /* CEX.IO USDBTC.json in Resources */,
-				65DD22CE1BFA11150054F62D /* OpenExchangeRates.org USDEUR.json in Resources */,
-				65DD22CF1BFA11150054F62D /* Yahoo GBPUSD.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,11 +699,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65DD22D61BFA128D0054F62D /* Troll.png in Resources */,
-				65DD22D01BFA111B0054F62D /* CEX.IO BTCUSD.json in Resources */,
-				65DD22D11BFA111B0054F62D /* CEX.IO USDBTC.json in Resources */,
-				65DD22D21BFA111B0054F62D /* OpenExchangeRates.org USDEUR.json in Resources */,
-				65DD22D31BFA111B0054F62D /* Yahoo GBPUSD.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,10 +791,7 @@
 				65DEE33D1BFA0F370043A718 /* Currency.swift in Sources */,
 				65DEE3611BFA0F370043A718 /* Money.swift in Sources */,
 				65DEE3391BFA0F370043A718 /* Autogenerated.swift in Sources */,
-				65DEE3551BFA0F370043A718 /* FX.swift in Sources */,
-				65DEE35D1BFA0F370043A718 /* Yahoo.swift in Sources */,
 				65DEE3511BFA0F370043A718 /* Bitcoin.swift in Sources */,
-				65DEE3591BFA0F370043A718 /* OpenExchangeRates.swift in Sources */,
 				65DEE3351BFA0F370043A718 /* ApplePay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,13 +801,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				65DD22BE1BFA10F30054F62D /* BitcoinTests.swift in Sources */,
-				65DD22C11BFA10F30054F62D /* FXTests.swift in Sources */,
 				65DD22C51BFA10F30054F62D /* NSDecimalTests.swift in Sources */,
 				65DD22C31BFA10F30054F62D /* MoneyTests.swift in Sources */,
 				65579F8C1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */,
 				65DD22C61BFA10F60054F62D /* ApplePayTests.swift in Sources */,
-				65DD22C01BFA10F30054F62D /* FXOpenExchangeRatesTests.swift in Sources */,
-				65DD22C21BFA10F30054F62D /* FXYahooTests.swift in Sources */,
 				65DD22C41BFA10F30054F62D /* NSDecimalNumberTests.swift in Sources */,
 				65DD22BF1BFA10F30054F62D /* DecimalTests.swift in Sources */,
 				65579FC61C0288A300C3F8C7 /* AutogeneratedTests.swift in Sources */,
@@ -912,10 +825,7 @@
 				65DEE3621BFA0F370043A718 /* Money.swift in Sources */,
 				65579FB71C0228EB00C3F8C7 /* Locale.swift in Sources */,
 				65DEE33A1BFA0F370043A718 /* Autogenerated.swift in Sources */,
-				65DEE3561BFA0F370043A718 /* FX.swift in Sources */,
-				65DEE35E1BFA0F370043A718 /* Yahoo.swift in Sources */,
 				65DEE3521BFA0F370043A718 /* Bitcoin.swift in Sources */,
-				65DEE35A1BFA0F370043A718 /* OpenExchangeRates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,10 +842,7 @@
 				65DEE3631BFA0F370043A718 /* Money.swift in Sources */,
 				65579FB81C0228EB00C3F8C7 /* Locale.swift in Sources */,
 				65DEE33B1BFA0F370043A718 /* Autogenerated.swift in Sources */,
-				65DEE3571BFA0F370043A718 /* FX.swift in Sources */,
-				65DEE35F1BFA0F370043A718 /* Yahoo.swift in Sources */,
 				65DEE3531BFA0F370043A718 /* Bitcoin.swift in Sources */,
-				65DEE35B1BFA0F370043A718 /* OpenExchangeRates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,11 +852,8 @@
 			files = (
 				65579FC71C0288A300C3F8C7 /* AutogeneratedTests.swift in Sources */,
 				65DD22B61BFA10F20054F62D /* BitcoinTests.swift in Sources */,
-				65DD22B91BFA10F20054F62D /* FXTests.swift in Sources */,
 				65DD22BD1BFA10F20054F62D /* NSDecimalTests.swift in Sources */,
 				65DD22BB1BFA10F20054F62D /* MoneyTests.swift in Sources */,
-				65DD22B81BFA10F20054F62D /* FXOpenExchangeRatesTests.swift in Sources */,
-				65DD22BA1BFA10F20054F62D /* FXYahooTests.swift in Sources */,
 				65DD22BC1BFA10F20054F62D /* NSDecimalNumberTests.swift in Sources */,
 				6553909E1C037A1A00610C6F /* LocaleTests.swift in Sources */,
 				65579F8D1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */,
@@ -970,10 +874,7 @@
 				65DEE3641BFA0F370043A718 /* Money.swift in Sources */,
 				65579FB91C0228EB00C3F8C7 /* Locale.swift in Sources */,
 				65DEE33C1BFA0F370043A718 /* Autogenerated.swift in Sources */,
-				65DEE3581BFA0F370043A718 /* FX.swift in Sources */,
-				65DEE3601BFA0F370043A718 /* Yahoo.swift in Sources */,
 				65DEE3541BFA0F370043A718 /* Bitcoin.swift in Sources */,
-				65DEE35C1BFA0F370043A718 /* OpenExchangeRates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,9 +887,6 @@
 				65DD22B41BFA10F10054F62D /* NSDecimalNumberTests.swift in Sources */,
 				65DD22AF1BFA10F10054F62D /* DecimalTests.swift in Sources */,
 				65DD22B31BFA10F10054F62D /* MoneyTests.swift in Sources */,
-				65DD22B11BFA10F10054F62D /* FXTests.swift in Sources */,
-				65DD22B21BFA10F10054F62D /* FXYahooTests.swift in Sources */,
-				65DD22B01BFA10F10054F62D /* FXOpenExchangeRatesTests.swift in Sources */,
 				6553909F1C037A1A00610C6F /* LocaleTests.swift in Sources */,
 				65579F8E1C01F0C100C3F8C7 /* DecimalNumberTypeTests.swift in Sources */,
 				65DD22AE1BFA10F10054F62D /* BitcoinTests.swift in Sources */,
