@@ -25,8 +25,6 @@
 // SOFTWARE.
 
 import Foundation
-import Result
-import SwiftyJSON
 
 
 // MARK: - Bitcoin Currency

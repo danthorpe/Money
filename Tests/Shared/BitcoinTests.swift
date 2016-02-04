@@ -7,9 +7,6 @@
 //
 
 import XCTest
-import Result
-import DVR
-import SwiftyJSON
 @testable import Money
 
 
