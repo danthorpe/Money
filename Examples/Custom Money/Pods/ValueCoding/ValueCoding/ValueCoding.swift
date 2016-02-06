@@ -66,6 +66,10 @@ extension CodingType where ValueType: ValueCoding, ValueType.Coder == Self {
     internal static func decode<S: SequenceType where S.Generator.Element: AnyObject>(objects: S?) -> [ValueType] {
         return objects?.flatMap(decode) ?? []
     }
+
+    internal static func decode<S: SequenceType where S.Generator.Element: SequenceType, S.Generator.Element.Generator.Element: AnyObject>(objects: S?) -> [[ValueType]] {
+        return objects?.flatMap(decode) ?? []
+    }
 }
 
 extension SequenceType where
@@ -111,6 +115,16 @@ extension ValueCoding where Coder: NSCoding, Coder.ValueType == Self {
     }
 
     /**
+     Decodes the values from a sequence of sequence of coders, if possible
+
+     - parameter objects: a `SequenceType` of `SequenceType` of `AnyObject`.
+     - returns: the array of arrays of values which were able to be unarchived.
+     */
+    public static func decode<S: SequenceType where S.Generator.Element: SequenceType, S.Generator.Element.Generator.Element: AnyObject>(objects: S?) -> [[Self]] {
+        return Coder.decode(objects)
+    }
+
+    /**
     Encodes the value type into its Coder.
     
     Typically this would be used inside of 
@@ -131,7 +145,7 @@ extension SequenceType where
     Generator.Element.Coder.ValueType == Generator.Element {
 
     /**
-    Encodes the sequence of value types into a sequence of coders.
+    Encodes the sequence of value types into an array of coders.
 
     Typically this would be used inside of
     `encodeWithCoder:` when a sequence of values is
@@ -146,6 +160,20 @@ extension SequenceType where
     }
 }
 
+extension SequenceType where
+    Generator.Element: SequenceType,
+    Generator.Element.Generator.Element: ValueCoding,
+    Generator.Element.Generator.Element.Coder: NSCoding,
+    Generator.Element.Generator.Element.Coder.ValueType == Generator.Element.Generator.Element {
+
+    /**
+     Encodes a sequence of sequences of value types into 
+     an array of arrays of coders.
+     */
+    public var encoded: [[Generator.Element.Generator.Element.Coder]] {
+        return map { $0.encoded }
+    }
+}
 
 
 
