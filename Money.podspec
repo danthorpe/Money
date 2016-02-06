@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "Money"
-  s.version           = "1.4.2"
+  s.version           = "1.5.0"
   s.summary           = "Swift types for working with Money."
   s.description       = <<-DESC
   
@@ -34,7 +34,6 @@ Pod::Spec.new do |s|
   s.tvos.exclude_files = [ 'Money/iOS' ]  
   
   s.dependency 'ValueCoding'
-  s.dependency 'Result'
-  s.dependency 'SwiftyJSON'    
+
 end
 
