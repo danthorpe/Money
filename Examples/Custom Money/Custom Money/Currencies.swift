@@ -51,6 +51,9 @@ extension Currency {
 typealias Hearts = _Money<Currency.Heart>
 typealias Bees = _Money<Currency.Bee>
 
+
+/** - This would require the FX module
+
 class BankRates {
 
     static func quoteForBase(base: String, counter: String) -> FXQuote {
@@ -93,3 +96,5 @@ class Bank<B: MoneyType, C: MoneyType where
     }
 }
 
+
+*/

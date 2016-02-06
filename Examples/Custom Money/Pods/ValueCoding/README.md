@@ -57,7 +57,7 @@ and likewise, decoding from unarchiving can be done:
 
 ```swift
 if let foo = Foo.decode(NSKeyedUnarchiver.unarchiveObjectWithData(data)) {
-    // etc, unarchive returns optionals when working with a single item.
+    // etc, decode returns optionals when working with a single item.
 }
 ```
 

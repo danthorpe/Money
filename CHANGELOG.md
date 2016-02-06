@@ -1,3 +1,9 @@
+# 1.5.1
+Cleans up a few issues related to updating to the latest Carthage, and the example project.
+
+# 1.5.0
+1. [[MNY-38](https://github.com/danthorpe/Money/pull/38)]: Removes the FX functionality from this framework.
+
 # 1.4.2
 1. [[MNY-39](https://github.com/danthorpe/Money/pull/30)]: Updates to the latest version of [Result](https://github.com/antitypical/Result/releases/tag/1.0.1) dependency. Thanks to [@mrdavey](https://github.com/mrdavey) and [@hsoi](https://github.com/hsoi) for spotting this!
 
