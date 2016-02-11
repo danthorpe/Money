@@ -8,8 +8,6 @@
 
 import Foundation
 
-internal let __formatter = NSNumberFormatter()
-
 /**
  LanguageType provides an interface to retrieve
  a language identifier.

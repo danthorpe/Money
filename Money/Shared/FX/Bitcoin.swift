@@ -37,6 +37,20 @@ import Foundation
 */
 public protocol BitcoinCurrencyType: CryptoCurrencyType { }
 
+public extension BitcoinCurrencyType {
+
+    /// The smallest unit of Bitcoin is the Satoshi
+    /// - see: https://en.bitcoin.it/wiki/Satoshi_(unit)
+    static var scale: Int {
+        return 8
+    }
+    
+    /// - returns: the currency symbol
+    static var symbol: String? {
+        return "Ƀ"
+    }
+}
+ 
 public extension Currency {
 
     /**
@@ -55,18 +69,14 @@ public extension Currency {
         /// - returns: the proposed ISO 4217 currency code
         public static let code = "XBT"
 
-        /// The smallest unit of Bitcoin is the Satoshi
-        /// - see: https://en.bitcoin.it/wiki/Satoshi_(unit)
-        public static let scale: Int = 8
-
         /// - returns: a configured NSNumberFormatter
-        public static let formatter: NSNumberFormatter = {
-            let fmtr = NSNumberFormatter()
-            fmtr.numberStyle = .CurrencyStyle
-            fmtr.maximumFractionDigits = scale
-            fmtr.currencySymbol = "Ƀ"
-            return fmtr
-        }()
+//        public static let formatter: NSNumberFormatter = {
+//            let fmtr = NSNumberFormatter()
+//            fmtr.numberStyle = .CurrencyStyle
+//            fmtr.maximumFractionDigits = scale
+//            fmtr.currencySymbol = "Ƀ"
+//            return fmtr
+//        }()
     }
 
     /**
@@ -76,8 +86,8 @@ public extension Currency {
      */
     struct BTC: BitcoinCurrencyType {
         public static let code = "BTC"
-        public static let scale = Currency.XBT.scale
-        public static let formatter = Currency.XBT.formatter
+//        public static let scale = Currency.XBT.scale
+//        public static let formatter = Currency.XBT.formatter
     }
 }
 

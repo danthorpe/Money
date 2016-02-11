@@ -51,9 +51,9 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
     /// The currency symbol
     static var symbol: String? { get }
 
-    /// A number formatter for the currency
-    static var formatter: NSNumberFormatter { get }
-
+    /// Default formatting style
+    static var defaultFormattingStyle: NSNumberFormatterStyle { get }
+    
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocaleId localeId: String) -> NSDecimalNumber -> String
 
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> NSDecimalNumber -> String
@@ -61,10 +61,10 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
 
 public extension CurrencyType {
 
-    static var symbol: String? {
-        return formatter.currencySymbol
+    static var defaultFormattingStyle: NSNumberFormatterStyle {
+        return .CurrencyStyle
     }
-
+    
     /**
      Default implementation of the `NSDecimalNumberBehaviors` for
      the currency. This uses `NSRoundingMode.RoundBankers` and the
@@ -87,22 +87,15 @@ public extension CurrencyType {
 internal extension CurrencyType {
 
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: NSLocale) -> NSDecimalNumber -> String {
-        __formatter.reset()
-        __formatter.locale = locale
-        __formatter.numberStyle = style
-        switch locale.currencyCode {
-        case .Some(let wrapped) where wrapped == code:
-            break
-        default:
-            __formatter.currencyCode = code
-            __formatter.currencySymbol = formatter.currencySymbol
-            __formatter.internationalCurrencySymbol = formatter.internationalCurrencySymbol
-            __formatter.currencyGroupingSeparator = formatter.currencyGroupingSeparator
-            __formatter.currencyDecimalSeparator = formatter.currencyDecimalSeparator
-            __formatter.maximumFractionDigits = formatter.maximumFractionDigits
-
-        }
-        return { __formatter.stringFromNumber($0)! }
+        
+        let formatter = NSNumberFormatter()
+        formatter.locale = locale
+        formatter.numberStyle = style
+        formatter.maximumFractionDigits = scale
+        formatter.currencySymbol = symbol ?? locale.currencySymbol
+        formatter.currencyCode = code
+        
+        return { formatter.stringFromNumber($0)! }
     }
 }
 
@@ -159,8 +152,12 @@ public protocol ISOCurrencyType: CurrencyType {
     /// - returns: the currency code
     var _code: String { get }
 
-    /// - returns: a number formatter for the currency in the current locale.
-    var _formatter: NSNumberFormatter { get }
+    /// - returns: the currency scale
+    var _scale: Int { get }
+    
+    /// - returns: the currency symbol
+    var _symbol: String? { get }
+    
 }
 
 public extension ISOCurrencyType {
@@ -172,12 +169,12 @@ public extension ISOCurrencyType {
 
     /// The currency scale
     static var scale: Int {
-        return formatter.maximumFractionDigits
+        return sharedInstance._scale
     }
 
-    /// Returns a formatter from the shared instance
-    static var formatter: NSNumberFormatter {
-        return sharedInstance._formatter
+    /// The currency symbol
+    static var symbol: String? {
+        return sharedInstance._symbol
     }
 
     /**
@@ -221,22 +218,38 @@ public struct Currency {
     public class Base {
 
         public let _code: String
+        public let _scale: Int
+        public let _symbol: String?
 
-        public lazy var _formatter: NSNumberFormatter = {
-            let fmtr = NSNumberFormatter()
-            let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: self._code])))
-            fmtr.numberStyle = .CurrencyStyle
-            fmtr.currencyCode = self._code
-            fmtr.currencySymbol = locale.currencySymbol
-            return fmtr
-        }()
-
-        init(code: String) {
-            self._code = code
+        init(code: String, scale: Int, symbol: String?) {
+            _code = code
+            _scale = scale
+            _symbol = symbol
         }
 
+        convenience init(code: String) {
+            let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: code])))
+            let symbol = locale.currencySymbol!
+            
+            let fmtr = NSNumberFormatter()
+            fmtr.locale = locale
+            fmtr.numberStyle = .CurrencyStyle
+            fmtr.currencyCode = code
+            fmtr.currencySymbol = locale.currencySymbol
+            
+            let scale = fmtr.maximumFractionDigits
+            self.init(code: code, scale: scale, symbol: symbol)
+        }
+        
         convenience init(locale: NSLocale) {
-            self.init(code: locale.objectForKey(NSLocaleCurrencyCode) as! String)
+            let code = locale.currencyCode!
+            let symbol = locale.currencySymbol
+            
+            let fmtr = NSNumberFormatter()
+            fmtr.locale = locale
+            
+            let scale = fmtr.maximumFractionDigits            
+            self.init(code: code, scale: scale, symbol: symbol)
         }
     }
 

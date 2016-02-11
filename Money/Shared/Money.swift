@@ -296,7 +296,7 @@ extension _Money: CustomStringConvertible {
      NSNumberFormatterStyle.CurrencyStyle.
     */
     public var description: String {
-        return formattedWithStyle(.CurrencyStyle)
+        return formattedWithStyle(C.defaultFormattingStyle)
     }
 }
 
