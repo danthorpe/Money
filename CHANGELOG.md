@@ -1,3 +1,7 @@
+# 1.6.0
+1. [[MNY-39](https://github.com/danthorpe/Money/pull/39)]: Updates the spelling of CocoaPods, thanks [https://github.com/ReadmeCritic](@ReadmeCritic)!
+2. [[MNY-34](https://github.com/danthorpe/Money/pull/34)]: Refactors `CurrencyType` to remove the formatter property, and include a default `CurrencyStyle`. This update makes it a lot easier to make custom currency types, and overall improves or fixes bugs with the ISO currency types. If you have custom currencies you may need to perform some slight refactoring, but it shouldn’t be too complex.
+
 # 1.5.1
 Cleans up a few issues related to updating to the latest Carthage, and the example project.
 
