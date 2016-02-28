@@ -259,7 +259,7 @@ class MoneyDescriptionTests: MoneyTests {
     func test__usd_formatted_with_style() {
         XCTAssertEqual(usd.currencyCode, "USD")
         let formatted = usd.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
-        XCTAssertEqual(formatted, "$99.00")
+        XCTAssertEqual(formatted, "US$99.00")
     }
 
     func test__btc_formatted_with_style() {
@@ -293,7 +293,7 @@ class MoneyDescriptionTests: MoneyTests {
         XCTAssertEqual(jpy.currencyCode, "JPY")
         XCTAssertEqual(JPY.Currency.scale, 0)
         if NSLocale.currentLocale().localeIdentifier == "en_US" {
-            XCTAssertEqual(jpy.description, "¥32,000")
+
         }
         else {
             XCTAssertEqual(jpy.description, "JP¥32,000")
@@ -302,7 +302,7 @@ class MoneyDescriptionTests: MoneyTests {
 
     func test__jpy_formatted_with_style_for_locale() {
         let formatted = jpy.formattedWithStyle(.CurrencyStyle, forLocale: .German(.Germany))
-        XCTAssertEqual(formatted, "32.000 ¥")
+        XCTAssertEqual(formatted, "32.000 JP¥")
     }
 }
 
@@ -327,7 +327,7 @@ class MoneyFormattingTests: MoneyTests {
 
     func test__formatted_for_Spanish_Spain() {
         let result = gbp.formattedWithStyle(.CurrencyStyle, forLocale: .Spanish(.Spain))
-        XCTAssertEqual(result, "100,00 GBP")
+        XCTAssertEqual(result, "100,00 £")
     }
 
     func test__formatted_for_English_UnitedKingdom() {
