@@ -1,0 +1,5 @@
+coverage_service: coveralls
+xcodeproj: Money.xcodeproj
+ignore:
+  - Tests/*
+  - Supporting Files/*
