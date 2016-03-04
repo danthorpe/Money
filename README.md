@@ -197,13 +197,6 @@ extension Currency {
         static let code: String = "BEES"
         static let symbol: String = "🐝"
         static let scale: Int  = 0
-        static let formatter: NSNumberFormatter = {
-            let fmtr = NSNumberFormatter()
-            fmtr.numberStyle = .CurrencyStyle
-            fmtr.maximumFractionDigits = Currency.Bee.scale
-            fmtr.currencySymbol = Currency.Bee.symbol
-            return fmtr
-        }()
     }
 }
 
@@ -222,7 +215,7 @@ print(“I have \(bees)”)
 
 And of course if you have an IAP for purchasing in-app currency, then I’m sure a custom FX provider would be handy.
 
-Take a look at the example project, Custom Money, for an example of a custom local FX provider to exchange your 🐝s.
+Take a look at the example project, [Custom Money](https://github.com/danthorpe/Examples/tree/development/Money/Custom%20Money), for an example of a custom local FX provider to exchange your 🐝s.
 
 ## Installation
 Money builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is compatible with [Carthage](https://github.com/carthage/carthage). It is also available via CocoaPods.
