@@ -1,7 +1,7 @@
 ![](https://raw.githubusercontent.com/danthorpe/Money/development/header.png)
 
 [![Build status](https://badge.buildkite.com/265eb9670a2ef6b73eebf37769a8455c402509f71f09c4f51e.svg?branch=development)](https://buildkite.com/blindingskies/money?branch=development)
-[![codecov.io](https://codecov.io/github/danthorpe/Money/coverage.svg?branch=development&token=gI70muNOjA)](https://codecov.io/github/danthorpe/Money?branch=development)
+[![Coverage Status](https://coveralls.io/repos/github/danthorpe/Money/badge.svg?branch=development)](https://coveralls.io/github/danthorpe/Money?branch=development)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Money.svg)](https://img.shields.io/cocoapods/v/Money.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/Money.svg?style=flat)](http://cocoadocs.org/docsets/Money)

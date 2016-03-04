@@ -12,7 +12,7 @@ steps:
   -
     type: "waiter"
   -
-    name: ":codecov: Send Coverage"
+    name: ":muscle: Send Coverage"
     command: .ci/scripts/send-coverage
     agents:
       name: "$BUILDKITE_AGENT_META_DATA_NAME"

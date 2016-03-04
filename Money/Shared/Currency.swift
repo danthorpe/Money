@@ -86,14 +86,17 @@ public extension CurrencyType {
 
 internal extension CurrencyType {
 
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: NSLocale) -> NSDecimalNumber -> String {
-        
+    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale tmp: NSLocale) -> NSDecimalNumber -> String {
+
+        let id = "\(tmp.localeIdentifier)@currency=\(code)"
+        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(id))
+
         let formatter = NSNumberFormatter()
+        formatter.currencyCode = code
         formatter.locale = locale
         formatter.numberStyle = style
         formatter.maximumFractionDigits = scale
         formatter.currencySymbol = symbol ?? locale.currencySymbol
-        formatter.currencyCode = code
         
         return { formatter.stringFromNumber($0)! }
     }
