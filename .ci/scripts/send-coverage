@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 chruby ruby
-bundle exec slather
+bundle exec slather coverage --verbose --scheme Money-iOS --buildkite --coveralls --build-directory .ci/xcodebuild-data
