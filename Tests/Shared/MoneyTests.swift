@@ -237,6 +237,16 @@ class MoneyDivisionTests: XCTestCase {
     }
 }
 
+class MoneyConversionTests: XCTestCase {
+    let input: GBP = 100
+    let rate: BankersDecimal = 1.2
+
+    func test__convert_with_rate_to_other() {
+        let output: EUR = input.convertWithRate(rate)
+        XCTAssertEqual(output, 120)
+    }
+}
+
 class MoneyDescriptionTests: MoneyTests {
 
     override func setUp() {
