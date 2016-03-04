@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-slather
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby ruby
+bundle exec slather
