@@ -21,9 +21,9 @@ class LocaleTests: XCTestCase {
     }
 
     override func tearDown() {
-        super.tearDown()
         en_US = nil
         es_ES = nil
+        super.tearDown()
     }
 
     func test__currency_code() {
@@ -45,5 +45,5 @@ class LocaleTests: XCTestCase {
         XCTAssertEqual(en_US.currencyDecimalSeparator, ".")
         XCTAssertEqual(es_ES.currencyDecimalSeparator, ",")
     }
-
 }
+
