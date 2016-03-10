@@ -1,3 +1,7 @@
+# 1.6.1
+1. [[MNY-42](https://github.com/danthorpe/Money/pull/42)]: Removes all the example projects to [danthorpe/Examples](https://github.com/danthorpe/Examples). This is done mostly to avoid an issue where Carthage attempts to build all Xcode projects it can find in a repository.
+2. [[MNY-43](https://github.com/danthorpe/Money/pull/43)]: Switch the code coverage reporting tool to [Coveralls](https://coveralls.io/github/danthorpe/Money), and got the coverage back to 100%.
+
 # 1.6.0
 1. [[MNY-39](https://github.com/danthorpe/Money/pull/39)]: Updates the spelling of CocoaPods, thanks [https://github.com/ReadmeCritic](@ReadmeCritic)!
 2. [[MNY-34](https://github.com/danthorpe/Money/pull/34)]: Refactors `CurrencyType` to remove the formatter property, and include a default `CurrencyStyle`. This update makes it a lot easier to make custom currency types, and overall improves or fixes bugs with the ISO currency types. If you have custom currencies you may need to perform some slight refactoring, but it shouldn’t be too complex.
