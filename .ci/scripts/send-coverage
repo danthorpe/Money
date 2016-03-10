@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-bash <(curl -s https://codecov.io/bash) -X gcov -X coveragepy -D .ci/xcodebuild-data
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby ruby
+bundle exec slather coverage --scheme Money-iOS --buildkite --coveralls --build-directory .ci/xcodebuild-data

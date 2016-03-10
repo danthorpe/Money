@@ -1,7 +1,7 @@
 ![](https://raw.githubusercontent.com/danthorpe/Money/development/header.png)
 
 [![Build status](https://badge.buildkite.com/265eb9670a2ef6b73eebf37769a8455c402509f71f09c4f51e.svg?branch=development)](https://buildkite.com/blindingskies/money?branch=development)
-[![codecov.io](https://codecov.io/github/danthorpe/Money/coverage.svg?branch=development&token=gI70muNOjA)](https://codecov.io/github/danthorpe/Money?branch=development)
+[![Coverage Status](https://coveralls.io/repos/github/danthorpe/Money/badge.svg?branch=development)](https://coveralls.io/github/danthorpe/Money?branch=development)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Money.svg)](https://img.shields.io/cocoapods/v/Money.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/Money.svg?style=flat)](http://cocoadocs.org/docsets/Money)
@@ -197,13 +197,6 @@ extension Currency {
         static let code: String = "BEES"
         static let symbol: String = "🐝"
         static let scale: Int  = 0
-        static let formatter: NSNumberFormatter = {
-            let fmtr = NSNumberFormatter()
-            fmtr.numberStyle = .CurrencyStyle
-            fmtr.maximumFractionDigits = Currency.Bee.scale
-            fmtr.currencySymbol = Currency.Bee.symbol
-            return fmtr
-        }()
     }
 }
 
@@ -222,7 +215,7 @@ print(“I have \(bees)”)
 
 And of course if you have an IAP for purchasing in-app currency, then I’m sure a custom FX provider would be handy.
 
-Take a look at the example project, Custom Money, for an example of a custom local FX provider to exchange your 🐝s.
+Take a look at the example project, [Custom Money](https://github.com/danthorpe/Examples/tree/development/Money/Custom%20Money), for an example of a custom local FX provider to exchange your 🐝s.
 
 ## Installation
 Money builds as a cross platform (iOS, OS X, watchOS) extension compatible framework. It is compatible with [Carthage](https://github.com/carthage/carthage). It is also available via CocoaPods.

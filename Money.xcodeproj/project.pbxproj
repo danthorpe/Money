@@ -899,6 +899,7 @@
 		65B92ACC1BE0E46C00F82024 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				ENABLE_TESTABILITY = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -908,6 +909,7 @@
 		65B92ACD1BE0E46C00F82024 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;

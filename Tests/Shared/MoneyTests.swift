@@ -237,6 +237,15 @@ class MoneyDivisionTests: XCTestCase {
     }
 }
 
+class MoneyConversionTests: XCTestCase {
+    let input: GBP = 100
+
+    func test__convert_with_rate_to_other() {
+        let output: EUR = input.convertWithRate(1.2)
+        XCTAssertEqual(output, 120)
+    }
+}
+
 class MoneyDescriptionTests: MoneyTests {
 
     override func setUp() {
@@ -374,4 +383,32 @@ class MoneyMinorUnitTests: XCTestCase {
         XCTAssertEqual(BTC(integerLiteral: 1).minorUnits, 1_0000_0000)
     }
 }
+
+class CustomCurrencyWithoutSymbol: CustomCurrencyType {
+    static let code: String = "DAN"
+    static let scale: Int = 3
+    static let symbol: String? = .None
+}
+
+class CurrencyTests: XCTestCase {
+
+    func test__formatted_with_style() {
+        let formating = Currency.GBP.formattedWithStyle(.CurrencyISOCodeStyle, forLocale: NSLocale.currentLocale())
+        let result = formating(NSDecimalNumber(double: 10))
+        XCTAssertEqual(result, "GBP10.00")
+    }
+
+    func test__formatted_with_iso_style__with_no_symbol() {
+        let formating = CustomCurrencyWithoutSymbol.formattedWithStyle(.CurrencyISOCodeStyle, forLocale: NSLocale.currentLocale())
+        let result = formating(NSDecimalNumber(double: 10.1234))
+        XCTAssertEqual(result, "DAN10.123")
+    }
+
+    func test__formatted_with_default_style__with_no_symbol() {
+        let formating = CustomCurrencyWithoutSymbol.formattedWithStyle(.CurrencyStyle, forLocale: NSLocale.currentLocale())
+        let result = formating(NSDecimalNumber(double: 10.1234))
+        XCTAssertEqual(result, "DAN10.123")
+    }
+}
+
 

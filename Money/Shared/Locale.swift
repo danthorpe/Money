@@ -84,12 +84,3 @@ public extension NSLocale {
     }
 }
 
-internal extension NSNumberFormatter {
-    func reset() {
-        currencyCode = nil
-        currencySymbol = nil
-        internationalCurrencySymbol = nil
-        currencyGroupingSeparator = nil
-        currencyDecimalSeparator = nil
-    }
-}
