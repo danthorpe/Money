@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.author            = { "Daniel Thorpe" => "@danthorpe" }
   s.source            = { :git => "https://github.com/danthorpe/Money.git", :tag => s.version.to_s }
   s.module_name       = 'Money'
-  s.documentation_url = 'http://docs.danthorpe.me/money/1.6.0/index.html'
+  s.documentation_url = 'http://docs.danthorpe.me/money/1.6.1/index.html'
   s.social_media_url  = 'https://twitter.com/danthorpe'
   s.requires_arc      = true
   s.ios.deployment_target = '8.0'
