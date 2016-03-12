@@ -250,6 +250,7 @@ class MoneyDescriptionTests: MoneyTests {
 
     override func setUp() {
         super.setUp()
+        money = 3.99
         gbp = 100
         usd = 99
         cad = 102.01
@@ -257,6 +258,10 @@ class MoneyDescriptionTests: MoneyTests {
         eur = 249.499
         jpy = 32_000
         btc = 0.002_007
+    }
+
+    func test__money_description() {
+        XCTAssertEqual(money.description.endIndex, money.description.rangeOfString("3.99")?.endIndex)
     }
 
     func test__gbp_description() {
