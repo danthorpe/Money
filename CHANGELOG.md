@@ -1,3 +1,6 @@
+# 1.6.2
+1. [[MNY-45](https://github.com/danthorpe/Money/pull/45)]: Fixes a serious bug where `Money` did not have the correct currency scale.
+
 # 1.6.1
 1. [[MNY-42](https://github.com/danthorpe/Money/pull/42)]: Removes all the example projects to [danthorpe/Examples](https://github.com/danthorpe/Examples). This is done mostly to avoid an issue where Carthage attempts to build all Xcode projects it can find in a repository.
 2. [[MNY-43](https://github.com/danthorpe/Money/pull/43)]: Switch the code coverage reporting tool to [Coveralls](https://coveralls.io/github/danthorpe/Money), and got the coverage back to 100%.
