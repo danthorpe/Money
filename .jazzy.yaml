@@ -1,7 +1,7 @@
 author_name: Daniel Thorpe
 author_url: http://danthorpe.me
 module_name: Money
-module_version: 1.6.1
+module_version: 1.6.2
 github_url: https://github.com/danthorpe/Money
 readme: README.md
 podspec: Money.podspec
