@@ -249,7 +249,9 @@ public struct Currency {
             let symbol = locale.currencySymbol
             
             let fmtr = NSNumberFormatter()
+            fmtr.numberStyle = .CurrencyStyle
             fmtr.locale = locale
+            fmtr.currencyCode = code
             
             let scale = fmtr.maximumFractionDigits            
             self.init(code: code, scale: scale, symbol: symbol)
