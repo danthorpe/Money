@@ -35,34 +35,11 @@ custom_categories:
     - _MoneyCoder
     - Money
 
-  - name: Foreign Exchange
-    children:
-    - MoneyPairType
-    - FXProviderType
-    - FXLocalProviderType
-    - FXRemoteProviderType
-    - CurrencyMarketTransactionType
-    - CryptoCurrencyMarketTransactionType
-    - FXQuote
-    - FXQuoteCoder
-    - FXTransaction
-    - FXTransactionCoder
-    - FXError
-    - FXRemoteProvider
-    - Yahoo
-    - OpenExchangeRatesAppID
-    - _OpenExchangeRates
-    - _ForeverFreeOpenExchangeRates
-    - CurrencyMarketTransactionKind
-
   - name: Bitcoin
     children:
     - BitcoinCurrencyType
     - BTC
     - XBT
-    - CEXSupportedFiatCurrencyType
-    - CEXBuy
-    - CEXSell
 
   - name: Pay 
     children:
