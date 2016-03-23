@@ -207,9 +207,10 @@ public extension PKPaymentRequest {
      - parameter sellerName: a `String` which is used in the total cost summary item.
      - returns: a `PKPaymentRequest` which has its payment summary items and currency code set.
     */
-    convenience init<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost>(var items: [PaymentSummaryItem<Cost>], sellerName: String) {
+    convenience init<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost>(items: [PaymentSummaryItem<Cost>], sellerName: String) {
         self.init()
         currencyCode = Cost.Currency.code
+        var items = items
         let total = items.map { $0.cost }.reduce(0, combine: +)
         items.append(PaymentSummaryItem(label: sellerName, cost: total))
         paymentSummaryItems = items.map { PKPaymentSummaryItem(paymentSummaryItem: $0) }
