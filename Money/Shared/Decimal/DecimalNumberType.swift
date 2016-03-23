@@ -85,8 +85,8 @@ public struct DecimalNumberBehavior {
  */
 public protocol DecimalNumberType: Hashable, SignedNumberType, IntegerLiteralConvertible, FloatLiteralConvertible, CustomStringConvertible {
 
-    typealias DecimalStorageType
-    typealias DecimalNumberBehavior: DecimalNumberBehaviorType
+    associatedtype DecimalStorageType
+    associatedtype DecimalNumberBehavior: DecimalNumberBehaviorType
 
     /// Access the underlying storage
     var storage: DecimalStorageType { get }
