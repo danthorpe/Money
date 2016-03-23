@@ -1,3 +1,6 @@
+# 1.7.0
+1. [[MNY-47](https://github.com/danthorpe/Money/pull/47)]: Updates to Swift 2.2.
+
 # 1.6.2
 1. [[MNY-45](https://github.com/danthorpe/Money/pull/45)]: Fixes a serious bug where `Money` did not have the correct currency scale.
 
