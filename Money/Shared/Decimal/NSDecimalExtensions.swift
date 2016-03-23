@@ -29,7 +29,8 @@ import Foundation
 
 // MARK: - Equality
 
-public func ==(var lhs: NSDecimal, var rhs: NSDecimal) -> Bool {
+public func == (lhs: NSDecimal, rhs: NSDecimal) -> Bool {
+    var (lhs, rhs) = (lhs, rhs)
     return NSDecimalCompare(&lhs, &rhs) == .OrderedSame
 }
 
@@ -37,7 +38,8 @@ public func ==(var lhs: NSDecimal, var rhs: NSDecimal) -> Bool {
 
 extension NSDecimal: Comparable { }
 
-public func <(var lhs: NSDecimal, var rhs: NSDecimal) -> Bool {
+public func < (lhs: NSDecimal, rhs: NSDecimal) -> Bool {
+    var (lhs, rhs) = (lhs, rhs)
     return NSDecimalCompare(&lhs, &rhs) == .OrderedAscending
 }
 
@@ -91,8 +93,8 @@ internal extension NSDecimal {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    func subtract(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var lhs = self
+    func subtract(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+        var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
         NSDecimalSubtract(&result, &lhs, &rhs, roundingMode)
         return result
@@ -106,8 +108,8 @@ internal extension NSDecimal {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    func add(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var lhs = self
+    func add(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+        var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
         NSDecimalAdd(&result, &lhs, &rhs, roundingMode)
         return result
@@ -121,8 +123,8 @@ internal extension NSDecimal {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    func multiplyBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var lhs = self
+    func multiplyBy(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+        var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
         NSDecimalMultiply(&result, &lhs, &rhs, roundingMode)
         return result
@@ -136,8 +138,8 @@ internal extension NSDecimal {
      - returns: a `NSDecimal`.
      */
     @warn_unused_result
-    func divideBy(var rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var lhs = self
+    func divideBy(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+        var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
         NSDecimalDivide(&result, &lhs, &rhs, roundingMode)
         return result

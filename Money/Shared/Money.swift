@@ -36,7 +36,7 @@ import ValueCoding
  adds a generic type for the currency.
 */
 public protocol MoneyType: DecimalNumberType, ValueCoding {
-    typealias Currency: CurrencyType
+    associatedtype Currency: CurrencyType
 
     /// Access the underlying decimal
     var decimal: _Decimal<Currency> { get }
