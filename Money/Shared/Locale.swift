@@ -58,20 +58,29 @@ extension LocaleType where Self: LanguageType, Self: CountryType {
     }
 }
 
+internal extension NSLocale {
+
+    /// - returns: a String? for the currency code.
+    var money_currencyCode: String {
+        guard #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
+            return objectForKey(NSLocaleCurrencyCode) as! String
+        }
+        return currencyCode
+    }
+
+    /// - returns: a String? for the currency symbol.
+    var money_currencySymbol: String {
+        guard #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
+            return objectForKey(NSLocaleCurrencySymbol) as! String
+        }
+        return currencySymbol
+    }
+}
+
 /**
  Convenience currency related properties on NSLocale
 */
 public extension NSLocale {
-
-    /// - returns: a String? for the currency code.
-    var currencyCode: String? {
-        return objectForKey(NSLocaleCurrencyCode) as? String
-    }
-
-    /// - returns: a String? for the currency symbol.
-    var currencySymbol: String? {
-        return objectForKey(NSLocaleCurrencySymbol) as? String
-    }
 
     /// - returns: a String? for the currency grouping separator.
     var currencyGroupingSeparator: String? {
@@ -83,4 +92,6 @@ public extension NSLocale {
         return objectForKey(NSLocaleDecimalSeparator) as? String
     }
 }
+
+
 

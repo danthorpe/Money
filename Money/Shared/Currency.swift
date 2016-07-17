@@ -96,8 +96,8 @@ internal extension CurrencyType {
         formatter.locale = locale
         formatter.numberStyle = style
         formatter.maximumFractionDigits = scale
-        formatter.currencySymbol = symbol ?? locale.currencySymbol
-        
+        formatter.currencySymbol = symbol ?? locale.money_currencySymbol
+
         return { formatter.stringFromNumber($0)! }
     }
 }
@@ -232,21 +232,21 @@ public struct Currency {
 
         convenience init(code: String) {
             let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: code])))
-            let symbol = locale.currencySymbol!
+            let symbol = locale.money_currencySymbol
             
             let fmtr = NSNumberFormatter()
             fmtr.locale = locale
             fmtr.numberStyle = .CurrencyStyle
             fmtr.currencyCode = code
-            fmtr.currencySymbol = locale.currencySymbol
+            fmtr.currencySymbol = locale.money_currencySymbol
             
             let scale = fmtr.maximumFractionDigits
             self.init(code: code, scale: scale, symbol: symbol)
         }
         
         convenience init(locale: NSLocale) {
-            let code = locale.currencyCode!
-            let symbol = locale.currencySymbol
+            let code = locale.money_currencyCode
+            let symbol = locale.money_currencySymbol
             
             let fmtr = NSNumberFormatter()
             fmtr.numberStyle = .CurrencyStyle
