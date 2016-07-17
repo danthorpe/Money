@@ -82,9 +82,6 @@ public extension CurrencyType {
             raiseOnDivideByZero: true
         )
     }
-}
-
-internal extension CurrencyType {
 
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale tmp: NSLocale) -> NSDecimalNumber -> String {
 
@@ -101,7 +98,6 @@ internal extension CurrencyType {
         return { formatter.stringFromNumber($0)! }
     }
 }
-
 
 /**
  Custom currency types should refine CustomCurrencyType.
