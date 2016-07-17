@@ -970,6 +970,7 @@
 		};
 		65B92ACC1BE0E46C00F82024 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -996,6 +997,7 @@
 		};
 		65B92ACD1BE0E46C00F82024 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1020,7 +1022,6 @@
 		};
 		65B92AE51BE0E4A700F82024 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1078,7 +1079,6 @@
 		};
 		65B92AE61BE0E4A700F82024 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1230,7 +1230,6 @@
 		};
 		65B92AF61BE0E4C800F82024 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -1290,7 +1289,6 @@
 		};
 		65B92AF71BE0E4C800F82024 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -1344,7 +1342,6 @@
 		};
 		65B92B0F1BE0E4D800F82024 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1403,7 +1400,6 @@
 		};
 		65B92B101BE0E4D800F82024 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1552,7 +1548,6 @@
 		};
 		65B92B2B1BE0E4E700F82024 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1613,7 +1608,6 @@
 		};
 		65B92B2C1BE0E4E700F82024 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B92B361BE0E57800F82024 /* Money.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
