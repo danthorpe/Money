@@ -27,13 +27,13 @@ class LocaleTests: XCTestCase {
     }
 
     func test__currency_code() {
-        XCTAssertEqual(en_US.currencyCode, "USD")
-        XCTAssertEqual(es_ES.currencyCode, "EUR")
+        XCTAssertEqual(en_US.money_currencyCode, "USD")
+        XCTAssertEqual(es_ES.money_currencyCode, "EUR")
     }
 
     func test__currency_symbol() {
-        XCTAssertEqual(en_US.currencySymbol, "$")
-        XCTAssertEqual(es_ES.currencySymbol, "€")
+        XCTAssertEqual(en_US.money_currencySymbol, "$")
+        XCTAssertEqual(es_ES.money_currencySymbol, "€")
     }
 
     func test__currency_currencyGroupingSeparator() {
