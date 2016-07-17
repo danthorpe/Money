@@ -92,7 +92,6 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    @warn_unused_result
     func subtract(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
@@ -107,7 +106,7 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    @warn_unused_result
+    
     func add(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
@@ -122,7 +121,7 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    @warn_unused_result
+    
     func multiplyBy(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
@@ -137,7 +136,7 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    @warn_unused_result
+    
     func divideBy(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         var (lhs, rhs) = (self, rhs)
         var result = NSDecimal()
@@ -164,7 +163,7 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    @warn_unused_result
+    
     func remainder(_rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
         let lhs = NSDecimalNumber(decimal: self)
         let rhs = NSDecimalNumber(decimal: _rhs)

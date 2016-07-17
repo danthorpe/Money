@@ -63,7 +63,7 @@ internal extension NSDecimalNumber {
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: a `NSDecimalNumber`.
      */
-    @warn_unused_result
+    
     func subtract(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberBySubtracting(other, withBehavior: behaviors)
     }
@@ -75,7 +75,7 @@ internal extension NSDecimalNumber {
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: a `NSDecimalNumber`.
      */
-    @warn_unused_result
+    
     func add(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByAdding(other, withBehavior: behaviors)
     }
@@ -86,7 +86,7 @@ internal extension NSDecimalNumber {
      - parameter n: an `Int` for the 10 power index
      - returns: another instance of this type.
      */
-    @warn_unused_result
+    
     func multiplyByPowerOf10(index: Int, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByMultiplyingByPowerOf10(Int16(index), withBehavior: behaviors)
     }
@@ -98,7 +98,7 @@ internal extension NSDecimalNumber {
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: a `NSDecimalNumber`.
      */
-    @warn_unused_result
+    
     func multiplyBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByMultiplyingBy(other, withBehavior: behaviors)
     }
@@ -110,7 +110,7 @@ internal extension NSDecimalNumber {
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: a `NSDecimalNumber`.
      */
-    @warn_unused_result
+    
     func divideBy(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         return decimalNumberByDividingBy(other, withBehavior: behaviors)
     }
@@ -134,7 +134,7 @@ internal extension NSDecimalNumber {
      - parameter behaviors: an optional NSDecimalNumberBehaviors?
      - returns: a `NSDecimalNumber`.
      */
-    @warn_unused_result
+    
     func remainder(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
         let roundingMode: NSRoundingMode = Int(isNegative) ^ Int(other.isNegative) ? .RoundUp : .RoundDown
         let roundingBehaviors = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
