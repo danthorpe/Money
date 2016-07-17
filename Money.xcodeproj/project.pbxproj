@@ -556,16 +556,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				TargetAttributes = {
 					65A876D81BE65FAF00E26F22 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0800;
 					};
 					65B92AD21BE0E4A700F82024 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					65B92ADC1BE0E4A700F82024 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0800;
 					};
 					65B92AEF1BE0E4C800F82024 = {
 						CreatedOnToolsVersion = 7.1;
