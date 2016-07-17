@@ -2,11 +2,17 @@ steps:
   -
     name: ":fastlane: Test Mac OS X"
     command: .ci/scripts/test-osx
+    agents:
+      swift: "2.3"
   -
     name: ":fastlane: Test iOS"
     command: .ci/scripts/test-ios
+    agents:
+      swift: "2.3"
   -
     type: "waiter"
   -
     name: ":muscle: Send Coverage"
     command: .ci/scripts/send-coverage
+    agents:
+      swift: "2.3"
