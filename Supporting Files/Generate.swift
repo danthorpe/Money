@@ -1,4 +1,4 @@
-#!/Applications/Xcode-beta.app/Contents/Developer/Toolchains/Swift_2.3.xctoolchain/usr/bin/swift
+#!/usr/bin/env xcrun -sdk macosx swift
 
 //
 //  Generate.swift
@@ -284,7 +284,7 @@ func createLocale(line: Writer) {
         line("let locale: Locale = .French(.France)")        
         line("```")
         line("*/")
-        line("public enum Locale {")
+        line("public enum Localization {")
 
         for language in info.languages.sort() {
             line("")
@@ -310,7 +310,7 @@ func createLocale(line: Writer) {
         line("/**")
         line(" Locale conforms to LanguageType.")
         line("*/")
-        line("extension Locale: LanguageType {")
+        line("extension Localization: LanguageType {")
         line("")
         line("    /// - returns: the lanauge identifier as a String.")
         line("    public var languageIdentifier: String {")
@@ -338,7 +338,7 @@ func createLocale(line: Writer) {
         line("/**")
         line(" Locale conforms to CountryType.")
         line("*/")
-        line("extension Locale: CountryType {")
+        line("extension Localization: CountryType {")
         line("")
         line("    /// - returns: the country identifier as a String.")
         line("    public var countryIdentifier: String {")
@@ -362,7 +362,7 @@ func createLocale(line: Writer) {
     // Add extension for LocaleType protocol
     do {
         line("")
-        line("extension Locale: LocaleType {")
+        line("extension Localization: LocaleType {")
         line("    // Uses default implementation")
         line("}") // End of extension
     }
@@ -423,16 +423,16 @@ func createTestForLanguageIdentifier(line: Writer, language: Language, country: 
     line("")
     if let country = country {
         line("    func test__language_identifier_for_\(language.name)_\(country.name)() {")
-        line("        locale = .\(language.name)(\(country.caseNameValue))")
-        line("        XCTAssertEqual(locale.languageIdentifier, \"\(language.id)\")")
-        line("        XCTAssertEqual(locale.localeIdentifier, \"\(language.id)_\(country.id)\")")
+        line("        localization = .\(language.name)(\(country.caseNameValue))")
+        line("        XCTAssertEqual(localization.languageIdentifier, \"\(language.id)\")")
+        line("        XCTAssertEqual(localization.localeIdentifier, \"\(language.id)_\(country.id)\")")
         line("    }")
     }
     else {
         line("    func test__language_identifier_for_\(language.name)() {")
-        line("        locale = .\(language.name)")
-        line("        XCTAssertEqual(locale.languageIdentifier, \"\(language.id)\")")
-        line("        XCTAssertEqual(locale.localeIdentifier, \"\(language.id)\")")
+        line("        localization = .\(language.name)")
+        line("        XCTAssertEqual(localization.languageIdentifier, \"\(language.id)\")")
+        line("        XCTAssertEqual(localization.localeIdentifier, \"\(language.id)\")")
         line("    }")
     }
 }
@@ -454,17 +454,17 @@ func createUnitTestsForLocale(line: Writer) {
 
     for language in info.languagesWithMoreThanOneCountry {
 
-        createXCTestCaseNamed(line, className: "Locale\(language.name)Language") { line in
+        createXCTestCaseNamed(line, className: "Localization\(language.name)Language") { line in
             line("")
-            line("    var locale: Locale!")
+            line("    var localization: Localization!")
 
             createUnitTestsForLocaleWithLanguage(line, language: language)
         }
     }
 
-    createXCTestCaseNamed(line, className: "Locale") { line in
+    createXCTestCaseNamed(line, className: "Localization") { line in
         line("")
-        line("    var locale: Locale!")
+        line("    var localization: Localization!")
 
         for language in info.languagesWithLessThanTwoCountries {
             createUnitTestsForLocaleWithLanguage(line, language: language)

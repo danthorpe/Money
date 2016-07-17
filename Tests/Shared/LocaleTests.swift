@@ -11,13 +11,13 @@ import XCTest
 
 class LocaleTests: XCTestCase {
 
-    var en_US: NSLocale!
-    var es_ES: NSLocale!
+    var en_US: Locale!
+    var es_ES: Locale!
 
     override func setUp() {
         super.setUp()
-        en_US = NSLocale(localeIdentifier: Locale.English(.UnitedStates).localeIdentifier)
-        es_ES = NSLocale(localeIdentifier: Locale.Spanish(.Spain).localeIdentifier)
+        en_US = Locale(localeIdentifier: Localization.English(.UnitedStates).localeIdentifier)
+        es_ES = Locale(localeIdentifier: Localization.Spanish(.Spain).localeIdentifier)
     }
 
     override func tearDown() {

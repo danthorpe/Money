@@ -27,7 +27,7 @@
 
 import Foundation
 
-extension Int: BooleanType {
+extension Int: Boolean {
 
     public var boolValue: Bool {
         switch self {

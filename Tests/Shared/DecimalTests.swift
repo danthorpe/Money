@@ -11,7 +11,7 @@ import ValueCoding
 @testable import Money
 
 class DecimalTests: XCTestCase {
-    var decimal: Decimal!
+    var decimal: PlainDecimal!
 
     override func tearDown() {
         decimal = nil
@@ -23,7 +23,7 @@ class DecimalAccessorTests: DecimalTests {
 
     func test__decimal_integer_value() {
         decimal = 10.00
-        XCTAssertEqual(decimal.integerValue, 10)
+        XCTAssertEqual(decimal.intValue, 10)
     }
 
     func test__decimal_float_value() {
@@ -87,17 +87,17 @@ class DecimalNumberConversionTests: DecimalTests {
 
 class DecimalValueCodingTests: DecimalTests {
 
-    func archiveEncodedDecimal() -> NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(decimal.encoded)
+    func archiveEncodedDecimal() -> Data {
+        return NSKeyedArchiver.archivedData(withRootObject: decimal.encoded)
     }
 
-    func unarchive(archive: NSData) -> Decimal? {
-        return Decimal.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
+    func unarchive(archive: Data) -> PlainDecimal? {
+        return PlainDecimal.decode(NSKeyedUnarchiver.unarchiveObject(with: archive))
     }
 
     func test__decimal_encodes() {
         decimal = 10
-        XCTAssertEqual(unarchive(archiveEncodedDecimal()), decimal)
+        XCTAssertEqual(unarchive(archive: archiveEncodedDecimal()), decimal)
     }
 }
 

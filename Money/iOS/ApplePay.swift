@@ -40,7 +40,7 @@ import ValueCoding
  - see: PKPaymentSummaryItemType
  */
 public enum PaymentSummaryItemType: Int {
-    case Final = 1, Pending
+    case final = 1, pending
 }
 
 /**
@@ -53,7 +53,7 @@ public enum PaymentSummaryItemType: Int {
  The money type must use `NSDecimalNumber` storage type, and correctly 
  conform to `ValueCoding`.
  */
-public struct PaymentSummaryItem<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost>: Hashable, ValueCoding {
+public struct PaymentSummaryItem<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.Value == Cost>: Hashable, ValueCoding {
 
     /// The ValueCoding Coder type
     public typealias Coder = PaymentSummaryItemCoder<Cost>
@@ -98,13 +98,13 @@ public struct PaymentSummaryItem<Cost: MoneyType where Cost.DecimalStorageType =
      - parameter type: the value for the `type` property.     
      - returns: a summary item with a given label, cost and type.
     */
-    public init(label: String, cost: Cost, type: PaymentSummaryItemType = .Final) {
+    public init(label: String, cost: Cost, type: PaymentSummaryItemType = .final) {
         self.label = label
         self.type = type
         switch type {
-        case .Final:
+        case .final:
             self.cost = cost
-        case .Pending:
+        case .pending:
             self.cost = 0
         }
     }
@@ -117,7 +117,7 @@ extension PaymentSummaryItem {
      - parameter newLabel: the value for the `label` property in an item copy
      - returns: a summary item with a new label value, and previously set cost and type.
      */
-    public func setLabel(newLabel: String) -> PaymentSummaryItem {
+    public func set(label newLabel: String) -> PaymentSummaryItem {
         return PaymentSummaryItem(label: newLabel, cost: cost, type: type)
     }
 
@@ -126,7 +126,7 @@ extension PaymentSummaryItem {
      - parameter newCost: the value for the `cost` property in an item copy
      - returns: a summary item with a new cost value, and previously set label and type.
     */
-    public func setCost(newCost: Cost) -> PaymentSummaryItem {
+    public func set(cost newCost: Cost) -> PaymentSummaryItem {
         return PaymentSummaryItem(label: label, cost: newCost, type: type)
     }
 
@@ -135,7 +135,7 @@ extension PaymentSummaryItem {
      - parameter newType: the value for the `type` property in an item copy
      - returns: a summary item with a new type value, and previously set label and cost.
      */
-    public func setType(newType: PaymentSummaryItemType) -> PaymentSummaryItem {
+    public func set(type newType: PaymentSummaryItemType) -> PaymentSummaryItem {
         return PaymentSummaryItem(label: label, cost: cost, type: newType)
     }
 }
@@ -143,7 +143,7 @@ extension PaymentSummaryItem {
 /**
  Coding adaptor for `PaymentSummaryItem`.
 */
-public final class PaymentSummaryItemCoder<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost>: NSObject, NSCoding, CodingType {
+public final class PaymentSummaryItemCoder<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.Value == Cost>: NSObject, NSCoding, CodingType {
 
     public let value: PaymentSummaryItem<Cost>
 
@@ -152,16 +152,16 @@ public final class PaymentSummaryItemCoder<Cost: MoneyType where Cost.DecimalSto
     }
 
     public init?(coder aDecoder: NSCoder) {
-        let cost = Cost.decode(aDecoder.decodeObjectForKey("cost"))
-        let label = aDecoder.decodeObjectForKey("label") as? String
-        let type = PaymentSummaryItemType(rawValue: aDecoder.decodeIntegerForKey("type"))
+        let cost = Cost.decode(aDecoder.decodeObject(forKey: "cost"))
+        let label = aDecoder.decodeObject(forKey: "label") as? String
+        let type = PaymentSummaryItemType(rawValue: aDecoder.decodeInteger(forKey: "type"))
         value = PaymentSummaryItem(label: label!, cost: cost!, type: type!)
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(value.label, forKey: "label")
-        aCoder.encodeObject(value.cost.encoded, forKey: "cost")
-        aCoder.encodeInteger(value.type.rawValue, forKey: "type")
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(value.label, forKey: "label")
+        aCoder.encode(value.cost.encoded, forKey: "cost")
+        aCoder.encode(value.type.rawValue, forKey: "type")
     }
 }
 
@@ -172,10 +172,10 @@ internal extension PKPaymentSummaryItemType {
 
     init(paymentSummaryItemType: PaymentSummaryItemType) {
         switch paymentSummaryItemType {
-        case .Final:
-            self = .Final
-        case .Pending:
-            self = .Pending
+        case .final:
+            self = .final
+        case .pending:
+            self = .pending
         }
     }
 }
@@ -207,7 +207,7 @@ public extension PKPaymentRequest {
      - parameter sellerName: a `String` which is used in the total cost summary item.
      - returns: a `PKPaymentRequest` which has its payment summary items and currency code set.
     */
-    convenience init<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.ValueType == Cost>(items: [PaymentSummaryItem<Cost>], sellerName: String) {
+    convenience init<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber, Cost.Coder: NSCoding, Cost.Coder.Value == Cost>(items: [PaymentSummaryItem<Cost>], sellerName: String) {
         self.init()
         currencyCode = Cost.Currency.code
         var items = items

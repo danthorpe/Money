@@ -27,29 +27,13 @@
 
 import Foundation
 
-// MARK: - Equality
-
-public func == (lhs: NSDecimal, rhs: NSDecimal) -> Bool {
-    var (lhs, rhs) = (lhs, rhs)
-    return NSDecimalCompare(&lhs, &rhs) == .OrderedSame
-}
-
-// MARK: - Comparable
-
-extension NSDecimal: Comparable { }
-
-public func < (lhs: NSDecimal, rhs: NSDecimal) -> Bool {
-    var (lhs, rhs) = (lhs, rhs)
-    return NSDecimalCompare(&lhs, &rhs) == .OrderedAscending
-}
-
 /**
  # NSDecimal Extension
 
  This is an extension on NSDecimal to support `DecimalNumberType` and
  `Decimal`.
  */
-internal extension NSDecimal {
+internal extension Decimal {
 
     /**
      Static function to get the `NSDecimal` representation of 
@@ -57,8 +41,8 @@ internal extension NSDecimal {
      
      - returns: a `NSDecimal` of zero.
     */
-    static func zero() -> NSDecimal {
-        return NSDecimalNumber.zero().decimalValue
+    static var zero: Decimal {
+        return NSDecimalNumber.zero.decimalValue
     }
 
     /**
@@ -67,8 +51,8 @@ internal extension NSDecimal {
 
      - returns: a `NSDecimal` of one.
      */
-    static func one() -> NSDecimal {
-        return NSDecimalNumber.one().decimalValue
+    static var one: Decimal {
+        return NSDecimalNumber.one.decimalValue
     }
 
     /**
@@ -78,11 +62,11 @@ internal extension NSDecimal {
      - returns: a `Bool` if the value is below zero.
     */
     var isNegative: Bool {
-        return self < NSDecimal.zero()
+        return self < Decimal.zero
     }
 
     internal init() {
-        self = NSDecimal.zero()
+        self = Decimal.zero
     }
 
     /**
@@ -92,9 +76,9 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    func subtract(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var (lhs, rhs) = (self, rhs)
-        var result = NSDecimal()
+    func subtract(other: Decimal, withRoundingMode roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
+        var (lhs, rhs) = (self, other)
+        var result = Decimal()
         NSDecimalSubtract(&result, &lhs, &rhs, roundingMode)
         return result
     }
@@ -107,9 +91,9 @@ internal extension NSDecimal {
      - returns: a `NSDecimal`.
      */
     
-    func add(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var (lhs, rhs) = (self, rhs)
-        var result = NSDecimal()
+    func add(other: Decimal, withRoundingMode roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
+        var (lhs, rhs) = (self, other)
+        var result = Decimal()
         NSDecimalAdd(&result, &lhs, &rhs, roundingMode)
         return result
     }
@@ -122,9 +106,9 @@ internal extension NSDecimal {
      - returns: a `NSDecimal`.
      */
     
-    func multiplyBy(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var (lhs, rhs) = (self, rhs)
-        var result = NSDecimal()
+    func multiply(by: Decimal, withRoundingMode roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
+        var (lhs, rhs) = (self, by)
+        var result = Decimal()
         NSDecimalMultiply(&result, &lhs, &rhs, roundingMode)
         return result
     }
@@ -137,9 +121,9 @@ internal extension NSDecimal {
      - returns: a `NSDecimal`.
      */
     
-    func divideBy(rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
-        var (lhs, rhs) = (self, rhs)
-        var result = NSDecimal()
+    func divide(by: Decimal, withRoundingMode roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
+        var (lhs, rhs) = (self, by)
+        var result = Decimal()
         NSDecimalDivide(&result, &lhs, &rhs, roundingMode)
         return result
     }
@@ -150,9 +134,9 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    func negateWithRoundingMode(roundingMode: NSRoundingMode) -> NSDecimal {
-        let negativeOne = NSDecimal.zero().subtract(NSDecimal.one(), withRoundingMode: roundingMode)
-        let result = multiplyBy(negativeOne, withRoundingMode: roundingMode)
+    func negate(withRoundingMode roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
+        let negativeOne = Decimal.zero.subtract(other: Decimal.one, withRoundingMode: roundingMode)
+        let result = multiply(by: negativeOne, withRoundingMode: roundingMode)
         return result
     }
 
@@ -163,12 +147,11 @@ internal extension NSDecimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    
-    func remainder(_rhs: NSDecimal, withRoundingMode roundingMode: NSRoundingMode) -> NSDecimal {
+    func remainder(other: Decimal, withRoundingMode roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
         let lhs = NSDecimalNumber(decimal: self)
-        let rhs = NSDecimalNumber(decimal: _rhs)
+        let rhs = NSDecimalNumber(decimal: other)
         let behaviors = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 38, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: true)
-        let result = lhs.remainder(rhs, withBehaviors: behaviors)
+        let result = lhs.remainder(other: rhs, withBehaviors: behaviors)
         return result.decimalValue
     }
 }
