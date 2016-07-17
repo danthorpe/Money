@@ -1,4 +1,4 @@
-#!/usr/bin/env xcrun -sdk macosx swift
+#!/Applications/Xcode-beta.app/Contents/Developer/Toolchains/Swift_2.3.xctoolchain/usr/bin/swift
 
 //
 //  Generate.swift
