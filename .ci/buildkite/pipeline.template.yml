@@ -9,10 +9,3 @@ steps:
     command: .ci/scripts/test-ios
     agents:
       name: "$BUILDKITE_AGENT_META_DATA_NAME"
-  -
-    type: "waiter"
-  -
-    name: ":muscle: Send Coverage"
-    command: .ci/scripts/send-coverage
-    agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
