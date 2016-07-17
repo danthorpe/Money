@@ -416,6 +416,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65B92AE91BE0E4A700F82024 /* Build configuration list for PBXNativeTarget "Money-iOS" */;
 			buildPhases = (
+				65671D591D3BE30D005ABD86 /* Build Carthage Dependencies */,
 				65B92ACE1BE0E4A700F82024 /* Sources */,
 				65B92ACF1BE0E4A700F82024 /* Frameworks */,
 				65B92AD01BE0E4A700F82024 /* Headers */,
@@ -454,6 +455,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65B92AF51BE0E4C800F82024 /* Build configuration list for PBXNativeTarget "Money-watchOS" */;
 			buildPhases = (
+				65671D5A1D3BE845005ABD86 /* Build Carthage Dependencies */,
 				65B92AEB1BE0E4C800F82024 /* Sources */,
 				65B92AEC1BE0E4C800F82024 /* Frameworks */,
 				65B92AED1BE0E4C800F82024 /* Headers */,
@@ -473,6 +475,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65B92B0E1BE0E4D800F82024 /* Build configuration list for PBXNativeTarget "Money-tvOS" */;
 			buildPhases = (
+				65671D5B1D3BE853005ABD86 /* Build Carthage Dependencies */,
 				65B92AF81BE0E4D800F82024 /* Sources */,
 				65B92AF91BE0E4D800F82024 /* Frameworks */,
 				65B92AFA1BE0E4D800F82024 /* Headers */,
@@ -511,6 +514,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65B92B2A1BE0E4E700F82024 /* Build configuration list for PBXNativeTarget "Money-OSX" */;
 			buildPhases = (
+				65671D5D1D3BE864005ABD86 /* Build Carthage Dependencies */,
 				65B92B141BE0E4E700F82024 /* Sources */,
 				65B92B151BE0E4E700F82024 /* Frameworks */,
 				65B92B161BE0E4E700F82024 /* Headers */,
@@ -657,6 +661,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		65671D591D3BE30D005ABD86 /* Build Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Carthage Dependencies";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage build --platform iOS";
+			showEnvVarsInLog = 0;
+		};
+		65671D5A1D3BE845005ABD86 /* Build Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Carthage Dependencies";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage build --platform watchOS";
+			showEnvVarsInLog = 0;
+		};
+		65671D5B1D3BE853005ABD86 /* Build Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Carthage Dependencies";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage build --platform tvOS";
+			showEnvVarsInLog = 0;
+		};
+		65671D5D1D3BE864005ABD86 /* Build Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Carthage Dependencies";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage build --platform Mac";
+			showEnvVarsInLog = 0;
+		};
 		65A876DC1BE65FDA00E26F22 /* Generate Currency Type */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
