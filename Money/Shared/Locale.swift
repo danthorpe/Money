@@ -62,15 +62,15 @@ internal extension NSLocale {
 
     /// - returns: a String? for the currency code.
     var money_currencyCode: String {
-        guard #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
+        guard #available(iOS 10.0, iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
             return objectForKey(NSLocaleCurrencyCode) as! String
         }
-        return currencyCode
+        return currencyCode!
     }
 
     /// - returns: a String? for the currency symbol.
     var money_currencySymbol: String {
-        guard #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
+        guard #available(iOS 10.0, iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
             return objectForKey(NSLocaleCurrencySymbol) as! String
         }
         return currencySymbol
