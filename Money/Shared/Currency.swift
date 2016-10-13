@@ -94,8 +94,8 @@ public extension CurrencyType {
      - returns: a NSDecimalNumber -> String closure.
      */
     static func formatted(withStyle style: NumberFormatter.Style, andLocaleId localeId: String) -> (NSDecimalNumber) -> String {
-        let id = "\(Locale.current.localeIdentifier)@currency=\(code)"
-        let locale = Locale(localeIdentifier: Locale.canonicalLocaleIdentifier(from: id))
+        let id = "\(Locale.current.identifier)@currency=\(code)"
+        let locale = Locale(identifier: Locale.canonicalIdentifier(from: id))
         return formatted(withStyle: style, andLocale: locale)
     }
 
@@ -106,8 +106,8 @@ public extension CurrencyType {
     */
     static func formatted(withStyle style: NumberFormatter.Style, andLocale tmp: Locale) -> (NSDecimalNumber) -> String {
 
-        let id = "\(tmp.localeIdentifier)@currency=\(code)"
-        let locale = Locale(localeIdentifier: Locale.canonicalLocaleIdentifier(from: id))
+        let id = "\(tmp.identifier)@currency=\(code)"
+        let locale = Locale(identifier: Locale.canonicalIdentifier(from: id))
 
         let formatter = NumberFormatter()
         formatter.currencyCode = code
@@ -126,7 +126,7 @@ public extension CurrencyType {
      */
     static func formatted(withStyle style: NumberFormatter.Style, andLocalization localization: Localization) -> (NSDecimalNumber) -> String {
         let id = "\(localization.localeIdentifier)@currency=\(code)"
-        let locale = Locale(localeIdentifier: Locale.canonicalLocaleIdentifier(from: id))
+        let locale = Locale(identifier: Locale.canonicalIdentifier(from: id))
         return formatted(withStyle: style, andLocale: locale)
     }
 }
@@ -237,9 +237,9 @@ public struct Currency {
         }
 
         convenience init(code: String) {
-            let fromComponents = Locale.localeIdentifier(fromComponents: [Locale.Key.currencyCode.rawValue: code])
-            let canonicalIdentifier = Locale.canonicalLocaleIdentifier(from: fromComponents)
-            let locale = Locale(localeIdentifier: canonicalIdentifier)
+            let fromComponents = Locale.identifier(fromComponents: [Locale.current.currencyCode!: code])
+            let canonicalIdentifier = Locale.canonicalIdentifier(from: fromComponents)
+            let locale = Locale(identifier: canonicalIdentifier)
             let symbol = locale.money_currencySymbol
             
             let fmtr = NumberFormatter()

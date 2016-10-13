@@ -80,7 +80,8 @@ extension _Decimal: ValueCoding {
 /**
  Coding class to support `_Decimal` `ValueCoding` conformance.
 */
-public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject, NSCoding, CodingType {
+public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject, NSCoding, CodedValue,
+        CodingProtocol{
 
     public let value: _Decimal<Behavior>
 

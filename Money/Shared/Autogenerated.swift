@@ -2693,26 +2693,26 @@ public enum ChineseSpeakingCountry: CountryType {
 
     /// China is a country which speaks Chinese.
     case China
-    /// Hong Kong SAR China is a country which speaks Chinese.
-    case HongKongSarChina
-    /// Macau SAR China is a country which speaks Chinese.
-    case MacauSarChina
+    /// Hong Kong (China) is a country which speaks Chinese.
+    case HongKongChina
+    /// Macau (China) is a country which speaks Chinese.
+    case MacauChina
     /// Singapore is a country which speaks Chinese.
     case Singapore
     /// Taiwan is a country which speaks Chinese.
     case Taiwan
 
     /// - returns: an Array of all the countries which speak Chinese
-    public static let all: [ChineseSpeakingCountry] = [ .China, .HongKongSarChina, .MacauSarChina, .Singapore, .Taiwan ]
+    public static let all: [ChineseSpeakingCountry] = [ .China, .HongKongChina, .MacauChina, .Singapore, .Taiwan ]
 
     /// - returns: the country identifier of a specific Chinese speaking country.
     public var countryIdentifier: String {
         switch self {
         case .China:
             return "CN"
-        case .HongKongSarChina:
+        case .HongKongChina:
             return "HK"
-        case .MacauSarChina:
+        case .MacauChina:
             return "MO"
         case .Singapore:
             return "SG"
@@ -2843,8 +2843,12 @@ public enum EnglishSpeakingCountry: CountryType {
     case Barbados
     /// Belgium is a country which speaks English.
     case Belgium
+    /// Burundi is a country which speaks English.
+    case Burundi
     /// Bermuda is a country which speaks English.
     case Bermuda
+    /// Brazil is a country which speaks English.
+    case Brazil
     /// Bahamas is a country which speaks English.
     case Bahamas
     /// Botswana is a country which speaks English.
@@ -2861,6 +2865,8 @@ public enum EnglishSpeakingCountry: CountryType {
     case CookIslands
     /// Cameroon is a country which speaks English.
     case Cameroon
+    /// China is a country which speaks English.
+    case China
     /// Christmas Island is a country which speaks English.
     case ChristmasIsland
     /// Cyprus is a country which speaks English.
@@ -2909,8 +2915,8 @@ public enum EnglishSpeakingCountry: CountryType {
     case Guam
     /// Guyana is a country which speaks English.
     case Guyana
-    /// Hong Kong SAR China is a country which speaks English.
-    case HongKongSarChina
+    /// Hong Kong (China) is a country which speaks English.
+    case HongKongChina
     /// Croatia is a country which speaks English.
     case Croatia
     /// Hungary is a country which speaks English.
@@ -2933,12 +2939,16 @@ public enum EnglishSpeakingCountry: CountryType {
     case Jersey
     /// Jamaica is a country which speaks English.
     case Jamaica
+    /// Japan is a country which speaks English.
+    case Japan
     /// Kenya is a country which speaks English.
     case Kenya
     /// Kiribati is a country which speaks English.
     case Kiribati
     /// St. Kitts & Nevis is a country which speaks English.
     case StKittsNevis
+    /// South Korea is a country which speaks English.
+    case SouthKorea
     /// Cayman Islands is a country which speaks English.
     case CaymanIslands
     /// St. Lucia is a country which speaks English.
@@ -2959,8 +2969,8 @@ public enum EnglishSpeakingCountry: CountryType {
     case Madagascar
     /// Marshall Islands is a country which speaks English.
     case MarshallIslands
-    /// Macau SAR China is a country which speaks English.
-    case MacauSarChina
+    /// Macau (China) is a country which speaks English.
+    case MacauChina
     /// Northern Mariana Islands is a country which speaks English.
     case NorthernMarianaIslands
     /// Montserrat is a country which speaks English.
@@ -2969,6 +2979,8 @@ public enum EnglishSpeakingCountry: CountryType {
     case Malta
     /// Mauritius is a country which speaks English.
     case Mauritius
+    /// Maldives is a country which speaks English.
+    case Maldives
     /// Malawi is a country which speaks English.
     case Malawi
     /// Malaysia is a country which speaks English.
@@ -3047,6 +3059,8 @@ public enum EnglishSpeakingCountry: CountryType {
     case TrinidadTobago
     /// Tuvalu is a country which speaks English.
     case Tuvalu
+    /// Taiwan is a country which speaks English.
+    case Taiwan
     /// Tanzania is a country which speaks English.
     case Tanzania
     /// Uganda is a country which speaks English.
@@ -3073,7 +3087,7 @@ public enum EnglishSpeakingCountry: CountryType {
     case Zimbabwe
 
     /// - returns: an Array of all the countries which speak English
-    public static let all: [EnglishSpeakingCountry] = [ .World, .Europe, .Andorra, .AntiguaBarbuda, .Anguilla, .Albania, .AmericanSamoa, .Austria, .Australia, .BosniaHerzegovina, .Barbados, .Belgium, .Bermuda, .Bahamas, .Botswana, .Belize, .Canada, .CocosKeelingIslands, .Switzerland, .CookIslands, .Cameroon, .ChristmasIsland, .Cyprus, .CzechRepublic, .Germany, .DiegoGarcia, .Denmark, .Dominica, .Estonia, .Eritrea, .Spain, .Finland, .Fiji, .FalklandIslands, .Micronesia, .France, .UnitedKingdom, .Grenada, .Guernsey, .Ghana, .Gibraltar, .Gambia, .Greece, .Guam, .Guyana, .HongKongSarChina, .Croatia, .Hungary, .Ireland, .Israel, .IsleOfMan, .India, .BritishIndianOceanTerritory, .Iceland, .Italy, .Jersey, .Jamaica, .Kenya, .Kiribati, .StKittsNevis, .CaymanIslands, .StLucia, .Liberia, .Lesotho, .Lithuania, .Luxembourg, .Latvia, .Montenegro, .Madagascar, .MarshallIslands, .MacauSarChina, .NorthernMarianaIslands, .Montserrat, .Malta, .Mauritius, .Malawi, .Malaysia, .Namibia, .NorfolkIsland, .Nigeria, .Netherlands, .Norway, .Nauru, .Niue, .NewZealand, .PapuaNewGuinea, .Philippines, .Pakistan, .Poland, .PitcairnIslands, .PuertoRico, .Portugal, .Palau, .Romania, .Russia, .Rwanda, .SolomonIslands, .Seychelles, .Sudan, .Sweden, .Singapore, .StHelena, .Slovenia, .Slovakia, .SierraLeone, .SouthSudan, .SintMaarten, .Swaziland, .TurksCaicosIslands, .Tokelau, .Tonga, .Turkey, .TrinidadTobago, .Tuvalu, .Tanzania, .Uganda, .USOutlyingIslands, .UnitedStates, .StVincentGrenadines, .BritishVirginIslands, .USVirginIslands, .Vanuatu, .Samoa, .SouthAfrica, .Zambia, .Zimbabwe ]
+    public static let all: [EnglishSpeakingCountry] = [ .World, .Europe, .Andorra, .AntiguaBarbuda, .Anguilla, .Albania, .AmericanSamoa, .Austria, .Australia, .BosniaHerzegovina, .Barbados, .Belgium, .Burundi, .Bermuda, .Brazil, .Bahamas, .Botswana, .Belize, .Canada, .CocosKeelingIslands, .Switzerland, .CookIslands, .Cameroon, .China, .ChristmasIsland, .Cyprus, .CzechRepublic, .Germany, .DiegoGarcia, .Denmark, .Dominica, .Estonia, .Eritrea, .Spain, .Finland, .Fiji, .FalklandIslands, .Micronesia, .France, .UnitedKingdom, .Grenada, .Guernsey, .Ghana, .Gibraltar, .Gambia, .Greece, .Guam, .Guyana, .HongKongChina, .Croatia, .Hungary, .Ireland, .Israel, .IsleOfMan, .India, .BritishIndianOceanTerritory, .Iceland, .Italy, .Jersey, .Jamaica, .Japan, .Kenya, .Kiribati, .StKittsNevis, .SouthKorea, .CaymanIslands, .StLucia, .Liberia, .Lesotho, .Lithuania, .Luxembourg, .Latvia, .Montenegro, .Madagascar, .MarshallIslands, .MacauChina, .NorthernMarianaIslands, .Montserrat, .Malta, .Mauritius, .Maldives, .Malawi, .Malaysia, .Namibia, .NorfolkIsland, .Nigeria, .Netherlands, .Norway, .Nauru, .Niue, .NewZealand, .PapuaNewGuinea, .Philippines, .Pakistan, .Poland, .PitcairnIslands, .PuertoRico, .Portugal, .Palau, .Romania, .Russia, .Rwanda, .SolomonIslands, .Seychelles, .Sudan, .Sweden, .Singapore, .StHelena, .Slovenia, .Slovakia, .SierraLeone, .SouthSudan, .SintMaarten, .Swaziland, .TurksCaicosIslands, .Tokelau, .Tonga, .Turkey, .TrinidadTobago, .Tuvalu, .Taiwan, .Tanzania, .Uganda, .USOutlyingIslands, .UnitedStates, .StVincentGrenadines, .BritishVirginIslands, .USVirginIslands, .Vanuatu, .Samoa, .SouthAfrica, .Zambia, .Zimbabwe ]
 
     /// - returns: the country identifier of a specific English speaking country.
     public var countryIdentifier: String {
@@ -3102,8 +3116,12 @@ public enum EnglishSpeakingCountry: CountryType {
             return "BB"
         case .Belgium:
             return "BE"
+        case .Burundi:
+            return "BI"
         case .Bermuda:
             return "BM"
+        case .Brazil:
+            return "BR"
         case .Bahamas:
             return "BS"
         case .Botswana:
@@ -3120,6 +3138,8 @@ public enum EnglishSpeakingCountry: CountryType {
             return "CK"
         case .Cameroon:
             return "CM"
+        case .China:
+            return "CN"
         case .ChristmasIsland:
             return "CX"
         case .Cyprus:
@@ -3168,7 +3188,7 @@ public enum EnglishSpeakingCountry: CountryType {
             return "GU"
         case .Guyana:
             return "GY"
-        case .HongKongSarChina:
+        case .HongKongChina:
             return "HK"
         case .Croatia:
             return "HR"
@@ -3192,12 +3212,16 @@ public enum EnglishSpeakingCountry: CountryType {
             return "JE"
         case .Jamaica:
             return "JM"
+        case .Japan:
+            return "JP"
         case .Kenya:
             return "KE"
         case .Kiribati:
             return "KI"
         case .StKittsNevis:
             return "KN"
+        case .SouthKorea:
+            return "KR"
         case .CaymanIslands:
             return "KY"
         case .StLucia:
@@ -3218,7 +3242,7 @@ public enum EnglishSpeakingCountry: CountryType {
             return "MG"
         case .MarshallIslands:
             return "MH"
-        case .MacauSarChina:
+        case .MacauChina:
             return "MO"
         case .NorthernMarianaIslands:
             return "MP"
@@ -3228,6 +3252,8 @@ public enum EnglishSpeakingCountry: CountryType {
             return "MT"
         case .Mauritius:
             return "MU"
+        case .Maldives:
+            return "MV"
         case .Malawi:
             return "MW"
         case .Malaysia:
@@ -3306,6 +3332,8 @@ public enum EnglishSpeakingCountry: CountryType {
             return "TT"
         case .Tuvalu:
             return "TV"
+        case .Taiwan:
+            return "TW"
         case .Tanzania:
             return "TZ"
         case .Uganda:
@@ -3354,6 +3382,30 @@ public enum EweSpeakingCountry: CountryType {
             return "GH"
         case .Togo:
             return "TG"
+        }
+    }
+}
+
+/**
+ An enum of countries which speak Faroese.
+*/
+public enum FaroeseSpeakingCountry: CountryType {
+
+    /// Denmark is a country which speaks Faroese.
+    case Denmark
+    /// Faroe Islands is a country which speaks Faroese.
+    case FaroeIslands
+
+    /// - returns: an Array of all the countries which speak Faroese
+    public static let all: [FaroeseSpeakingCountry] = [ .Denmark, .FaroeIslands ]
+
+    /// - returns: the country identifier of a specific Faroese speaking country.
+    public var countryIdentifier: String {
+        switch self {
+        case .Denmark:
+            return "DK"
+        case .FaroeIslands:
+            return "FO"
         }
     }
 }
@@ -3843,6 +3895,30 @@ public enum NepaliSpeakingCountry: CountryType {
 }
 
 /**
+ An enum of countries which speak Northern Luri.
+*/
+public enum NorthernLuriSpeakingCountry: CountryType {
+
+    /// Iraq is a country which speaks Northern Luri.
+    case Iraq
+    /// Iran is a country which speaks Northern Luri.
+    case Iran
+
+    /// - returns: an Array of all the countries which speak Northern Luri
+    public static let all: [NorthernLuriSpeakingCountry] = [ .Iraq, .Iran ]
+
+    /// - returns: the country identifier of a specific Northern Luri speaking country.
+    public var countryIdentifier: String {
+        switch self {
+        case .Iraq:
+            return "IQ"
+        case .Iran:
+            return "IR"
+        }
+    }
+}
+
+/**
  An enum of countries which speak Northern Sami.
 */
 public enum NorthernSamiSpeakingCountry: CountryType {
@@ -3979,8 +4055,8 @@ public enum PortugueseSpeakingCountry: CountryType {
     case CapeVerde
     /// Guinea-Bissau is a country which speaks Portuguese.
     case GuineaBissau
-    /// Macau SAR China is a country which speaks Portuguese.
-    case MacauSarChina
+    /// Macau (China) is a country which speaks Portuguese.
+    case MacauChina
     /// Mozambique is a country which speaks Portuguese.
     case Mozambique
     /// Portugal is a country which speaks Portuguese.
@@ -3991,7 +4067,7 @@ public enum PortugueseSpeakingCountry: CountryType {
     case TimorLeste
 
     /// - returns: an Array of all the countries which speak Portuguese
-    public static let all: [PortugueseSpeakingCountry] = [ .Angola, .Brazil, .CapeVerde, .GuineaBissau, .MacauSarChina, .Mozambique, .Portugal, .SãoToméPríncipe, .TimorLeste ]
+    public static let all: [PortugueseSpeakingCountry] = [ .Angola, .Brazil, .CapeVerde, .GuineaBissau, .MacauChina, .Mozambique, .Portugal, .SãoToméPríncipe, .TimorLeste ]
 
     /// - returns: the country identifier of a specific Portuguese speaking country.
     public var countryIdentifier: String {
@@ -4004,7 +4080,7 @@ public enum PortugueseSpeakingCountry: CountryType {
             return "CV"
         case .GuineaBissau:
             return "GW"
-        case .MacauSarChina:
+        case .MacauChina:
             return "MO"
         case .Mozambique:
             return "MZ"
@@ -4655,6 +4731,9 @@ public enum Localization {
     /// ### Assamese
     case Assamese
 
+    /// ### Asturian
+    case Asturian
+
     /// ### Asu
     case Asu
 
@@ -4703,6 +4782,9 @@ public enum Localization {
     /// ### Burmese
     case Burmese
 
+    /// ### Cantonese
+    case Cantonese
+
     /**
      ### Catalan
     - requires: CatalanSpeakingCountry
@@ -4717,6 +4799,9 @@ public enum Localization {
     - requires: CentralKurdishSpeakingCountry
     */
     case CentralKurdish(CentralKurdishSpeakingCountry)
+
+    /// ### Chechen
+    case Chechen
 
     /// ### Cherokee
     case Cherokee
@@ -4784,8 +4869,11 @@ public enum Localization {
     /// ### Ewondo
     case Ewondo
 
-    /// ### Faroese
-    case Faroese
+    /**
+     ### Faroese
+    - requires: FaroeseSpeakingCountry
+    */
+    case Faroese(FaroeseSpeakingCountry)
 
     /// ### Filipino
     case Filipino
@@ -5015,6 +5103,9 @@ public enum Localization {
     */
     case Masai(MasaiSpeakingCountry)
 
+    /// ### Mazanderani
+    case Mazanderani
+
     /// ### Meru
     case Meru
 
@@ -5047,6 +5138,12 @@ public enum Localization {
 
     /// ### North Ndebele
     case NorthNdebele
+
+    /**
+     ### Northern Luri
+    - requires: NorthernLuriSpeakingCountry
+    */
+    case NorthernLuri(NorthernLuriSpeakingCountry)
 
     /**
      ### Northern Sami
@@ -5352,6 +5449,8 @@ extension Localization: LanguageType {
             return "hy"
         case .Assamese:
             return "as"
+        case .Asturian:
+            return "ast"
         case .Asu:
             return "asa"
         case .Azerbaijani:
@@ -5382,12 +5481,16 @@ extension Localization: LanguageType {
             return "bg"
         case .Burmese:
             return "my"
+        case .Cantonese:
+            return "yue"
         case .Catalan(_):
             return "ca"
         case .CentralAtlasTamazight:
             return "tzm"
         case .CentralKurdish(_):
             return "ckb"
+        case .Chechen:
+            return "ce"
         case .Cherokee:
             return "chr"
         case .Chiga:
@@ -5420,7 +5523,7 @@ extension Localization: LanguageType {
             return "ee"
         case .Ewondo:
             return "ewo"
-        case .Faroese:
+        case .Faroese(_):
             return "fo"
         case .Filipino:
             return "fil"
@@ -5554,6 +5657,8 @@ extension Localization: LanguageType {
             return "mr"
         case .Masai(_):
             return "mas"
+        case .Mazanderani:
+            return "mzn"
         case .Meru:
             return "mer"
         case .Meta:
@@ -5574,6 +5679,8 @@ extension Localization: LanguageType {
             return "jgo"
         case .NorthNdebele:
             return "nd"
+        case .NorthernLuri(_):
+            return "lrc"
         case .NorthernSami(_):
             return "se"
         case .NorwegianBokmål(_):
@@ -5724,7 +5831,7 @@ extension Localization: CountryType {
     /// - returns: the country identifier as a String.
     public var countryIdentifier: String {
         switch self {
-        case .Aghem, .Akan, .Amharic, .Armenian, .Assamese, .Asu, .Azerbaijani, .Bafia, .Bambara, .Basaa, .Basque, .Belarusian, .Bemba, .Bena, .Bodo, .Bosnian, .Breton, .Bulgarian, .Burmese, .CentralAtlasTamazight, .Cherokee, .Chiga, .Colognian, .Cornish, .Czech, .Duala, .Dzongkha, .Embu, .Estonian, .Ewondo, .Faroese, .Filipino, .Finnish, .Friulian, .Galician, .Ganda, .Georgian, .Gujarati, .Gusii, .Hawaiian, .Hebrew, .Hindi, .Hungarian, .Icelandic, .Igbo, .InariSami, .Indonesian, .Inuktitut, .Irish, .Japanese, .JolaFonyi, .Kabuverdianu, .Kabyle, .Kako, .Kalaallisut, .Kalenjin, .Kamba, .Kannada, .Kashmiri, .Kazakh, .Khmer, .Kikuyu, .Kinyarwanda, .Konkani, .KoyraChiini, .KoyraboroSenni, .Kwasio, .Kyrgyz, .Lakota, .Langi, .Lao, .Latvian, .Lithuanian, .LowerSorbian, .LubaKatanga, .Luo, .Luxembourgish, .Luyia, .Macedonian, .Machame, .MakhuwaMeetto, .Makonde, .Malagasy, .Malayalam, .Maltese, .Manx, .Marathi, .Meru, .Meta, .Mongolian, .Morisyen, .Mundang, .Nama, .Ngiemboon, .Ngomba, .NorthNdebele, .NorwegianNynorsk, .Nuer, .Nyankole, .Oriya, .Pashto, .Polish, .Romansh, .Rombo, .Rundi, .Rwa, .Sakha, .Samburu, .Sango, .Sangu, .ScottishGaelic, .Sena, .Shambala, .Shona, .SichuanYi, .Sinhala, .Slovak, .Slovenian, .Soga, .StandardMoroccanTamazight, .Tachelhit, .Taita, .Tajik, .Tasawaq, .Telugu, .Thai, .Tongan, .Turkmen, .Ukrainian, .UpperSorbian, .Uyghur, .Vai, .Vietnamese, .Vunjo, .Walser, .Welsh, .WesternFrisian, .Yangben, .Yiddish, .Zarma, .Zulu:
+        case .Aghem, .Akan, .Amharic, .Armenian, .Assamese, .Asturian, .Asu, .Azerbaijani, .Bafia, .Bambara, .Basaa, .Basque, .Belarusian, .Bemba, .Bena, .Bodo, .Bosnian, .Breton, .Bulgarian, .Burmese, .Cantonese, .CentralAtlasTamazight, .Chechen, .Cherokee, .Chiga, .Colognian, .Cornish, .Czech, .Duala, .Dzongkha, .Embu, .Estonian, .Ewondo, .Filipino, .Finnish, .Friulian, .Galician, .Ganda, .Georgian, .Gujarati, .Gusii, .Hawaiian, .Hebrew, .Hindi, .Hungarian, .Icelandic, .Igbo, .InariSami, .Indonesian, .Inuktitut, .Irish, .Japanese, .JolaFonyi, .Kabuverdianu, .Kabyle, .Kako, .Kalaallisut, .Kalenjin, .Kamba, .Kannada, .Kashmiri, .Kazakh, .Khmer, .Kikuyu, .Kinyarwanda, .Konkani, .KoyraChiini, .KoyraboroSenni, .Kwasio, .Kyrgyz, .Lakota, .Langi, .Lao, .Latvian, .Lithuanian, .LowerSorbian, .LubaKatanga, .Luo, .Luxembourgish, .Luyia, .Macedonian, .Machame, .MakhuwaMeetto, .Makonde, .Malagasy, .Malayalam, .Maltese, .Manx, .Marathi, .Mazanderani, .Meru, .Meta, .Mongolian, .Morisyen, .Mundang, .Nama, .Ngiemboon, .Ngomba, .NorthNdebele, .NorwegianNynorsk, .Nuer, .Nyankole, .Oriya, .Pashto, .Polish, .Romansh, .Rombo, .Rundi, .Rwa, .Sakha, .Samburu, .Sango, .Sangu, .ScottishGaelic, .Sena, .Shambala, .Shona, .SichuanYi, .Sinhala, .Slovak, .Slovenian, .Soga, .StandardMoroccanTamazight, .Tachelhit, .Taita, .Tajik, .Tasawaq, .Telugu, .Thai, .Tongan, .Turkmen, .Ukrainian, .UpperSorbian, .Uyghur, .Vai, .Vietnamese, .Vunjo, .Walser, .Welsh, .WesternFrisian, .Yangben, .Yiddish, .Zarma, .Zulu:
             return ""
         case .Afrikaans(let country):
             return country.countryIdentifier
@@ -5750,6 +5857,8 @@ extension Localization: CountryType {
             return country.countryIdentifier
         case .Ewe(let country):
             return country.countryIdentifier
+        case .Faroese(let country):
+            return country.countryIdentifier
         case .French(let country):
             return country.countryIdentifier
         case .Fulah(let country):
@@ -5771,6 +5880,8 @@ extension Localization: CountryType {
         case .Masai(let country):
             return country.countryIdentifier
         case .Nepali(let country):
+            return country.countryIdentifier
+        case .NorthernLuri(let country):
             return country.countryIdentifier
         case .NorthernSami(let country):
             return country.countryIdentifier

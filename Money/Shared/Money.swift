@@ -90,7 +90,7 @@ public extension MoneyType where DecimalStorageType == NSDecimalNumber {
      - returns: a localized and formatted string for the money amount.
      */
     func formatted(withStyle style: NumberFormatter.Style) -> String {
-        return Currency.formatted(withStyle: style, andLocaleId: Locale.current.localeIdentifier)(amount)
+        return Currency.formatted(withStyle: style, andLocaleId: Locale.current.identifier)(amount)
     }
 
     /**
@@ -124,7 +124,7 @@ public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalSto
      - parameter rate: a `BankersDecimal` representing the rate.
      - returns: another `MoneyType` value.
      */
-    func convert<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(withRate rate: BankersDecimal) -> Other {
+    func convert<Other: MoneyType>(withRate rate: BankersDecimal) -> Other where Other.DecimalStorageType == BankersDecimal.DecimalStorageType {
         return multiply(by: Other(storage: rate.storage))
     }
 }
@@ -302,7 +302,7 @@ extension _Money: ValueCoding {
 /**
  Coding class to support `_Decimal` `ValueCoding` conformance.
  */
-public final class _MoneyCoder<C: CurrencyType>: NSObject, NSCoding, CodingType {
+public final class _MoneyCoder<C: CurrencyType>: NSObject, NSCoding, CodedValue, CodingProtocol {
 
     public let value: _Money<C>
 
@@ -311,7 +311,7 @@ public final class _MoneyCoder<C: CurrencyType>: NSObject, NSCoding, CodingType 
     }
 
     public init?(coder aDecoder: NSCoder) {
-        let decimal = _Decimal<C>.decode(aDecoder.decodeObject(forKey: "decimal"))
+        let decimal = _Decimal<C>.decode(aDecoder.decodeObject(forKey: "decimal") as AnyObject?)
         value = _Money<C>(decimal!)
     }
 

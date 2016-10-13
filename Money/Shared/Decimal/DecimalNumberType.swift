@@ -83,7 +83,7 @@ public struct DecimalNumberBehavior {
  A protocol which defines the necessary interface to support decimal number
  calculations and operators.
  */
-public protocol DecimalNumberType: Hashable, SignedNumber, IntegerLiteralConvertible, FloatLiteralConvertible, CustomStringConvertible {
+public protocol DecimalNumberType: Hashable, SignedNumber, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, CustomStringConvertible {
 
     associatedtype DecimalStorageType
     associatedtype DecimalNumberBehavior: DecimalNumberBehaviorType
@@ -156,7 +156,7 @@ public protocol DecimalNumberType: Hashable, SignedNumber, IntegerLiteralConvert
      - parameter other: another `DecimalNumberType` value of different type.
      - returns: a different `DecimalNumberType` value.
      */
-    func multiply<Other: DecimalNumberType where Other.DecimalStorageType == DecimalStorageType>(by: Other) -> Other
+    func multiply<Other: DecimalNumberType>(by: Other) -> Other where Other.DecimalStorageType == DecimalStorageType
 
     /**
      Divide the receiver by a matching `DecimalNumberType`.
@@ -174,7 +174,7 @@ public protocol DecimalNumberType: Hashable, SignedNumber, IntegerLiteralConvert
      - parameter other: another `DecimalNumberType` value of different type.
      - returns: another instance of this type.
      */
-    func divide<Other: DecimalNumberType where Other.DecimalStorageType == DecimalStorageType>(by: Other) -> Other
+    func divide<Other: DecimalNumberType>(by: Other) -> Other where Other.DecimalStorageType == DecimalStorageType
 
     /**
      The remainder of dividing another `DecimalNumberType` into the receiver.
@@ -373,7 +373,7 @@ public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
      - parameter other: another `DecimalNumberType` with `NSDecimalNumber` storage.
      - returns: another instance of this type.
      */
-    func multiply<Other: DecimalNumberType where Other.DecimalStorageType == NSDecimalNumber>(by other: Other) -> Other {
+    func multiply<Other: DecimalNumberType>(by other: Other) -> Other where Other.DecimalStorageType == NSDecimalNumber {
         return Other(storage: storage.multiply(by: other.storage, withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors) )
     }
 
@@ -394,7 +394,7 @@ public extension DecimalNumberType where DecimalStorageType == NSDecimalNumber {
      - parameter other: another `DecimalNumberType` with `NSDecimalNumber` storage.
      - returns: another instance of this type.
      */
-    func divide<Other: DecimalNumberType where Other.DecimalStorageType == NSDecimalNumber>(by other: Other) -> Other {
+    func divide<Other: DecimalNumberType>(by other: Other) -> Other where Other.DecimalStorageType == NSDecimalNumber {
         return Other(storage: storage.divide(by: other.storage, withBehaviors: Other.DecimalNumberBehavior.decimalNumberBehaviors))
     }
 
@@ -486,10 +486,10 @@ public func *<T: DecimalNumberType>(lhs: T.FloatLiteralType, rhs: T) -> T {
     return rhs * lhs
 }
 
-public func *<T, V where
+public func *<T, V>(lhs: T, rhs: V) -> V where
     T: DecimalNumberType,
     V: DecimalNumberType,
-    T.DecimalStorageType == V.DecimalStorageType>(lhs: T, rhs: V) -> V {
+    T.DecimalStorageType == V.DecimalStorageType {
         return lhs.multiply(by: rhs)
 }
 
@@ -507,10 +507,10 @@ public func /<T: DecimalNumberType>(lhs: T, rhs: T.FloatLiteralType) -> T {
     return lhs / T(floatLiteral: rhs)
 }
 
-public func /<T, V where
+public func /<T, V>(lhs: T, rhs: V) -> V where
     T: DecimalNumberType,
     V: DecimalNumberType,
-    T.DecimalStorageType == V.DecimalStorageType>(lhs: T, rhs: V) -> V {
+    T.DecimalStorageType == V.DecimalStorageType {
         return lhs.divide(by: rhs)
 }
 
