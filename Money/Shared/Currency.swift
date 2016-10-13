@@ -237,7 +237,7 @@ public struct Currency {
         }
 
         convenience init(code: String) {
-            let fromComponents = Locale.identifier(fromComponents: [Locale.current.currencyCode!: code])
+            let fromComponents = Locale.identifier(fromComponents: [NSLocale.Key.currencyCode.rawValue: code])
             let canonicalIdentifier = Locale.canonicalIdentifier(from: fromComponents)
             let locale = Locale(identifier: canonicalIdentifier)
             let symbol = locale.money_currencySymbol

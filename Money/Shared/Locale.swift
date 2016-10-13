@@ -65,7 +65,7 @@ internal extension Locale {
 //        guard #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
 //            return self.currencyCode!
 //        }
-        return currencyCode!
+        return self.currencyCode!
     }
 
     /// - returns: a String? for the currency symbol.
@@ -73,7 +73,7 @@ internal extension Locale {
 //        guard #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) else {
 //            return self.currencySymbol!
 //        }
-        return currencySymbol!
+        return self.currencySymbol!
     }
 }
 
