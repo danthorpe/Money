@@ -16,8 +16,8 @@ class LocaleTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        en_US = Locale(localeIdentifier: Localization.English(.UnitedStates).localeIdentifier)
-        es_ES = Locale(localeIdentifier: Localization.Spanish(.Spain).localeIdentifier)
+        en_US = Locale(identifier: Localization.English(.UnitedStates).localeIdentifier)
+        es_ES = Locale(identifier: Localization.Spanish(.Spain).localeIdentifier)
     }
 
     override func tearDown() {

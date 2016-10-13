@@ -70,7 +70,7 @@ class PaymentSummaryItemCodingTests: ApplePayTests {
     }
 
     func unarchive(archive: Data) -> PaymentSummaryItem<GBP>? {
-        return PaymentSummaryItem<GBP>.decode(NSKeyedUnarchiver.unarchiveObject(with: archive))
+        return PaymentSummaryItem<GBP>.decode(NSKeyedUnarchiver.unarchiveObject(with: archive) as AnyObject?)
     }
 
     func test__encode_decode() {
@@ -111,6 +111,6 @@ class PKPaymentRequestTests: ApplePayTests {
         XCTAssertEqual(request.currencyCode, GBP.Currency.code)
         XCTAssertEqual(request.paymentSummaryItems.count, 4)
         XCTAssertEqual(request.paymentSummaryItems.last!.label, "Acme. Inc")
-        XCTAssertEqual(request.paymentSummaryItems.last!.amount, items.map { $0.cost }.reduce(0, combine: +).amount)
+        XCTAssertEqual(request.paymentSummaryItems.last!.amount, items.map { $0.cost }.reduce(0, +).amount)
     }
 }

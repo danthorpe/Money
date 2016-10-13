@@ -92,7 +92,7 @@ class DecimalValueCodingTests: DecimalTests {
     }
 
     func unarchive(archive: Data) -> PlainDecimal? {
-        return PlainDecimal.decode(NSKeyedUnarchiver.unarchiveObject(with: archive))
+        return PlainDecimal.decode(NSKeyedUnarchiver.unarchiveObject(with: archive) as AnyObject?)
     }
 
     func test__decimal_encodes() {

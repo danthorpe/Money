@@ -136,7 +136,7 @@ internal extension NSDecimalNumber {
      */
     
     func remainder(other: NSDecimalNumber, withBehaviors behaviors: NSDecimalNumberBehaviors?) -> NSDecimalNumber {
-        let roundingMode: NSDecimalNumber.RoundingMode = isNegative == other.isNegative ? .up : .down
+        let roundingMode: NSDecimalNumber.RoundingMode = (Int(isNegative) ^ Int(other.isNegative)).boolValue ? NSDecimalNumber.RoundingMode.up : NSDecimalNumber.RoundingMode.down
         let roundingBehaviors = NSDecimalNumberHandler(roundingMode: roundingMode, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
         let quotient = divide(by: other, withBehaviors: roundingBehaviors)
         let toSubtract = quotient.multiply(by: other, withBehaviors: behaviors)

@@ -35,5 +35,10 @@ extension Int /*: Boolean*/ {
         default: return true
         }
     }
+    
+    
+    init(_ val: Bool) {
+        self = val ? 1 : 0
+    }
 }
 

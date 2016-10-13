@@ -306,7 +306,7 @@ class MoneyDescriptionTests: MoneyTests {
     func test__jpy_description() {
         XCTAssertEqual(jpy.currencyCode, "JPY")
         XCTAssertEqual(JPY.Currency.scale, 0)
-        if Locale.current.localeIdentifier == "en_US" {
+        if Locale.current.identifier == "en_US" {
 
         }
         else {
@@ -334,8 +334,8 @@ class MoneyFormattingTests: MoneyTests {
 
     // Tests assume a en_GB test environment
     func test__locale_identifier_equals_current_locale() {
-        let gb = Locale.current.localeIdentifier == Localization.English(.UnitedKingdom).localeIdentifier
-        let us = Locale.current.localeIdentifier == Localization.English(.UnitedStates).localeIdentifier
+        let gb = Locale.current.identifier == Localization.English(.UnitedKingdom).localeIdentifier
+        let us = Locale.current.identifier == Localization.English(.UnitedStates).localeIdentifier
         XCTAssertTrue(gb || us)
     }
 
@@ -359,7 +359,7 @@ class MoneyValueCodingTests: XCTestCase {
     }
 
     func unarchive(archive: Data) -> Money? {
-        return Money.decode(NSKeyedUnarchiver.unarchiveObject(with: archive))
+        return Money.decode(NSKeyedUnarchiver.unarchiveObject(with: archive) as AnyObject?)
     }
 
     func test__money_encodes() {
