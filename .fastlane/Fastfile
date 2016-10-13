@@ -28,6 +28,7 @@ platform :mac do
 
     scan(
       scheme: "Money-OSX",
+      destination: "platform=macOS",
       output_directory: ".ci/xcodebuild-data/",
       xcargs: "-derivedDataPath .ci/xcodebuild-data/"
     )

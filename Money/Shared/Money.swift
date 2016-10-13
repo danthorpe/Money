@@ -89,8 +89,8 @@ public extension MoneyType where DecimalStorageType == NSDecimalNumber {
      - parameter style: the `NSNumberFormatterStyle` to use.
      - returns: a localized and formatted string for the money amount.
      */
-    func formattedWithStyle(style: NSNumberFormatterStyle) -> String {
-        return Currency.formattedWithStyle(style, forLocaleId: NSLocale.currentLocale().localeIdentifier)(amount)
+    func formatted(withStyle style: NumberFormatter.Style) -> String {
+        return Currency.formatted(withStyle: style, andLocaleId: Locale.current.localeIdentifier)(amount)
     }
 
     /**
@@ -109,8 +109,8 @@ public extension MoneyType where DecimalStorageType == NSDecimalNumber {
      - parameter locale: a `Locale` value
      - returns: a localized and formatted string for the money amount.
      */
-    func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> String {
-        return Currency.formattedWithStyle(style, forLocale: locale)(amount)
+    func formatted(withStyle style: NumberFormatter.Style, andLocalization localization: Localization) -> String {
+        return Currency.formatted(withStyle: style, andLocalization: localization)(amount)
     }
 }
 
@@ -124,9 +124,8 @@ public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalSto
      - parameter rate: a `BankersDecimal` representing the rate.
      - returns: another `MoneyType` value.
      */
-    @warn_unused_result
-    func convertWithRate<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(rate: BankersDecimal) -> Other {
-        return multiplyBy(Other(storage: rate.storage))
+    func convert<Other: MoneyType where Other.DecimalStorageType == BankersDecimal.DecimalStorageType>(withRate rate: BankersDecimal) -> Other {
+        return multiply(by: Other(storage: rate.storage))
     }
 }
 
@@ -152,7 +151,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
     /// Access the underlying minor units
     /// - returns: the `IntegerLiteralType` minor units
     public var minorUnits: IntegerLiteralType {
-        return decimal.multiplyByPowerOf10(Currency.scale).integerValue
+        return decimal.multiply(byPowerOf10: Currency.scale).intValue
     }
 
     /// Access the underlying decimal storage.
@@ -187,7 +186,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter minorUnits: a `IntegerLiteralType`
      */
     public init(minorUnits: IntegerLiteralType) {
-        decimal = _Decimal<DecimalNumberBehavior>(integerLiteral: minorUnits).multiplyByPowerOf10(Currency.scale * -1)
+        decimal = _Decimal<DecimalNumberBehavior>(integerLiteral: minorUnits).multiply(byPowerOf10: Currency.scale * -1)
     }
 
     /**
@@ -224,7 +223,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-    @warn_unused_result
     public func subtract(other: _Money) -> _Money {
         return _Money(decimal.subtract(other.decimal))
     }
@@ -235,7 +233,6 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-    @warn_unused_result
     public func add(other: _Money) -> _Money {
         return _Money(decimal.add(other.decimal))
     }
@@ -246,10 +243,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-
-    @warn_unused_result
     public func multiplyBy(other: _Money) -> _Money {
-        return _Money(decimal.multiplyBy(other.decimal))
+        return _Money(decimal.multiply(by: other.decimal))
     }
 
     /**
@@ -258,9 +253,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-    @warn_unused_result
     public func divideBy(other: _Money) -> _Money {
-        return _Money(decimal.divideBy(other.decimal))
+        return _Money(decimal.divide(by: other.decimal))
     }
 
     /**
@@ -269,9 +263,8 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-    @warn_unused_result
     public func remainder(other: _Money) -> _Money {
-        return _Money(decimal.remainder(other.decimal))
+        return _Money(decimal.remainder(of: other.decimal))
     }
 }
 
@@ -296,7 +289,7 @@ extension _Money: CustomStringConvertible {
      NSNumberFormatterStyle.CurrencyStyle.
     */
     public var description: String {
-        return formattedWithStyle(C.defaultFormattingStyle)
+        return formatted(withStyle: C.defaultFormattingStyle)
     }
 }
 
@@ -318,12 +311,12 @@ public final class _MoneyCoder<C: CurrencyType>: NSObject, NSCoding, CodingType 
     }
 
     public init?(coder aDecoder: NSCoder) {
-        let decimal = _Decimal<C>.decode(aDecoder.decodeObjectForKey("decimal"))
+        let decimal = _Decimal<C>.decode(aDecoder.decodeObject(forKey: "decimal"))
         value = _Money<C>(decimal!)
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(value.decimal.encoded, forKey: "decimal")
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(value.decimal.encoded, forKey: "decimal")
     }
 }
 

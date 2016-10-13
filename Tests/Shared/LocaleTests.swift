@@ -11,13 +11,13 @@ import XCTest
 
 class LocaleTests: XCTestCase {
 
-    var en_US: NSLocale!
-    var es_ES: NSLocale!
+    var en_US: Locale!
+    var es_ES: Locale!
 
     override func setUp() {
         super.setUp()
-        en_US = NSLocale(localeIdentifier: Locale.English(.UnitedStates).localeIdentifier)
-        es_ES = NSLocale(localeIdentifier: Locale.Spanish(.Spain).localeIdentifier)
+        en_US = Locale(localeIdentifier: Localization.English(.UnitedStates).localeIdentifier)
+        es_ES = Locale(localeIdentifier: Localization.Spanish(.Spain).localeIdentifier)
     }
 
     override func tearDown() {
@@ -27,13 +27,13 @@ class LocaleTests: XCTestCase {
     }
 
     func test__currency_code() {
-        XCTAssertEqual(en_US.currencyCode, "USD")
-        XCTAssertEqual(es_ES.currencyCode, "EUR")
+        XCTAssertEqual(en_US.money_currencyCode, "USD")
+        XCTAssertEqual(es_ES.money_currencyCode, "EUR")
     }
 
     func test__currency_symbol() {
-        XCTAssertEqual(en_US.currencySymbol, "$")
-        XCTAssertEqual(es_ES.currencySymbol, "€")
+        XCTAssertEqual(en_US.money_currencySymbol, "$")
+        XCTAssertEqual(es_ES.money_currencySymbol, "€")
     }
 
     func test__currency_currencyGroupingSeparator() {

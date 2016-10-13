@@ -3,9 +3,16 @@ steps:
     name: ":fastlane: Test Mac OS X"
     command: .ci/scripts/test-osx
     agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
+      swift: "3.0"
   -
     name: ":fastlane: Test iOS"
     command: .ci/scripts/test-ios
     agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
+      swift: "3.0"
+  -
+    type: "waiter"
+  -
+    name: ":muscle: Send Coverage"
+    command: .ci/scripts/send-coverage
+    agents:
+      swift: "3.0"

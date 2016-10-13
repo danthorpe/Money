@@ -56,7 +56,7 @@ class MoneyInitializerTests: MoneyTests {
 
     func test__money_amount() {
         money = 10
-        XCTAssertEqual(money.amount, NSDecimalNumber(integer: 10))
+        XCTAssertEqual(money.amount, NSDecimalNumber(value: 10))
     }
 }
 
@@ -81,7 +81,7 @@ class MoneyComparableTests: XCTestCase {
 
     func test__money_sorts() {
         let monies: [Money] = [ 0, 12, 4.50, 9.99, 99, 9.99, 2.49, 16.69]
-        let sorted = monies.sort()
+        let sorted = monies.sorted()
         XCTAssertEqual(sorted, [0, 2.49, 4.50, 9.99, 9.99, 12, 16.69, 99])
     }
 }
@@ -241,7 +241,7 @@ class MoneyConversionTests: XCTestCase {
     let input: GBP = 100
 
     func test__convert_with_rate_to_other() {
-        let output: EUR = input.convertWithRate(1.2)
+        let output: EUR = input.convert(withRate: 1.2)
         XCTAssertEqual(output, 120)
     }
 }
@@ -261,7 +261,7 @@ class MoneyDescriptionTests: MoneyTests {
     }
 
     func test__money_description() {
-        XCTAssertEqual(money.description.endIndex, money.description.rangeOfString("3.99")?.endIndex)
+        XCTAssertEqual(money.description.endIndex, money.description.range(of: "3.99")?.upperBound)
     }
 
     func test__gbp_description() {
@@ -272,19 +272,19 @@ class MoneyDescriptionTests: MoneyTests {
 
     func test__usd_formatted_with_style() {
         XCTAssertEqual(usd.currencyCode, "USD")
-        let formatted = usd.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
+        let formatted = usd.formatted(withStyle: .currency, andLocalization: .English(.UnitedStates))
         XCTAssertEqual(formatted, "US$99.00")
     }
 
     func test__btc_formatted_with_style() {
         XCTAssertEqual(btc.currencyCode, "BTC")
-        let formatted = btc.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedStates))
+        let formatted = btc.formatted(withStyle: .currency, andLocalization: .English(.UnitedStates))
         XCTAssertEqual(formatted, "Ƀ0.002007")
     }
 
     func test__btc_formatted_with_style_for_locale() {
         XCTAssertEqual(btc.currencyCode, "BTC")
-        let formatted = btc.formattedWithStyle(.CurrencyStyle, forLocale: .Spanish(.Mexico))
+        let formatted = btc.formatted(withStyle: .currency, andLocalization: .Spanish(.Mexico))
         XCTAssertEqual(formatted, "Ƀ0.002007")
     }
 
@@ -306,7 +306,7 @@ class MoneyDescriptionTests: MoneyTests {
     func test__jpy_description() {
         XCTAssertEqual(jpy.currencyCode, "JPY")
         XCTAssertEqual(JPY.Currency.scale, 0)
-        if NSLocale.currentLocale().localeIdentifier == "en_US" {
+        if Locale.current.localeIdentifier == "en_US" {
 
         }
         else {
@@ -315,7 +315,7 @@ class MoneyDescriptionTests: MoneyTests {
     }
 
     func test__jpy_formatted_with_style_for_locale() {
-        let formatted = jpy.formattedWithStyle(.CurrencyStyle, forLocale: .German(.Germany))
+        let formatted = jpy.formatted(withStyle: .currency, andLocalization: .German(.Germany))
         XCTAssertEqual(formatted, "32.000 JP¥")
     }
 }
@@ -334,18 +334,18 @@ class MoneyFormattingTests: MoneyTests {
 
     // Tests assume a en_GB test environment
     func test__locale_identifier_equals_current_locale() {
-        let gb = NSLocale.currentLocale().localeIdentifier == Locale.English(.UnitedKingdom).localeIdentifier
-        let us = NSLocale.currentLocale().localeIdentifier == Locale.English(.UnitedStates).localeIdentifier
+        let gb = Locale.current.localeIdentifier == Localization.English(.UnitedKingdom).localeIdentifier
+        let us = Locale.current.localeIdentifier == Localization.English(.UnitedStates).localeIdentifier
         XCTAssertTrue(gb || us)
     }
 
     func test__formatted_for_Spanish_Spain() {
-        let result = gbp.formattedWithStyle(.CurrencyStyle, forLocale: .Spanish(.Spain))
+        let result = gbp.formatted(withStyle: .currency, andLocalization: .Spanish(.Spain))
         XCTAssertEqual(result, "100,00 £")
     }
 
     func test__formatted_for_English_UnitedKingdom() {
-        let result = gbp.formattedWithStyle(.CurrencyStyle, forLocale: .English(.UnitedKingdom))
+        let result = gbp.formatted(withStyle: .currency, andLocalization: .English(.UnitedKingdom))
         XCTAssertEqual(result, "£100.00")
     }
 }
@@ -354,17 +354,17 @@ class MoneyValueCodingTests: XCTestCase {
 
     var money: Money!
 
-    func archiveEncodedMoney() -> NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(money.encoded)
+    func archiveEncodedMoney() -> Data {
+        return NSKeyedArchiver.archivedData(withRootObject: money.encoded)
     }
 
-    func unarchive(archive: NSData) -> Money? {
-        return Money.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
+    func unarchive(archive: Data) -> Money? {
+        return Money.decode(NSKeyedUnarchiver.unarchiveObject(with: archive))
     }
 
     func test__money_encodes() {
         money = 10
-        XCTAssertEqual(unarchive(archiveEncodedMoney()), money)
+        XCTAssertEqual(unarchive(archive: archiveEncodedMoney()), money)
     }
 }
 
@@ -392,26 +392,26 @@ class MoneyMinorUnitTests: XCTestCase {
 class CustomCurrencyWithoutSymbol: CustomCurrencyType {
     static let code: String = "DAN"
     static let scale: Int = 3
-    static let symbol: String? = .None
+    static let symbol: String? = .none
 }
 
 class CurrencyTests: XCTestCase {
 
     func test__formatted_with_style() {
-        let formating = Currency.GBP.formattedWithStyle(.CurrencyISOCodeStyle, forLocale: NSLocale.currentLocale())
-        let result = formating(NSDecimalNumber(double: 10))
+        let formating = Currency.GBP.formatted(withStyle: .currencyISOCode, andLocale: Locale.current)
+        let result = formating(NSDecimalNumber(value: 10.0))
         XCTAssertEqual(result, "GBP10.00")
     }
 
     func test__formatted_with_iso_style__with_no_symbol() {
-        let formating = CustomCurrencyWithoutSymbol.formattedWithStyle(.CurrencyISOCodeStyle, forLocale: NSLocale.currentLocale())
-        let result = formating(NSDecimalNumber(double: 10.1234))
+        let formating = CustomCurrencyWithoutSymbol.formatted(withStyle: .currencyISOCode, andLocale: Locale.current)
+        let result = formating(NSDecimalNumber(value: 10.1234))
         XCTAssertEqual(result, "DAN10.123")
     }
 
     func test__formatted_with_default_style__with_no_symbol() {
-        let formating = CustomCurrencyWithoutSymbol.formattedWithStyle(.CurrencyStyle, forLocale: NSLocale.currentLocale())
-        let result = formating(NSDecimalNumber(double: 10.1234))
+        let formating = CustomCurrencyWithoutSymbol.formatted(withStyle: .currency, andLocale: Locale.current)
+        let result = formating(NSDecimalNumber(value: 10.1234))
         XCTAssertEqual(result, "DAN10.123")
     }
 }
