@@ -1,6 +1,6 @@
 //
-//  Currency.swift
-//  Money
+// Money, https://github.com/danthorpe/Money
+// Created by Dan Thorpe, @danthorpe
 //
 // The MIT License (MIT)
 //
@@ -23,7 +23,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
 
 import Foundation
 
@@ -82,9 +81,6 @@ public extension CurrencyType {
             raiseOnDivideByZero: true
         )
     }
-}
-
-internal extension CurrencyType {
 
     static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale tmp: NSLocale) -> NSDecimalNumber -> String {
 
@@ -96,12 +92,11 @@ internal extension CurrencyType {
         formatter.locale = locale
         formatter.numberStyle = style
         formatter.maximumFractionDigits = scale
-        formatter.currencySymbol = symbol ?? locale.currencySymbol
+        formatter.currencySymbol = symbol ?? locale.mny_currencySymbol
         
         return { formatter.stringFromNumber($0)! }
     }
 }
-
 
 /**
  Custom currency types should refine CustomCurrencyType.
@@ -232,21 +227,21 @@ public struct Currency {
 
         convenience init(code: String) {
             let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: code])))
-            let symbol = locale.currencySymbol!
+            let symbol = locale.mny_currencySymbol!
             
             let fmtr = NSNumberFormatter()
             fmtr.locale = locale
             fmtr.numberStyle = .CurrencyStyle
             fmtr.currencyCode = code
-            fmtr.currencySymbol = locale.currencySymbol
+            fmtr.currencySymbol = locale.mny_currencySymbol
             
             let scale = fmtr.maximumFractionDigits
             self.init(code: code, scale: scale, symbol: symbol)
         }
         
         convenience init(locale: NSLocale) {
-            let code = locale.currencyCode!
-            let symbol = locale.currencySymbol
+            let code = locale.mny_currencyCode!
+            let symbol = locale.mny_currencySymbol
             
             let fmtr = NSNumberFormatter()
             fmtr.numberStyle = .CurrencyStyle

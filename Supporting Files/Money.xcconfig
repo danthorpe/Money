@@ -1,14 +1,48 @@
 //
-//  Money.xcconfig
 //  Money
 //
-//  Created by Daniel Thorpe on 28/10/2015.
-//
+//  Copyright © 2016 Money. All rights reserved.
 //
 
-MONEY_VERSION = 1.7.0
+#include "Version.xcconfig"
 
-APPLICATION_EXTENSION_API_ONLY = YES
-INFOPLIST_FILE = $(SRCROOT)/Supporting Files/Info.plist
-PRODUCT_BUNDLE_IDENTIFIER = me.danthorpe.Money
-PRODUCT_NAME = Money
+// Metadata
+INFOPLIST_FILE_framework = $(SRCROOT)/Supporting Files/Info.plist
+INFOPLIST_FILE_xctest = $(SRCROOT)/Tests/Info.plist
+INFOPLIST_FILE = $(INFOPLIST_FILE_$(WRAPPER_EXTENSION))
+
+PRODUCT_BUNDLE_IDENTIFIER_framework = me.danthorpe.Money
+PRODUCT_BUNDLE_IDENTIFIER_xctest = me.danthorpe.MoneyTests
+PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_$(WRAPPER_EXTENSION))
+
+PRODUCT_NAME_framework = Money
+PRODUCT_NAME_xctest = MoneyTests
+PRODUCT_NAME = $(PRODUCT_NAME_$(WRAPPER_EXTENSION))
+
+APPLICATION_EXTENSION_API_ONLY_framework = YES
+APPLICATION_EXTENSION_API_ONLY_xctest = NO
+APPLICATION_EXTENSION_API_ONLY = $(APPLICATION_EXTENSION_API_ONLY_$(WRAPPER_EXTENSION))
+
+SWIFT_VERSION = 2.3
+
+// Build Settings
+SUPPORTED_PLATFORMS = macosx iphoneos appletvos watchos appletvsimulator iphonesimulator watchsimulator
+RESOURCES_TARGETED_DEVICE_FAMILY = 1,2,3,4
+DYLIB_INSTALL_NAME_BASE = @rpath
+
+// Code Signing
+CODE_SIGN_IDENTITY = -
+
+// Deployment
+DEFINES_MODULE = YES
+
+MACOSX_DEPLOYMENT_TARGET = 10.11
+IPHONEOS_DEPLOYMENT_TARGET = 8.0
+TVOS_DEPLOYMENT_TARGET = 9.2
+WATCHOS_DEPLOYMENT_TARGET = 2.2
+
+LD_RUNPATH_SEARCH_PATHS_framework = @executable_path/../Frameworks @loader_path/Frameworks
+LD_RUNPATH_SEARCH_PATHS_xctest = @loader_path/Frameworks @executable_path/Frameworks @loader_path/../Frameworks @executable_path/../Frameworks
+LD_RUNPATH_SEARCH_PATHS = $(LD_RUNPATH_SEARCH_PATHS_$(WRAPPER_EXTENSION))
+
+#include "Carthage.xcconfig"

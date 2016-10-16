@@ -1,37 +1,14 @@
-platform :ios do
-
-  desc "Runs all the tests"
-  lane :test do
-    
-    carthage(
-      platform: "iOS"
-    )
-    
-    scan(
-      scheme: "Money-iOS",
-      output_directory: ".ci/xcodebuild-data/",
-      xcargs: "-derivedDataPath .ci/xcodebuild-data/"
-    )
-          
-  end
-  
+lane :test_ios do
+	carthage(platform: "iOS")
+	scan(scheme: "Money", destination: "platform=iOS Simulator,OS=10.0,name=iPhone 6s")	  
 end
 
-platform :mac do
-  
-  desc "Runs all the tests"
-  lane :test do
-    
-    carthage(
-      platform: "Mac"
-    )    
+lane :test_mac do
+	carthage(platform: "Mac")
+	scan(scheme: "Money", destination: "platform=macOS")	  
+end
 
-    scan(
-      scheme: "Money-OSX",
-      output_directory: ".ci/xcodebuild-data/",
-      xcargs: "-derivedDataPath .ci/xcodebuild-data/"
-    )
-    
-  end
-  
+lane :test_tvos do
+	carthage(platform: "tvOS")
+	scan(scheme: "Money", destination: "platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p")
 end
