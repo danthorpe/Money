@@ -83,7 +83,7 @@ internal extension NSLocale {
 
     /// - returns: a String? for the currency code.
     var mny_currencyCode: String? {
-        if #available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) {
+        if #available(iOS 10.0, iOSApplicationExtension 10.0, watchOS 3.0, watchOSApplicationExtension 3.0, tvOS 10.0, tvOSApplicationExtension 10.0, OSX 10.12, OSXApplicationExtension 10.12, *) {
             return currencyCode
         } else {
             return objectForKey(NSLocaleCurrencyCode) as? String
@@ -92,7 +92,7 @@ internal extension NSLocale {
 
     /// - returns: a String? for the currency symbol.
     var mny_currencySymbol: String? {
-        if #available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, OSXApplicationExtension 10.12, *) {
+        if #available(iOS 10.0, iOSApplicationExtension 10.0, watchOS 3.0, watchOSApplicationExtension 3.0, tvOS 10.0, tvOSApplicationExtension 10.0, OSX 10.12, OSXApplicationExtension 10.12, *) {
             return currencySymbol
         } else {
             return objectForKey(NSLocaleCurrencySymbol) as? String

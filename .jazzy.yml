@@ -1,12 +1,12 @@
-author_name: Daniel Thorpe
+author: Daniel Thorpe
 author_url: http://danthorpe.me
-module_name: Money
-module_version: 1.7.0
+module: Money
+module_version: 1.8.0
 github_url: https://github.com/danthorpe/Money
 readme: README.md
 podspec: Money.podspec
 
-swift_version: 2.2
+swift_version: 2.3
 xcodebuild-arguments: -scheme,Money-iOS
 
 custom_categories:

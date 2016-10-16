@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "Money"
-  s.version           = "1.7.0"
+  s.version           = "1.8.0"
   s.summary           = "Swift types for working with Money."
   s.description       = <<-DESC
   
@@ -15,25 +15,22 @@ Pod::Spec.new do |s|
   s.author            = { "Daniel Thorpe" => "@danthorpe" }
   s.source            = { :git => "https://github.com/danthorpe/Money.git", :tag => s.version.to_s }
   s.module_name       = 'Money'
-  s.documentation_url = 'http://docs.danthorpe.me/money/1.7.0/index.html'
   s.social_media_url  = 'https://twitter.com/danthorpe'
   s.requires_arc      = true
   s.ios.deployment_target = '8.0'
-  s.osx.deployment_target = '10.10'
+  s.osx.deployment_target = '10.11'
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
   s.source_files = [
-    'Money/Shared/*.swift', 
-    'Money/Shared/**/*.swift',     
-    'Money/iOS'
+    'Sources/*.swift'
   ]
   
-  s.osx.exclude_files = [ 'Money/iOS' ]
-  s.watchos.exclude_files = [ 'Money/iOS' ]
-  s.tvos.exclude_files = [ 'Money/iOS' ]  
+  s.osx.exclude_files = [ 'Sources/ApplePay.swift' ]
+  s.watchos.exclude_files = [ 'Sources/ApplePay.swift' ]
+  s.tvos.exclude_files = [ 'Sources/ApplePay.swift' ]  
   
-  s.dependency 'ValueCoding'
+  s.dependency 'ValueCoding', '1.5.0'
 
 end
 
