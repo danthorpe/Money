@@ -1,12 +1,10 @@
 //
-//  Money.h
 //  Money
 //
-//  Created by Daniel Thorpe on 28/10/2015.
-//
+//  Copyright © 2016 Money. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 //! Project version number for Money.
 FOUNDATION_EXPORT double MoneyVersionNumber;
