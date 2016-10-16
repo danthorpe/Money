@@ -23,7 +23,7 @@ APPLICATION_EXTENSION_API_ONLY_framework = YES
 APPLICATION_EXTENSION_API_ONLY_xctest = NO
 APPLICATION_EXTENSION_API_ONLY = $(APPLICATION_EXTENSION_API_ONLY_$(WRAPPER_EXTENSION))
 
-SWIFT_VERSION = 2.3
+SWIFT_VERSION = 3.0
 
 // Build Settings
 SUPPORTED_PLATFORMS = macosx iphoneos appletvos watchos appletvsimulator iphonesimulator watchsimulator

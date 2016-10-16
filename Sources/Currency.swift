@@ -51,17 +51,17 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
     static var symbol: String? { get }
 
     /// Default formatting style
-    static var defaultFormattingStyle: NSNumberFormatterStyle { get }
+    static var defaultFormattingStyle: NumberFormatter.Style { get }
     
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocaleId localeId: String) -> NSDecimalNumber -> String
+    static func formatted(withStyle: NumberFormatter.Style, forLocaleId localeId: String) -> (NSDecimalNumber) -> String
 
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> NSDecimalNumber -> String
+    static func formatted(withStyle: NumberFormatter.Style, forLocale locale: NSLocale) -> (NSDecimalNumber) -> String
 }
 
 public extension CurrencyType {
 
-    static var defaultFormattingStyle: NSNumberFormatterStyle {
-        return .CurrencyStyle
+    static var defaultFormattingStyle: NumberFormatter.Style {
+        return .currency
     }
     
     /**
@@ -73,7 +73,7 @@ public extension CurrencyType {
     */
     static var decimalNumberBehaviors: NSDecimalNumberBehaviors {
         return NSDecimalNumberHandler(
-            roundingMode: .RoundBankers,
+            roundingMode: .bankers,
             scale: Int16(scale),
             raiseOnExactness: true,
             raiseOnOverflow: true,
@@ -82,19 +82,21 @@ public extension CurrencyType {
         )
     }
 
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale tmp: NSLocale) -> NSDecimalNumber -> String {
+    static func formatted(withStyle style: NumberFormatter.Style, forLocale tmp: NSLocale) -> (NSDecimalNumber) -> String {
 
         let id = "\(tmp.localeIdentifier)@currency=\(code)"
-        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(id))
+        let canonical = NSLocale.canonicalLocaleIdentifier(from: id)
+        let nslocale = NSLocale(localeIdentifier: canonical)
+        let locale = Locale(identifier: canonical)
 
-        let formatter = NSNumberFormatter()
+        let formatter = NumberFormatter()
         formatter.currencyCode = code
         formatter.locale = locale
         formatter.numberStyle = style
         formatter.maximumFractionDigits = scale
-        formatter.currencySymbol = symbol ?? locale.mny_currencySymbol
+        formatter.currencySymbol = symbol ?? nslocale.mny_currencySymbol
         
-        return { formatter.stringFromNumber($0)! }
+        return { formatter.string(from: $0)! }
     }
 }
 
@@ -113,9 +115,9 @@ public extension CustomCurrencyType {
      
      - returns: a NSDecimalNumber -> String closure.
     */
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocaleId localeId: String) -> NSDecimalNumber -> String {
-        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(localeId))
-        return formattedWithStyle(style, forLocale: locale)
+    static func formatted(withStyle style: NumberFormatter.Style, forLocaleId localeId: String) -> (NSDecimalNumber) -> String {
+        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifier(from: localeId))
+        return formatted(withStyle: style, forLocale: locale)
     }
 
     /**
@@ -123,8 +125,8 @@ public extension CustomCurrencyType {
 
      - returns: a NSDecimalNumber -> String closure.
      */
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> NSDecimalNumber -> String {
-        return formattedWithStyle(style, forLocaleId: locale.localeIdentifier)
+    static func formatted(withStyle style: NumberFormatter.Style, forLocale locale: MNYLocale) -> (NSDecimalNumber) -> String {
+        return formatted(withStyle: style, forLocaleId: locale.localeIdentifier)
     }
 }
 
@@ -180,10 +182,10 @@ public extension ISOCurrencyType {
 
      - returns: a NSDecimalNumber -> String closure.
      */
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocaleId localeId: String) -> NSDecimalNumber -> String {
-        let id = "\(NSLocale.currentLocale().localeIdentifier)@currency=\(code)"
-        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(id))
-        return formattedWithStyle(style, forLocale: locale)
+    static func formatted(withStyle style: NumberFormatter.Style, forLocaleId localeId: String) -> (NSDecimalNumber) -> String {
+        let id = "\(NSLocale.current.identifier)@currency=\(code)"
+        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifier(from: id))
+        return formatted(withStyle: style, forLocale: locale)
     }
 
     /**
@@ -191,10 +193,10 @@ public extension ISOCurrencyType {
 
      - returns: a NSDecimalNumber -> String closure.
      */
-    static func formattedWithStyle(style: NSNumberFormatterStyle, forLocale locale: Locale) -> NSDecimalNumber -> String {
+    static func formatted(withStyle style: NumberFormatter.Style, forLocale locale: MNYLocale) -> (NSDecimalNumber) -> String {
         let id = "\(locale.localeIdentifier)@currency=\(code)"
-        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(id))
-        return formattedWithStyle(style, forLocale: locale)
+        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifier(from: id))
+        return formatted(withStyle: style, forLocale: locale)
     }
 }
 
@@ -226,14 +228,17 @@ public struct Currency {
         }
 
         convenience init(code: String) {
-            let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifierFromString(NSLocale.localeIdentifierFromComponents([NSLocaleCurrencyCode: code])))
-            let symbol = locale.mny_currencySymbol!
+            let idFromComponents = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.currencyCode.rawValue: code])
+            let canonical = NSLocale.canonicalLocaleIdentifier(from: idFromComponents)
+            let nslocale = NSLocale(localeIdentifier: canonical)
+            let locale = Locale(identifier: canonical)
+            let symbol = nslocale.mny_currencySymbol!
             
-            let fmtr = NSNumberFormatter()
+            let fmtr = NumberFormatter()
             fmtr.locale = locale
-            fmtr.numberStyle = .CurrencyStyle
+            fmtr.numberStyle = .currency
             fmtr.currencyCode = code
-            fmtr.currencySymbol = locale.mny_currencySymbol
+            fmtr.currencySymbol = nslocale.mny_currencySymbol
             
             let scale = fmtr.maximumFractionDigits
             self.init(code: code, scale: scale, symbol: symbol)
@@ -243,9 +248,9 @@ public struct Currency {
             let code = locale.mny_currencyCode!
             let symbol = locale.mny_currencySymbol
             
-            let fmtr = NSNumberFormatter()
-            fmtr.numberStyle = .CurrencyStyle
-            fmtr.locale = locale
+            let fmtr = NumberFormatter()
+            fmtr.numberStyle = .currency
+            fmtr.locale = Locale(identifier: locale.localeIdentifier)
             fmtr.currencyCode = code
             
             let scale = fmtr.maximumFractionDigits            
@@ -261,6 +266,6 @@ public struct Currency {
      the device's current currency, using `NSLocale.currentLocale()`.
      */
     public final class Local: Currency.Base, ISOCurrencyType {
-        public static var sharedInstance = Local(locale: NSLocale.currentLocale())
+        public static var sharedInstance = Local(locale: NSLocale.current as NSLocale)
     }
 }
