@@ -1,6 +1,6 @@
 //
-//  ApplePay.swift
-//  Money
+// Money, https://github.com/danthorpe/Money
+// Created by Dan Thorpe, @danthorpe
 //
 // The MIT License (MIT)
 //
@@ -23,6 +23,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+
+#if os(iOS)
 
 import Foundation
 import PassKit
@@ -223,3 +225,4 @@ public func ==<Cost: MoneyType where Cost.DecimalStorageType == NSDecimalNumber>
     return lhs.cost == rhs.cost && lhs.label == rhs.label && lhs.type == rhs.type
 }
 
+#endif

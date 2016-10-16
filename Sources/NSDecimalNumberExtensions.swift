@@ -1,6 +1,6 @@
 //
-//  NSDecimalNumberExtensions.swift
-//  Money
+// Money, https://github.com/danthorpe/Money
+// Created by Dan Thorpe, @danthorpe
 //
 // The MIT License (MIT)
 //

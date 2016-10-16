@@ -1,11 +1,18 @@
 steps:
   -
-    name: ":fastlane: Test Mac OS X"
-    command: .ci/scripts/test-osx
+    name: "macOS"
+    command: "source /usr/local/opt/chruby/share/chruby/chruby.sh && chruby ruby && bundle install --quiet && bundle exec fastlane test_mac"
     agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
+      xcode: "$XCODE"
   -
-    name: ":fastlane: Test iOS"
-    command: .ci/scripts/test-ios
+    name: "iOS"
+    command: "source /usr/local/opt/chruby/share/chruby/chruby.sh && chruby ruby && bundle install --quiet && bundle exec fastlane test_ios"
     agents:
-      name: "$BUILDKITE_AGENT_META_DATA_NAME"
+      iOS-Simulator: true
+      xcode: "$XCODE"
+  -
+    name: "tvOS"
+    command: "source /usr/local/opt/chruby/share/chruby/chruby.sh && chruby ruby && bundle install --quiet && bundle exec fastlane test_tvos"
+    agents:
+      iOS-Simulator: true
+      xcode: "$XCODE"
