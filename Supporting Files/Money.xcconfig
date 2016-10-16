@@ -35,10 +35,10 @@ CODE_SIGN_IDENTITY = -
 // Deployment
 DEFINES_MODULE = YES
 
-MACOSX_DEPLOYMENT_TARGET = 10.11
+MACOSX_DEPLOYMENT_TARGET = 10.10
 IPHONEOS_DEPLOYMENT_TARGET = 8.0
-TVOS_DEPLOYMENT_TARGET = 9.2
-WATCHOS_DEPLOYMENT_TARGET = 2.2
+TVOS_DEPLOYMENT_TARGET = 9.0
+WATCHOS_DEPLOYMENT_TARGET = 2.0
 
 LD_RUNPATH_SEARCH_PATHS_framework = @executable_path/../Frameworks @loader_path/Frameworks
 LD_RUNPATH_SEARCH_PATHS_xctest = @loader_path/Frameworks @executable_path/Frameworks @loader_path/../Frameworks @executable_path/../Frameworks
