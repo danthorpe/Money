@@ -454,17 +454,17 @@ func createUnitTestsForLocale(withWriter writer: Writer) {
 
     for language in info.languagesWithMoreThanOneCountry {
 
-        createXCTestCaseNamed(withWriter: writer, className: "Locale\(language.name)Language") { writer in
+        createXCTestCaseNamed(withWriter: writer, className: "MNYLocale\(language.name)Language") { writer in
             writer("")
-            writer("    var locale: Locale!")
+            writer("    var locale: MNYLocale!")
 
             createUnitTestsForLocaleWithLanguage(withWriter: writer, language: language)
         }
     }
 
-    createXCTestCaseNamed(withWriter: writer, className: "Locale") { line in
+    createXCTestCaseNamed(withWriter: writer, className: "MNYLocale") { line in
         writer("")
-        writer("    var locale: Locale!")
+        writer("    var locale: MNYLocale!")
 
         for language in info.languagesWithLessThanTwoCountries {
             createUnitTestsForLocaleWithLanguage(withWriter: writer, language: language)

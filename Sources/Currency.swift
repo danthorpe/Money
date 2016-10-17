@@ -55,7 +55,7 @@ public protocol CurrencyType: DecimalNumberBehaviorType {
     
     static func formatted(withStyle: NumberFormatter.Style, forLocaleId localeId: String) -> (NSDecimalNumber) -> String
 
-    static func formatted(withStyle: NumberFormatter.Style, forLocale locale: NSLocale) -> (NSDecimalNumber) -> String
+    static func formatted(withStyle: NumberFormatter.Style, forLocale locale: MNYLocale) -> (NSDecimalNumber) -> String
 }
 
 public extension CurrencyType {
@@ -82,6 +82,16 @@ public extension CurrencyType {
         )
     }
 
+    /**
+     Use the provided locale identifier to format a supplied NSDecimalNumber.
+
+     - returns: a NSDecimalNumber -> String closure.
+     */
+    static func formatted(withStyle style: NumberFormatter.Style, forLocaleId localeId: String) -> (NSDecimalNumber) -> String {
+        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifier(from: localeId))
+        return formatted(withStyle: style, forLocale: locale)
+    }
+
     static func formatted(withStyle style: NumberFormatter.Style, forLocale tmp: NSLocale) -> (NSDecimalNumber) -> String {
 
         let id = "\(tmp.localeIdentifier)@currency=\(code)"
@@ -98,27 +108,6 @@ public extension CurrencyType {
         
         return { formatter.string(from: $0)! }
     }
-}
-
-/**
- Custom currency types should refine CustomCurrencyType.
-
- This is to benefit from default implementations of string
- formatting.
-*/
-public protocol CustomCurrencyType: CurrencyType { }
-
-public extension CustomCurrencyType {
-
-    /**
-     Use the provided locale identifier to format a supplied NSDecimalNumber.
-     
-     - returns: a NSDecimalNumber -> String closure.
-    */
-    static func formatted(withStyle style: NumberFormatter.Style, forLocaleId localeId: String) -> (NSDecimalNumber) -> String {
-        let locale = NSLocale(localeIdentifier: NSLocale.canonicalLocaleIdentifier(from: localeId))
-        return formatted(withStyle: style, forLocale: locale)
-    }
 
     /**
      Use the provided Local to format a supplied NSDecimalNumber.
@@ -131,9 +120,12 @@ public extension CustomCurrencyType {
 }
 
 /**
- Crypto currency types (Bitcoin etc) should refine CryptoCurrencyType.
+ Custom currency types should refine CustomCurrencyType.
+*/
+public protocol CustomCurrencyType: CurrencyType { }
 
- This is to benefit from default implementations.
+/**
+ Crypto currency types (Bitcoin etc) should refine CryptoCurrencyType.
 */
 public protocol CryptoCurrencyType: CustomCurrencyType { }
 

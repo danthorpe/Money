@@ -42,7 +42,7 @@ import ValueCoding
  - see: PKPaymentSummaryItemType
  */
 public enum PaymentSummaryItemType: Int {
-    case Final = 1, Pending
+    case final = 1, pending
 }
 
 /**
@@ -100,13 +100,13 @@ public struct PaymentSummaryItem<Cost: MoneyType>: Hashable, ValueCoding where C
      - parameter type: the value for the `type` property.     
      - returns: a summary item with a given label, cost and type.
     */
-    public init(label: String, cost: Cost, type: PaymentSummaryItemType = .Final) {
+    public init(label: String, cost: Cost, type: PaymentSummaryItemType = .final) {
         self.label = label
         self.type = type
         switch type {
-        case .Final:
+        case .final:
             self.cost = cost
-        case .Pending:
+        case .pending:
             self.cost = 0
         }
     }
@@ -119,7 +119,7 @@ extension PaymentSummaryItem {
      - parameter newLabel: the value for the `label` property in an item copy
      - returns: a summary item with a new label value, and previously set cost and type.
      */
-    public func setLabel(newLabel: String) -> PaymentSummaryItem {
+    public func set(label newLabel: String) -> PaymentSummaryItem {
         return PaymentSummaryItem(label: newLabel, cost: cost, type: type)
     }
 
@@ -128,7 +128,7 @@ extension PaymentSummaryItem {
      - parameter newCost: the value for the `cost` property in an item copy
      - returns: a summary item with a new cost value, and previously set label and type.
     */
-    public func setCost(newCost: Cost) -> PaymentSummaryItem {
+    public func set(cost newCost: Cost) -> PaymentSummaryItem {
         return PaymentSummaryItem(label: label, cost: newCost, type: type)
     }
 
@@ -137,7 +137,7 @@ extension PaymentSummaryItem {
      - parameter newType: the value for the `type` property in an item copy
      - returns: a summary item with a new type value, and previously set label and cost.
      */
-    public func setType(newType: PaymentSummaryItemType) -> PaymentSummaryItem {
+    public func set(type newType: PaymentSummaryItemType) -> PaymentSummaryItem {
         return PaymentSummaryItem(label: label, cost: cost, type: newType)
     }
 }
@@ -174,9 +174,9 @@ internal extension PKPaymentSummaryItemType {
 
     init(paymentSummaryItemType: PaymentSummaryItemType) {
         switch paymentSummaryItemType {
-        case .Final:
+        case .final:
             self = .final
-        case .Pending:
+        case .pending:
             self = .pending
         }
     }

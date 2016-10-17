@@ -105,10 +105,10 @@ public extension MoneyType where DecimalStorageType == NSDecimalNumber {
      `.CurrencyAccountingStyle`.
 
      - parameter style: the `NSNumberFormatterStyle` to use.
-     - parameter locale: a `Locale` value
+     - parameter locale: a `MNYLocale` value
      - returns: a localized and formatted string for the money amount.
      */
-    func formatted(withStyle style: NumberFormatter.Style, forLocale locale: NSLocale) -> String {
+    func formatted(withStyle style: NumberFormatter.Style, forLocale locale: MNYLocale) -> String {
         return Currency.formatted(withStyle: style, forLocale: locale)(amount)
     }
 }
@@ -123,7 +123,7 @@ public extension MoneyType where DecimalStorageType == BankersDecimal.DecimalSto
      - parameter rate: a `BankersDecimal` representing the rate.
      - returns: another `MoneyType` value.
      */
-    func convertWithRate<Other: MoneyType>(rate: BankersDecimal) -> Other where Other.DecimalStorageType == BankersDecimal.DecimalStorageType {
+    func convert<Other: MoneyType>(withRate rate: BankersDecimal) -> Other where Other.DecimalStorageType == BankersDecimal.DecimalStorageType {
         return multiplying(by: Other(storage: rate.storage))
     }
 }
@@ -222,7 +222,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-    public func subtracting(other: _Money) -> _Money {
+    public func subtracting(_ other: _Money) -> _Money {
         return _Money(decimal.subtracting(other.decimal))
     }
 
@@ -232,7 +232,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-    public func adding(other: _Money) -> _Money {
+    public func adding(_ other: _Money) -> _Money {
         return _Money(decimal.adding(other.decimal))
     }
 
@@ -262,7 +262,7 @@ public struct _Money<C: CurrencyType>: MoneyType {
      - parameter other: another instance of this type.
      - returns: another instance of this type.
      */
-    public func remainder(other: _Money) -> _Money {
+    public func remainder(_ other: _Money) -> _Money {
         return _Money(decimal.remainder(other.decimal))
     }
 }

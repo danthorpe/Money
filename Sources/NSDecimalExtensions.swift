@@ -131,7 +131,7 @@ internal extension Decimal {
      - parameter roundingMode: the NSRoundingMode to use for the calculation.
      - returns: a `NSDecimal`.
      */
-    func negateWithRoundingMode(roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
+    func negate(withRoundingMode roundingMode: NSDecimalNumber.RoundingMode) -> Decimal {
         let zero = Decimal.zero
         let negativeOne = zero.subtracting(Decimal.one, withRoundingMode: roundingMode)
         let result = multiplying(by: negativeOne, withRoundingMode: roundingMode)
