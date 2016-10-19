@@ -1,13 +1,13 @@
 author: Daniel Thorpe
 author_url: http://danthorpe.me
 module: Money
-module_version: 1.8.0
+module_version: 2.0.0
 github_url: https://github.com/danthorpe/Money
 readme: README.md
 podspec: Money.podspec
 
-swift_version: 2.3
-xcodebuild-arguments: -scheme,Money-iOS
+swift_version: 3.0
+xcodebuild-arguments: -scheme,Money
 
 custom_categories:
   - name: Decimals
