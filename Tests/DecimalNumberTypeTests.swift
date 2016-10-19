@@ -29,12 +29,12 @@ import XCTest
 
 class DecimalNumberTypeTests: XCTestCase {
 
-    var decimal: Decimal!
+    var decimal: PlainDecimal!
     var money: Money!
 
     func test__init_with_int() {
         let value: Int = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -42,7 +42,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_uint8() {
         let value: UInt8 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -50,7 +50,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_int8() {
         let value: Int8 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -58,7 +58,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_uint16() {
         let value: UInt16 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -66,7 +66,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_int16() {
         let value: Int16 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -74,7 +74,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_uint32() {
         let value: UInt32 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -82,7 +82,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_int32() {
         let value: Int32 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -90,7 +90,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_uint64() {
         let value: UInt64 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -98,7 +98,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_int64() {
         let value: Int64 = 10
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 10)
         XCTAssertEqual(money, 10)
@@ -106,7 +106,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_float() {
         let value: Float = 9.0
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 9.0)
         XCTAssertEqual(money, 9.00)
@@ -114,14 +114,14 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func test__init_with_double() {
         let value: Double = 9.999
-        decimal = Decimal(value)
+        decimal = PlainDecimal(value)
         money = Money(value)
         XCTAssertEqual(decimal, 9.999)
         XCTAssertEqual(money, 10.00)
     }
 
     func testPerformanceInitInt() {
-        self.measureBlock {
+        measure {
             for value in 1...10_000 {
                 self.money = Money(value)
             }
@@ -130,7 +130,7 @@ class DecimalNumberTypeTests: XCTestCase {
 
     func testPerformanceInitDouble() {
         let value: Double = 9.99
-        self.measureBlock {
+        measure {
             for _ in 1...10_000 {
                 self.money = Money(value)
             }

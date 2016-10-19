@@ -1,3 +1,6 @@
+# 2.0.0
+1. [[MNY-63](https://github.com/danthorpe/Money/pull/63)]: Updates to Swift 3.0.
+
 # 1.8.0
 1. [[MNY-61](https://github.com/danthorpe/Money/pull/61)]: Updates to Swift 2.3.
 

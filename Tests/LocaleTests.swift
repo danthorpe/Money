@@ -34,8 +34,8 @@ class LocaleTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        en_US = NSLocale(localeIdentifier: Locale.English(.UnitedStates).localeIdentifier)
-        es_ES = NSLocale(localeIdentifier: Locale.Spanish(.Spain).localeIdentifier)
+        en_US = NSLocale(localeIdentifier: MNYLocale.English(.UnitedStates).localeIdentifier)
+        es_ES = NSLocale(localeIdentifier: MNYLocale.Spanish(.Spain).localeIdentifier)
     }
 
     override func tearDown() {

@@ -28,8 +28,8 @@ import XCTest
 import ValueCoding
 @testable import Money
 
-class DecimalTests: XCTestCase {
-    var decimal: Decimal!
+class PlainDecimalTestCase: XCTestCase {
+    var decimal: PlainDecimal!
 
     override func tearDown() {
         decimal = nil
@@ -37,7 +37,7 @@ class DecimalTests: XCTestCase {
     }
 }
 
-class DecimalAccessorTests: DecimalTests {
+class DecimalAccessorTests: PlainDecimalTestCase {
 
     func test__decimal_integer_value() {
         decimal = 10.00
@@ -50,7 +50,7 @@ class DecimalAccessorTests: DecimalTests {
     }
 }
 
-class DecimalDescriptionTests: DecimalTests {
+class DecimalDescriptionTests: PlainDecimalTestCase {
 
     func test__decimal_decription1() {
         decimal = 10.00
@@ -63,7 +63,7 @@ class DecimalDescriptionTests: DecimalTests {
     }
 }
 
-class DecimalReciprocalTests: DecimalTests {
+class DecimalReciprocalTests: PlainDecimalTestCase {
 
     func test__reciprocal() {
         decimal = 10
@@ -76,7 +76,7 @@ class DecimalReciprocalTests: DecimalTests {
     }
 }
 
-class DecimalNumberConversionTests: DecimalTests {
+class DecimalNumberConversionTests: PlainDecimalTestCase {
     var money: GBP!
 
     override func setUp() {
@@ -103,14 +103,14 @@ class DecimalNumberConversionTests: DecimalTests {
     }
 }
 
-class DecimalValueCodingTests: DecimalTests {
+class DecimalValueCodingTests: PlainDecimalTestCase {
 
-    func archiveEncodedDecimal() -> NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(decimal.encoded)
+    func archiveEncodedDecimal() -> Data {
+        return NSKeyedArchiver.archivedData(withRootObject: decimal.encoded)
     }
 
-    func unarchive(archive: NSData) -> Decimal? {
-        return Decimal.decode(NSKeyedUnarchiver.unarchiveObjectWithData(archive))
+    func unarchive(_ archive: Data) -> PlainDecimal? {
+        return PlainDecimal.decode(NSKeyedUnarchiver.unarchiveObject(with: archive) as AnyObject?)
     }
 
     func test__decimal_encodes() {
