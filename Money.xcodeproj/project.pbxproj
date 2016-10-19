@@ -41,7 +41,6 @@
 		65599E9B1DB3D2D500EC123C /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65599E911DB3D2D500EC123C /* Money.swift */; };
 		65599E9C1DB3D2D500EC123C /* NSDecimalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65599E921DB3D2D500EC123C /* NSDecimalExtensions.swift */; };
 		65599E9D1DB3D2D500EC123C /* NSDecimalNumberExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65599E931DB3D2D500EC123C /* NSDecimalNumberExtensions.swift */; };
-		65599E9E1DB3D2D500EC123C /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65599E941DB3D2D500EC123C /* Support.swift */; };
 		65ECB2B11DB3DC9900F96F46 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65599E6A1DB3CFD300EC123C /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -91,7 +90,8 @@
 		65599E911DB3D2D500EC123C /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		65599E921DB3D2D500EC123C /* NSDecimalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalExtensions.swift; sourceTree = "<group>"; };
 		65599E931DB3D2D500EC123C /* NSDecimalNumberExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtensions.swift; sourceTree = "<group>"; };
-		65599E941DB3D2D500EC123C /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
+		65ECB2BF1DB4134C00F96F46 /* Autogenerate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autogenerate.h; sourceTree = "<group>"; };
+		65ECB2C01DB4134C00F96F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +145,7 @@
 				65599E8A1DB3D2D500EC123C /* Sources */,
 				655155141DB3D59900368D35 /* Tests */,
 				655155131DB3D56400368D35 /* ... */,
+				65ECB2BE1DB4134C00F96F46 /* Autogenerate */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,9 +184,17 @@
 				65599E911DB3D2D500EC123C /* Money.swift */,
 				65599E921DB3D2D500EC123C /* NSDecimalExtensions.swift */,
 				65599E931DB3D2D500EC123C /* NSDecimalNumberExtensions.swift */,
-				65599E941DB3D2D500EC123C /* Support.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		65ECB2BE1DB4134C00F96F46 /* Autogenerate */ = {
+			isa = PBXGroup;
+			children = (
+				65ECB2BF1DB4134C00F96F46 /* Autogenerate.h */,
+				65ECB2C01DB4134C00F96F46 /* Info.plist */,
+			);
+			path = Autogenerate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +323,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$SCRIPT_INPUT_FILE_0\" \"$SCRIPT_OUTPUT_FILE_0\" \"$SCRIPT_OUTPUT_FILE_1\"";
+			showEnvVarsInLog = 0;
 		};
 		65ECB2B21DB3DD9F00F96F46 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -339,7 +349,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65599E971DB3D2D500EC123C /* Currency.swift in Sources */,
-				65599E9E1DB3D2D500EC123C /* Support.swift in Sources */,
 				65599E9D1DB3D2D500EC123C /* NSDecimalNumberExtensions.swift in Sources */,
 				65599E961DB3D2D500EC123C /* Bitcoin.swift in Sources */,
 				65599E9B1DB3D2D500EC123C /* Money.swift in Sources */,

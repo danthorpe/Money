@@ -4693,10 +4693,10 @@ in more than one country, an associated value
 of the country should be provided. For example 
 
 ```swift
-let locale: Locale = .French(.France)
+let locale: MNYLocale = .French(.France)
 ```
 */
-public enum Locale {
+public enum MNYLocale {
 
     /**
      ### Afrikaans
@@ -5428,7 +5428,7 @@ public enum Locale {
 /**
  Locale conforms to LanguageType.
 */
-extension Locale: LanguageType {
+extension MNYLocale: LanguageType {
 
     /// - returns: the lanauge identifier as a String.
     public var languageIdentifier: String {
@@ -5826,7 +5826,7 @@ extension Locale: LanguageType {
 /**
  Locale conforms to CountryType.
 */
-extension Locale: CountryType {
+extension MNYLocale: CountryType {
 
     /// - returns: the country identifier as a String.
     public var countryIdentifier: String {
@@ -5935,6 +5935,6 @@ extension Locale: CountryType {
     }
 }
 
-extension Locale: LocaleType {
+extension MNYLocale: LocaleType {
     // Uses default implementation
 }

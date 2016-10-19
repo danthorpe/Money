@@ -47,7 +47,7 @@ public struct _Decimal<Behavior: DecimalNumberBehaviorType>: DecimalNumberType {
 
      - parameter storage: a `NSDecimalNumber` defaults to zero.
     */
-    public init(storage: NSDecimalNumber = NSDecimalNumber.zero()) {
+    public init(storage: NSDecimalNumber = NSDecimalNumber.zero) {
         self.storage = storage
     }
 }
@@ -65,7 +65,7 @@ public func <<B: DecimalNumberBehaviorType>(lhs: _Decimal<B>, rhs: _Decimal<B>) 
 }
 
 /// `Decimal` with plain decimal number behavior
-public typealias Decimal = _Decimal<DecimalNumberBehavior.Plain>
+public typealias PlainDecimal = _Decimal<DecimalNumberBehavior.Plain>
 
 /// `BankersDecimal` with banking decimal number behavior
 public typealias BankersDecimal = _Decimal<DecimalNumberBehavior.Bankers>
@@ -79,7 +79,7 @@ extension _Decimal: ValueCoding {
 /**
  Coding class to support `_Decimal` `ValueCoding` conformance.
 */
-public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject, NSCoding, CodingType {
+public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject, NSCoding, CodingProtocol {
 
     public let value: _Decimal<Behavior>
 
@@ -88,12 +88,12 @@ public final class _DecimalCoder<Behavior: DecimalNumberBehaviorType>: NSObject,
     }
 
     public init?(coder aDecoder: NSCoder) {
-        let storage = aDecoder.decodeObjectForKey("storage") as! NSDecimalNumber
+        let storage = aDecoder.decodeObject(forKey: "storage") as! NSDecimalNumber
         value = _Decimal<Behavior>(storage: storage)
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(value.storage, forKey: "storage")
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(value.storage, forKey: "storage")
     }
 }
 
