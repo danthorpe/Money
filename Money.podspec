@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "Money"
-  s.version           = "1.8.0"
+  s.version           = "2.0.0"
   s.summary           = "Swift types for working with Money."
   s.description       = <<-DESC
   
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.watchos.exclude_files = [ 'Sources/ApplePay.swift' ]
   s.tvos.exclude_files = [ 'Sources/ApplePay.swift' ]  
   
-  s.dependency 'ValueCoding', '1.5.0'
+  s.dependency 'ValueCoding', '~> 2'
 
 end
 
