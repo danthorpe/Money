@@ -8,11 +8,11 @@ steps:
     name: "iOS"
     command: "source /usr/local/opt/chruby/share/chruby/chruby.sh && chruby ruby && bundle install --quiet && bundle exec fastlane test_ios"
     agents:
-      iOS-Simulator: true
+      queue: "iOS-Simulator" 
       xcode: "$XCODE"
   -
     name: "tvOS"
     command: "source /usr/local/opt/chruby/share/chruby/chruby.sh && chruby ruby && bundle install --quiet && bundle exec fastlane test_tvos"
     agents:
-      iOS-Simulator: true
+      queue: "iOS-Simulator" 
       xcode: "$XCODE"
