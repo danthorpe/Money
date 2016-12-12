@@ -90,6 +90,7 @@
 		65599E911DB3D2D500EC123C /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		65599E921DB3D2D500EC123C /* NSDecimalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalExtensions.swift; sourceTree = "<group>"; };
 		65599E931DB3D2D500EC123C /* NSDecimalNumberExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberExtensions.swift; sourceTree = "<group>"; };
+		65AA39ED1DFEF418000942A7 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		65ECB2BF1DB4134C00F96F46 /* Autogenerate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autogenerate.h; sourceTree = "<group>"; };
 		65ECB2C01DB4134C00F96F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +159,7 @@
 				655155101DB3D45100368D35 /* Carthage.xcconfig */,
 				65599E6B1DB3CFD300EC123C /* Money.xcconfig */,
 				65599E6C1DB3CFD300EC123C /* Version.xcconfig */,
+				65AA39ED1DFEF418000942A7 /* Warnings.xcconfig */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
