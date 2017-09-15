@@ -85,3 +85,14 @@ extension Money: Equatable {
     }
 }
 
+extension Money: Comparable {
+
+    static func <(lhs: Money, rhs: Money) -> Bool {
+
+        if lhs.currency.code != rhs.currency.code {
+            return lhs.currency.code < rhs.currency.code
+        }
+
+        return lhs.decimal < rhs.decimal
+    }
+}

@@ -79,7 +79,7 @@ struct ISOMoney<C: ISOCurrencyProtocol>: MoneyProtocol {
 
 extension ISOMoney: Equatable {
 
-    static func ==<C>(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> Bool {
+    static func ==(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> Bool {
         return lhs.decimal == rhs.decimal
             && lhs.currency.code == rhs.currency.code
             && lhs.currency.scale == rhs.currency.scale
@@ -87,9 +87,17 @@ extension ISOMoney: Equatable {
     }
 }
 
-extension ISOMoney: ExpressibleByFloatLiteral { }
+extension ISOMoney: Comparable {
 
+    static func <(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> Bool {
 
+        if lhs.currency.code != rhs.currency.code {
+            return lhs.currency.code < rhs.currency.code
+        }
+
+        return lhs.decimal < rhs.decimal
+    }
+}
 
 
 
