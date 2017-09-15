@@ -13,24 +13,12 @@ import Foundation
 struct ISOMoney<C: ISOCurrencyProtocol>: MoneyProtocol {
 
 
-    static func *(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> ISOMoney<C> {
-        return ISOMoney<C>(decimal: lhs.decimal * rhs.decimal)
-    }
-
     static func *=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
         lhs.decimal = lhs.decimal * rhs.decimal
     }
 
-    static func +(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> ISOMoney<C> {
-        return ISOMoney<C>(decimal: lhs.decimal + rhs.decimal)
-    }
-
     static func +=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
         lhs.decimal = lhs.decimal + rhs.decimal
-    }
-
-    static func -(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> ISOMoney<C> {
-        return ISOMoney<C>(decimal: lhs.decimal - rhs.decimal)
     }
 
     static func -=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
