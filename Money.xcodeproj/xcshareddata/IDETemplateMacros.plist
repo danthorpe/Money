@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FILEHEADER</key>
+	<string>
+// ___PROJECTNAME___
+// File created on ___DATE___.
+// 	
+// Copyright (c) 2015-___YEAR___ Daniel Thorpe
+// 
+// ___PROJECTNAME___ is licensed under the MIT License. Read the full license at 
+// https://github.com/danthorpe/Money/blob/master/LICENSE
+//</string>
+</dict>
+</plist>
