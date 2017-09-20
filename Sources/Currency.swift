@@ -49,3 +49,44 @@ extension Currency {
         return Currency(code: code, scale: scale, symbol: locale.currencySymbol)
     }()
 }
+
+// MARK: - Base Currency
+
+extension Currency {
+
+    public class BaseCurrency: CurrencyProtocol, Equatable {
+
+        public static func ==(lhs: BaseCurrency, rhs: BaseCurrency) -> Bool {
+            return lhs.code == rhs.code
+                && lhs.scale == rhs.scale
+                && lhs.symbol == rhs.symbol
+        }
+
+        public let code: String
+        public let scale: Int
+        public let symbol: String?
+
+        init(code: String, scale: Int, symbol: String?) {
+            self.code = code
+            self.scale = scale
+            self.symbol = symbol
+        }
+
+        convenience init(code: String) {
+            let idFromComponents = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.currencyCode.rawValue: code])
+            let canonical = NSLocale.canonicalLocaleIdentifier(from: idFromComponents)
+            let nslocale = NSLocale(localeIdentifier: canonical)
+            let locale = Locale(identifier: canonical)
+            let symbol = nslocale.currencySymbol
+
+            let fmtr = NumberFormatter()
+            fmtr.locale = locale
+            fmtr.numberStyle = .currency
+            fmtr.currencyCode = code
+            fmtr.currencySymbol = symbol
+
+            let scale = fmtr.maximumFractionDigits
+            self.init(code: code, scale: scale, symbol: symbol)
+        }
+    }
+}
