@@ -21,37 +21,49 @@ protocol MoneyProtocol: SignedNumeric, ExpressibleByFloatLiteral {
 
 extension MoneyProtocol {
 
-    static func *(lhs: Self, rhs: Self) -> Self {
-        return Self(decimal: lhs.decimal * rhs.decimal)
-    }
-}
-
-extension MoneyProtocol where IntegerLiteralType == Decimal.IntegerLiteralType {
-
-    static func *(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
-        return Self(decimal: lhs.decimal * Decimal(integerLiteral: rhs))
+    var integerValue: Int {
+        return (decimal as NSDecimalNumber).intValue
     }
 
-    static func *(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
-        return Self(decimal: Decimal(integerLiteral: lhs) * rhs.decimal)
-    }
-}
-
-extension MoneyProtocol where FloatLiteralType == Decimal.FloatLiteralType {
-
-    static func *(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
-        return Self(decimal: lhs.decimal * Decimal(floatLiteral: rhs))
+    var floatValue: Double {
+        return (decimal as NSDecimalNumber).doubleValue
     }
 
-    static func *(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
-        return Self(decimal: Decimal(floatLiteral: lhs) * rhs.decimal)
+    var minorUnits: Int {
+        return (decimal.multiplying(byPowersOf10: Int16(currency.scale)) as NSDecimalNumber).intValue
     }
 }
 
 extension MoneyProtocol {
 
     static func +(lhs: Self, rhs: Self) -> Self {
-        return Self(decimal: lhs.decimal + rhs.decimal)
+        var (lhs, rhs) = (lhs.decimal, rhs.decimal)
+        var result = Decimal()
+        NSDecimalAdd(&result, &lhs, &rhs, .bankers)
+        return Self(decimal: result)
+    }
+
+    static func -(lhs: Self, rhs: Self) -> Self {
+        var (lhs, rhs) = (lhs.decimal, rhs.decimal)
+        var result = Decimal()
+        NSDecimalSubtract(&result, &lhs, &rhs, .bankers)
+        return Self(decimal: result)
+    }
+
+
+    static func *(lhs: Self, rhs: Self) -> Self {
+        var (lhs, rhs) = (lhs.decimal, rhs.decimal)
+        var result = Decimal()
+        NSDecimalMultiply(&result, &lhs, &rhs, .bankers)
+        return Self(decimal: result)
+    }
+
+
+    static func /(lhs: Self, rhs: Self) -> Self {
+        var (lhs, rhs) = (lhs.decimal, rhs.decimal)
+        var result = Decimal()
+        NSDecimalDivide(&result, &lhs, &rhs, .bankers)
+        return Self(decimal: result)
     }
 }
 
@@ -64,6 +76,31 @@ extension MoneyProtocol where IntegerLiteralType == Decimal.IntegerLiteralType {
     static func +(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(integerLiteral: lhs) + rhs.decimal)
     }
+
+
+    static func -(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
+        return Self(decimal: lhs.decimal - Decimal(integerLiteral: rhs))
+    }
+
+    static func -(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
+        return Self(decimal: Decimal(integerLiteral: lhs) - rhs.decimal)
+    }
+
+    static func *(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
+        return Self(decimal: lhs.decimal * Decimal(integerLiteral: rhs))
+    }
+
+    static func *(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
+        return Self(decimal: Decimal(integerLiteral: lhs) * rhs.decimal)
+    }
+
+    static func /(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
+        return Self(decimal: lhs.decimal / Decimal(integerLiteral: rhs))
+    }
+
+    static func /(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
+        return Self(decimal: Decimal(integerLiteral: lhs) / rhs.decimal)
+    }
 }
 
 extension MoneyProtocol where FloatLiteralType == Decimal.FloatLiteralType {
@@ -75,27 +112,6 @@ extension MoneyProtocol where FloatLiteralType == Decimal.FloatLiteralType {
     static func +(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(floatLiteral: lhs) + rhs.decimal)
     }
-}
-
-extension MoneyProtocol {
-
-    static func -(lhs: Self, rhs: Self) -> Self {
-        return Self(decimal: lhs.decimal - rhs.decimal)
-    }
-}
-
-extension MoneyProtocol where IntegerLiteralType == Decimal.IntegerLiteralType {
-
-    static func -(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
-        return Self(decimal: lhs.decimal - Decimal(integerLiteral: rhs))
-    }
-
-    static func -(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
-        return Self(decimal: Decimal(integerLiteral: lhs) - rhs.decimal)
-    }
-}
-
-extension MoneyProtocol where FloatLiteralType == Decimal.FloatLiteralType {
 
     static func -(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
         return Self(decimal: lhs.decimal - Decimal(floatLiteral: rhs))
@@ -104,4 +120,77 @@ extension MoneyProtocol where FloatLiteralType == Decimal.FloatLiteralType {
     static func -(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(floatLiteral: lhs) - rhs.decimal)
     }
+
+    static func *(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
+        return Self(decimal: lhs.decimal * Decimal(floatLiteral: rhs))
+    }
+
+    static func *(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
+        return Self(decimal: Decimal(floatLiteral: lhs) * rhs.decimal)
+    }
+
+    static func /(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
+        return Self(decimal: lhs.decimal / Decimal(floatLiteral: rhs))
+    }
+
+    static func /(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
+        return Self(decimal: Decimal(floatLiteral: lhs) / rhs.decimal)
+    }
 }
+
+extension MoneyProtocol {
+
+    func distance(to other: Self) -> Self {
+        return self - other
+    }
+
+    func advanced(by other: Self) -> Self {
+        return self + other
+    }
+}
+
+extension MoneyProtocol {
+
+    init(_ value: Int8) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: Int16) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: Int32) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: Int64) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: UInt8) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: UInt16) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: UInt32) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: UInt64) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: Int) {
+        self.init(decimal: Decimal(value))
+    }
+
+    init(_ value: UInt) {
+        self.init(decimal: Decimal(value))
+    }
+
+}
+
+

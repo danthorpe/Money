@@ -33,6 +33,8 @@
 		657FA53A1F6C8114005B0CE9 /* SubtractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FA5391F6C8114005B0CE9 /* SubtractionTests.swift */; };
 		657FA53C1F6C811F005B0CE9 /* MultiplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FA53B1F6C811F005B0CE9 /* MultiplicationTests.swift */; };
 		657FA53E1F6C812C005B0CE9 /* ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FA53D1F6C812C005B0CE9 /* ComparisonTests.swift */; };
+		65DDE2451F72F8D000E88DEC /* DivisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE2441F72F8D000E88DEC /* DivisionTests.swift */; };
+		65DDE2471F7305F000E88DEC /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE2461F7305F000E88DEC /* Decimal+Extensions.swift */; };
 		65ECB2B11DB3DC9900F96F46 /* Money.h in Headers */ = {isa = PBXBuildFile; fileRef = 65599E6A1DB3CFD300EC123C /* Money.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		657FA53B1F6C811F005B0CE9 /* MultiplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationTests.swift; sourceTree = "<group>"; };
 		657FA53D1F6C812C005B0CE9 /* ComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonTests.swift; sourceTree = "<group>"; };
 		65AA39ED1DFEF418000942A7 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		65DDE2441F72F8D000E88DEC /* DivisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionTests.swift; sourceTree = "<group>"; };
+		65DDE2461F7305F000E88DEC /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
 		65ECB2BF1DB4134C00F96F46 /* Autogenerate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autogenerate.h; sourceTree = "<group>"; };
 		65ECB2C01DB4134C00F96F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +113,7 @@
 				657FA5391F6C8114005B0CE9 /* SubtractionTests.swift */,
 				657FA53B1F6C811F005B0CE9 /* MultiplicationTests.swift */,
 				657FA53D1F6C812C005B0CE9 /* ComparisonTests.swift */,
+				65DDE2441F72F8D000E88DEC /* DivisionTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				657FA5291F6C7DF6005B0CE9 /* ISOMoney.swift */,
 				657FA52C1F6C7DF6005B0CE9 /* Money.swift */,
 				657FA52B1F6C7DF6005B0CE9 /* MoneyProtocol.swift */,
+				65DDE2461F7305F000E88DEC /* Decimal+Extensions.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 				657FA5301F6C7DF6005B0CE9 /* MoneyProtocol.swift in Sources */,
 				657FA52F1F6C7DF6005B0CE9 /* Currency.swift in Sources */,
 				657FA5321F6C7DF6005B0CE9 /* CurrencyProtocol.swift in Sources */,
+				65DDE2471F7305F000E88DEC /* Decimal+Extensions.swift in Sources */,
 				657FA5311F6C7DF6005B0CE9 /* Money.swift in Sources */,
 				657FA52E1F6C7DF6005B0CE9 /* ISOMoney.swift in Sources */,
 			);
@@ -315,6 +322,7 @@
 				657FA53E1F6C812C005B0CE9 /* ComparisonTests.swift in Sources */,
 				657FA5361F6C7E02005B0CE9 /* MoneyTestCase.swift in Sources */,
 				657FA5381F6C80FA005B0CE9 /* AdditionTests.swift in Sources */,
+				65DDE2451F72F8D000E88DEC /* DivisionTests.swift in Sources */,
 				657FA53C1F6C811F005B0CE9 /* MultiplicationTests.swift in Sources */,
 				657FA53A1F6C8114005B0CE9 /* SubtractionTests.swift in Sources */,
 				657FA5351F6C7E02005B0CE9 /* InitTests.swift in Sources */,

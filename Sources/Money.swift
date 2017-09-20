@@ -12,28 +12,31 @@ import Foundation
 
 struct Money: MoneyProtocol {
 
-
-    static func *=(lhs: inout Money, rhs: Money) {
-        lhs.decimal = lhs.decimal * rhs.decimal
-    }
-
     static func +=(lhs: inout Money, rhs: Money) {
-        lhs.decimal = lhs.decimal + rhs.decimal
+        let result: Money = lhs + rhs
+        lhs.decimal = result.decimal
     }
 
     static func -=(lhs: inout Money, rhs: Money) {
-        lhs.decimal = lhs.decimal - rhs.decimal
+        let result: Money = lhs - rhs
+        lhs.decimal = result.decimal
     }
 
+    static func *=(lhs: inout Money, rhs: Money) {
+        let result: Money = lhs * rhs
+        lhs.decimal = result.decimal
+    }
 
-
-
+    static func /=(lhs: inout Money, rhs: Money) {
+        let result: Money = lhs / rhs
+        lhs.decimal = result.decimal
+    }
 
 
 
     private(set) var decimal: Decimal
 
-    let currency: CurrencyProtocol
+    private(set) var currency: CurrencyProtocol
 
     var magnitude: Decimal {
         return decimal
@@ -82,6 +85,13 @@ extension Money: Equatable {
             && lhs.currency.code == rhs.currency.code
             && lhs.currency.scale == rhs.currency.scale
             && lhs.currency.symbol == rhs.currency.symbol
+    }
+}
+
+extension Money: Hashable {
+
+    var hashValue: Int {
+        return decimal.hashValue
     }
 }
 
