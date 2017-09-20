@@ -10,7 +10,7 @@
 
 import Foundation
 
-protocol MoneyProtocol: SignedNumeric, ExpressibleByFloatLiteral {
+public protocol MoneyProtocol: SignedNumeric, ExpressibleByFloatLiteral {
 
     var decimal: Decimal { get }
 
@@ -36,14 +36,14 @@ extension MoneyProtocol {
 
 extension MoneyProtocol {
 
-    static func +(lhs: Self, rhs: Self) -> Self {
+    public static func +(lhs: Self, rhs: Self) -> Self {
         var (lhs, rhs) = (lhs.decimal, rhs.decimal)
         var result = Decimal()
         NSDecimalAdd(&result, &lhs, &rhs, .bankers)
         return Self(decimal: result)
     }
 
-    static func -(lhs: Self, rhs: Self) -> Self {
+    public static func -(lhs: Self, rhs: Self) -> Self {
         var (lhs, rhs) = (lhs.decimal, rhs.decimal)
         var result = Decimal()
         NSDecimalSubtract(&result, &lhs, &rhs, .bankers)
@@ -51,7 +51,7 @@ extension MoneyProtocol {
     }
 
 
-    static func *(lhs: Self, rhs: Self) -> Self {
+    public static func *(lhs: Self, rhs: Self) -> Self {
         var (lhs, rhs) = (lhs.decimal, rhs.decimal)
         var result = Decimal()
         NSDecimalMultiply(&result, &lhs, &rhs, .bankers)
@@ -59,7 +59,7 @@ extension MoneyProtocol {
     }
 
 
-    static func /(lhs: Self, rhs: Self) -> Self {
+    public static func /(lhs: Self, rhs: Self) -> Self {
         var (lhs, rhs) = (lhs.decimal, rhs.decimal)
         var result = Decimal()
         NSDecimalDivide(&result, &lhs, &rhs, .bankers)
@@ -69,76 +69,76 @@ extension MoneyProtocol {
 
 extension MoneyProtocol where IntegerLiteralType == Decimal.IntegerLiteralType {
 
-    static func +(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
+    public static func +(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
         return Self(decimal: lhs.decimal + Decimal(integerLiteral: rhs))
     }
 
-    static func +(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
+    public static func +(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(integerLiteral: lhs) + rhs.decimal)
     }
 
 
-    static func -(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
+    public static func -(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
         return Self(decimal: lhs.decimal - Decimal(integerLiteral: rhs))
     }
 
-    static func -(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
+    public static func -(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(integerLiteral: lhs) - rhs.decimal)
     }
 
-    static func *(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
+    public static func *(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
         return Self(decimal: lhs.decimal * Decimal(integerLiteral: rhs))
     }
 
-    static func *(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
+    public static func *(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(integerLiteral: lhs) * rhs.decimal)
     }
 
-    static func /(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
+    public static func /(lhs: Self, rhs: Self.IntegerLiteralType) -> Self {
         return Self(decimal: lhs.decimal / Decimal(integerLiteral: rhs))
     }
 
-    static func /(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
+    public static func /(lhs: Self.IntegerLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(integerLiteral: lhs) / rhs.decimal)
     }
 }
 
 extension MoneyProtocol where FloatLiteralType == Decimal.FloatLiteralType {
 
-    static func +(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
+    public static func +(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
         return Self(decimal: lhs.decimal + Decimal(floatLiteral: rhs))
     }
 
-    static func +(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
+    public static func +(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(floatLiteral: lhs) + rhs.decimal)
     }
 
-    static func -(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
+    public static func -(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
         return Self(decimal: lhs.decimal - Decimal(floatLiteral: rhs))
     }
 
-    static func -(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
+    public static func -(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(floatLiteral: lhs) - rhs.decimal)
     }
 
-    static func *(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
+    public static func *(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
         return Self(decimal: lhs.decimal * Decimal(floatLiteral: rhs))
     }
 
-    static func *(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
+    public static func *(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(floatLiteral: lhs) * rhs.decimal)
     }
 
-    static func /(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
+    public static func /(lhs: Self, rhs: Self.FloatLiteralType) -> Self {
         return Self(decimal: lhs.decimal / Decimal(floatLiteral: rhs))
     }
 
-    static func /(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
+    public static func /(lhs: Self.FloatLiteralType, rhs: Self) -> Self {
         return Self(decimal: Decimal(floatLiteral: lhs) / rhs.decimal)
     }
 }
 
-extension MoneyProtocol {
+public extension MoneyProtocol {
 
     func distance(to other: Self) -> Self {
         return self - other
@@ -149,7 +149,7 @@ extension MoneyProtocol {
     }
 }
 
-extension MoneyProtocol {
+public extension MoneyProtocol {
 
     init(_ value: Int8) {
         self.init(decimal: Decimal(value))

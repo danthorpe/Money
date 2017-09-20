@@ -10,13 +10,13 @@
 
 import Foundation
 
-struct Currency: CurrencyProtocol {
+public struct Currency: CurrencyProtocol {
 
-    let code: String
+    public let code: String
 
-    let scale: Int
+    public let scale: Int
 
-    let symbol: String?
+    public let symbol: String?
 
     init(code: String, scale: Int, symbol: String?) {
         self.code = code
@@ -29,7 +29,7 @@ struct Currency: CurrencyProtocol {
 
 extension Currency: Equatable {
 
-    static func == (lhs: Currency, rhs: Currency) -> Bool {
+    public static func == (lhs: Currency, rhs: Currency) -> Bool {
         return lhs.code == rhs.code
             && lhs.scale == rhs.scale
             && lhs.symbol == rhs.symbol

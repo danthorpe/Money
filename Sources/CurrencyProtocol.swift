@@ -18,7 +18,7 @@ import Foundation
 
  The interface is used to represent a single currency.
  */
-protocol CurrencyProtocol {
+public protocol CurrencyProtocol {
 
     /// The currency code
     var code: String { get }
@@ -30,7 +30,7 @@ protocol CurrencyProtocol {
     var symbol: String? { get }
 }
 
-protocol ISOCurrencyProtocol: CurrencyProtocol {
+public protocol ISOCurrencyProtocol: CurrencyProtocol {
 
     static var shared: Self { get }
 }

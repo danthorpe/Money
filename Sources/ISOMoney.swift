@@ -10,54 +10,54 @@
 
 import Foundation
 
-struct ISOMoney<C: ISOCurrencyProtocol>: MoneyProtocol {
+public struct ISOMoney<C: ISOCurrencyProtocol>: MoneyProtocol {
 
-    static func +=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
+    public static func +=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
         let result: ISOMoney<C> = lhs + rhs
         lhs.decimal = result.decimal
     }
 
-    static func -=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
+    public static func -=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
         let result: ISOMoney<C> = lhs - rhs
         lhs.decimal = result.decimal
     }
 
-    static func *=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
+    public static func *=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
         let result: ISOMoney<C> = lhs * rhs
         lhs.decimal = result.decimal
     }
 
-    static func /=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
+    public static func /=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
         let result: ISOMoney<C> = lhs / rhs
         lhs.decimal = result.decimal
     }
 
 
-    let currency: CurrencyProtocol = C.shared
+    public let currency: CurrencyProtocol = C.shared
 
-    private(set) var decimal: Decimal
+    public private(set) var decimal: Decimal
 
 
 
-    var magnitude: Decimal {
+    public var magnitude: Decimal {
         return decimal
     }
 
 
 
-    init(decimal: Decimal = 0) {
+    public init(decimal: Decimal = 0) {
         self.decimal = decimal
     }
 
-    init(integerLiteral value: Int) {
+    public init(integerLiteral value: Int) {
         self.decimal = Decimal(integerLiteral: value)
     }
 
-    init(floatLiteral value: Double) {
+    public init(floatLiteral value: Double) {
         self.decimal = Decimal(floatLiteral: value)
     }
 
-    init?<T>(exactly source: T) where T : BinaryInteger {
+    public init?<T>(exactly source: T) where T : BinaryInteger {
         guard let _decimal = Decimal(exactly: source) else { return nil }
         self.decimal = _decimal
     }
@@ -68,7 +68,7 @@ struct ISOMoney<C: ISOCurrencyProtocol>: MoneyProtocol {
 
 extension ISOMoney: Equatable {
 
-    static func ==(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> Bool {
+    public static func ==(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> Bool {
         return lhs.decimal == rhs.decimal
             && lhs.currency.code == rhs.currency.code
             && lhs.currency.scale == rhs.currency.scale
@@ -78,7 +78,7 @@ extension ISOMoney: Equatable {
 
 extension ISOMoney: Comparable {
 
-    static func <(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> Bool {
+    public static func <(lhs: ISOMoney<C>, rhs: ISOMoney<C>) -> Bool {
 
         if lhs.currency.code != rhs.currency.code {
             return lhs.currency.code < rhs.currency.code
@@ -115,17 +115,17 @@ extension ISOMoney: Comparable {
 
 extension Currency {
 
-    class BaseCurrency: CurrencyProtocol, Equatable {
+    public class BaseCurrency: CurrencyProtocol, Equatable {
 
-        static func ==(lhs: BaseCurrency, rhs: BaseCurrency) -> Bool {
+        public static func ==(lhs: BaseCurrency, rhs: BaseCurrency) -> Bool {
             return lhs.code == rhs.code
                 && lhs.scale == rhs.scale
                 && lhs.symbol == rhs.symbol
         }
 
-        let code: String
-        let scale: Int
-        let symbol: String?
+        public let code: String
+        public let scale: Int
+        public let symbol: String?
 
         init(code: String, scale: Int, symbol: String?) {
             self.code = code
@@ -150,10 +150,5 @@ extension Currency {
             self.init(code: code, scale: scale, symbol: symbol)
         }
     }
-
-    final class GBP: BaseCurrency, ISOCurrencyProtocol {
-        static let shared = GBP(code: "GBP")
-    }
 }
 
-typealias GBP = ISOMoney<Currency.GBP>
