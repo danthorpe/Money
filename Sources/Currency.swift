@@ -77,7 +77,7 @@ extension Currency {
             let canonical = NSLocale.canonicalLocaleIdentifier(from: idFromComponents)
             let nslocale = NSLocale(localeIdentifier: canonical)
             let locale = Locale(identifier: canonical)
-            let symbol = nslocale.currencySymbol
+            let symbol = nslocale.mny_currencySymbol!
 
             let fmtr = NumberFormatter()
             fmtr.locale = locale
