@@ -33,5 +33,25 @@ extension MoneyTestCase {
     }
 }
 
+extension MoneyTestCase {
+
+    func test__iso_division() {
+        gbp = 10
+        let result = gbp / GBP(decimal: Decimal(integerLiteral: 2))
+        XCTAssertEqual(result, 5)
+    }
+
+    func test__iso_division_by_integer_literals() {
+        gbp = 10
+        let result = 3 / gbp / 2
+        XCTAssertEqual(result, 0.15)
+    }
+
+    func test__iso_division_by_float_literals() {
+        gbp = 10
+        let result = 3.5 / gbp / 2.5
+        XCTAssertEqual(result.floatValue, 0.14, accuracy: 0.001)
+    }
+}
 
 

@@ -12,29 +12,30 @@ import Foundation
 
 struct ISOMoney<C: ISOCurrencyProtocol>: MoneyProtocol {
 
-
-    static func *=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
-        lhs.decimal = lhs.decimal * rhs.decimal
-    }
-
     static func +=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
-        lhs.decimal = lhs.decimal + rhs.decimal
+        let result: ISOMoney<C> = lhs + rhs
+        lhs.decimal = result.decimal
     }
 
     static func -=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
-        lhs.decimal = lhs.decimal - rhs.decimal
+        let result: ISOMoney<C> = lhs - rhs
+        lhs.decimal = result.decimal
     }
 
+    static func *=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
+        let result: ISOMoney<C> = lhs * rhs
+        lhs.decimal = result.decimal
+    }
 
-
-
+    static func /=(lhs: inout ISOMoney<C>, rhs: ISOMoney<C>) {
+        let result: ISOMoney<C> = lhs / rhs
+        lhs.decimal = result.decimal
+    }
 
 
     let currency: CurrencyProtocol = C.shared
 
     private(set) var decimal: Decimal
-
-
 
 
 
