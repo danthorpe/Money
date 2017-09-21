@@ -62,6 +62,10 @@ public struct ISOMoney<C: ISOCurrencyProtocol>: MoneyProtocol {
         self.decimal = _decimal
     }
 
+    init(minorUnits: Int) {
+        self.init(decimal: Decimal(minorUnits).multiplying(byPowersOf10: Int16(C.shared.scale * -1)))
+    }
+
 }
 
 // MARK: - Conformance

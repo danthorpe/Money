@@ -72,6 +72,10 @@ struct Money: MoneyProtocol {
         self.currency = Currency.device
     }
 
+    init(minorUnits: Int) {
+        self.currency = Currency.device
+        self.decimal = Decimal(minorUnits).multiplying(byPowersOf10: Int16(currency.scale * -1))
+    }
 
 
 }
