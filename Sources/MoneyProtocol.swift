@@ -21,12 +21,16 @@ public protocol MoneyProtocol: SignedNumeric, ExpressibleByFloatLiteral {
 
 extension MoneyProtocol {
 
+    var amount: NSDecimalNumber {
+        return (decimal as NSDecimalNumber)
+    }
+    
     var integerValue: Int {
-        return (decimal as NSDecimalNumber).intValue
+        return amount.intValue
     }
 
     var floatValue: Double {
-        return (decimal as NSDecimalNumber).doubleValue
+        return amount.doubleValue
     }
 
     var minorUnits: Int {
