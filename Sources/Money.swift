@@ -10,35 +10,35 @@
 
 import Foundation
 
-struct Money: MoneyProtocol {
+public struct Money: MoneyProtocol {
 
-    static func +=(lhs: inout Money, rhs: Money) {
+    public static func +=(lhs: inout Money, rhs: Money) {
         let result: Money = lhs + rhs
         lhs.decimal = result.decimal
     }
 
-    static func -=(lhs: inout Money, rhs: Money) {
+    public static func -=(lhs: inout Money, rhs: Money) {
         let result: Money = lhs - rhs
         lhs.decimal = result.decimal
     }
 
-    static func *=(lhs: inout Money, rhs: Money) {
+    public static func *=(lhs: inout Money, rhs: Money) {
         let result: Money = lhs * rhs
         lhs.decimal = result.decimal
     }
 
-    static func /=(lhs: inout Money, rhs: Money) {
+    public static func /=(lhs: inout Money, rhs: Money) {
         let result: Money = lhs / rhs
         lhs.decimal = result.decimal
     }
 
 
 
-    private(set) var decimal: Decimal
+    public private(set) var decimal: Decimal
 
-    private(set) var currency: CurrencyProtocol
+    public private(set) var currency: CurrencyProtocol
 
-    var magnitude: Decimal {
+    public var magnitude: Decimal {
         return decimal
     }
 
@@ -46,33 +46,33 @@ struct Money: MoneyProtocol {
 
 
 
-    init(decimal: Decimal = 0, currency: Currency = .device) {
+    public init(decimal: Decimal = 0, currency: Currency = .device) {
         self.decimal = decimal
         self.currency = currency
     }
 
-    init(decimal: Decimal) {
+    public init(decimal: Decimal) {
         self.decimal = decimal
         self.currency = Currency.device
     }
 
-    init(integerLiteral value: Int) {
+    public init(integerLiteral value: Int) {
         self.decimal = Decimal(integerLiteral: value)
         self.currency = Currency.device
     }
 
-    init(floatLiteral value: Double) {
+    public init(floatLiteral value: Double) {
         self.decimal = Decimal(floatLiteral: value)
         self.currency = Currency.device
     }
 
-    init?<T>(exactly source: T) where T : BinaryInteger {
+    public init?<T>(exactly source: T) where T : BinaryInteger {
         guard let _decimal = Decimal(exactly: source) else { return nil }
         self.decimal = _decimal
         self.currency = Currency.device
     }
 
-    init(minorUnits: Int) {
+    public init(minorUnits: Int) {
         self.currency = Currency.device
         self.decimal = Decimal(minorUnits).multiplying(byPowersOf10: Int16(currency.scale * -1))
     }
@@ -84,7 +84,7 @@ struct Money: MoneyProtocol {
 
 extension Money: Equatable {
 
-    static func ==(lhs: Money, rhs: Money) -> Bool {
+    public static func ==(lhs: Money, rhs: Money) -> Bool {
         return lhs.decimal == rhs.decimal
             && lhs.currency.code == rhs.currency.code
             && lhs.currency.scale == rhs.currency.scale
@@ -94,14 +94,14 @@ extension Money: Equatable {
 
 extension Money: Hashable {
 
-    var hashValue: Int {
+    public var hashValue: Int {
         return decimal.hashValue
     }
 }
 
 extension Money: Comparable {
 
-    static func <(lhs: Money, rhs: Money) -> Bool {
+    public static func <(lhs: Money, rhs: Money) -> Bool {
 
         if lhs.currency.code != rhs.currency.code {
             return lhs.currency.code < rhs.currency.code

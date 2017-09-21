@@ -19,7 +19,7 @@ public protocol MoneyProtocol: SignedNumeric, ExpressibleByFloatLiteral {
     init(decimal: Decimal)
 }
 
-extension MoneyProtocol {
+public extension MoneyProtocol {
 
     var amount: NSDecimalNumber {
         return (decimal as NSDecimalNumber)
