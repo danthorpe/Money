@@ -10,13 +10,14 @@
 
 import Foundation
 
-public protocol MoneyProtocol: SignedNumeric, ExpressibleByFloatLiteral {
+public protocol MoneyProtocol: SignedNumeric, ExpressibleByFloatLiteral, CustomStringConvertible {
 
     var decimal: Decimal { get }
 
     var currency: CurrencyProtocol { get }
 
     init(decimal: Decimal)
+
 }
 
 public extension MoneyProtocol {
@@ -35,6 +36,14 @@ public extension MoneyProtocol {
 
     var minorUnits: Int {
         return (decimal.multiplying(byPowersOf10: Int16(currency.scale)) as NSDecimalNumber).intValue
+    }
+
+    var description: String {
+        return formatted(withStyle: .currency, forLocaleId: Locale.current.identifier)
+    }
+
+    func formatted(withStyle style: NumberFormatter.Style = .currency, forLocaleId localeId: String = Locale.current.identifier) -> String {
+        return currency.numberFormatter(withStyle: style, forLocaleId: localeId).string(from: decimal as NSDecimalNumber) ?? decimal.description
     }
 }
 
@@ -196,5 +205,7 @@ public extension MoneyProtocol {
     }
 
 }
+
+
 
 

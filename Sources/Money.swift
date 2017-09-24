@@ -110,3 +110,4 @@ extension Money: Comparable {
         return lhs.decimal < rhs.decimal
     }
 }
+
