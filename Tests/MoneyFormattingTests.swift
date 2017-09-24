@@ -16,8 +16,13 @@ extension MoneyTestCase {
 
     func test__description() {
         money = 10
-        let result: String = money.formatted()
+        #if os(OSX)
+        let result: String = money.formatted(forLocaleId: "en_GB")
+        XCTAssertEqual(result, "£10")
+        #elseif os(iOS)
+        let result: String = money.formatted(forLocaleId: "en_US")
         XCTAssertEqual(result, "$10")
+        #endif
     }
 }
 
@@ -25,10 +30,11 @@ extension MoneyTestCase {
 
     func test__iso_description() {
         gbp = 10
-        let result: String = gbp.formatted()
+        let result: String = gbp.formatted(forLocaleId: "en_GB")
         XCTAssertEqual(result, "£10.00")
     }
 
+    #if os(iOS)
     func test__iso_description_spain() {
         gbp = 10
         let result: String = gbp.formatted(forLocaleId: "es_ES")
@@ -36,5 +42,5 @@ extension MoneyTestCase {
         // and the currency symbol is placed after the numbers.
         XCTAssertEqual(result, "10,00 £")
     }
-
+    #endif
 }
