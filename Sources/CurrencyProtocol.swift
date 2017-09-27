@@ -43,7 +43,7 @@ public extension CurrencyProtocol {
 
     func numberFormatter(withStyle style: NumberFormatter.Style, forLocaleId localeId: String) -> NumberFormatter {
         let canonicalId = Locale.canonicalIdentifier(from: localeId)
-        let locale = Locale(identifier: "\(canonicalId)@currency=\(code))")
+        let locale = Locale(identifier: "\(canonicalId)@currency=\(code)")
         return numberFormatter(withStyle: style, for: locale)
     }
 
