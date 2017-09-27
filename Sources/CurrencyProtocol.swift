@@ -53,7 +53,6 @@ public extension CurrencyProtocol {
         formatter.locale = locale
         formatter.numberStyle = style
         formatter.currencyCode = code
-        formatter.maximumFractionDigits = scale
         formatter.currencySymbol = symbol ?? locale.currencySymbol
         return formatter
     }
