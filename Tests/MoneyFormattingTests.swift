@@ -24,6 +24,17 @@ extension MoneyTestCase {
         XCTAssertEqual(result, "$10")
         #endif
     }
+
+    func test__description_float() {
+        money = 10.12
+        #if os(OSX)
+            let result: String = money.formatted(forLocaleId: "en_GB")
+            XCTAssertEqual(result, "£10.12")
+        #elseif os(iOS)
+            let result: String = money.formatted(forLocaleId: "en_US")
+            XCTAssertEqual(result, "$10.12")
+        #endif
+    }
 }
 
 extension MoneyTestCase {
