@@ -35,5 +35,10 @@ extension MoneyTestCase {
         XCTAssertEqual(gbp, 10.0)
     }
 
+    func test__Given_initialized_with_minor_units() {
+        gbp = GBP(minorUnits: 100_000)
+        XCTAssertEqual(gbp.minorUnits, 100_000)
+        XCTAssertEqual(gbp.integerValue, 1_000)
+    }
 }
 

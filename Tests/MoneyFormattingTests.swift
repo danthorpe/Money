@@ -18,10 +18,10 @@ extension MoneyTestCase {
         money = 10
         #if os(OSX)
         let result: String = money.formatted(forLocaleId: "en_GB")
-        XCTAssertEqual(result, "£10")
+        XCTAssertEqual(result, "£10.00")
         #elseif os(iOS)
         let result: String = money.formatted(forLocaleId: "en_US")
-        XCTAssertEqual(result, "$10")
+        XCTAssertEqual(result, "$10.00")
         #endif
     }
 
