@@ -36,25 +36,11 @@ extension Currency: Equatable {
     }
 }
 
-// MARK: - Convenience
-
-extension Currency {
-
-    static let device: Currency = {
-        let locale = Locale.current
-        var formatter = NumberFormatter()
-        formatter.locale = locale
-        let code = locale.currencyCode ?? "USD"
-        let scale = formatter.maximumFractionDigits
-        return Currency(code: code, scale: scale, symbol: locale.currencySymbol)
-    }()
-}
-
 // MARK: - Base Currency
 
 extension Currency {
 
-    public class BaseCurrency: CurrencyProtocol, Equatable {
+    public class BaseCurrency: CurrencyProtocol, Equatable, CustomStringConvertible {
 
         public static func ==(lhs: BaseCurrency, rhs: BaseCurrency) -> Bool {
             return lhs.code == rhs.code
@@ -65,6 +51,13 @@ extension Currency {
         public let code: String
         public let scale: Int
         public let symbol: String?
+
+        public var description: String {
+            guard let symbol = symbol else {
+                return "\(code) .\(scale)"
+            }
+            return "\(symbol)\(code) .\(scale)"
+        }
 
         init(code: String, scale: Int, symbol: String?) {
             self.code = code
@@ -88,5 +81,22 @@ extension Currency {
             let scale = fmtr.maximumFractionDigits
             self.init(code: code, scale: scale, symbol: symbol)
         }
+
+        convenience init(locale: Locale) {
+            let code = locale.currencyCode!
+            let symbol = locale.currencySymbol
+
+            let fmtr = NumberFormatter()
+            fmtr.numberStyle = .currency
+            fmtr.locale = locale
+            fmtr.currencyCode = code
+
+            let scale = fmtr.maximumFractionDigits
+            self.init(code: code, scale: scale, symbol: symbol)
+        }
+    }
+
+    public final class Local: BaseCurrency {
+        public static var sharedInstance = Local(locale: Locale.current)
     }
 }

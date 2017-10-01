@@ -31,6 +31,6 @@ class MoneyTestCase: XCTestCase {
 extension Money {
 
     static func makeZero() -> Money {
-        return Money(decimal: 0, currency: Currency.device)
+        return Money()
     }
 }

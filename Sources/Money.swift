@@ -46,34 +46,30 @@ public struct Money: MoneyProtocol {
 
 
 
-    public init(decimal: Decimal = 0, currency: Currency = .device) {
+    public init(decimal: Decimal = 0, currency: CurrencyProtocol = Currency.Local.sharedInstance) {
         self.decimal = decimal
         self.currency = currency
     }
 
     public init(decimal: Decimal) {
-        self.decimal = decimal
-        self.currency = Currency.device
+        self.init(decimal: decimal, currency: Currency.Local.sharedInstance)
     }
 
     public init(integerLiteral value: Int) {
-        self.decimal = Decimal(integerLiteral: value)
-        self.currency = Currency.device
+        self.init(decimal: Decimal(integerLiteral: value))
     }
 
     public init(floatLiteral value: Double) {
-        self.decimal = Decimal(floatLiteral: value)
-        self.currency = Currency.device
+        self.init(decimal: Decimal(floatLiteral: value))
     }
 
     public init?<T>(exactly source: T) where T : BinaryInteger {
-        guard let _decimal = Decimal(exactly: source) else { return nil }
-        self.decimal = _decimal
-        self.currency = Currency.device
+        guard let decimal = Decimal(exactly: source) else { return nil }
+        self.init(decimal: decimal)
     }
 
     public init(minorUnits: Int) {
-        self.currency = Currency.device
+        self.currency = Currency.Local.sharedInstance
         self.decimal = Decimal(minorUnits).multiplying(byPowersOf10: Int16(currency.scale * -1))
     }
 
