@@ -27,7 +27,7 @@ public extension MoneyProtocol {
     }
     
     var integerValue: Int {
-        return amount.intValue
+        return Int(amount.doubleValue)
     }
 
     var floatValue: Double {
@@ -35,7 +35,7 @@ public extension MoneyProtocol {
     }
 
     var minorUnits: Int {
-        return (decimal.multiplying(byPowersOf10: Int16(currency.scale)) as NSDecimalNumber).intValue
+        return Int((decimal.multiplying(byPowersOf10: Int16(currency.scale)) as NSDecimalNumber).doubleValue)
     }
 
     var description: String {
