@@ -1,14 +1,11 @@
 lane :test_ios do
-	carthage(platform: "iOS")
-	scan(scheme: "Money", destination: "platform=iOS Simulator,OS=10.0,name=iPhone 6s")	  
+	scan(scheme: "Money", destination: "platform=iOS Simulator,OS=11.0,name=iPhone 8")
 end
 
 lane :test_mac do
-	carthage(platform: "Mac")
-	scan(scheme: "Money", destination: "platform=macOS")	  
+	scan(scheme: "Money", destination: "platform=macOS")
 end
 
 lane :test_tvos do
-	carthage(platform: "tvOS")
-	scan(scheme: "Money", destination: "platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p")
+	scan(scheme: "Money", destination: "platform=tvOS Simulator,OS=11.0,name=Apple TV")
 end

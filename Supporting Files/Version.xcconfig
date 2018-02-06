@@ -1,1 +1,10 @@
-MONEY_VERSION = 2.0.1
+//
+// Money
+//
+// Copyright (c) 2015-2017 Daniel Thorpe
+//
+// Money is licensed under the MIT License. Read the full license at
+// https://github.com/danthorpe/Money/blob/master/LICENSE
+//
+
+MONEY_VERSION = 3.0.0

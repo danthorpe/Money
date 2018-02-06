@@ -1,7 +1,10 @@
 //
-//  Money
+// Money
 //
-//  Copyright © 2016 Money. All rights reserved.
+// Copyright (c) 2015-2017 Daniel Thorpe
+//
+// Money is licensed under the MIT License. Read the full license at
+// https://github.com/danthorpe/Money/blob/master/LICENSE
 //
 
 CLANG_WARN_DOCUMENTATION_COMMENTS = YES

@@ -1,7 +1,10 @@
 //
-//  Money
+// Money
 //
-//  Copyright © 2016 Money. All rights reserved.
+// Copyright (c) 2015-2017 Daniel Thorpe
+//
+// Money is licensed under the MIT License. Read the full license at
+// https://github.com/danthorpe/Money/blob/master/LICENSE
 //
 
 #include "Version.xcconfig"
@@ -23,7 +26,7 @@ APPLICATION_EXTENSION_API_ONLY_framework = YES
 APPLICATION_EXTENSION_API_ONLY_xctest = NO
 APPLICATION_EXTENSION_API_ONLY = $(APPLICATION_EXTENSION_API_ONLY_$(WRAPPER_EXTENSION))
 
-SWIFT_VERSION = 3.0
+SWIFT_VERSION = 3.2
 
 // Build Settings
 SUPPORTED_PLATFORMS = macosx iphoneos appletvos watchos appletvsimulator iphonesimulator watchsimulator
@@ -36,7 +39,7 @@ CODE_SIGN_IDENTITY = -
 // Deployment
 DEFINES_MODULE = YES
 
-MACOSX_DEPLOYMENT_TARGET = 10.11
+MACOSX_DEPLOYMENT_TARGET = 10.12
 IPHONEOS_DEPLOYMENT_TARGET = 8.0
 TVOS_DEPLOYMENT_TARGET = 9.2
 WATCHOS_DEPLOYMENT_TARGET = 2.2
@@ -46,5 +49,4 @@ LD_RUNPATH_SEARCH_PATHS_xctest = @loader_path/Frameworks @executable_path/Framew
 LD_RUNPATH_SEARCH_PATHS = $(LD_RUNPATH_SEARCH_PATHS_$(WRAPPER_EXTENSION))
 
 #include "Warnings.xcconfig"
-#include "Carthage.xcconfig"
 
