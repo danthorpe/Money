@@ -31,6 +31,14 @@ extension MoneyTestCase {
         let result = 3.5 + money + 2.5
         XCTAssertEqual(result, 16)
     }
+	
+	func test__money_addition_by_decimals() {
+		money = 10
+		let a: Decimal = 3.5
+		let b: Decimal = 2.5
+		let result = a + money + b
+		XCTAssertEqual(result, 16)
+	}
 }
 
 extension MoneyTestCase {
@@ -52,4 +60,12 @@ extension MoneyTestCase {
         let result = 3.5 + gbp + 2.5
         XCTAssertEqual(result, 16)
     }
+	
+	func test__iso_addition_by_decimals() {
+		gbp = 10
+		let a: Decimal = 3.5
+		let b: Decimal = 2.5
+		let result = a + gbp + b
+		XCTAssertEqual(result, 16)
+	}
 }
