@@ -151,6 +151,41 @@ extension MoneyProtocol where FloatLiteralType == Decimal.FloatLiteralType {
     }
 }
 
+extension MoneyProtocol {
+	
+	public static func +(lhs: Self, rhs: Decimal) -> Self {
+		return Self(decimal: lhs.decimal + rhs)
+	}
+	
+	public static func +(lhs: Decimal, rhs: Self) -> Self {
+		return Self(decimal: lhs + rhs.decimal)
+	}
+	
+	public static func -(lhs: Self, rhs: Decimal) -> Self {
+		return Self(decimal: lhs.decimal - rhs)
+	}
+	
+	public static func -(lhs: Decimal, rhs: Self) -> Self {
+		return Self(decimal: lhs - rhs.decimal)
+	}
+	
+	public static func *(lhs: Self, rhs: Decimal) -> Self {
+		return Self(decimal: lhs.decimal * rhs)
+	}
+	
+	public static func *(lhs: Decimal, rhs: Self) -> Self {
+		return Self(decimal: lhs * rhs.decimal)
+	}
+	
+	public static func /(lhs: Self, rhs: Decimal) -> Self {
+		return Self(decimal: lhs.decimal / rhs)
+	}
+	
+	public static func /(lhs: Decimal, rhs: Self) -> Self {
+		return Self(decimal: lhs / rhs.decimal)
+	}
+}
+
 public extension MoneyProtocol {
 
     func distance(to other: Self) -> Self {
